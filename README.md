@@ -137,6 +137,10 @@ only expensive part of this repo, roughly an hour of single-core Stockfish, so
 that export is the artifact worth reusing. The dictionary documents four traps,
 three of which produced real errors during this build.
 
+## Publishing a fork
+
+See [PUBLISHING.md](PUBLISHING.md). The short version:
+
 ## First-time setup after cloning or forking
 
 ```bash
