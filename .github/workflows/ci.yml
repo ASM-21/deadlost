@@ -1,0 +1,96 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: tests (py${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+      - name: Unit tests
+        # Headline pins skip cleanly when results/ is absent, so this runs
+        # without the 150 MB corpus or an engine.
+        run: python -m pytest -q -m "not slow"
+
+  engine:
+    name: engine determinism
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install Stockfish
+        run: sudo apt-get update && sudo apt-get install -y stockfish
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+      - name: Determinism tests
+        # Guards a bug that shipped: a shared transposition table made results
+        # depend on how a resumable run was chunked.
+        run: python -m pytest -q -m slow
+
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install ruff
+      - run: ruff check src scripts tests
+
+  consistency:
+    name: claims and manifest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+      - name: Claims check
+        run: |
+          if [ -f results/t1_validation.json ]; then
+            python scripts/check_claims.py
+          else
+            echo "results not committed; skipping"
+          fi
+      - name: Manifest check
+        run: |
+          if [ -f results/manifest.json ]; then
+            python scripts/manifest.py check
+          else
+            echo "no manifest; skipping"
+          fi
+      - name: No unset repository placeholders
+        run: python scripts/init_repo.py --check || echo "placeholders present (expected before first push)"

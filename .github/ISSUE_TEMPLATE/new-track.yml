@@ -1,0 +1,32 @@
+name: Propose a track
+description: Suggest a new question worth testing against this data.
+title: "[track] "
+labels: ["track-proposal"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A track is a question that can come out "no". If no result would falsify it,
+        it is not a track. See CONTRIBUTING.md for the bar.
+  - type: input
+    id: question
+    attributes:
+      label: The question
+      placeholder: "Does opening novelty decay measurably in the years after it appears?"
+    validations:
+      required: true
+  - type: textarea
+    id: falsifiable
+    attributes:
+      label: What result would mean the answer is no?
+    validations:
+      required: true
+  - type: textarea
+    id: data
+    attributes:
+      label: Can the existing corpora answer it?
+      description: |
+        The two corpora are described in FINDINGS.md. If it needs data this repo does
+        not have, say which, and whether it is reachable without authentication.
+    validations:
+      required: true

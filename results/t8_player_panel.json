@@ -1,0 +1,886 @@
+{
+  "design": {
+    "panel": "TWIC players with >=5 year-observations spanning >=10 years",
+    "unit": "player-year",
+    "players": 100,
+    "player_years": 584,
+    "moves": 46475,
+    "years": [
+      1998,
+      2026
+    ],
+    "model": "ACPL ~ player FE + rating + year + career_year_sq + sharpness",
+    "identification_warning": "The year coefficient is NOT a clean estimate of scale drift. Within a player, calendar year and career stage differ by a player-specific constant and are the same regressor after demeaning, so the year coefficient is the SUM of rating-scale drift and the average linear career trajectory of these 34 players. Only career curvature is separately identified."
+  },
+  "headline_spec": "with_sharpness",
+  "within_player_fit": {
+    "elo": {
+      "coefficient": -0.009353682152769308,
+      "ci_lo": -0.015002729467503903,
+      "ci_hi": -0.003202428854172106,
+      "excludes_zero": true
+    },
+    "year": {
+      "coefficient": 0.1321525587793095,
+      "ci_lo": -0.03632502876371554,
+      "ci_hi": 0.3019443022267492,
+      "excludes_zero": false
+    },
+    "sharp_share": {
+      "coefficient": 13.994273697976055,
+      "ci_lo": 10.203432193554258,
+      "ci_hi": 17.956360665027237,
+      "excludes_zero": true
+    },
+    "n_players": 100,
+    "n_player_years": 584,
+    "n_bootstrap": 800,
+    "elo_equivalent_drift_per_decade": {
+      "estimable": false,
+      "reason": "interval on the ratio spans more than 200 Elo per decade; the within-player rating coefficient is not precise enough to invert. The year coefficient itself is the reportable quantity.",
+      "point": 141.28399556551494,
+      "ci_lo": -93.1446178026445,
+      "ci_hi": 250.89271091983164,
+      "sign_convention": "positive means the same play now earns a HIGHER rating (inflation)",
+      "note": "Both the numerator and the denominator come from this panel, so unlike track 4's translation no gradient is borrowed from a different population."
+    }
+  },
+  "within_player_fit_no_controls": {
+    "elo": {
+      "coefficient": -0.012820778170046676,
+      "ci_lo": -0.018901313594735125,
+      "ci_hi": -0.006364615580930767,
+      "excludes_zero": true
+    },
+    "year": {
+      "coefficient": 0.1737883594530091,
+      "ci_lo": 0.0012112951385732924,
+      "ci_hi": 0.3528657132970966,
+      "excludes_zero": true
+    },
+    "n_players": 100,
+    "n_player_years": 584,
+    "n_bootstrap": 800,
+    "elo_equivalent_drift_per_decade": {
+      "estimable": false,
+      "reason": "interval on the ratio spans more than 200 Elo per decade; the within-player rating coefficient is not precise enough to invert. The year coefficient itself is the reportable quantity.",
+      "point": 135.55211481548972,
+      "ci_lo": 1.4119517675059798,
+      "ci_hi": 219.7743391013349,
+      "sign_convention": "positive means the same play now earns a HIGHER rating (inflation)",
+      "note": "Both the numerator and the denominator come from this panel, so unlike track 4's translation no gradient is borrowed from a different population."
+    }
+  },
+  "specification_ladder": {
+    "bare": {
+      "elo": {
+        "coefficient": -0.012820778170046676,
+        "ci_lo": -0.018901313594735125,
+        "ci_hi": -0.006364615580930767,
+        "excludes_zero": true
+      },
+      "year": {
+        "coefficient": 0.1737883594530091,
+        "ci_lo": 0.0012112951385732924,
+        "ci_hi": 0.3528657132970966,
+        "excludes_zero": true
+      },
+      "elo_equivalent_drift_per_decade": {
+        "estimable": false,
+        "reason": "interval on the ratio spans more than 200 Elo per decade; the within-player rating coefficient is not precise enough to invert. The year coefficient itself is the reportable quantity.",
+        "point": 135.55211481548972,
+        "ci_lo": 1.4119517675059798,
+        "ci_hi": 219.7743391013349,
+        "sign_convention": "positive means the same play now earns a HIGHER rating (inflation)",
+        "note": "Both the numerator and the denominator come from this panel, so unlike track 4's translation no gradient is borrowed from a different population."
+      }
+    },
+    "with_sharpness": {
+      "elo": {
+        "coefficient": -0.009353682152769308,
+        "ci_lo": -0.015002729467503903,
+        "ci_hi": -0.003202428854172106,
+        "excludes_zero": true
+      },
+      "year": {
+        "coefficient": 0.1321525587793095,
+        "ci_lo": -0.03632502876371554,
+        "ci_hi": 0.3019443022267492,
+        "excludes_zero": false
+      },
+      "sharp_share": {
+        "coefficient": 13.994273697976055,
+        "ci_lo": 10.203432193554258,
+        "ci_hi": 17.956360665027237,
+        "excludes_zero": true
+      },
+      "elo_equivalent_drift_per_decade": {
+        "estimable": false,
+        "reason": "interval on the ratio spans more than 200 Elo per decade; the within-player rating coefficient is not precise enough to invert. The year coefficient itself is the reportable quantity.",
+        "point": 141.28399556551494,
+        "ci_lo": -93.1446178026445,
+        "ci_hi": 250.89271091983164,
+        "sign_convention": "positive means the same play now earns a HIGHER rating (inflation)",
+        "note": "Both the numerator and the denominator come from this panel, so unlike track 4's translation no gradient is borrowed from a different population."
+      }
+    },
+    "with_career_curvature": {
+      "elo": {
+        "coefficient": -0.009885304084979209,
+        "ci_lo": -0.018682319285846585,
+        "ci_hi": -0.00018657828175815166,
+        "excludes_zero": true
+      },
+      "year": {
+        "coefficient": 0.17801362120392142,
+        "ci_lo": -0.5226857013818507,
+        "ci_hi": 0.7724819850824036,
+        "excludes_zero": false
+      },
+      "sharp_share": {
+        "coefficient": 14.032476382958038,
+        "ci_lo": 10.230794805191968,
+        "ci_hi": 18.150000836138943,
+        "excludes_zero": true
+      },
+      "career_year_sq": {
+        "coefficient": -0.001914106068239163,
+        "ci_lo": -0.02718828921672706,
+        "ci_hi": 0.028487226114817302,
+        "excludes_zero": false
+      },
+      "elo_equivalent_drift_per_decade": {
+        "estimable": false,
+        "reason": "interval on the ratio spans more than 200 Elo per decade; the within-player rating coefficient is not precise enough to invert. The year coefficient itself is the reportable quantity.",
+        "point": 180.07905439592335,
+        "ci_lo": -2196.7723299229306,
+        "ci_hi": 473.7782141939359,
+        "sign_convention": "positive means the same play now earns a HIGHER rating (inflation)",
+        "note": "Both the numerator and the denominator come from this panel, so unlike track 4's translation no gradient is borrowed from a different population."
+      }
+    }
+  },
+  "power_note": "100 players and 584 player-years is enough to estimate a within-player rating gradient and a year term, and still not enough to add career curvature on top: that spec's year interval is about four times wider and its curvature term does not exclude zero. Tripling the panel did not fix it, because the limit is collinearity rather than sample size.",
+  "sign_instability_of_the_34_player_version": {
+    "old_panel_players": 34,
+    "old_year_coefficient_per_decade": -0.648,
+    "new_panel_players": 100,
+    "new_year_coefficient_per_decade": 1.3215255877930951,
+    "note": "Filled in from the current fit below. The earlier, smaller panel produced the opposite sign. Both are nulls, but the point estimate was not stable enough to be read as a direction."
+  },
+  "engine_budget_invariance": {
+    "checked": true,
+    "acpl_year_trend_at_20000_nodes": 1.681,
+    "acpl_year_trend_at_5000_nodes": 1.645,
+    "budget_ratio_year_trend_per_decade": -0.0157,
+    "budget_ratio_trend_excludes_zero": false,
+    "note": "The panel was enlarged and re-evaluated at a cheaper budget together, so the two were separated before interpreting the result. Search depth does not interact with year."
+  },
+  "player_summary": [
+    {
+      "pid": "Abdusattorov,Nodirbek",
+      "years": 6,
+      "elo_min": 2212.0,
+      "elo_max": 2783.0,
+      "acpl": 15.3
+    },
+    {
+      "pid": "Adly,A",
+      "years": 6,
+      "elo_min": 2209.0,
+      "elo_max": 2626.0,
+      "acpl": 21.3
+    },
+    {
+      "pid": "Amin,B",
+      "years": 6,
+      "elo_min": 2133.0,
+      "elo_max": 2700.0,
+      "acpl": 19.7
+    },
+    {
+      "pid": "Antipov,M2",
+      "years": 6,
+      "elo_min": 2150.0,
+      "elo_max": 2619.0,
+      "acpl": 18.3
+    },
+    {
+      "pid": "Antoniacci,R",
+      "years": 6,
+      "elo_min": 1672.0,
+      "elo_max": 2065.0,
+      "acpl": 37.9
+    },
+    {
+      "pid": "Babazada,Khazar",
+      "years": 6,
+      "elo_min": 2052.2,
+      "elo_max": 2480.0,
+      "acpl": 23.4
+    },
+    {
+      "pid": "Balogh,C",
+      "years": 5,
+      "elo_min": 2135.0,
+      "elo_max": 2634.9,
+      "acpl": 13.2
+    },
+    {
+      "pid": "Baskin,R",
+      "years": 6,
+      "elo_min": 2071.0,
+      "elo_max": 2447.3,
+      "acpl": 22.7
+    },
+    {
+      "pid": "Basso,Pier Luigi",
+      "years": 6,
+      "elo_min": 2051.0,
+      "elo_max": 2583.0,
+      "acpl": 16.6
+    },
+    {
+      "pid": "Beerdsen,Thomas",
+      "years": 6,
+      "elo_min": 2106.0,
+      "elo_max": 2533.0,
+      "acpl": 23.8
+    },
+    {
+      "pid": "Berczes,D",
+      "years": 6,
+      "elo_min": 2179.0,
+      "elo_max": 2521.0,
+      "acpl": 21.9
+    },
+    {
+      "pid": "Bok,B",
+      "years": 6,
+      "elo_min": 2265.0,
+      "elo_max": 2619.0,
+      "acpl": 23.9
+    },
+    {
+      "pid": "Bronstein,Or",
+      "years": 6,
+      "elo_min": 2098.0,
+      "elo_max": 2481.0,
+      "acpl": 23.6
+    },
+    {
+      "pid": "Bullen,Alex",
+      "years": 5,
+      "elo_min": 1764.0,
+      "elo_max": 2100.0,
+      "acpl": 24.8
+    },
+    {
+      "pid": "Bulmaga,I",
+      "years": 6,
+      "elo_min": 2106.0,
+      "elo_max": 2440.3,
+      "acpl": 20.8
+    },
+    {
+      "pid": "Burg,T",
+      "years": 6,
+      "elo_min": 2071.0,
+      "elo_max": 2515.5,
+      "acpl": 22.8
+    },
+    {
+      "pid": "Caruana,F",
+      "years": 6,
+      "elo_min": 2310.2,
+      "elo_max": 2804.0,
+      "acpl": 18.6
+    },
+    {
+      "pid": "Coqueraut,L",
+      "years": 6,
+      "elo_min": 1438.0,
+      "elo_max": 1794.0,
+      "acpl": 34.8
+    },
+    {
+      "pid": "Dardha,Daniel",
+      "years": 6,
+      "elo_min": 2109.0,
+      "elo_max": 2625.0,
+      "acpl": 18.9
+    },
+    {
+      "pid": "Deac,Bogdan-Daniel",
+      "years": 6,
+      "elo_min": 2329.0,
+      "elo_max": 2692.0,
+      "acpl": 18.2
+    },
+    {
+      "pid": "Delorme,Ax",
+      "years": 5,
+      "elo_min": 2090.0,
+      "elo_max": 2482.0,
+      "acpl": 15.7
+    },
+    {
+      "pid": "Dushyant,Sharma",
+      "years": 6,
+      "elo_min": 2039.0,
+      "elo_max": 2355.0,
+      "acpl": 30.7
+    },
+    {
+      "pid": "Efroimski,M",
+      "years": 5,
+      "elo_min": 2081.0,
+      "elo_max": 2417.0,
+      "acpl": 16.6
+    },
+    {
+      "pid": "Erigaisi,Arjun",
+      "years": 6,
+      "elo_min": 2307.0,
+      "elo_max": 2756.0,
+      "acpl": 20.8
+    },
+    {
+      "pid": "Fedoseev,Vl3",
+      "years": 6,
+      "elo_min": 2312.0,
+      "elo_max": 2720.0,
+      "acpl": 17.2
+    },
+    {
+      "pid": "Gaehwiler,G",
+      "years": 5,
+      "elo_min": 2064.3,
+      "elo_max": 2439.0,
+      "acpl": 16.9
+    },
+    {
+      "pid": "Gavrilescu,David",
+      "years": 6,
+      "elo_min": 2204.4,
+      "elo_max": 2545.0,
+      "acpl": 21.0
+    },
+    {
+      "pid": "Gretarsson,Hj",
+      "years": 6,
+      "elo_min": 2168.0,
+      "elo_max": 2579.0,
+      "acpl": 21.5
+    },
+    {
+      "pid": "Grigoryan,K2",
+      "years": 6,
+      "elo_min": 2072.0,
+      "elo_max": 2625.0,
+      "acpl": 20.4
+    },
+    {
+      "pid": "Gunina,V",
+      "years": 6,
+      "elo_min": 2146.0,
+      "elo_max": 2528.5,
+      "acpl": 26.0
+    },
+    {
+      "pid": "Hammer,J",
+      "years": 6,
+      "elo_min": 2278.0,
+      "elo_max": 2680.0,
+      "acpl": 18.8
+    },
+    {
+      "pid": "Hanley,C",
+      "years": 5,
+      "elo_min": 2010.0,
+      "elo_max": 2447.0,
+      "acpl": 21.4
+    },
+    {
+      "pid": "Hou Yifan",
+      "years": 6,
+      "elo_min": 2220.0,
+      "elo_max": 2658.0,
+      "acpl": 21.0
+    },
+    {
+      "pid": "Howell,D",
+      "years": 6,
+      "elo_min": 2237.0,
+      "elo_max": 2689.0,
+      "acpl": 21.9
+    },
+    {
+      "pid": "Hrbek,Stepan",
+      "years": 6,
+      "elo_min": 1711.0,
+      "elo_max": 2460.0,
+      "acpl": 23.5
+    },
+    {
+      "pid": "Idani,P",
+      "years": 6,
+      "elo_min": 2067.0,
+      "elo_max": 2633.0,
+      "acpl": 19.3
+    },
+    {
+      "pid": "Ilincic,Z",
+      "years": 6,
+      "elo_min": 2201.0,
+      "elo_max": 2563.0,
+      "acpl": 19.6
+    },
+    {
+      "pid": "Kacharava,Nikolozi",
+      "years": 6,
+      "elo_min": 2100.0,
+      "elo_max": 2527.0,
+      "acpl": 21.5
+    },
+    {
+      "pid": "Kantans,T",
+      "years": 5,
+      "elo_min": 2146.0,
+      "elo_max": 2516.0,
+      "acpl": 20.0
+    },
+    {
+      "pid": "Kazarian,Anna-Maja",
+      "years": 6,
+      "elo_min": 1864.0,
+      "elo_max": 2257.0,
+      "acpl": 22.0
+    },
+    {
+      "pid": "Keymer,Vincent",
+      "years": 6,
+      "elo_min": 2014.0,
+      "elo_max": 2755.0,
+      "acpl": 23.4
+    },
+    {
+      "pid": "Khademalsharieh,S",
+      "years": 6,
+      "elo_min": 2137.0,
+      "elo_max": 2494.0,
+      "acpl": 20.8
+    },
+    {
+      "pid": "Korobov,A",
+      "years": 6,
+      "elo_min": 2378.0,
+      "elo_max": 2716.0,
+      "acpl": 20.9
+    },
+    {
+      "pid": "Krejci,Jan2",
+      "years": 6,
+      "elo_min": 2193.0,
+      "elo_max": 2568.4,
+      "acpl": 16.7
+    },
+    {
+      "pid": "Kriebel,T",
+      "years": 6,
+      "elo_min": 2173.0,
+      "elo_max": 2511.2,
+      "acpl": 18.2
+    },
+    {
+      "pid": "Kuzubov,Y",
+      "years": 6,
+      "elo_min": 2186.0,
+      "elo_max": 2655.0,
+      "acpl": 16.3
+    },
+    {
+      "pid": "Lezzerini,Marco",
+      "years": 6,
+      "elo_min": 1797.0,
+      "elo_max": 2162.0,
+      "acpl": 21.2
+    },
+    {
+      "pid": "Liang,Awonder",
+      "years": 6,
+      "elo_min": 2207.0,
+      "elo_max": 2718.0,
+      "acpl": 17.7
+    },
+    {
+      "pid": "Loiseau,Q",
+      "years": 6,
+      "elo_min": 2120.0,
+      "elo_max": 2468.6,
+      "acpl": 20.4
+    },
+    {
+      "pid": "Ma Qun",
+      "years": 5,
+      "elo_min": 2241.0,
+      "elo_max": 2645.0,
+      "acpl": 18.0
+    },
+    {
+      "pid": "Mamedyarov,S",
+      "years": 6,
+      "elo_min": 2301.0,
+      "elo_max": 2770.0,
+      "acpl": 18.1
+    },
+    {
+      "pid": "Manafov,Vugar",
+      "years": 5,
+      "elo_min": 2016.0,
+      "elo_max": 2432.0,
+      "acpl": 19.6
+    },
+    {
+      "pid": "Matlakov,M",
+      "years": 6,
+      "elo_min": 2312.0,
+      "elo_max": 2702.6,
+      "acpl": 22.4
+    },
+    {
+      "pid": "Mista,A",
+      "years": 5,
+      "elo_min": 2255.0,
+      "elo_max": 2589.0,
+      "acpl": 21.1
+    },
+    {
+      "pid": "Moussard,J",
+      "years": 6,
+      "elo_min": 2293.0,
+      "elo_max": 2655.2,
+      "acpl": 18.8
+    },
+    {
+      "pid": "Neiksans,A",
+      "years": 6,
+      "elo_min": 2230.0,
+      "elo_max": 2594.0,
+      "acpl": 18.7
+    },
+    {
+      "pid": "Nguyen,Thai Dai Van",
+      "years": 6,
+      "elo_min": 2069.0,
+      "elo_max": 2664.0,
+      "acpl": 16.9
+    },
+    {
+      "pid": "Ni Hua",
+      "years": 6,
+      "elo_min": 2285.0,
+      "elo_max": 2674.0,
+      "acpl": 15.1
+    },
+    {
+      "pid": "Nihal,Sarin",
+      "years": 6,
+      "elo_min": 2324.0,
+      "elo_max": 2723.0,
+      "acpl": 13.0
+    },
+    {
+      "pid": "Nogerbek,Kazybek",
+      "years": 6,
+      "elo_min": 2162.0,
+      "elo_max": 2528.0,
+      "acpl": 16.4
+    },
+    {
+      "pid": "Paltrinieri,N",
+      "years": 6,
+      "elo_min": 1948.0,
+      "elo_max": 2350.0,
+      "acpl": 25.8
+    },
+    {
+      "pid": "Pavlidis,Ant",
+      "years": 6,
+      "elo_min": 2218.0,
+      "elo_max": 2579.0,
+      "acpl": 16.8
+    },
+    {
+      "pid": "Petkov,Momchil",
+      "years": 5,
+      "elo_min": 2040.0,
+      "elo_max": 2517.0,
+      "acpl": 21.7
+    },
+    {
+      "pid": "Pichot,A",
+      "years": 6,
+      "elo_min": 2300.0,
+      "elo_max": 2644.0,
+      "acpl": 23.8
+    },
+    {
+      "pid": "Pipitone,A",
+      "years": 5,
+      "elo_min": 1636.0,
+      "elo_max": 1971.0,
+      "acpl": 36.9
+    },
+    {
+      "pid": "Plat,V",
+      "years": 6,
+      "elo_min": 2085.0,
+      "elo_max": 2548.8,
+      "acpl": 16.7
+    },
+    {
+      "pid": "Plotkin,Mark",
+      "years": 6,
+      "elo_min": 1970.0,
+      "elo_max": 2430.0,
+      "acpl": 23.7
+    },
+    {
+      "pid": "Potapova,Margarita",
+      "years": 6,
+      "elo_min": 1917.0,
+      "elo_max": 2270.0,
+      "acpl": 29.4
+    },
+    {
+      "pid": "Pourramezanali,A",
+      "years": 5,
+      "elo_min": 2077.0,
+      "elo_max": 2519.0,
+      "acpl": 24.4
+    },
+    {
+      "pid": "Pultinevicius,Paulius",
+      "years": 6,
+      "elo_min": 2182.0,
+      "elo_max": 2600.0,
+      "acpl": 20.2
+    },
+    {
+      "pid": "Puranik,A",
+      "years": 6,
+      "elo_min": 2207.5,
+      "elo_max": 2625.0,
+      "acpl": 21.8
+    },
+    {
+      "pid": "Raja,Rithvik R",
+      "years": 6,
+      "elo_min": 1958.0,
+      "elo_max": 2535.0,
+      "acpl": 22.9
+    },
+    {
+      "pid": "Rapport,R",
+      "years": 6,
+      "elo_min": 2323.0,
+      "elo_max": 2752.0,
+      "acpl": 18.7
+    },
+    {
+      "pid": "Riazantsev,A",
+      "years": 6,
+      "elo_min": 2335.0,
+      "elo_max": 2679.0,
+      "acpl": 21.8
+    },
+    {
+      "pid": "Rusev,K",
+      "years": 6,
+      "elo_min": 2125.0,
+      "elo_max": 2544.0,
+      "acpl": 15.6
+    },
+    {
+      "pid": "Salimova,Nurgyul",
+      "years": 6,
+      "elo_min": 1857.0,
+      "elo_max": 2415.0,
+      "acpl": 24.9
+    },
+    {
+      "pid": "Salinas Herrera,P",
+      "years": 6,
+      "elo_min": 2129.0,
+      "elo_max": 2513.0,
+      "acpl": 33.6
+    },
+    {
+      "pid": "Salvador,R",
+      "years": 6,
+      "elo_min": 2135.0,
+      "elo_max": 2532.0,
+      "acpl": 30.2
+    },
+    {
+      "pid": "Sankalp,Gupta",
+      "years": 6,
+      "elo_min": 2204.0,
+      "elo_max": 2548.0,
+      "acpl": 26.4
+    },
+    {
+      "pid": "Santos Latasa,J",
+      "years": 6,
+      "elo_min": 1844.0,
+      "elo_max": 2677.0,
+      "acpl": 19.5
+    },
+    {
+      "pid": "Saric,Iv",
+      "years": 6,
+      "elo_min": 2339.0,
+      "elo_max": 2686.0,
+      "acpl": 18.8
+    },
+    {
+      "pid": "Sebenik,M",
+      "years": 6,
+      "elo_min": 2155.0,
+      "elo_max": 2532.0,
+      "acpl": 16.6
+    },
+    {
+      "pid": "Sevian,Samuel",
+      "years": 6,
+      "elo_min": 2336.0,
+      "elo_max": 2696.0,
+      "acpl": 17.8
+    },
+    {
+      "pid": "Sindarov,Javokhir",
+      "years": 6,
+      "elo_min": 1979.0,
+      "elo_max": 2745.0,
+      "acpl": 19.4
+    },
+    {
+      "pid": "Sosa,T ARG",
+      "years": 6,
+      "elo_min": 2172.0,
+      "elo_max": 2562.0,
+      "acpl": 16.2
+    },
+    {
+      "pid": "Stremavicius,T",
+      "years": 6,
+      "elo_min": 2202.0,
+      "elo_max": 2556.0,
+      "acpl": 16.4
+    },
+    {
+      "pid": "Subelj,Jan",
+      "years": 6,
+      "elo_min": 2122.0,
+      "elo_max": 2545.0,
+      "acpl": 22.1
+    },
+    {
+      "pid": "Suleymanli,Aydin",
+      "years": 5,
+      "elo_min": 2119.0,
+      "elo_max": 2653.0,
+      "acpl": 16.2
+    },
+    {
+      "pid": "Tang,Andrew",
+      "years": 6,
+      "elo_min": 2174.0,
+      "elo_max": 2539.0,
+      "acpl": 33.3
+    },
+    {
+      "pid": "Tari,A",
+      "years": 6,
+      "elo_min": 2293.0,
+      "elo_max": 2646.0,
+      "acpl": 23.0
+    },
+    {
+      "pid": "Thybo,Jesper Sondergaard",
+      "years": 6,
+      "elo_min": 2091.0,
+      "elo_max": 2602.0,
+      "acpl": 17.1
+    },
+    {
+      "pid": "Tilicheev,V",
+      "years": 5,
+      "elo_min": 2137.0,
+      "elo_max": 2501.0,
+      "acpl": 17.6
+    },
+    {
+      "pid": "Tsaruk,Maksim",
+      "years": 5,
+      "elo_min": 2003.0,
+      "elo_max": 2483.0,
+      "acpl": 23.5
+    },
+    {
+      "pid": "Tsydypov,Z",
+      "years": 6,
+      "elo_min": 2022.0,
+      "elo_max": 2553.0,
+      "acpl": 27.5
+    },
+    {
+      "pid": "Vakhidov,J",
+      "years": 6,
+      "elo_min": 2159.0,
+      "elo_max": 2576.0,
+      "acpl": 23.8
+    },
+    {
+      "pid": "Van Foreest,Jorden",
+      "years": 6,
+      "elo_min": 2198.1,
+      "elo_max": 2707.0,
+      "acpl": 19.8
+    },
+    {
+      "pid": "Van Foreest,Lucas",
+      "years": 6,
+      "elo_min": 1952.0,
+      "elo_max": 2531.0,
+      "acpl": 17.4
+    },
+    {
+      "pid": "Vidit,S",
+      "years": 6,
+      "elo_min": 2356.0,
+      "elo_max": 2731.0,
+      "acpl": 16.0
+    },
+    {
+      "pid": "Wei Yi",
+      "years": 6,
+      "elo_min": 2270.0,
+      "elo_max": 2754.0,
+      "acpl": 12.7
+    },
+    {
+      "pid": "Zhu,Jiner",
+      "years": 6,
+      "elo_min": 2095.0,
+      "elo_max": 2578.0,
+      "acpl": 25.7
+    }
+  ],
+  "what_this_still_cannot_settle": [
+    "Career stage, and not for want of controls: within a player, calendar year and career year are collinear by construction, so their linear effects are not separately identifiable. The year coefficient is a compound of scale drift and mean career trajectory. This is the age-period-cohort problem and it is structural, not a sample-size issue.",
+    "Selection into TWIC. Appearing in tournament reports at all is not random, and a player's TWIC games are not their full year.",
+    "Engine drift is not at issue (one fixed Stockfish build, fixed nodes), but the anchor is still ACPL, which measures one aspect of play quality rather than skill in general."
+  ]
+}

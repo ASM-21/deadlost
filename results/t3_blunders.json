@@ -1,0 +1,371 @@
+{
+  "definitions": {
+    "blunder_cp": 300,
+    "mistake_cp": 100
+  },
+  "scope_limitation": "No bullet and essentially no blitz in the corpus. Observed range is roughly 5-60 seconds per move. A threshold effect at the fast end is NOT tested here.",
+  "by_time_bucket": {
+    "fast_<600s": {
+      "n_games": 160,
+      "n_moves": 10038,
+      "median_seconds_per_move": 12.5,
+      "blunder_rate": {
+        "point": 0.054094441123729825,
+        "ci_lo": 0.04626175185200796,
+        "ci_hi": 0.06243421447389272,
+        "n": 160
+      },
+      "mistake_rate": {
+        "point": 0.16337915919505877,
+        "ci_lo": 0.14856432229347893,
+        "ci_hi": 0.17884662724596487,
+        "n": 160
+      }
+    },
+    "mid_600-899s": {
+      "n_games": 160,
+      "n_moves": 9186,
+      "median_seconds_per_move": 15.0,
+      "blunder_rate": {
+        "point": 0.045068582625734814,
+        "ci_lo": 0.03867257672230841,
+        "ci_hi": 0.052100739894764214,
+        "n": 160
+      },
+      "mistake_rate": {
+        "point": 0.14848682778140648,
+        "ci_lo": 0.13401199834664573,
+        "ci_hi": 0.162943777188535,
+        "n": 160
+      }
+    },
+    "slow_900s+": {
+      "n_games": 160,
+      "n_moves": 9347,
+      "median_seconds_per_move": 32.5,
+      "blunder_rate": {
+        "point": 0.04183160372311972,
+        "ci_lo": 0.03574352035022719,
+        "ci_hi": 0.048660454122380827,
+        "n": 160
+      },
+      "mistake_rate": {
+        "point": 0.1472130095217717,
+        "ci_lo": 0.13571920763059797,
+        "ci_hi": 0.15910782731392756,
+        "n": 160
+      }
+    }
+  },
+  "by_rating_band": {
+    "1200-1400": {
+      "n_games": 96,
+      "blunder_rate": {
+        "point": 0.08321347852886789,
+        "ci_lo": 0.07152827024576253,
+        "ci_hi": 0.0963562256403118,
+        "n": 96
+      },
+      "mean_loss_cp": 90.01808095335936
+    },
+    "1400-1600": {
+      "n_games": 96,
+      "blunder_rate": {
+        "point": 0.054411764705882354,
+        "ci_lo": 0.04533962401582806,
+        "ci_hi": 0.06405581323349552,
+        "n": 96
+      },
+      "mean_loss_cp": 67.40496323529412
+    },
+    "1600-1800": {
+      "n_games": 96,
+      "blunder_rate": {
+        "point": 0.04779541446208113,
+        "ci_lo": 0.039548906185875976,
+        "ci_hi": 0.05618279458176181,
+        "n": 96
+      },
+      "mean_loss_cp": 64.57936507936508
+    },
+    "1800-2000": {
+      "n_games": 96,
+      "blunder_rate": {
+        "point": 0.03494962216624685,
+        "ci_lo": 0.029240443153591675,
+        "ci_hi": 0.04081973775370203,
+        "n": 96
+      },
+      "mean_loss_cp": 52.070214105793454
+    },
+    "2000-2200": {
+      "n_games": 96,
+      "blunder_rate": {
+        "point": 0.024671579621916052,
+        "ci_lo": 0.019360386400704952,
+        "ci_hi": 0.03059374765170892,
+        "n": 96
+      },
+      "mean_loss_cp": 44.777795578340275
+    }
+  },
+  "cells": [
+    {
+      "band": "1200-1400",
+      "tc_bucket": "fast_<600s",
+      "n_games": 32,
+      "n_moves": 1698,
+      "median_seconds_per_move": 12.5,
+      "blunder_rate": 0.08892815076560659,
+      "blunder_ci_lo": 0.0671504579265996,
+      "blunder_ci_hi": 0.11487996493989398,
+      "mistake_rate": 0.23027090694935218,
+      "mean_loss_cp": 94.52237926972909
+    },
+    {
+      "band": "1200-1400",
+      "tc_bucket": "mid_600-899s",
+      "n_games": 32,
+      "n_moves": 1554,
+      "median_seconds_per_move": 15.0,
+      "blunder_rate": 0.08301158301158301,
+      "blunder_ci_lo": 0.06556330106010048,
+      "blunder_ci_hi": 0.1024062602625936,
+      "mistake_rate": 0.22265122265122264,
+      "mean_loss_cp": 93.00257400257401
+    },
+    {
+      "band": "1200-1400",
+      "tc_bucket": "slow_900s+",
+      "n_games": 32,
+      "n_moves": 1615,
+      "median_seconds_per_move": 30.0,
+      "blunder_rate": 0.07739938080495357,
+      "blunder_ci_lo": 0.05624295713695872,
+      "blunder_ci_hi": 0.10342988401822953,
+      "mistake_rate": 0.20557275541795667,
+      "mean_loss_cp": 82.41052631578947
+    },
+    {
+      "band": "1400-1600",
+      "tc_bucket": "fast_<600s",
+      "n_games": 32,
+      "n_moves": 2059,
+      "median_seconds_per_move": 12.5,
+      "blunder_rate": 0.06313744536182612,
+      "blunder_ci_lo": 0.04629537089916873,
+      "blunder_ci_hi": 0.07876180843176356,
+      "mistake_rate": 0.1884409907722195,
+      "mean_loss_cp": 73.73822243807673
+    },
+    {
+      "band": "1400-1600",
+      "tc_bucket": "mid_600-899s",
+      "n_games": 32,
+      "n_moves": 1857,
+      "median_seconds_per_move": 15.0,
+      "blunder_rate": 0.050080775444264945,
+      "blunder_ci_lo": 0.03612317790232561,
+      "blunder_ci_hi": 0.06855730971633935,
+      "mistake_rate": 0.14808831448572968,
+      "mean_loss_cp": 62.31663974151858
+    },
+    {
+      "band": "1400-1600",
+      "tc_bucket": "slow_900s+",
+      "n_games": 32,
+      "n_moves": 1524,
+      "median_seconds_per_move": 35.0,
+      "blunder_rate": 0.047900262467191604,
+      "blunder_ci_lo": 0.03462703825880751,
+      "blunder_ci_hi": 0.06282440285213527,
+      "mistake_rate": 0.17519685039370078,
+      "mean_loss_cp": 65.0485564304462
+    },
+    {
+      "band": "1600-1800",
+      "tc_bucket": "fast_<600s",
+      "n_games": 32,
+      "n_moves": 2003,
+      "median_seconds_per_move": 12.5,
+      "blunder_rate": 0.06240639041437843,
+      "blunder_ci_lo": 0.04501651365875504,
+      "blunder_ci_hi": 0.08274993402943126,
+      "mistake_rate": 0.16874687968047927,
+      "mean_loss_cp": 74.245631552671
+    },
+    {
+      "band": "1600-1800",
+      "tc_bucket": "mid_600-899s",
+      "n_games": 32,
+      "n_moves": 1950,
+      "median_seconds_per_move": 15.0,
+      "blunder_rate": 0.041025641025641026,
+      "blunder_ci_lo": 0.03179340911063867,
+      "blunder_ci_hi": 0.0524145329004151,
+      "mistake_rate": 0.1476923076923077,
+      "mean_loss_cp": 58.24564102564103
+    },
+    {
+      "band": "1600-1800",
+      "tc_bucket": "slow_900s+",
+      "n_games": 32,
+      "n_moves": 1717,
+      "median_seconds_per_move": 30.0,
+      "blunder_rate": 0.0384391380314502,
+      "blunder_ci_lo": 0.02713075574547347,
+      "blunder_ci_hi": 0.05041621112824072,
+      "mistake_rate": 0.14793244030285382,
+      "mean_loss_cp": 60.49621432731509
+    },
+    {
+      "band": "1800-2000",
+      "tc_bucket": "fast_<600s",
+      "n_games": 32,
+      "n_moves": 2400,
+      "median_seconds_per_move": 12.0,
+      "blunder_rate": 0.0375,
+      "blunder_ci_lo": 0.027614842385712355,
+      "blunder_ci_hi": 0.04821967027987539,
+      "mistake_rate": 0.13583333333333333,
+      "mean_loss_cp": 54.16708333333333
+    },
+    {
+      "band": "1800-2000",
+      "tc_bucket": "mid_600-899s",
+      "n_games": 32,
+      "n_moves": 1769,
+      "median_seconds_per_move": 15.0,
+      "blunder_rate": 0.030525720746184284,
+      "blunder_ci_lo": 0.021448287035594107,
+      "blunder_ci_hi": 0.041247204444463025,
+      "mistake_rate": 0.11927642736009045,
+      "mean_loss_cp": 50.08931599773884
+    },
+    {
+      "band": "1800-2000",
+      "tc_bucket": "slow_900s+",
+      "n_games": 32,
+      "n_moves": 2183,
+      "median_seconds_per_move": 32.5,
+      "blunder_rate": 0.03573064590013743,
+      "blunder_ci_lo": 0.027026701086035387,
+      "blunder_ci_hi": 0.04482929561592101,
+      "mistake_rate": 0.12139257901969766,
+      "mean_loss_cp": 51.37013284470912
+    },
+    {
+      "band": "2000-2200",
+      "tc_bucket": "fast_<600s",
+      "n_games": 32,
+      "n_moves": 1878,
+      "median_seconds_per_move": 12.0,
+      "blunder_rate": 0.025026624068157616,
+      "blunder_ci_lo": 0.017640557103064065,
+      "blunder_ci_hi": 0.03389950375182796,
+      "mistake_rate": 0.10489882854100106,
+      "mean_loss_cp": 46.61341853035144
+    },
+    {
+      "band": "2000-2200",
+      "tc_bucket": "mid_600-899s",
+      "n_games": 32,
+      "n_moves": 2056,
+      "median_seconds_per_move": 15.0,
+      "blunder_rate": 0.02821011673151751,
+      "blunder_ci_lo": 0.018060478578913634,
+      "blunder_ci_hi": 0.04054069982287804,
+      "mistake_rate": 0.11867704280155641,
+      "mean_loss_cp": 46.89931906614786
+    },
+    {
+      "band": "2000-2200",
+      "tc_bucket": "slow_900s+",
+      "n_games": 32,
+      "n_moves": 2308,
+      "median_seconds_per_move": 32.5,
+      "blunder_rate": 0.02123050259965338,
+      "blunder_ci_lo": 0.012690105629035444,
+      "blunder_ci_hi": 0.0313809271508087,
+      "mistake_rate": 0.11178509532062392,
+      "mean_loss_cp": 41.39428076256499
+    }
+  ],
+  "fast_vs_slow_difference": {
+    "difference_fast_minus_slow": 0.012262837400610106,
+    "ci_lo": 0.002222862263992491,
+    "ci_hi": 0.022223745751227375,
+    "excludes_zero": true,
+    "relative_increase": 0.29314767566113215,
+    "note": "Tested as a difference, not by checking whether the two separate intervals overlap. They do overlap slightly; the difference is nonetheless distinguishable from zero."
+  },
+  "shape_test": {
+    "x_axis": "nominal seconds per move = (base + 40*inc)/40, independent of game length",
+    "linear_slope_per_10s": -0.0009124504729118113,
+    "linear_adj_r2": 0.0005805940279718369,
+    "quadratic_adj_r2": 0.003682447045949888,
+    "log_linear_adj_r2": 0.006758537614750426,
+    "quadratic_coefficient": 7.16301989200282e-07,
+    "quadratic_ci": [
+      -5.713164353289956e-07,
+      1.2270469010692797e-05
+    ],
+    "quadratic_excludes_zero": false,
+    "n_games": 470,
+    "endogenous_axis_check": {
+      "note": "Same fit using seconds-per-move computed from each game's OWN length. Comparing the two slopes shows how much of an apparent time effect is an artifact of long games being labelled fast.",
+      "slope_per_10s": 0.00018105488360629053,
+      "adj_r2": -0.0017886051668032366
+    }
+  },
+  "threshold_sensitivity": {
+    "cp>=150": {
+      "rates": {
+        "fast_<600s": 0.1065,
+        "mid_600-899s": 0.09993,
+        "slow_900s+": 0.09575
+      },
+      "ordering_fast_to_slow": [
+        0.1065,
+        0.09993,
+        0.09575
+      ]
+    },
+    "cp>=200": {
+      "rates": {
+        "fast_<600s": 0.08129,
+        "mid_600-899s": 0.07315,
+        "slow_900s+": 0.06986
+      },
+      "ordering_fast_to_slow": [
+        0.08129,
+        0.07315,
+        0.06986
+      ]
+    },
+    "cp>=300": {
+      "rates": {
+        "fast_<600s": 0.05409,
+        "mid_600-899s": 0.04507,
+        "slow_900s+": 0.04183
+      },
+      "ordering_fast_to_slow": [
+        0.05409,
+        0.04507,
+        0.04183
+      ]
+    },
+    "cp>=500": {
+      "rates": {
+        "fast_<600s": 0.0273,
+        "mid_600-899s": 0.0221,
+        "slow_900s+": 0.02065
+      },
+      "ordering_fast_to_slow": [
+        0.0273,
+        0.0221,
+        0.02065
+      ]
+    }
+  }
+}

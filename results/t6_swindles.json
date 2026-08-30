@@ -1,0 +1,387 @@
+{
+  "definitions": {
+    "lost_cp": 500,
+    "unit": "game-side (a game where one side reached a lost position), not position",
+    "saved": "that side drew or won the game"
+  },
+  "censoring": {
+    "total_lost_game_sides": 612,
+    "censored_excluded": 0,
+    "censored_share": 0.0,
+    "note": "Censored game-sides reached a lost position but the game was still running when evaluation stopped at max_ply. Excluding them is conservative in an unknown direction; keeping them as losses would bias the swindle rate down."
+  },
+  "overall": {
+    "all": {
+      "n_lost_game_sides": 612,
+      "n_games": 546,
+      "swindle_rate": {
+        "point": 0.16666666666666666,
+        "ci_lo": 0.13999417637271216,
+        "ci_hi": 0.19334389857369255,
+        "n": 546
+      },
+      "draw_save_rate": {
+        "point": 0.03594771241830065,
+        "ci_lo": 0.02089948284671721,
+        "ci_hi": 0.053156146179401995,
+        "n": 546
+      },
+      "win_save_rate": {
+        "point": 0.13071895424836602,
+        "ci_lo": 0.10815307820299501,
+        "ci_hi": 0.15447737970202666,
+        "n": 546
+      },
+      "median_entry_cp": -539.0
+    }
+  },
+  "by_rating_band": {
+    "1200-1400": {
+      "n_lost_game_sides": 107,
+      "n_games": 89,
+      "swindle_rate": {
+        "point": 0.205607476635514,
+        "ci_lo": 0.144125,
+        "ci_hi": 0.26787367724867717,
+        "n": 89
+      },
+      "draw_save_rate": {
+        "point": 0.0,
+        "ci_lo": 0.0,
+        "ci_hi": 0.0,
+        "n": 89
+      },
+      "win_save_rate": {
+        "point": 0.205607476635514,
+        "ci_lo": 0.144125,
+        "ci_hi": 0.26787367724867717,
+        "n": 89
+      },
+      "median_entry_cp": -563.0
+    },
+    "1400-1600": {
+      "n_lost_game_sides": 101,
+      "n_games": 84,
+      "swindle_rate": {
+        "point": 0.22772277227722773,
+        "ci_lo": 0.15625,
+        "ci_hi": 0.29906542056074764,
+        "n": 84
+      },
+      "draw_save_rate": {
+        "point": 0.0297029702970297,
+        "ci_lo": 0.0,
+        "ci_hi": 0.078450786255096,
+        "n": 84
+      },
+      "win_save_rate": {
+        "point": 0.19801980198019803,
+        "ci_lo": 0.12903225806451613,
+        "ci_hi": 0.2616822429906542,
+        "n": 84
+      },
+      "median_entry_cp": -541.0
+    },
+    "1600-1800": {
+      "n_lost_game_sides": 93,
+      "n_games": 83,
+      "swindle_rate": {
+        "point": 0.16129032258064516,
+        "ci_lo": 0.1,
+        "ci_hi": 0.225831393415364,
+        "n": 83
+      },
+      "draw_save_rate": {
+        "point": 0.021505376344086023,
+        "ci_lo": 0.0,
+        "ci_hi": 0.054945054945054944,
+        "n": 83
+      },
+      "win_save_rate": {
+        "point": 0.13978494623655913,
+        "ci_lo": 0.07865168539325842,
+        "ci_hi": 0.2,
+        "n": 83
+      },
+      "median_entry_cp": -546.0
+    },
+    "1800-2000": {
+      "n_lost_game_sides": 92,
+      "n_games": 82,
+      "swindle_rate": {
+        "point": 0.16304347826086957,
+        "ci_lo": 0.09195402298850575,
+        "ci_hi": 0.23,
+        "n": 82
+      },
+      "draw_save_rate": {
+        "point": 0.043478260869565216,
+        "ci_lo": 0.010526315789473684,
+        "ci_hi": 0.0898876404494382,
+        "n": 82
+      },
+      "win_save_rate": {
+        "point": 0.11956521739130435,
+        "ci_lo": 0.05812282812082331,
+        "ci_hi": 0.17894736842105263,
+        "n": 82
+      },
+      "median_entry_cp": -548.5
+    },
+    "2000-2200": {
+      "n_lost_game_sides": 79,
+      "n_games": 71,
+      "swindle_rate": {
+        "point": 0.17721518987341772,
+        "ci_lo": 0.10526315789473684,
+        "ci_hi": 0.25316455696202533,
+        "n": 71
+      },
+      "draw_save_rate": {
+        "point": 0.02531645569620253,
+        "ci_lo": 0.0,
+        "ci_hi": 0.0641025641025641,
+        "n": 71
+      },
+      "win_save_rate": {
+        "point": 0.1518987341772152,
+        "ci_lo": 0.08108108108108109,
+        "ci_hi": 0.2222222222222222,
+        "n": 71
+      },
+      "median_entry_cp": -544.0
+    },
+    "2400-2499 (OTB)": {
+      "n_lost_game_sides": 140,
+      "n_games": 137,
+      "swindle_rate": {
+        "point": 0.09285714285714286,
+        "ci_lo": 0.043795620437956206,
+        "ci_hi": 0.14585882867132854,
+        "n": 137
+      },
+      "draw_save_rate": {
+        "point": 0.07857142857142857,
+        "ci_lo": 0.03571428571428571,
+        "ci_hi": 0.12857142857142856,
+        "n": 137
+      },
+      "win_save_rate": {
+        "point": 0.014285714285714285,
+        "ci_lo": 0.0,
+        "ci_hi": 0.035211267605633804,
+        "n": 137
+      },
+      "median_entry_cp": -525.0
+    }
+  },
+  "by_time_bucket": {
+    "fast_<600s": {
+      "n_lost_game_sides": 168,
+      "n_games": 140,
+      "swindle_rate": {
+        "point": 0.21428571428571427,
+        "ci_lo": 0.16349646226415093,
+        "ci_hi": 0.26705536469344604,
+        "n": 140
+      },
+      "draw_save_rate": {
+        "point": 0.023809523809523808,
+        "ci_lo": 0.0,
+        "ci_hi": 0.05586678927096706,
+        "n": 140
+      },
+      "win_save_rate": {
+        "point": 0.19047619047619047,
+        "ci_lo": 0.1419753086419753,
+        "ci_hi": 0.23863636363636365,
+        "n": 140
+      },
+      "median_entry_cp": -565.5
+    },
+    "mid_600-899s": {
+      "n_lost_game_sides": 161,
+      "n_games": 141,
+      "swindle_rate": {
+        "point": 0.19254658385093168,
+        "ci_lo": 0.14102564102564102,
+        "ci_hi": 0.24404761904761904,
+        "n": 141
+      },
+      "draw_save_rate": {
+        "point": 0.018633540372670808,
+        "ci_lo": 0.0,
+        "ci_hi": 0.04294478527607362,
+        "n": 141
+      },
+      "win_save_rate": {
+        "point": 0.17391304347826086,
+        "ci_lo": 0.12337662337662338,
+        "ci_hi": 0.22424242424242424,
+        "n": 141
+      },
+      "median_entry_cp": -541.0
+    },
+    "otb": {
+      "n_lost_game_sides": 140,
+      "n_games": 137,
+      "swindle_rate": {
+        "point": 0.09285714285714286,
+        "ci_lo": 0.043795620437956206,
+        "ci_hi": 0.14585882867132854,
+        "n": 137
+      },
+      "draw_save_rate": {
+        "point": 0.07857142857142857,
+        "ci_lo": 0.03571428571428571,
+        "ci_hi": 0.12857142857142856,
+        "n": 137
+      },
+      "win_save_rate": {
+        "point": 0.014285714285714285,
+        "ci_lo": 0.0,
+        "ci_hi": 0.035211267605633804,
+        "n": 137
+      },
+      "median_entry_cp": -525.0
+    },
+    "slow_900s+": {
+      "n_lost_game_sides": 143,
+      "n_games": 128,
+      "swindle_rate": {
+        "point": 0.15384615384615385,
+        "ci_lo": 0.1,
+        "ci_hi": 0.2080536912751678,
+        "n": 128
+      },
+      "draw_save_rate": {
+        "point": 0.027972027972027972,
+        "ci_lo": 0.006802721088435374,
+        "ci_hi": 0.05798159314503327,
+        "n": 128
+      },
+      "win_save_rate": {
+        "point": 0.1258741258741259,
+        "ci_lo": 0.07462686567164178,
+        "ci_hi": 0.17567567567567569,
+        "n": 128
+      },
+      "median_entry_cp": -539.0
+    }
+  },
+  "by_corpus": {
+    "lichess": {
+      "n_lost_game_sides": 472,
+      "n_games": 409,
+      "swindle_rate": {
+        "point": 0.1885593220338983,
+        "ci_lo": 0.15778239753612888,
+        "ci_hi": 0.21901322486585342,
+        "n": 409
+      },
+      "draw_save_rate": {
+        "point": 0.023305084745762712,
+        "ci_lo": 0.01050420168067227,
+        "ci_hi": 0.03941908713692946,
+        "n": 409
+      },
+      "win_save_rate": {
+        "point": 0.1652542372881356,
+        "ci_lo": 0.13636363636363635,
+        "ci_hi": 0.19496985829484068,
+        "n": 409
+      },
+      "median_entry_cp": -548.0
+    },
+    "twic": {
+      "n_lost_game_sides": 140,
+      "n_games": 137,
+      "swindle_rate": {
+        "point": 0.09285714285714286,
+        "ci_lo": 0.043795620437956206,
+        "ci_hi": 0.14585882867132854,
+        "n": 137
+      },
+      "draw_save_rate": {
+        "point": 0.07857142857142857,
+        "ci_lo": 0.03571428571428571,
+        "ci_hi": 0.12857142857142856,
+        "n": 137
+      },
+      "win_save_rate": {
+        "point": 0.014285714285714285,
+        "ci_lo": 0.0,
+        "ci_hi": 0.035211267605633804,
+        "n": 137
+      },
+      "median_entry_cp": -525.0
+    }
+  },
+  "online_gradient": {
+    "online_band_rates": [
+      {
+        "band": "1200-1400",
+        "x": 0,
+        "rate": 0.205607476635514,
+        "n": 107
+      },
+      {
+        "band": "1400-1600",
+        "x": 1,
+        "rate": 0.22772277227722773,
+        "n": 101
+      },
+      {
+        "band": "1600-1800",
+        "x": 2,
+        "rate": 0.16129032258064516,
+        "n": 93
+      },
+      {
+        "band": "1800-2000",
+        "x": 3,
+        "rate": 0.16304347826086957,
+        "n": 92
+      },
+      {
+        "band": "2000-2200",
+        "x": 4,
+        "rate": 0.17721518987341772,
+        "n": 79
+      }
+    ],
+    "online_slope_per_band_step": {
+      "point": -0.012654124404448004,
+      "ci_lo": -0.03328022853375817,
+      "ci_hi": 0.014171711612548151,
+      "excludes_zero": false
+    },
+    "online_vs_otb_contrast": {
+      "online_minus_otb": 0.09570217917675544,
+      "ci_lo": 0.034642894941543406,
+      "ci_hi": 0.14901142054753974,
+      "excludes_zero": true
+    },
+    "reading": "The online bands are not distinguishable from one another: every interval overlaps every other and the fitted slope across them includes zero. The separation that does survive is online amateur versus over-the-board master, which conflates rating with playing conditions (rapid online vs classical OTB) and cannot be attributed to rating alone."
+  },
+  "recovery_shape": {
+    "note": "Descriptive only. A large single swing means the evaluation moved mostly on one opponent move; it does not establish that the opponent blundered rather than that the defender set a problem. This repo does not claim to separate those.",
+    "median_largest_single_swing_cp": 861.0,
+    "share_of_saves_with_swing_over_300cp": 0.9117647058823529,
+    "median_moves_after_entry": 30.0
+  },
+  "threshold_sensitivity": {
+    "lost_at_300cp": {
+      "n": 805,
+      "swindle_rate": 0.2608695652173913
+    },
+    "lost_at_500cp": {
+      "n": 612,
+      "swindle_rate": 0.16666666666666666
+    },
+    "lost_at_800cp": {
+      "n": 290,
+      "swindle_rate": 0.07586206896551724
+    }
+  }
+}

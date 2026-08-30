@@ -1,0 +1,28 @@
+name: Bug
+description: Something is broken, crashes, or does not reproduce.
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: How to reproduce
+      placeholder: |
+        ./scripts/fetch_data.sh
+        python -m chesslab.tracks.t3_blunders
+    validations:
+      required: true
+  - type: textarea
+    id: env
+    attributes:
+      label: Environment
+      description: Output of `chesslab status`, plus your Python and Stockfish versions.
+      render: shell
+    validations:
+      required: false

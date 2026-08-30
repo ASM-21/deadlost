@@ -1,0 +1,233 @@
+{
+  "design": {
+    "matching_variable": "pre-entry average centipawn loss, same engine and node budget in both corpora",
+    "why_not_rating": "A lichess rapid rating and a FIDE classical rating are different scales on different populations; matching on them would control for a label, not for strength.",
+    "common_support_window_acpl": [
+      20,
+      40
+    ],
+    "lost_game_sides": {
+      "online": 392,
+      "otb": 223
+    }
+  },
+  "raw_gap_online_minus_otb": 0.10999130593941614,
+  "common_support": {
+    "bins": [
+      {
+        "acpl_bin": "20-25",
+        "n_online": 4,
+        "n_otb": 44,
+        "save_online": 0.0,
+        "save_otb": 0.09090909090909091,
+        "mean_pre_acpl_online": 22.66231431966726,
+        "mean_pre_acpl_otb": 22.555505169917293,
+        "usable": false
+      },
+      {
+        "acpl_bin": "25-30",
+        "n_online": 5,
+        "n_otb": 37,
+        "save_online": 0.0,
+        "save_otb": 0.05405405405405406,
+        "mean_pre_acpl_online": 29.154499718547704,
+        "mean_pre_acpl_otb": 27.116791419513348,
+        "usable": false
+      },
+      {
+        "acpl_bin": "30-35",
+        "n_online": 19,
+        "n_otb": 41,
+        "save_online": 0.2631578947368421,
+        "save_otb": 0.12195121951219512,
+        "mean_pre_acpl_online": 32.13256374181134,
+        "mean_pre_acpl_otb": 32.387795995589535,
+        "usable": true
+      },
+      {
+        "acpl_bin": "35-40",
+        "n_online": 30,
+        "n_otb": 30,
+        "save_online": 0.23333333333333334,
+        "save_otb": 0.03333333333333333,
+        "mean_pre_acpl_online": 37.420001865838124,
+        "mean_pre_acpl_otb": 37.234387957356894,
+        "usable": true
+      }
+    ],
+    "n_usable_bins": 2
+  },
+  "stratified_contrast": {
+    "stratified_difference": 0.1727218582489577,
+    "ci_lo": 0.023094900812955697,
+    "ci_hi": 0.25933465490712615,
+    "excludes_zero": true,
+    "n_bootstrap": 800,
+    "per_bin": [
+      {
+        "acpl_bin": "30-35",
+        "diff": 0.14120667522464697,
+        "n_online": 19,
+        "n_otb": 41
+      },
+      {
+        "acpl_bin": "35-40",
+        "diff": 0.2,
+        "n_online": 30,
+        "n_otb": 30
+      }
+    ]
+  },
+  "logistic_model": {
+    "n": 210,
+    "n_bootstrap": 600,
+    "window_acpl": [
+      20,
+      40
+    ],
+    "intercept": {
+      "log_odds": -2.4419701200031003,
+      "odds_ratio": 0.08698930316588052,
+      "ci_lo_log_odds": -3.4428501224708716,
+      "ci_hi_log_odds": -2.0164526262400653,
+      "excludes_zero": true
+    },
+    "online": {
+      "log_odds": 0.9513936300457894,
+      "odds_ratio": 2.5893156941423587,
+      "ci_lo_log_odds": 0.1273975243978847,
+      "ci_hi_log_odds": 2.019536822714308,
+      "excludes_zero": true
+    },
+    "pre_acpl": {
+      "log_odds": -0.003067119396503333,
+      "odds_ratio": 0.9969375794090327,
+      "ci_lo_log_odds": -0.5633244987939489,
+      "ci_hi_log_odds": 0.4922733356054954,
+      "excludes_zero": false
+    },
+    "opp_pre_acpl": {
+      "log_odds": 0.30690454582385757,
+      "odds_ratio": 1.359211219492397,
+      "ci_lo_log_odds": -0.19441649595719068,
+      "ci_hi_log_odds": 0.8951854111876424,
+      "excludes_zero": false
+    },
+    "severity": {
+      "log_odds": -0.049157967670113656,
+      "odds_ratio": 0.9520307277435561,
+      "ci_lo_log_odds": -1.1191804021160419,
+      "ci_hi_log_odds": 0.30168499961134826,
+      "excludes_zero": false
+    }
+  },
+  "resignation_rate": {
+    "by_corpus": {
+      "online": {
+        "n_lost_and_lost": 319,
+        "played_to_mate": 0.31974921630094044,
+        "stopped_early": 0.6802507836990596,
+        "termination_tags": {
+          "resign": 0.5674,
+          "mate": 0.3197,
+          "outoftime": 0.1129
+        }
+      },
+      "otb": {
+        "n_lost_and_lost": 206,
+        "played_to_mate": 0.05825242718446602,
+        "stopped_early": 0.941747572815534
+      }
+    },
+    "difference": {
+      "played_to_mate_online_minus_otb": 0.26149678911647445,
+      "ci_lo": 0.20077795479215865,
+      "ci_hi": 0.32197995515138506,
+      "excludes_zero": true
+    },
+    "why_this_is_the_clean_test": "Unlike the threshold analysis, this conditions on nothing post-treatment. It asks, of the players who ended up losing, what share played the position to checkmate rather than stopping early. A player who stops early forgoes any chance of saving the game, so a large difference here is a direct behavioural explanation for a difference in save rates.",
+    "caveat": "'Stopped early' bundles resignation with losing on time, and the two cannot be separated for TWIC, which carries no termination tags. For the online corpus they can: the tag breakdown is reported above. Over-the-board classical games rarely end on time, so the over-the-board figure is close to a pure resignation rate."
+  },
+  "resignation_mechanism": {
+    "duration": {
+      "median_moves_after_entry_online": 16.0,
+      "median_moves_after_entry_otb": 7.0,
+      "mean_moves_after_entry_online": 24.352040816326532,
+      "mean_moves_after_entry_otb": 15.116591928251122
+    },
+    "by_threshold": [
+      {
+        "min_moves_after_entry": 0,
+        "n_online": 392,
+        "n_otb": 223,
+        "save_online": 0.18622448979591838,
+        "save_otb": 0.07623318385650224,
+        "gap": 0.10999130593941614
+      },
+      {
+        "min_moves_after_entry": 5,
+        "n_online": 304,
+        "n_otb": 158,
+        "save_online": 0.22697368421052633,
+        "save_otb": 0.0949367088607595,
+        "gap": 0.13203697534976683
+      },
+      {
+        "min_moves_after_entry": 10,
+        "n_online": 248,
+        "n_otb": 98,
+        "save_online": 0.25806451612903225,
+        "save_otb": 0.12244897959183673,
+        "gap": 0.13561553653719552
+      },
+      {
+        "min_moves_after_entry": 15,
+        "n_online": 206,
+        "n_otb": 72,
+        "save_online": 0.2766990291262136,
+        "save_otb": 0.16666666666666666,
+        "gap": 0.11003236245954692
+      },
+      {
+        "min_moves_after_entry": 20,
+        "n_online": 173,
+        "n_otb": 49,
+        "save_online": 0.2774566473988439,
+        "save_otb": 0.22448979591836735,
+        "gap": 0.05296685148047656
+      },
+      {
+        "min_moves_after_entry": 25,
+        "n_online": 150,
+        "n_otb": 35,
+        "save_online": 0.2866666666666667,
+        "save_otb": 0.2857142857142857,
+        "gap": 0.0009523809523809823
+      }
+    ],
+    "trend": {
+      "gap_change_per_extra_move_threshold": -0.004617075260689686,
+      "ci_lo": -0.00952329532255706,
+      "ci_hi": 0.0006426585909510236,
+      "gap_at_lowest_threshold": 0.10999130593941614,
+      "gap_at_highest_threshold": 0.0009523809523809823
+    },
+    "reading": "Over-the-board players stop about twice as early after the position turns lost, and the online advantage shrinks as the comparison is restricted to game-sides that kept playing. Both are what a resignation-norm explanation predicts.",
+    "why_this_is_not_proof": "Restricting on moves played after entry conditions on a post-treatment collider: a saved game lasts longer by construction. That inflates the save rate in both corpora at higher thresholds and makes the residual gap uninterpretable as a causal remainder. The correct conclusion is that resignation norms are a live and probably large part of the explanation, not that they account for a specific share of it.",
+    "how_to_settle_it": "Termination reason is recorded for the online corpus and largely absent for TWIC. A corpus with reliable termination tags on both sides would allow restricting to games that ended in mate or a completed conversion, where resignation cannot operate at all."
+  },
+  "share_of_gap_explained_by_skill_matching": -0.5703228248248449,
+  "resolution": {
+    "mde": 0.24496799749831677,
+    "units": "difference in proportion",
+    "method": "two-sample normal approximation",
+    "note": "smallest gap the matched comparison could have resolved"
+  },
+  "reading": "Matching on measured skill does not shrink the gap; it widens it. If the online/over-the-board difference were a strength effect it should collapse toward zero once both sides are compared at equal engine-measured playing quality. Instead the corpora differ by more at matched skill than in aggregate, because the stronger over-the-board population was masking the effect. The leading remaining explanation is behavioural rather than skill-based: over-the-board players resign lost positions and online players play them out.",
+  "what_remains_unidentified": [
+    "ACPL is a noisy skill proxy; measurement error attenuates the control, so residual strength differences survive inside a matched cell.",
+    "The overlap region is the tail of both distributions: unusually strong online players against unusually weak over-the-board ones. Neither is a typical member of its population.",
+    "'Format' is a bundle. Clock, stakes, resignation norms and opponent pool all differ together, and this design cannot separate them from one another.",
+    "Resignation norms are now tested rather than merely suspected; see resignation_mechanism. The test is suggestive and cannot be conclusive, because conditioning on how long a game continued conditions on a collider."
+  ]
+}

@@ -1,0 +1,229 @@
+{
+  "probes": [
+    {
+      "probe": "P1 base-rate confound in track 6",
+      "fired": true,
+      "verdict": "master draw-save is 0.18x its own base draw rate vs 0.43x for amateurs; PROBE FIRES: once each group is normalised by how often it draws anyway, the master 'defensive skill' reading does not survive.",
+      "detail": [
+        {
+          "band": "1200-1400",
+          "base_draw_rate_all_games": 0.03810330228619814,
+          "draw_save_rate_from_lost": 0.0,
+          "ratio_save_to_base": 0.0,
+          "total_save_rate": 0.205607476635514,
+          "n_lost_game_sides": 107,
+          "n_draw_saves": 0
+        },
+        {
+          "band": "1400-1600",
+          "base_draw_rate_all_games": 0.04206241519674356,
+          "draw_save_rate_from_lost": 0.0297029702970297,
+          "ratio_save_to_base": 0.706164164803577,
+          "total_save_rate": 0.22772277227722773,
+          "n_lost_game_sides": 101,
+          "n_draw_saves": 3
+        },
+        {
+          "band": "1600-1800",
+          "base_draw_rate_all_games": 0.04908747640025173,
+          "draw_save_rate_from_lost": 0.021505376344086023,
+          "ratio_save_to_base": 0.4381031155224704,
+          "total_save_rate": 0.16129032258064516,
+          "n_lost_game_sides": 93,
+          "n_draw_saves": 2
+        },
+        {
+          "band": "1800-2000",
+          "base_draw_rate_all_games": 0.06057945566286216,
+          "draw_save_rate_from_lost": 0.043478260869565216,
+          "ratio_save_to_base": 0.7177063642091998,
+          "total_save_rate": 0.16304347826086957,
+          "n_lost_game_sides": 92,
+          "n_draw_saves": 4
+        },
+        {
+          "band": "2000-2200",
+          "base_draw_rate_all_games": 0.08579881656804733,
+          "draw_save_rate_from_lost": 0.02531645569620253,
+          "ratio_save_to_base": 0.29506765604539503,
+          "total_save_rate": 0.17721518987341772,
+          "n_lost_game_sides": 79,
+          "n_draw_saves": 2
+        },
+        {
+          "band": "2400-2499 (OTB)",
+          "base_draw_rate_all_games": 0.4454742654308815,
+          "draw_save_rate_from_lost": 0.07857142857142857,
+          "ratio_save_to_base": 0.17637703155631443,
+          "total_save_rate": 0.09285714285714286,
+          "n_lost_game_sides": 140,
+          "n_draw_saves": 11
+        }
+      ]
+    },
+    {
+      "probe": "P2 engine depth",
+      "fired": false,
+      "shallow_nodes": 20000,
+      "deep_nodes": 80000,
+      "n_games_paired": 60,
+      "blunder_rate_by_band_shallow": {
+        "1200-1400": 0.07439024390243902,
+        "1400-1600": 0.08315098468271334,
+        "1600-1800": 0.03153745072273324,
+        "1800-2000": 0.03670886075949367,
+        "2000-2200": 0.02699530516431925
+      },
+      "blunder_rate_by_band_deep": {
+        "1200-1400": 0.08292682926829269,
+        "1400-1600": 0.08096280087527352,
+        "1600-1800": 0.04204993429697766,
+        "1800-2000": 0.043037974683544304,
+        "2000-2200": 0.03169014084507042
+      },
+      "spearman_rho_of_orderings": 0.8999999999999998,
+      "gradient_shallow": -0.014123200139945922,
+      "gradient_deep": -0.014039820303817374,
+      "gradient_sign_preserved": true,
+      "meaningful_flips": [],
+      "mean_abs_rate_shift": 0.006452240470467942,
+      "verdict": "probe passes: rho=0.90, gradient sign preserved, no band pair separated by >1pp reverses under a 4x deeper search. Absolute rates shift upward slightly, as expected: a deeper engine finds more of the refutations that make a move a blunder."
+    },
+    {
+      "probe": "P3 permutation null for band gradient",
+      "fired": false,
+      "observed_slope_per_band_step": -0.013681015920476214,
+      "permutation_p_value": 0.0,
+      "null_sd": 0.0014793517302797775,
+      "n_permutations": 1000,
+      "verdict": "probe passes: the by-band blunder gradient is far outside the label-shuffled null."
+    },
+    {
+      "probe": "P4 cost of ignoring clustering",
+      "fired": null,
+      "mean_width_ratio": 1.4762955835882186,
+      "verdict": "Treating moves as independent would have produced intervals about 1.5x too narrow.",
+      "detail": {
+        "1200-1400": {
+          "clustered_ci_width": 0.024827955394549267,
+          "naive_move_level_ci_width": 0.015527610530549074,
+          "width_ratio": 1.5989553154815843,
+          "n_moves": 4867,
+          "n_games": 96
+        },
+        "1400-1600": {
+          "clustered_ci_width": 0.018716189217667455,
+          "naive_move_level_ci_width": 0.012067610772585433,
+          "width_ratio": 1.5509440576411293,
+          "n_moves": 5440,
+          "n_games": 96
+        },
+        "1600-1800": {
+          "clustered_ci_width": 0.01663388839588583,
+          "naive_move_level_ci_width": 0.011118989423931788,
+          "width_ratio": 1.4959892272299615,
+          "n_moves": 5670,
+          "n_games": 96
+        },
+        "1800-2000": {
+          "clustered_ci_width": 0.011579294600110358,
+          "naive_move_level_ci_width": 0.009047648782507814,
+          "width_ratio": 1.2798125655028827,
+          "n_moves": 6352,
+          "n_games": 96
+        },
+        "2000-2200": {
+          "clustered_ci_width": 0.011233361251003968,
+          "naive_move_level_ci_width": 0.007716403792622145,
+          "width_ratio": 1.4557767520855347,
+          "n_moves": 6242,
+          "n_games": 96
+        }
+      }
+    },
+    {
+      "probe": "P5 censoring bounds in track 6",
+      "fired": false,
+      "verdict": "OTB save rate at its most favourable bound is 0.093; the weakest amateur band at its least favourable is 0.161. probe passes: the ordering holds under the worst censoring assumption.",
+      "detail": [
+        {
+          "band": "1400-1600",
+          "excluded_rate": 0.22772277227722773,
+          "worst_case_lower": 0.22772277227722773,
+          "worst_case_upper": 0.22772277227722773,
+          "n_censored": 0
+        },
+        {
+          "band": "1200-1400",
+          "excluded_rate": 0.205607476635514,
+          "worst_case_lower": 0.205607476635514,
+          "worst_case_upper": 0.205607476635514,
+          "n_censored": 0
+        },
+        {
+          "band": "2000-2200",
+          "excluded_rate": 0.17721518987341772,
+          "worst_case_lower": 0.17721518987341772,
+          "worst_case_upper": 0.17721518987341772,
+          "n_censored": 0
+        },
+        {
+          "band": "1800-2000",
+          "excluded_rate": 0.16304347826086957,
+          "worst_case_lower": 0.16304347826086957,
+          "worst_case_upper": 0.16304347826086957,
+          "n_censored": 0
+        },
+        {
+          "band": "1600-1800",
+          "excluded_rate": 0.16129032258064516,
+          "worst_case_lower": 0.16129032258064516,
+          "worst_case_upper": 0.16129032258064516,
+          "n_censored": 0
+        },
+        {
+          "band": "2400-2499 (OTB)",
+          "excluded_rate": 0.09285714285714286,
+          "worst_case_lower": 0.09285714285714286,
+          "worst_case_upper": 0.09285714285714286,
+          "n_censored": 0
+        }
+      ]
+    },
+    {
+      "probe": "P6 evaluation determinism",
+      "fired": false,
+      "order_independent_within_process": true,
+      "matches_fresh_process": true,
+      "moves_differing": 0,
+      "verdict": "probe passes: evaluation is order-independent and matches a fresh process bitwise."
+    },
+    {
+      "probe": "P7 anchor composition drift",
+      "fired": true,
+      "decided_move_share_first_year": 0.06944444444444445,
+      "decided_move_share_last_year": 0.0893760539629005,
+      "slope_per_decade": 0.030802240428723753,
+      "acpl_trend_all_moves": 1.3265461921089614,
+      "acpl_trend_undecided_only": 1.2009483425946024,
+      "share_of_trend_removed": 0.09468034378409533,
+      "verdict": "PROBE FIRES: the share of scored moves made in already-decided positions rises over the period (0.069 to 0.089), so the skill anchor drifts for behavioural reasons. Track 4 now reports an undecided-positions-only anchor as its headline; the uncorrected trend should not be cited.",
+      "why_it_matters": "The contaminant points the same direction as the hypothesis under test. A repo that only looked at the uncorrected anchor would have had a standing chance of reporting behavioural drift as rating inflation."
+    }
+  ],
+  "summary": {
+    "fired": [
+      "P1 base-rate confound in track 6",
+      "P7 anchor composition drift"
+    ],
+    "passed": [
+      "P2 engine depth",
+      "P3 permutation null for band gradient",
+      "P5 censoring bounds in track 6",
+      "P6 evaluation determinism"
+    ],
+    "informational": [
+      "P4 cost of ignoring clustering"
+    ]
+  }
+}

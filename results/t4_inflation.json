@@ -1,0 +1,380 @@
+{
+  "headline_specification": "trend_undecided_only",
+  "trend_undecided_only": {
+    "slope_per_year": 0.12009483425946023,
+    "slope_per_decade": 1.2009483425946024,
+    "ci_lo_per_decade": -0.2015681110809298,
+    "ci_hi_per_decade": 2.5700745229485005,
+    "excludes_zero": false,
+    "note": "ACPL computed only over moves made while the position was still competitive (|eval| < 300cp). This is the anchor this track prefers, because it is immune to the resignation-timing drift documented in composition_drift. No games are lost to this filter at the current sample: all 330 retain enough competitive moves to clear the minimum, so the comparison against the all-moves spec is like for like.",
+    "effect_of_the_correction": "The trend moves from +1.33 to +1.20 cp per decade. Modest, because decided positions are still a small minority of scored moves even at the end of the period. It matters more for the interpretation than for the number: it removes a contaminant that points the same way as the hypothesis under test, which is exactly the kind that would otherwise manufacture a positive result."
+  },
+  "composition_drift": {
+    "share_first_year": 0.06944444444444445,
+    "share_last_year": 0.0893760539629005,
+    "slope_per_decade": 0.030802240428723753,
+    "ci_lo_per_decade": 0.011249138344631811,
+    "ci_hi_per_decade": 0.052071755138799504,
+    "excludes_zero": true,
+    "meaning": "Players spend an increasing share of their scored moves in positions that are already decided. Those moves reflect willingness to play on, not skill, so any anchor that includes them drifts for behavioural reasons."
+  },
+  "design": {
+    "corpus": "TWIC, both players 2400-2499",
+    "years": [
+      1998,
+      2026
+    ],
+    "games": 330,
+    "moves": 25330,
+    "anchor": "average centipawn loss per move, Stockfish 16 fixed nodes"
+  },
+  "trend_raw_acpl": {
+    "slope_per_year": 0.16938732389324115,
+    "slope_per_decade": 1.6938732389324116,
+    "ci_lo_per_decade": -0.20618925640183094,
+    "ci_hi_per_decade": 3.646511189468486,
+    "excludes_zero": false
+  },
+  "trend_winsorised_acpl": {
+    "slope_per_year": 0.13265461921089614,
+    "slope_per_decade": 1.3265461921089614,
+    "ci_lo_per_decade": -0.19569009921332717,
+    "ci_hi_per_decade": 2.847956189397439,
+    "excludes_zero": false
+  },
+  "trend_sharpness": {
+    "slope_per_year": 0.003289279865447965,
+    "slope_per_decade": 0.03289279865447965,
+    "ci_lo_per_decade": 0.009832592713216452,
+    "ci_hi_per_decade": 0.05977799166651588,
+    "excludes_zero": true
+  },
+  "trend_game_length": {
+    "slope_per_year": 0.8934330327575228,
+    "slope_per_decade": 8.934330327575228,
+    "ci_lo_per_decade": 4.412044375504619,
+    "ci_hi_per_decade": 13.129269291287356,
+    "excludes_zero": true
+  },
+  "trend_mean_elo_within_band": {
+    "slope_per_year": -0.056020364247370384,
+    "slope_per_decade": -0.5602036424737038,
+    "ci_lo_per_decade": -3.046505592147381,
+    "ci_hi_per_decade": 2.155190700547482,
+    "excludes_zero": false
+  },
+  "trend_adjusted": {
+    "acpl_year_coefficient_per_decade": 0.6938471245208739,
+    "ci_lo_per_decade": -0.6487388632872257,
+    "ci_hi_per_decade": 1.9790143126793889,
+    "excludes_zero": false,
+    "controls": [
+      "moves_evaluated_per_game",
+      "share_of_moves_in_sharp_positions"
+    ],
+    "moves_coefficient": -0.006561866293433233,
+    "sharpness_coefficient": 21.017516809104798
+  },
+  "elo_equivalent": {
+    "acpl_cp_per_elo_point": -0.05290765993976942,
+    "elo_equivalent_drift_per_decade": -13.114303775875857,
+    "caveat": "Gradient measured on lichess 1200-2200 online rapid and applied to TWIC 2400-2499 over-the-board. Different populations, different conditions, almost certainly a different gradient. Treat as an order of magnitude, not an estimate."
+  },
+  "yearly": [
+    {
+      "year": 1998,
+      "n_games": 12,
+      "acpl": 26.105896919563687,
+      "acpl_winsor": 23.432421974029918,
+      "median_acpl": 18.29414261460102,
+      "sharp_share": 0.11135519814651007,
+      "mean_moves": 54.0,
+      "mean_elo": 2449.5833333333335
+    },
+    {
+      "year": 1999,
+      "n_games": 12,
+      "acpl": 20.566844411781286,
+      "acpl_winsor": 18.894312642475324,
+      "median_acpl": 18.521872863978125,
+      "sharp_share": 0.17532021845406398,
+      "mean_moves": 54.666666666666664,
+      "mean_elo": 2439.4166666666665
+    },
+    {
+      "year": 2000,
+      "n_games": 11,
+      "acpl": 17.895384494347745,
+      "acpl_winsor": 17.74130128941708,
+      "median_acpl": 16.925925925925927,
+      "sharp_share": 0.14176786912524644,
+      "mean_moves": 71.0,
+      "mean_elo": 2454.818181818182
+    },
+    {
+      "year": 2001,
+      "n_games": 12,
+      "acpl": 18.860592291496456,
+      "acpl_winsor": 17.384050369447106,
+      "median_acpl": 16.162877398851,
+      "sharp_share": 0.18681518312872472,
+      "mean_moves": 78.75,
+      "mean_elo": 2447.25
+    },
+    {
+      "year": 2002,
+      "n_games": 10,
+      "acpl": 18.794899875335204,
+      "acpl_winsor": 17.52478792532218,
+      "median_acpl": 17.265128205128203,
+      "sharp_share": 0.10608511724653405,
+      "mean_moves": 79.4,
+      "mean_elo": 2441.75
+    },
+    {
+      "year": 2003,
+      "n_games": 10,
+      "acpl": 20.824906783213628,
+      "acpl_winsor": 19.44867588338341,
+      "median_acpl": 18.00208333333333,
+      "sharp_share": 0.0929439728353141,
+      "mean_moves": 57.3,
+      "mean_elo": 2431.5
+    },
+    {
+      "year": 2004,
+      "n_games": 12,
+      "acpl": 19.681842830372194,
+      "acpl_winsor": 18.855599629128992,
+      "median_acpl": 19.55028605841614,
+      "sharp_share": 0.2647895685020332,
+      "mean_moves": 77.25,
+      "mean_elo": 2447.5416666666665
+    },
+    {
+      "year": 2005,
+      "n_games": 11,
+      "acpl": 15.921958815794778,
+      "acpl_winsor": 15.877471388328628,
+      "median_acpl": 16.849462365591396,
+      "sharp_share": 0.0777068264838785,
+      "mean_moves": 66.72727272727273,
+      "mean_elo": 2439.7272727272725
+    },
+    {
+      "year": 2006,
+      "n_games": 10,
+      "acpl": 25.05678118019711,
+      "acpl_winsor": 21.03935319466979,
+      "median_acpl": 23.99859943977591,
+      "sharp_share": 0.11743912962808083,
+      "mean_moves": 76.2,
+      "mean_elo": 2446.45
+    },
+    {
+      "year": 2007,
+      "n_games": 11,
+      "acpl": 20.75558490468031,
+      "acpl_winsor": 19.743276514631916,
+      "median_acpl": 20.033333333333335,
+      "sharp_share": 0.07517319864235637,
+      "mean_moves": 62.09090909090909,
+      "mean_elo": 2448.8636363636365
+    },
+    {
+      "year": 2008,
+      "n_games": 10,
+      "acpl": 14.978355912262149,
+      "acpl_winsor": 14.834496263139343,
+      "median_acpl": 15.025518341307816,
+      "sharp_share": 0.16411761484129905,
+      "mean_moves": 75.9,
+      "mean_elo": 2434.2
+    },
+    {
+      "year": 2009,
+      "n_games": 12,
+      "acpl": 17.97603537588413,
+      "acpl_winsor": 15.76521636678403,
+      "median_acpl": 15.701515151515153,
+      "sharp_share": 0.11047517278811515,
+      "mean_moves": 62.583333333333336,
+      "mean_elo": 2447.8333333333335
+    },
+    {
+      "year": 2010,
+      "n_games": 9,
+      "acpl": 28.827156021872227,
+      "acpl_winsor": 22.42213563973563,
+      "median_acpl": 21.620253164556964,
+      "sharp_share": 0.2433787225691499,
+      "mean_moves": 75.22222222222223,
+      "mean_elo": 2470.5555555555557
+    },
+    {
+      "year": 2011,
+      "n_games": 12,
+      "acpl": 24.686820664276407,
+      "acpl_winsor": 23.690176053228623,
+      "median_acpl": 23.171075837742507,
+      "sharp_share": 0.20994021747012728,
+      "mean_moves": 69.66666666666667,
+      "mean_elo": 2447.375
+    },
+    {
+      "year": 2012,
+      "n_games": 11,
+      "acpl": 16.69127232735767,
+      "acpl_winsor": 16.69127232735767,
+      "median_acpl": 15.592592592592593,
+      "sharp_share": 0.156620136663134,
+      "mean_moves": 77.36363636363636,
+      "mean_elo": 2447.090909090909
+    },
+    {
+      "year": 2013,
+      "n_games": 12,
+      "acpl": 21.148594453622476,
+      "acpl_winsor": 18.799915987099272,
+      "median_acpl": 19.447521097046412,
+      "sharp_share": 0.18838505441276046,
+      "mean_moves": 80.75,
+      "mean_elo": 2445.2916666666665
+    },
+    {
+      "year": 2014,
+      "n_games": 11,
+      "acpl": 33.288607759798055,
+      "acpl_winsor": 25.159317352917093,
+      "median_acpl": 23.52755905511811,
+      "sharp_share": 0.2155988905559221,
+      "mean_moves": 89.54545454545455,
+      "mean_elo": 2449.409090909091
+    },
+    {
+      "year": 2015,
+      "n_games": 12,
+      "acpl": 12.199519415814057,
+      "acpl_winsor": 11.874542547898258,
+      "median_acpl": 11.680161943319838,
+      "sharp_share": 0.14951865476531936,
+      "mean_moves": 76.16666666666667,
+      "mean_elo": 2446.0416666666665
+    },
+    {
+      "year": 2016,
+      "n_games": 12,
+      "acpl": 21.44594727720569,
+      "acpl_winsor": 21.12339344288356,
+      "median_acpl": 19.722131529850746,
+      "sharp_share": 0.1929948307049519,
+      "mean_moves": 78.41666666666667,
+      "mean_elo": 2453.125
+    },
+    {
+      "year": 2017,
+      "n_games": 12,
+      "acpl": 14.930988198404533,
+      "acpl_winsor": 14.897665373688262,
+      "median_acpl": 14.615499254843517,
+      "sharp_share": 0.08657766989083741,
+      "mean_moves": 77.58333333333333,
+      "mean_elo": 2449.875
+    },
+    {
+      "year": 2018,
+      "n_games": 12,
+      "acpl": 16.712782410509586,
+      "acpl_winsor": 15.638112658888007,
+      "median_acpl": 15.545256567306383,
+      "sharp_share": 0.1710165487262197,
+      "mean_moves": 82.83333333333333,
+      "mean_elo": 2454.125
+    },
+    {
+      "year": 2019,
+      "n_games": 12,
+      "acpl": 22.68672711710646,
+      "acpl_winsor": 22.25995543756086,
+      "median_acpl": 22.749729339588598,
+      "sharp_share": 0.1920870158637676,
+      "mean_moves": 87.16666666666667,
+      "mean_elo": 2446.3333333333335
+    },
+    {
+      "year": 2020,
+      "n_games": 10,
+      "acpl": 30.962781782065367,
+      "acpl_winsor": 27.17385486652651,
+      "median_acpl": 26.375674325674325,
+      "sharp_share": 0.3351053316501077,
+      "mean_moves": 80.0,
+      "mean_elo": 2443.45
+    },
+    {
+      "year": 2021,
+      "n_games": 12,
+      "acpl": 31.368045822425653,
+      "acpl_winsor": 27.969278856139457,
+      "median_acpl": 29.320558526440877,
+      "sharp_share": 0.20992976658970477,
+      "mean_moves": 92.58333333333333,
+      "mean_elo": 2445.875
+    },
+    {
+      "year": 2022,
+      "n_games": 12,
+      "acpl": 22.54582837716251,
+      "acpl_winsor": 19.974488149416107,
+      "median_acpl": 18.991520633126058,
+      "sharp_share": 0.23462850396880233,
+      "mean_moves": 85.0,
+      "mean_elo": 2439.5416666666665
+    },
+    {
+      "year": 2023,
+      "n_games": 12,
+      "acpl": 26.771437177844817,
+      "acpl_winsor": 22.716030679219077,
+      "median_acpl": 22.38994107744108,
+      "sharp_share": 0.2534745365642436,
+      "mean_moves": 95.08333333333333,
+      "mean_elo": 2441.8333333333335
+    },
+    {
+      "year": 2024,
+      "n_games": 12,
+      "acpl": 23.276926357540926,
+      "acpl_winsor": 23.221370801985373,
+      "median_acpl": 21.346914078257363,
+      "sharp_share": 0.27271202132486033,
+      "mean_moves": 67.83333333333333,
+      "mean_elo": 2438.375
+    },
+    {
+      "year": 2025,
+      "n_games": 12,
+      "acpl": 28.19331440762362,
+      "acpl_winsor": 24.238766758835926,
+      "median_acpl": 25.53899598393574,
+      "sharp_share": 0.19492805267584945,
+      "mean_moves": 76.41666666666667,
+      "mean_elo": 2440.75
+    },
+    {
+      "year": 2026,
+      "n_games": 12,
+      "acpl": 19.126999321144485,
+      "acpl_winsor": 17.479828993419044,
+      "median_acpl": 20.058252427184467,
+      "sharp_share": 0.1307061772001965,
+      "mean_moves": 98.83333333333333,
+      "mean_elo": 2445.75
+    }
+  ],
+  "what_this_cannot_settle": [
+    "Inflation versus population change. Both predict the same ACPL trend at fixed nominal rating, and nothing in this data distinguishes them.",
+    "Whether FIDE rating floors, K-factor changes or the growth of the rated pool drove any drift.",
+    "Anything about ratings outside 2400-2499 or outside TWIC's tournament coverage."
+  ]
+}

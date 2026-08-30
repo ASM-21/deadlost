@@ -1,0 +1,205 @@
+{
+  "what_this_audits": "Robustness to arbitrary analytic choices, not sampling error. Specifications share the same games and are strongly correlated, so the spread is not a confidence interval.",
+  "sign_consistency_is_not_significance": "C3's point estimate is positive in every specification, which is easy to misread. All 144 specifications run on the same games, so agreeing with each other costs them nothing. Track 4's interval on this same unadjusted quantity is [-0.20, +2.85] and includes zero. The curve says the SIGN does not depend on arbitrary choices; it says nothing about whether the effect is distinguishable from noise.",
+  "C3_audits_the_unadjusted_trend": "Track 4's headline (+0.69 cp/decade) controls for game length and position sharpness. This curve spans the raw trend (~+1.4), so it is not directly comparable. The difference is attributable to the controls: sharpness rose +0.033 per decade with an interval excluding zero, and sharper positions carry roughly +20cp of loss per unit.",
+  "C1_blunder_gradient_across_bands": {
+    "n_specs": 180,
+    "n_estimated": 180,
+    "n_undefined": 0,
+    "median": -0.01841102956317863,
+    "mean": -0.017401349541162334,
+    "min": -0.02851804221673043,
+    "max": -0.007515119150460658,
+    "p05": -0.025914502339604222,
+    "p95": -0.007909320695370687,
+    "share_same_sign_as_median": 1.0,
+    "share_positive": 0.0,
+    "headline_estimate": -0.013454872168003097,
+    "headline_percentile_in_curve": 0.7444444444444445,
+    "decisions": [
+      {
+        "name": "blunder_cp",
+        "options": [
+          100,
+          150,
+          200,
+          300,
+          500
+        ],
+        "rationale": "Where a mistake becomes a blunder. No principled cutoff exists."
+      },
+      {
+        "name": "skip_ply",
+        "options": [
+          8,
+          12,
+          16,
+          20
+        ],
+        "rationale": "How many opening plies count as book and are excluded."
+      },
+      {
+        "name": "min_moves_per_game",
+        "options": [
+          10,
+          20,
+          30
+        ],
+        "rationale": "Shortest game admitted; short games give noisy per-game rates."
+      },
+      {
+        "name": "max_ply_cap",
+        "options": [
+          0,
+          80,
+          120
+        ],
+        "rationale": "Whether to truncate long endgames (0 means no cap)."
+      }
+    ],
+    "variance_attribution": {
+      "shares_of_total_variance": {
+        "blunder_cp": 0.9448950822263793,
+        "max_ply_cap": 0.018355201920742286,
+        "min_moves_per_game": 0.01438297171008244,
+        "skip_ply": 0.003018858977345481
+      },
+      "note": "Between-group sum of squares per decision, as a share of total. Decisions are not orthogonal, so shares need not sum to 1. Use as a ranking of which choice moved the answer most."
+    },
+    "estimates": [],
+    "verdict": "100% of 180 specifications share the median's sign; the reported specification sits at the 74% percentile of the curve; 100% point the direction the headline claims"
+  },
+  "C2_fast_minus_slow_blunder_rate": {
+    "n_specs": 180,
+    "n_estimated": 180,
+    "n_undefined": 0,
+    "median": 0.009184630821680785,
+    "mean": 0.009483062499767545,
+    "min": 0.004156136331134531,
+    "max": 0.01813303373432798,
+    "p05": 0.0047023516081286494,
+    "p95": 0.015558830196085267,
+    "share_same_sign_as_median": 1.0,
+    "share_positive": 1.0,
+    "headline_estimate": 0.01070927535489874,
+    "headline_percentile_in_curve": 0.6777777777777778,
+    "decisions": [
+      {
+        "name": "blunder_cp",
+        "options": [
+          100,
+          150,
+          200,
+          300,
+          500
+        ],
+        "rationale": "Blunder threshold."
+      },
+      {
+        "name": "skip_ply",
+        "options": [
+          8,
+          12,
+          16,
+          20
+        ],
+        "rationale": "Book plies excluded."
+      },
+      {
+        "name": "min_moves_per_game",
+        "options": [
+          10,
+          20,
+          30
+        ],
+        "rationale": "Shortest game admitted."
+      },
+      {
+        "name": "split_seconds",
+        "options": [
+          600,
+          750,
+          900
+        ],
+        "rationale": "Where 'fast' ends and 'slow' begins on estimated total seconds."
+      }
+    ],
+    "variance_attribution": {
+      "shares_of_total_variance": {
+        "blunder_cp": 0.5004718479733096,
+        "split_seconds": 0.2733127463991963,
+        "skip_ply": 0.054203752351955986,
+        "min_moves_per_game": 0.02311213825831259
+      },
+      "note": "Between-group sum of squares per decision, as a share of total. Decisions are not orthogonal, so shares need not sum to 1. Use as a ranking of which choice moved the answer most."
+    },
+    "estimates": [],
+    "verdict": "100% of 180 specifications share the median's sign; the reported specification sits at the 68% percentile of the curve; 100% point the direction the headline claims"
+  },
+  "C3_acpl_drift_per_decade": {
+    "n_specs": 144,
+    "n_estimated": 144,
+    "n_undefined": 0,
+    "median": 1.4241775187680472,
+    "mean": 1.46550207530222,
+    "min": 0.9590533273060036,
+    "max": 2.1712519339171275,
+    "p05": 1.0763645916477225,
+    "p95": 1.9156330747626704,
+    "share_same_sign_as_median": 1.0,
+    "share_positive": 1.0,
+    "headline_estimate": 1.4452679225054732,
+    "headline_percentile_in_curve": 0.5416666666666666,
+    "decisions": [
+      {
+        "name": "winsor_cp",
+        "options": [
+          200,
+          300,
+          500,
+          1500
+        ],
+        "rationale": "Cap on a single move's loss, to stop one collapse dominating a game mean."
+      },
+      {
+        "name": "skip_ply",
+        "options": [
+          8,
+          12,
+          16,
+          20
+        ],
+        "rationale": "Book plies excluded."
+      },
+      {
+        "name": "min_moves_per_game",
+        "options": [
+          15,
+          25,
+          35
+        ],
+        "rationale": "Shortest game admitted."
+      },
+      {
+        "name": "elo_window",
+        "options": [
+          "2400-2499",
+          "2380-2519",
+          "2350-2549"
+        ],
+        "rationale": "Width of the fixed-rating window; wider admits more data but less 'fixed'."
+      }
+    ],
+    "variance_attribution": {
+      "shares_of_total_variance": {
+        "winsor_cp": 0.6396101157787236,
+        "skip_ply": 0.1974874289187378,
+        "min_moves_per_game": 0.016400799118428507,
+        "elo_window": 0.0
+      },
+      "note": "Between-group sum of squares per decision, as a share of total. Decisions are not orthogonal, so shares need not sum to 1. Use as a ranking of which choice moved the answer most."
+    },
+    "estimates": [],
+    "verdict": "100% of 144 specifications share the median's sign; the reported specification sits at the 54% percentile of the curve"
+  }
+}

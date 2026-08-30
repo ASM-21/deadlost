@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+title: "chess-lab: falsifiable analyses of large public chess corpora"
+message: "If you use these findings or methods, please cite this repository."
+type: software
+authors:
+  - given-names: Andrew
+    affiliation: "independent"
+version: 1.0.0
+date-released: "2026-08-12"
+license: MIT
+keywords:
+  - chess
+  - stockfish
+  - elo
+  - reproducibility
+  - falsification
+abstract: >-
+  Eleven independent analyses of 190,967 public chess games (a 2017 lichess.org
+  scrape and a 1998-2026 sample of The Week In Chess tournament issues), using
+  Stockfish 16 at a fixed node budget as ground truth. Covers blunder rate
+  versus thinking time, White's first-move advantage over time, whether
+  engine-approved openings win more, rating inflation measured both
+  cross-sectionally and within players' careers, and why lost positions are
+  saved far more often online than over the board (resignation norms, not
+  skill). Includes a falsification track that attempts to break the other
+  tracks, specification curves over every defensible analytic choice, and a
+  stated minimum detectable effect for every null result. Two claims were
+  retracted before release and both retractions are enforced by tests.

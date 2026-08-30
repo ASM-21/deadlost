@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "rows": 190967,
+  "by_source": {
+    "twic": 172430,
+    "lichess2017": 18537
+  },
+  "reports": {
+    "lichess2017": {
+      "source": "lichess2017",
+      "schema_version": "1.0.0",
+      "seen": 20058,
+      "admitted": 18537,
+      "duplicates_dropped": 904,
+      "rejected": {
+        "too_short": 617
+      },
+      "legality_checked": 18537,
+      "legality_failed": 0
+    },
+    "twic": {
+      "source": "twic",
+      "schema_version": "1.0.0",
+      "seen": 172819,
+      "admitted": 172430,
+      "duplicates_dropped": 18,
+      "rejected": {
+        "too_short": 343,
+        "elo_out_of_range": 23,
+        "result_not_decisive_or_drawn": 5
+      },
+      "legality_checked": 0,
+      "legality_failed": 0,
+      "issues_ingested": 56,
+      "issue_range": [
+        "twic210",
+        "twic1640"
+      ]
+    }
+  },
+  "twic_year_span": [
+    1998,
+    2026
+  ],
+  "lichess_tc_class_counts": {
+    "rapid": 15806,
+    "classical": 2727,
+    "blitz": 4
+  },
+  "lichess_rated_share": 0.8126449803096509,
+  "eval_coverage_note": "No upstream engine evaluations are used. Every centipawn number in this repo is computed locally by Stockfish 16 at a fixed node budget; see results/t1_eval_scope.json for the exact scope."
+}

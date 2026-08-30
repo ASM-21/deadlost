@@ -1,0 +1,51 @@
+name: Challenge a finding
+description: Argue that a published result is wrong, overstated, or confounded.
+title: "[challenge] "
+labels: ["challenge"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is the issue type this repo most wants. Two published claims have already
+        been retracted after exactly this kind of scrutiny, and every retraction is
+        pinned by a test so it cannot quietly return.
+
+        Before filing, it may save you time to check `chesslab limits`, which lists
+        every known confound and the resolution bound on every null. If your objection
+        is "this null does not rule out X", it is probably already documented there.
+  - type: input
+    id: claim
+    attributes:
+      label: Which claim?
+      description: Quote it from FINDINGS.md or README.md, or give the track number.
+      placeholder: "Track 3: fast games blunder 29% more than slow ones"
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of problem?
+      options:
+        - Confound (the effect is real but caused by something else)
+        - Statistical (the interval, clustering, or test is wrong)
+        - Analytic choice (a different defensible specification flips it)
+        - Data (the corpus does not support the claim as scoped)
+        - Reproduction (I ran it and got something different)
+    validations:
+      required: true
+  - type: textarea
+    id: argument
+    attributes:
+      label: The argument
+      description: What would have to be true for the claim to be wrong, and what evidence points that way?
+    validations:
+      required: true
+  - type: textarea
+    id: test
+    attributes:
+      label: How would we settle it?
+      description: |
+        The most useful challenges name a check. If it can be written as a probe in
+        `tracks/t7_falsify.py` with a pass condition stated in advance, say so.
+    validations:
+      required: false

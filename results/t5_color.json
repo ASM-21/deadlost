@@ -1,0 +1,748 @@
+{
+  "lichess2017_by_rating_band": {
+    "0-1200": {
+      "n_games": 465,
+      "white_score": {
+        "point": 0.5021505376344086,
+        "ci_lo": 0.4568734926087158,
+        "ci_hi": 0.5473923404572921,
+        "n": 465
+      },
+      "draw_rate": {
+        "point": 0.06236559139784946,
+        "ci_lo": 0.04377038962762897,
+        "ci_hi": 0.08813258143978484,
+        "n": 465
+      },
+      "white_share_decisive": {
+        "point": 0.5022935779816514,
+        "ci_lo": 0.45554595439963314,
+        "ci_hi": 0.549001137098761,
+        "n": 436
+      }
+    },
+    "1200-1400": {
+      "n_games": 1181,
+      "white_score": {
+        "point": 0.5118543607112617,
+        "ci_lo": 0.4833533476085897,
+        "ci_hi": 0.5402785032649785,
+        "n": 1181
+      },
+      "draw_rate": {
+        "point": 0.03810330228619814,
+        "ci_lo": 0.028597387134787926,
+        "ci_hi": 0.05060442347010644,
+        "n": 1181
+      },
+      "white_share_decisive": {
+        "point": 0.5123239436619719,
+        "ci_lo": 0.4832640855273908,
+        "ci_hi": 0.5413007311980209,
+        "n": 1136
+      }
+    },
+    "1400-1600": {
+      "n_games": 2211,
+      "white_score": {
+        "point": 0.5244233378561737,
+        "ci_lo": 0.5035822416687432,
+        "ci_hi": 0.5451797104275151,
+        "n": 2211
+      },
+      "draw_rate": {
+        "point": 0.04206241519674356,
+        "ci_lo": 0.034459163165529286,
+        "ci_hi": 0.05125423502962832,
+        "n": 2211
+      },
+      "white_share_decisive": {
+        "point": 0.5254957507082153,
+        "ci_lo": 0.5042022160365492,
+        "ci_hi": 0.5466969651275867,
+        "n": 2118
+      }
+    },
+    "1600-1800": {
+      "n_games": 1589,
+      "white_score": {
+        "point": 0.5223410950283197,
+        "ci_lo": 0.4977566869659332,
+        "ci_hi": 0.5468177390159096,
+        "n": 1589
+      },
+      "draw_rate": {
+        "point": 0.04908747640025173,
+        "ci_lo": 0.03950915099731923,
+        "ci_hi": 0.06084081474943174,
+        "n": 1589
+      },
+      "white_share_decisive": {
+        "point": 0.5234943745863666,
+        "ci_lo": 0.4982833042679232,
+        "ci_hi": 0.5485862826248581,
+        "n": 1511
+      }
+    },
+    "1800-2000": {
+      "n_games": 1139,
+      "white_score": {
+        "point": 0.5114135206321334,
+        "ci_lo": 0.48239369492993134,
+        "ci_hi": 0.5403566144742765,
+        "n": 1139
+      },
+      "draw_rate": {
+        "point": 0.06057945566286216,
+        "ci_lo": 0.0481468253786262,
+        "ci_hi": 0.07596626255936974,
+        "n": 1139
+      },
+      "white_share_decisive": {
+        "point": 0.5121495327102804,
+        "ci_lo": 0.48220902999420945,
+        "ci_hi": 0.5420031070658562,
+        "n": 1070
+      }
+    },
+    "2000-2200": {
+      "n_games": 338,
+      "white_score": {
+        "point": 0.48668639053254437,
+        "ci_lo": 0.43384998363920424,
+        "ci_hi": 0.539822032873707,
+        "n": 338
+      },
+      "draw_rate": {
+        "point": 0.08579881656804733,
+        "ci_lo": 0.06040126015001909,
+        "ci_hi": 0.12050592025166401,
+        "n": 338
+      },
+      "white_share_decisive": {
+        "point": 0.4854368932038835,
+        "ci_lo": 0.4302320451278832,
+        "ci_hi": 0.5409994023522474,
+        "n": 309
+      }
+    }
+  },
+  "twic_by_elo_band": {
+    "2200-2400": {
+      "n_games": 9851,
+      "white_score": {
+        "point": 0.5305045173078875,
+        "ci_lo": 0.5220483759203677,
+        "ci_hi": 0.5395252690965516,
+        "n": 4498
+      },
+      "draw_rate": {
+        "point": 0.33519439650796873,
+        "ci_lo": 0.32398845794228537,
+        "ci_hi": 0.34681851779169365,
+        "n": 4498
+      },
+      "white_share_decisive": {
+        "point": 0.5458848679187662,
+        "ci_lo": 0.5325113035363865,
+        "ci_hi": 0.5594123391569291,
+        "n": 3468
+      }
+    },
+    "2400-2500": {
+      "n_games": 5154,
+      "white_score": {
+        "point": 0.5494761350407451,
+        "ci_lo": 0.5390089228284393,
+        "ci_hi": 0.560895054235542,
+        "n": 1979
+      },
+      "draw_rate": {
+        "point": 0.4458672875436554,
+        "ci_lo": 0.43036253250022216,
+        "ci_hi": 0.4618094572265835,
+        "n": 1979
+      },
+      "white_share_decisive": {
+        "point": 0.5892857142857143,
+        "ci_lo": 0.5698917616461892,
+        "ci_hi": 0.6087105714483949,
+        "n": 1450
+      }
+    },
+    "2500-2600": {
+      "n_games": 4023,
+      "white_score": {
+        "point": 0.5497141436738752,
+        "ci_lo": 0.5380617384758386,
+        "ci_hi": 0.5611646772345715,
+        "n": 1112
+      },
+      "draw_rate": {
+        "point": 0.5083271190653741,
+        "ci_lo": 0.487454465994706,
+        "ci_hi": 0.5280305277291413,
+        "n": 1112
+      },
+      "white_share_decisive": {
+        "point": 0.6011122345803842,
+        "ci_lo": 0.5778902553689497,
+        "ci_hi": 0.6241951164269186,
+        "n": 810
+      }
+    },
+    "2600-3200": {
+      "n_games": 3120,
+      "white_score": {
+        "point": 0.5532051282051282,
+        "ci_lo": 0.5410504412632484,
+        "ci_hi": 0.5654510433224408,
+        "n": 431
+      },
+      "draw_rate": {
+        "point": 0.5019230769230769,
+        "ci_lo": 0.4784192293938852,
+        "ci_hi": 0.5250577830770052,
+        "n": 431
+      },
+      "white_share_decisive": {
+        "point": 0.6068211068211068,
+        "ci_lo": 0.5819095752444898,
+        "ci_hi": 0.633315638742644,
+        "n": 356
+      }
+    }
+  },
+  "twic_yearly": [
+    {
+      "year": 1998,
+      "n_games": 215,
+      "white_score": 0.5232558139534884,
+      "draw_rate": 0.49767441860465117,
+      "white_share_decisive": 0.5462962962962963,
+      "mean_elo": 2441.7093023255816
+    },
+    {
+      "year": 1999,
+      "n_games": 387,
+      "white_score": 0.5361757105943152,
+      "draw_rate": 0.45219638242894056,
+      "white_share_decisive": 0.5660377358490566,
+      "mean_elo": 2449.8643410852715
+    },
+    {
+      "year": 2000,
+      "n_games": 1239,
+      "white_score": 0.5423728813559322,
+      "draw_rate": 0.4826472962066182,
+      "white_share_decisive": 0.5819032761310452,
+      "mean_elo": 2441.047215496368
+    },
+    {
+      "year": 2001,
+      "n_games": 578,
+      "white_score": 0.5614186851211073,
+      "draw_rate": 0.49653979238754326,
+      "white_share_decisive": 0.6219931271477663,
+      "mean_elo": 2442.3987889273358
+    },
+    {
+      "year": 2002,
+      "n_games": 887,
+      "white_score": 0.5253664036076663,
+      "draw_rate": 0.48928974069898534,
+      "white_share_decisive": 0.5496688741721855,
+      "mean_elo": 2427.811724915445
+    },
+    {
+      "year": 2003,
+      "n_games": 497,
+      "white_score": 0.53420523138833,
+      "draw_rate": 0.5814889336016097,
+      "white_share_decisive": 0.5817307692307693,
+      "mean_elo": 2428.7424547283704
+    },
+    {
+      "year": 2004,
+      "n_games": 410,
+      "white_score": 0.55,
+      "draw_rate": 0.47073170731707314,
+      "white_share_decisive": 0.5944700460829493,
+      "mean_elo": 2450.6621951219513
+    },
+    {
+      "year": 2005,
+      "n_games": 405,
+      "white_score": 0.5604938271604938,
+      "draw_rate": 0.47901234567901235,
+      "white_share_decisive": 0.6161137440758294,
+      "mean_elo": 2453.0975308641973
+    },
+    {
+      "year": 2006,
+      "n_games": 392,
+      "white_score": 0.5318877551020408,
+      "draw_rate": 0.5229591836734694,
+      "white_share_decisive": 0.5668449197860963,
+      "mean_elo": 2434.7117346938776
+    },
+    {
+      "year": 2007,
+      "n_games": 724,
+      "white_score": 0.5428176795580111,
+      "draw_rate": 0.5303867403314917,
+      "white_share_decisive": 0.5911764705882353,
+      "mean_elo": 2474.87361878453
+    },
+    {
+      "year": 2008,
+      "n_games": 915,
+      "white_score": 0.5622950819672131,
+      "draw_rate": 0.5103825136612021,
+      "white_share_decisive": 0.6272321428571429,
+      "mean_elo": 2474.203825136612
+    },
+    {
+      "year": 2009,
+      "n_games": 647,
+      "white_score": 0.5409582689335394,
+      "draw_rate": 0.5316846986089645,
+      "white_share_decisive": 0.5874587458745875,
+      "mean_elo": 2450.468315301391
+    },
+    {
+      "year": 2010,
+      "n_games": 233,
+      "white_score": 0.5665236051502146,
+      "draw_rate": 0.4892703862660944,
+      "white_share_decisive": 0.6302521008403361,
+      "mean_elo": 2486.3733905579397
+    },
+    {
+      "year": 2011,
+      "n_games": 423,
+      "white_score": 0.5307328605200946,
+      "draw_rate": 0.4657210401891253,
+      "white_share_decisive": 0.5575221238938053,
+      "mean_elo": 2430.0354609929077
+    },
+    {
+      "year": 2012,
+      "n_games": 452,
+      "white_score": 0.5619469026548672,
+      "draw_rate": 0.5,
+      "white_share_decisive": 0.6238938053097345,
+      "mean_elo": 2428.8340707964603
+    },
+    {
+      "year": 2013,
+      "n_games": 734,
+      "white_score": 0.5510899182561307,
+      "draw_rate": 0.494550408719346,
+      "white_share_decisive": 0.601078167115903,
+      "mean_elo": 2448.799046321526
+    },
+    {
+      "year": 2014,
+      "n_games": 449,
+      "white_score": 0.5645879732739421,
+      "draw_rate": 0.37193763919821826,
+      "white_share_decisive": 0.6028368794326241,
+      "mean_elo": 2486.652561247216
+    },
+    {
+      "year": 2015,
+      "n_games": 602,
+      "white_score": 0.5780730897009967,
+      "draw_rate": 0.4883720930232558,
+      "white_share_decisive": 0.6525974025974026,
+      "mean_elo": 2479.215946843854
+    },
+    {
+      "year": 2016,
+      "n_games": 548,
+      "white_score": 0.5711678832116789,
+      "draw_rate": 0.5437956204379562,
+      "white_share_decisive": 0.656,
+      "mean_elo": 2459.590328467153
+    },
+    {
+      "year": 2017,
+      "n_games": 569,
+      "white_score": 0.5289982425307557,
+      "draw_rate": 0.46397188049209137,
+      "white_share_decisive": 0.5540983606557377,
+      "mean_elo": 2456.853251318102
+    },
+    {
+      "year": 2018,
+      "n_games": 611,
+      "white_score": 0.5368248772504092,
+      "draw_rate": 0.5499181669394435,
+      "white_share_decisive": 0.5818181818181818,
+      "mean_elo": 2446.152209492635
+    },
+    {
+      "year": 2019,
+      "n_games": 960,
+      "white_score": 0.559375,
+      "draw_rate": 0.46875,
+      "white_share_decisive": 0.611764705882353,
+      "mean_elo": 2463.1286458333334
+    },
+    {
+      "year": 2020,
+      "n_games": 758,
+      "white_score": 0.5204485488126649,
+      "draw_rate": 0.32849604221635886,
+      "white_share_decisive": 0.5304518664047151,
+      "mean_elo": 2445.5230870712403
+    },
+    {
+      "year": 2021,
+      "n_games": 1472,
+      "white_score": 0.5427989130434783,
+      "draw_rate": 0.31521739130434784,
+      "white_share_decisive": 0.5625,
+      "mean_elo": 2439.1039402173915
+    },
+    {
+      "year": 2022,
+      "n_games": 1454,
+      "white_score": 0.5168500687757909,
+      "draw_rate": 0.3046767537826685,
+      "white_share_decisive": 0.5242334322453017,
+      "mean_elo": 2440.6461485557084
+    },
+    {
+      "year": 2023,
+      "n_games": 1728,
+      "white_score": 0.5260416666666666,
+      "draw_rate": 0.2743055555555556,
+      "white_share_decisive": 0.5358851674641149,
+      "mean_elo": 2393.515046296296
+    },
+    {
+      "year": 2024,
+      "n_games": 1707,
+      "white_score": 0.5328060925600469,
+      "draw_rate": 0.30755711775043937,
+      "white_share_decisive": 0.5473773265651438,
+      "mean_elo": 2399.7132396016405
+    },
+    {
+      "year": 2025,
+      "n_games": 1283,
+      "white_score": 0.5354637568199533,
+      "draw_rate": 0.34138737334372565,
+      "white_share_decisive": 0.5538461538461539,
+      "mean_elo": 2395.452844894778
+    },
+    {
+      "year": 2026,
+      "n_games": 396,
+      "white_score": 0.5366161616161617,
+      "draw_rate": 0.24494949494949494,
+      "white_share_decisive": 0.5484949832775919,
+      "mean_elo": 2411.4545454545455
+    }
+  ],
+  "twic_yearly_fixed_band_2400_2499": [
+    {
+      "year": 1999,
+      "n_games": 78,
+      "white_score": 0.48717948717948717,
+      "draw_rate": 0.4358974358974359,
+      "white_share_decisive": 0.4772727272727273,
+      "mean_elo": 2440.2820512820513
+    },
+    {
+      "year": 2000,
+      "n_games": 256,
+      "white_score": 0.580078125,
+      "draw_rate": 0.48046875,
+      "white_share_decisive": 0.6541353383458647,
+      "mean_elo": 2446.037109375
+    },
+    {
+      "year": 2001,
+      "n_games": 147,
+      "white_score": 0.5476190476190477,
+      "draw_rate": 0.48299319727891155,
+      "white_share_decisive": 0.5921052631578947,
+      "mean_elo": 2445.0374149659865
+    },
+    {
+      "year": 2002,
+      "n_games": 175,
+      "white_score": 0.54,
+      "draw_rate": 0.4742857142857143,
+      "white_share_decisive": 0.5760869565217391,
+      "mean_elo": 2447.322857142857
+    },
+    {
+      "year": 2003,
+      "n_games": 124,
+      "white_score": 0.5524193548387096,
+      "draw_rate": 0.5887096774193549,
+      "white_share_decisive": 0.6274509803921569,
+      "mean_elo": 2439.875
+    },
+    {
+      "year": 2004,
+      "n_games": 85,
+      "white_score": 0.5235294117647059,
+      "draw_rate": 0.4117647058823529,
+      "white_share_decisive": 0.54,
+      "mean_elo": 2445.964705882353
+    },
+    {
+      "year": 2005,
+      "n_games": 89,
+      "white_score": 0.6067415730337079,
+      "draw_rate": 0.47191011235955055,
+      "white_share_decisive": 0.7021276595744681,
+      "mean_elo": 2443.9157303370785
+    },
+    {
+      "year": 2006,
+      "n_games": 61,
+      "white_score": 0.5327868852459017,
+      "draw_rate": 0.5737704918032787,
+      "white_share_decisive": 0.5769230769230769,
+      "mean_elo": 2450.909836065574
+    },
+    {
+      "year": 2007,
+      "n_games": 125,
+      "white_score": 0.564,
+      "draw_rate": 0.552,
+      "white_share_decisive": 0.6428571428571429,
+      "mean_elo": 2447.732
+    },
+    {
+      "year": 2008,
+      "n_games": 231,
+      "white_score": 0.5476190476190477,
+      "draw_rate": 0.5238095238095238,
+      "white_share_decisive": 0.6,
+      "mean_elo": 2445.9632034632036
+    },
+    {
+      "year": 2009,
+      "n_games": 76,
+      "white_score": 0.4407894736842105,
+      "draw_rate": 0.4868421052631579,
+      "white_share_decisive": 0.38461538461538464,
+      "mean_elo": 2446.9013157894738
+    },
+    {
+      "year": 2010,
+      "n_games": 45,
+      "white_score": 0.6,
+      "draw_rate": 0.4,
+      "white_share_decisive": 0.6666666666666666,
+      "mean_elo": 2463.9555555555557
+    },
+    {
+      "year": 2011,
+      "n_games": 80,
+      "white_score": 0.55,
+      "draw_rate": 0.5,
+      "white_share_decisive": 0.6,
+      "mean_elo": 2448.34375
+    },
+    {
+      "year": 2012,
+      "n_games": 71,
+      "white_score": 0.5915492957746479,
+      "draw_rate": 0.5633802816901409,
+      "white_share_decisive": 0.7096774193548387,
+      "mean_elo": 2443.0774647887324
+    },
+    {
+      "year": 2013,
+      "n_games": 110,
+      "white_score": 0.5636363636363636,
+      "draw_rate": 0.45454545454545453,
+      "white_share_decisive": 0.6166666666666667,
+      "mean_elo": 2450.3681818181817
+    },
+    {
+      "year": 2014,
+      "n_games": 71,
+      "white_score": 0.5915492957746479,
+      "draw_rate": 0.4507042253521127,
+      "white_share_decisive": 0.6666666666666666,
+      "mean_elo": 2449.0704225352115
+    },
+    {
+      "year": 2015,
+      "n_games": 133,
+      "white_score": 0.6015037593984962,
+      "draw_rate": 0.49624060150375937,
+      "white_share_decisive": 0.7014925373134329,
+      "mean_elo": 2449.187969924812
+    },
+    {
+      "year": 2016,
+      "n_games": 91,
+      "white_score": 0.6373626373626373,
+      "draw_rate": 0.4835164835164835,
+      "white_share_decisive": 0.7659574468085106,
+      "mean_elo": 2447.8076923076924
+    },
+    {
+      "year": 2017,
+      "n_games": 142,
+      "white_score": 0.573943661971831,
+      "draw_rate": 0.5422535211267606,
+      "white_share_decisive": 0.6615384615384615,
+      "mean_elo": 2450.6091549295775
+    },
+    {
+      "year": 2018,
+      "n_games": 104,
+      "white_score": 0.5144230769230769,
+      "draw_rate": 0.4519230769230769,
+      "white_share_decisive": 0.5263157894736842,
+      "mean_elo": 2450.3509615384614
+    },
+    {
+      "year": 2019,
+      "n_games": 186,
+      "white_score": 0.5349462365591398,
+      "draw_rate": 0.478494623655914,
+      "white_share_decisive": 0.5670103092783505,
+      "mean_elo": 2449.4435483870966
+    },
+    {
+      "year": 2020,
+      "n_games": 96,
+      "white_score": 0.5364583333333334,
+      "draw_rate": 0.34375,
+      "white_share_decisive": 0.5555555555555556,
+      "mean_elo": 2441.3541666666665
+    },
+    {
+      "year": 2021,
+      "n_games": 262,
+      "white_score": 0.5152671755725191,
+      "draw_rate": 0.31297709923664124,
+      "white_share_decisive": 0.5222222222222223,
+      "mean_elo": 2442.5667938931297
+    },
+    {
+      "year": 2022,
+      "n_games": 195,
+      "white_score": 0.5461538461538461,
+      "draw_rate": 0.39487179487179486,
+      "white_share_decisive": 0.576271186440678,
+      "mean_elo": 2448.779487179487
+    },
+    {
+      "year": 2023,
+      "n_games": 282,
+      "white_score": 0.5336879432624113,
+      "draw_rate": 0.37943262411347517,
+      "white_share_decisive": 0.5542857142857143,
+      "mean_elo": 2445.723404255319
+    },
+    {
+      "year": 2024,
+      "n_games": 273,
+      "white_score": 0.5164835164835165,
+      "draw_rate": 0.3443223443223443,
+      "white_share_decisive": 0.5251396648044693,
+      "mean_elo": 2442.342490842491
+    },
+    {
+      "year": 2025,
+      "n_games": 175,
+      "white_score": 0.5228571428571429,
+      "draw_rate": 0.4057142857142857,
+      "white_share_decisive": 0.5384615384615384,
+      "mean_elo": 2441.8771428571426
+    },
+    {
+      "year": 2026,
+      "n_games": 41,
+      "white_score": 0.5609756097560976,
+      "draw_rate": 0.1951219512195122,
+      "white_share_decisive": 0.5757575757575758,
+      "mean_elo": 2437.9756097560976
+    }
+  ],
+  "twic_time_trends": {
+    "white_score": {
+      "slope_per_year": -0.0005202078816202656,
+      "ci_lo": -0.001165012255788427,
+      "ci_hi": 0.00012033504619844429,
+      "slope_per_decade": -0.0052020788162026555,
+      "ci_lo_per_decade": -0.01165012255788427,
+      "ci_hi_per_decade": 0.0012033504619844428
+    },
+    "draw_rate": {
+      "slope_per_year": -0.0088433849760438,
+      "ci_lo": -0.011908124308918385,
+      "ci_hi": -0.005741062018440582,
+      "slope_per_decade": -0.088433849760438,
+      "ci_lo_per_decade": -0.11908124308918384,
+      "ci_hi_per_decade": -0.05741062018440582
+    },
+    "white_share_decisive": {
+      "slope_per_year": -0.0018101064243803383,
+      "ci_lo": -0.00322686643964399,
+      "ci_hi": -0.000437970801854588,
+      "slope_per_decade": -0.018101064243803384,
+      "ci_lo_per_decade": -0.032268664396439904,
+      "ci_hi_per_decade": -0.00437970801854588
+    },
+    "mean_elo_of_pool": {
+      "slope_per_decade": -14.44649885333856,
+      "ci_lo": -26.128523857168,
+      "ci_hi": -0.4878067580744496
+    }
+  },
+  "twic_time_trends_fixed_band_2400_2499": {
+    "white_score": {
+      "slope_per_year": -0.000949576363900898,
+      "ci_lo": -0.001974096410358773,
+      "ci_hi": 0.0005782773838079865,
+      "slope_per_decade": -0.00949576363900898,
+      "ci_lo_per_decade": -0.01974096410358773,
+      "ci_hi_per_decade": 0.005782773838079865
+    },
+    "draw_rate": {
+      "slope_per_year": -0.005889291174651559,
+      "ci_lo": -0.008906597609436255,
+      "ci_hi": -0.0030598591515912676,
+      "slope_per_decade": -0.05889291174651559,
+      "ci_lo_per_decade": -0.08906597609436255,
+      "ci_hi_per_decade": -0.030598591515912675
+    },
+    "white_share_decisive": {
+      "slope_per_year": -0.002444890931970621,
+      "ci_lo": -0.004558149396874535,
+      "ci_hi": 0.0005024775743611327,
+      "slope_per_decade": -0.024448909319706207,
+      "ci_lo_per_decade": -0.04558149396874535,
+      "ci_hi_per_decade": 0.0050247757436113274
+    },
+    "mean_elo_of_pool": {
+      "slope_per_decade": -0.4153436482147949,
+      "ci_lo": -1.952351176849287,
+      "ci_hi": 1.265838496901668
+    }
+  },
+  "headline": {
+    "basis": "TWIC, both players 2400-2499, pairings within 50 Elo",
+    "white_score_slope_per_decade": -0.00949576363900898,
+    "draw_rate_slope_per_decade": -0.05889291174651559,
+    "white_share_decisive_slope_per_decade": -0.024448909319706207
+  },
+  "notes": [
+    "Lichess cells are restricted to games where both players sit in the same rating band; TWIC cells to pairings within 50 Elo. An unrestricted white-score number mostly measures who got paired with whom.",
+    "TWIC intervals resample players; lichess intervals are Wilson at game level because the corpus is a 20k scrape with little player repetition."
+  ]
+}

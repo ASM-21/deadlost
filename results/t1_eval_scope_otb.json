@@ -1,0 +1,27 @@
+{
+  "tag": "otb",
+  "engine": "Stockfish 16",
+  "engine_path": "/usr/games/stockfish",
+  "nodes_per_position": 20000,
+  "skip_opening_ply": 8,
+  "max_ply": 256,
+  "clamp_cp": 1500,
+  "seed": 20260810,
+  "games_selected": 520,
+  "games_evaluated": 520,
+  "games_failed_this_run": 0,
+  "plies_evaluated": 39260,
+  "complete": true,
+  "strata_selected": {
+    "2200-2400": 130,
+    "2400-2500": 130,
+    "2500-2600": 130,
+    "2600-3200": 130
+  },
+  "strata_evaluated": {
+    "2200-2400": 130,
+    "2400-2500": 130,
+    "2500-2600": 130,
+    "2600-3200": 130
+  }
+}

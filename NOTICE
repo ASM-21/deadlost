@@ -1,0 +1,39 @@
+chess-lab
+Copyright (c) 2026 Andrew
+
+This product includes and depends on third-party work as follows.
+
+STOCKFISH
+  Stockfish (https://stockfishchess.org) is licensed GPL-3.0. chess-lab invokes
+  Stockfish as a separate executable process over the UCI protocol. It does not
+  link against, embed, modify or redistribute Stockfish, and no Stockfish source
+  or binary is included in this repository. The MIT licence of chess-lab applies
+  to chess-lab's own code. Users must obtain Stockfish themselves under its own
+  terms.
+
+python-chess
+  Copyright (c) Niklas Fiekas, licensed GPL-3.0. Used as a library dependency,
+  installed separately via pip and not vendored here. Downstream users who
+  redistribute a combined work should note python-chess's copyleft terms.
+
+DATA
+
+  Lichess 2017 game sample
+    Originally published by "datasnaek" on Kaggle under CC0 1.0 (public domain
+    dedication). Retrieved via the GitHub mirror at ogreowl/chess-analysis.
+    Contains games played on lichess.org.
+
+  The Week In Chess (TWIC)
+    PGN issues 210-1649 retrieved from the rozim/ChessData GitHub mirror. TWIC
+    is compiled and published by Mark Crowther (https://theweekinchess.com).
+    The moves of a chess game are facts and are not subject to copyright;
+    compilations and accompanying editorial content may be. This repository
+    stores no TWIC text or annotations, redistributes no PGN files, and uses
+    only the move sequences and standard result/rating/date tags for
+    statistical analysis. Users fetching this data should respect TWIC's terms.
+
+  lichess-org/chess-openings
+    ECO opening classification tables, CC0 1.0.
+
+No data files are redistributed in this repository. scripts/fetch_data.sh
+retrieves them from their upstream sources at build time.

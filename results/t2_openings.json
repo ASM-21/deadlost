@@ -1,0 +1,1100 @@
+{
+  "method_note": "Engine evaluation of mainline openings spans a far narrower range than practical results do, so this track reports rank agreement and residuals rather than a correlation that would be dominated by noise.",
+  "families_analysed": [
+    {
+      "family": "King's Indian Defense",
+      "book_cp": 45.02568306010929,
+      "n_games": 1830,
+      "mean_book_ply": 9.078688524590165
+    },
+    {
+      "family": "Slav Defense",
+      "book_cp": 35.68373879641485,
+      "n_games": 1562,
+      "mean_book_ply": 6.864916773367478
+    },
+    {
+      "family": "Ruy Lopez",
+      "book_cp": 35.20990312163617,
+      "n_games": 2787,
+      "mean_book_ply": 11.422317904556872
+    },
+    {
+      "family": "Sicilian Defense",
+      "book_cp": 34.79705981750591,
+      "n_games": 11836,
+      "mean_book_ply": 7.854173707333558
+    },
+    {
+      "family": "Queen's Pawn Game",
+      "book_cp": 34.60991580916745,
+      "n_games": 3207,
+      "mean_book_ply": 3.4957904583723107
+    },
+    {
+      "family": "Queen's Gambit Declined",
+      "book_cp": 33.23683119037744,
+      "n_games": 2411,
+      "mean_book_ply": 6.496059726254666
+    },
+    {
+      "family": "French Defense",
+      "book_cp": 33.03335155822854,
+      "n_games": 3658,
+      "mean_book_ply": 7.7977036632039365
+    },
+    {
+      "family": "Zukertort Opening",
+      "book_cp": 31.088495575221238,
+      "n_games": 3842,
+      "mean_book_ply": 2.100989068193649
+    },
+    {
+      "family": "Indian Defense",
+      "book_cp": 30.879543094496366,
+      "n_games": 2889,
+      "mean_book_ply": 3.709934233298719
+    },
+    {
+      "family": "Caro-Kann Defense",
+      "book_cp": 30.65155695703587,
+      "n_games": 2537,
+      "mean_book_ply": 6.656681119432401
+    },
+    {
+      "family": "English Opening",
+      "book_cp": 25.547044791942753,
+      "n_games": 3773,
+      "mean_book_ply": 3.2801484230055657
+    },
+    {
+      "family": "Nimzo-Indian Defense",
+      "book_cp": 19.22640218878249,
+      "n_games": 1462,
+      "mean_book_ply": 9.170998632010944
+    }
+  ],
+  "engine_eval_spread_cp": {
+    "min": 19.22640218878249,
+    "max": 45.02568306010929,
+    "range": 25.799280871326797
+  },
+  "practical_score_spread": {
+    "within_band_sd_mean": 0.028572947871889895
+  },
+  "gap_by_band": [
+    {
+      "band": "1200-1400",
+      "n_families": 3,
+      "mean_abs_gap": 0.0648599276019269,
+      "sd_of_practical_score_across_families": 0.05826668347615444,
+      "mean_gap": -0.05907305232716572
+    },
+    {
+      "band": "1400-1600",
+      "n_families": 5,
+      "mean_abs_gap": 0.02688777268470476,
+      "sd_of_practical_score_across_families": 0.0339991872626012,
+      "mean_gap": 0.012638915147693297
+    },
+    {
+      "band": "1600-1800",
+      "n_families": 5,
+      "mean_abs_gap": 0.03205047930711713,
+      "sd_of_practical_score_across_families": 0.03612661378781441,
+      "mean_gap": -0.018069430011461062
+    },
+    {
+      "band": "1800-2000",
+      "n_families": 3,
+      "mean_abs_gap": 0.022889982110931684,
+      "sd_of_practical_score_across_families": 0.021931312689848614,
+      "mean_gap": -0.018608483180256485
+    },
+    {
+      "band": "2200-2400",
+      "n_families": 12,
+      "mean_abs_gap": 0.01665781393137566,
+      "sd_of_practical_score_across_families": 0.019986654025711273,
+      "mean_gap": 0.005474831462282674
+    },
+    {
+      "band": "2400-2500",
+      "n_families": 12,
+      "mean_abs_gap": 0.027662603762398593,
+      "sd_of_practical_score_across_families": 0.025168887668061867,
+      "mean_gap": 0.02154297306284901
+    },
+    {
+      "band": "2500-2600",
+      "n_families": 12,
+      "mean_abs_gap": 0.037495898882403574,
+      "sd_of_practical_score_across_families": 0.018199662806742775,
+      "mean_gap": 0.037495898882403574
+    },
+    {
+      "band": "2600+",
+      "n_families": 12,
+      "mean_abs_gap": 0.04864053247722327,
+      "sd_of_practical_score_across_families": 0.014904581258184585,
+      "mean_gap": 0.04864053247722327
+    }
+  ],
+  "gap_trend_low_to_high_band_by_corpus": {
+    "lichess2017": {
+      "n_bands": 4,
+      "slope_per_band_step": -0.012074712985057325,
+      "ci_lo": -0.03797215491722214,
+      "ci_hi": 0.005162706622412371,
+      "excludes_zero": false
+    },
+    "twic": {
+      "n_bands": 4,
+      "slope_per_band_step": 0.01057814507575478,
+      "ci_lo": 0.00983329512000498,
+      "ci_hi": 0.011144633594819695,
+      "excludes_zero": true
+    }
+  },
+  "gap_trend_note": "mean_gap rises across the TWIC bands, but predicted_score is fixed per family, so that rise is just White's score rising with strength (see track 5), not opening assessment becoming more accurate. mean_abs_gap is the quantity relevant to the question.",
+  "rank_agreement_by_band": [
+    {
+      "band": "1400-1600",
+      "n_families": 5,
+      "spearman_rho": -0.7,
+      "p_value": 0.1881204043741873
+    },
+    {
+      "band": "1600-1800",
+      "n_families": 5,
+      "spearman_rho": 0.7,
+      "p_value": 0.1881204043741873
+    },
+    {
+      "band": "2200-2400",
+      "n_families": 12,
+      "spearman_rho": 0.3356643356643357,
+      "p_value": 0.28612290291498743
+    },
+    {
+      "band": "2400-2500",
+      "n_families": 12,
+      "spearman_rho": 0.15384615384615385,
+      "p_value": 0.6330906812462617
+    },
+    {
+      "band": "2500-2600",
+      "n_families": 12,
+      "spearman_rho": 0.3706293706293707,
+      "p_value": 0.23562100351264567
+    },
+    {
+      "band": "2600+",
+      "n_families": 12,
+      "spearman_rho": -0.6013986013986015,
+      "p_value": 0.03858845292201946
+    }
+  ],
+  "rank_agreement_multiplicity": {
+    "n_bands_tested": 6,
+    "n_nominally_significant": 1,
+    "expected_by_chance_at_0.05": 0.3,
+    "prob_of_at_least_this_many_under_null": 0.26490810937500003,
+    "holm_bonferroni": [
+      {
+        "band": "2600+",
+        "p_raw": 0.03858845292201946,
+        "p_holm": 0.2315307175321168,
+        "significant_after_correction": false
+      },
+      {
+        "band": "1400-1600",
+        "p_raw": 0.1881204043741873,
+        "p_holm": 0.9406020218709366,
+        "significant_after_correction": false
+      },
+      {
+        "band": "1600-1800",
+        "p_raw": 0.1881204043741873,
+        "p_holm": 0.9406020218709366,
+        "significant_after_correction": false
+      },
+      {
+        "band": "2500-2600",
+        "p_raw": 0.23562100351264567,
+        "p_holm": 0.9406020218709366,
+        "significant_after_correction": false
+      },
+      {
+        "band": "2200-2400",
+        "p_raw": 0.28612290291498743,
+        "p_holm": 0.9406020218709366,
+        "significant_after_correction": false
+      },
+      {
+        "band": "2400-2500",
+        "p_raw": 0.6330906812462617,
+        "p_holm": 0.9406020218709366,
+        "significant_after_correction": false
+      }
+    ],
+    "any_significant_after_correction": false,
+    "signs_of_rho": [
+      -0.7,
+      0.7,
+      0.34,
+      0.15,
+      0.37,
+      -0.6
+    ],
+    "note": "The one nominally significant band (2600+, rho negative) points the OPPOSITE way to the folk claim: engine-preferred openings score slightly worse among the strongest players. It does not survive correction, the sign of rho flips across bands, and one hit in six tests is close to what chance produces. Read as noise, not as a reversal."
+  },
+  "cells": [
+    {
+      "family": "English Opening",
+      "band": "1400-1600",
+      "n_games": 115,
+      "white_score": 0.5826086956521739,
+      "ci_lo": 0.4912372597020915,
+      "ci_hi": 0.6686394164786398,
+      "draw_rate": 0.034782608695652174,
+      "book_cp": 25.547044791942753,
+      "predicted_score": 0.5182397917422167,
+      "gap": 0.0643689039099572,
+      "corpus": "lichess2017"
+    },
+    {
+      "family": "French Defense",
+      "band": "1200-1400",
+      "n_games": 62,
+      "white_score": 0.532258064516129,
+      "ci_lo": 0.4098381737584801,
+      "ci_hi": 0.650913691323778,
+      "draw_rate": 0.03225806451612903,
+      "book_cp": 33.03335155822854,
+      "predicted_score": 0.5235777516039872,
+      "gap": 0.008680312912141774,
+      "corpus": "lichess2017"
+    },
+    {
+      "family": "French Defense",
+      "band": "1400-1600",
+      "n_games": 164,
+      "white_score": 0.5182926829268293,
+      "ci_lo": 0.4422791667168089,
+      "ci_hi": 0.593468824246099,
+      "draw_rate": 0.07317073170731707,
+      "book_cp": 33.03335155822854,
+      "predicted_score": 0.5235777516039872,
+      "gap": -0.005285068677157945,
+      "corpus": "lichess2017"
+    },
+    {
+      "family": "French Defense",
+      "band": "1600-1800",
+      "n_games": 139,
+      "white_score": 0.49280575539568344,
+      "ci_lo": 0.41101035497062477,
+      "ci_hi": 0.5749881216636329,
+      "draw_rate": 0.050359712230215826,
+      "book_cp": 33.03335155822854,
+      "predicted_score": 0.5235777516039872,
+      "gap": -0.030771996208303787,
+      "corpus": "lichess2017"
+    },
+    {
+      "family": "French Defense",
+      "band": "1800-2000",
+      "n_games": 100,
+      "white_score": 0.53,
+      "ci_lo": 0.4328868313724773,
+      "ci_hi": 0.6248934801789626,
+      "draw_rate": 0.06,
+      "book_cp": 33.03335155822854,
+      "predicted_score": 0.5235777516039872,
+      "gap": 0.006422248396012797,
+      "corpus": "lichess2017"
+    },
+    {
+      "family": "Indian Defense",
+      "band": "1600-1800",
+      "n_games": 63,
+      "white_score": 0.4603174603174603,
+      "ci_lo": 0.34308665416425693,
+      "ci_hi": 0.5821096307840388,
+      "draw_rate": 0.12698412698412698,
+      "book_cp": 30.879543094496366,
+      "predicted_score": 0.5220425200100343,
+      "gap": -0.06172505969257397,
+      "corpus": "lichess2017"
+    },
+    {
+      "family": "Queen's Pawn Game",
+      "band": "1200-1400",
+      "n_games": 88,
+      "white_score": 0.4375,
+      "ci_lo": 0.33862252721172337,
+      "ci_hi": 0.5416060402348369,
+      "draw_rate": 0.03409090909090909,
+      "book_cp": 34.60991580916745,
+      "predicted_score": 0.5247012436244747,
+      "gap": -0.08720124362447468,
+      "corpus": "lichess2017"
+    },
+    {
+      "family": "Queen's Pawn Game",
+      "band": "1400-1600",
+      "n_games": 144,
+      "white_score": 0.5555555555555556,
+      "ci_lo": 0.47399938221692756,
+      "ci_hi": 0.6342245547534517,
+      "draw_rate": 0.027777777777777776,
+      "book_cp": 34.60991580916745,
+      "predicted_score": 0.5247012436244747,
+      "gap": 0.030854311931080902,
+      "corpus": "lichess2017"
+    },
+    {
+      "family": "Queen's Pawn Game",
+      "band": "1600-1800",
+      "n_games": 115,
+      "white_score": 0.5347826086956522,
+      "ci_lo": 0.44397267893817,
+      "ci_hi": 0.6233438162958223,
+      "draw_rate": 0.0782608695652174,
+      "book_cp": 34.60991580916745,
+      "predicted_score": 0.5247012436244747,
+      "gap": 0.010081365071177517,
+      "corpus": "lichess2017"
+    },
+    {
+      "family": "Queen's Pawn Game",
+      "band": "1800-2000",
+      "n_games": 77,
+      "white_score": 0.5,
+      "ci_lo": 0.3910044855656655,
+      "ci_hi": 0.6089955144343344,
+      "draw_rate": 0.06493506493506493,
+      "book_cp": 34.60991580916745,
+      "predicted_score": 0.5247012436244747,
+      "gap": -0.024701243624474678,
+      "corpus": "lichess2017"
+    },
+    {
+      "family": "Ruy Lopez",
+      "band": "1400-1600",
+      "n_games": 96,
+      "white_score": 0.4947916666666667,
+      "ci_lo": 0.39691947555680496,
+      "ci_hi": 0.5930646593128287,
+      "draw_rate": 0.052083333333333336,
+      "book_cp": 35.20990312163617,
+      "predicted_score": 0.5251287418320374,
+      "gap": -0.030337075165370708,
+      "corpus": "lichess2017"
+    },
+    {
+      "family": "Ruy Lopez",
+      "band": "1600-1800",
+      "n_games": 70,
+      "white_score": 0.55,
+      "ci_lo": 0.43389579154352786,
+      "ci_hi": 0.660901720969744,
+      "draw_rate": 0.1,
+      "book_cp": 35.20990312163617,
+      "predicted_score": 0.5251287418320374,
+      "gap": 0.02487125816796265,
+      "corpus": "lichess2017"
+    },
+    {
+      "family": "Sicilian Defense",
+      "band": "1200-1400",
+      "n_games": 88,
+      "white_score": 0.42613636363636365,
+      "ci_lo": 0.3280406422698454,
+      "ci_hi": 0.5304113010760895,
+      "draw_rate": 0.03409090909090909,
+      "book_cp": 34.79705981750591,
+      "predicted_score": 0.5248345899055279,
+      "gap": -0.09869822626916425,
+      "corpus": "lichess2017"
+    },
+    {
+      "family": "Sicilian Defense",
+      "band": "1400-1600",
+      "n_games": 299,
+      "white_score": 0.5284280936454849,
+      "ci_lo": 0.47184316616103583,
+      "ci_hi": 0.5842917901989886,
+      "draw_rate": 0.046822742474916385,
+      "book_cp": 34.79705981750591,
+      "predicted_score": 0.5248345899055279,
+      "gap": 0.003593503739957038,
+      "corpus": "lichess2017"
+    },
+    {
+      "family": "Sicilian Defense",
+      "band": "1600-1800",
+      "n_games": 251,
+      "white_score": 0.49203187250996017,
+      "ci_lo": 0.43077061582083376,
+      "ci_hi": 0.5535333596682545,
+      "draw_rate": 0.043824701195219126,
+      "book_cp": 34.79705981750591,
+      "predicted_score": 0.5248345899055279,
+      "gap": -0.032802717395567726,
+      "corpus": "lichess2017"
+    },
+    {
+      "family": "Sicilian Defense",
+      "band": "1800-2000",
+      "n_games": 236,
+      "white_score": 0.4872881355932203,
+      "ci_lo": 0.4242322573729316,
+      "ci_hi": 0.5507512317298763,
+      "draw_rate": 0.03389830508474576,
+      "book_cp": 34.79705981750591,
+      "predicted_score": 0.5248345899055279,
+      "gap": -0.037546454312307576,
+      "corpus": "lichess2017"
+    },
+    {
+      "family": "Sicilian Defense",
+      "band": "2000-2200",
+      "n_games": 65,
+      "white_score": 0.6307692307692307,
+      "ci_lo": 0.5092359303460251,
+      "ci_hi": 0.7377077781093274,
+      "draw_rate": 0.06153846153846154,
+      "book_cp": 34.79705981750591,
+      "predicted_score": 0.5248345899055279,
+      "gap": 0.10593464086370286,
+      "corpus": "lichess2017"
+    },
+    {
+      "family": "Caro-Kann Defense",
+      "band": "2200-2400",
+      "n_games": 845,
+      "white_score": 0.5189349112426036,
+      "ci_lo": 0.48523658562978794,
+      "ci_hi": 0.5524618495081695,
+      "draw_rate": 0.3088757396449704,
+      "book_cp": 30.65155695703587,
+      "predicted_score": 0.5218799869331541,
+      "gap": -0.0029450756905504694,
+      "corpus": "twic"
+    },
+    {
+      "family": "Caro-Kann Defense",
+      "band": "2400-2500",
+      "n_games": 434,
+      "white_score": 0.5518433179723502,
+      "ci_lo": 0.5048039839425489,
+      "ci_hi": 0.5979729107152452,
+      "draw_rate": 0.4400921658986175,
+      "book_cp": 30.65155695703587,
+      "predicted_score": 0.5218799869331541,
+      "gap": 0.02996333103919613,
+      "corpus": "twic"
+    },
+    {
+      "family": "Caro-Kann Defense",
+      "band": "2500-2600",
+      "n_games": 316,
+      "white_score": 0.5585443037974683,
+      "ci_lo": 0.5034162834946183,
+      "ci_hi": 0.6122659792254281,
+      "draw_rate": 0.5031645569620253,
+      "book_cp": 30.65155695703587,
+      "predicted_score": 0.5218799869331541,
+      "gap": 0.03666431686431426,
+      "corpus": "twic"
+    },
+    {
+      "family": "Caro-Kann Defense",
+      "band": "2600+",
+      "n_games": 200,
+      "white_score": 0.5775,
+      "ci_lo": 0.5082128843711174,
+      "ci_hi": 0.6438659847115428,
+      "draw_rate": 0.485,
+      "book_cp": 30.65155695703587,
+      "predicted_score": 0.5218799869331541,
+      "gap": 0.05562001306684594,
+      "corpus": "twic"
+    },
+    {
+      "family": "English Opening",
+      "band": "2200-2400",
+      "n_games": 1185,
+      "white_score": 0.5054852320675105,
+      "ci_lo": 0.47704659401600347,
+      "ci_hi": 0.5338884203711108,
+      "draw_rate": 0.3763713080168776,
+      "book_cp": 25.547044791942753,
+      "predicted_score": 0.5182397917422167,
+      "gap": -0.012754559674706178,
+      "corpus": "twic"
+    },
+    {
+      "family": "English Opening",
+      "band": "2400-2500",
+      "n_games": 660,
+      "white_score": 0.5621212121212121,
+      "ci_lo": 0.5240188028708017,
+      "ci_hi": 0.5995046400710085,
+      "draw_rate": 0.4666666666666667,
+      "book_cp": 25.547044791942753,
+      "predicted_score": 0.5182397917422167,
+      "gap": 0.04388142037899545,
+      "corpus": "twic"
+    },
+    {
+      "family": "English Opening",
+      "band": "2500-2600",
+      "n_games": 574,
+      "white_score": 0.5618466898954704,
+      "ci_lo": 0.5209782992333515,
+      "ci_hi": 0.6018927436268372,
+      "draw_rate": 0.48606271777003485,
+      "book_cp": 25.547044791942753,
+      "predicted_score": 0.5182397917422167,
+      "gap": 0.04360689815325369,
+      "corpus": "twic"
+    },
+    {
+      "family": "English Opening",
+      "band": "2600+",
+      "n_games": 379,
+      "white_score": 0.5910290237467019,
+      "ci_lo": 0.5408581580481311,
+      "ci_hi": 0.6393730393974966,
+      "draw_rate": 0.49076517150395776,
+      "book_cp": 25.547044791942753,
+      "predicted_score": 0.5182397917422167,
+      "gap": 0.07278923200448517,
+      "corpus": "twic"
+    },
+    {
+      "family": "French Defense",
+      "band": "2200-2400",
+      "n_games": 1177,
+      "white_score": 0.5548003398470688,
+      "ci_lo": 0.5262745694785945,
+      "ci_hi": 0.5829695492922887,
+      "draw_rate": 0.31945624468988953,
+      "book_cp": 33.03335155822854,
+      "predicted_score": 0.5235777516039872,
+      "gap": 0.03122258824308155,
+      "corpus": "twic"
+    },
+    {
+      "family": "French Defense",
+      "band": "2400-2500",
+      "n_games": 554,
+      "white_score": 0.575812274368231,
+      "ci_lo": 0.5342739999622574,
+      "ci_hi": 0.6163063798444832,
+      "draw_rate": 0.4151624548736462,
+      "book_cp": 33.03335155822854,
+      "predicted_score": 0.5235777516039872,
+      "gap": 0.052234522764243785,
+      "corpus": "twic"
+    },
+    {
+      "family": "French Defense",
+      "band": "2500-2600",
+      "n_games": 377,
+      "white_score": 0.5809018567639257,
+      "ci_lo": 0.5305234252056237,
+      "ci_hi": 0.6296481526892281,
+      "draw_rate": 0.4562334217506631,
+      "book_cp": 33.03335155822854,
+      "predicted_score": 0.5235777516039872,
+      "gap": 0.057324105159938465,
+      "corpus": "twic"
+    },
+    {
+      "family": "French Defense",
+      "band": "2600+",
+      "n_games": 218,
+      "white_score": 0.5619266055045872,
+      "ci_lo": 0.49555525287040947,
+      "ci_hi": 0.6261532093837394,
+      "draw_rate": 0.4908256880733945,
+      "book_cp": 33.03335155822854,
+      "predicted_score": 0.5235777516039872,
+      "gap": 0.038348853900599944,
+      "corpus": "twic"
+    },
+    {
+      "family": "Indian Defense",
+      "band": "2200-2400",
+      "n_games": 982,
+      "white_score": 0.5147657841140529,
+      "ci_lo": 0.4835097401555936,
+      "ci_hi": 0.5459067502826267,
+      "draw_rate": 0.3167006109979633,
+      "book_cp": 30.879543094496366,
+      "predicted_score": 0.5220425200100343,
+      "gap": -0.007276735895981323,
+      "corpus": "twic"
+    },
+    {
+      "family": "Indian Defense",
+      "band": "2400-2500",
+      "n_games": 498,
+      "white_score": 0.5261044176706827,
+      "ci_lo": 0.48221735013331996,
+      "ci_hi": 0.5695918263080113,
+      "draw_rate": 0.39357429718875503,
+      "book_cp": 30.879543094496366,
+      "predicted_score": 0.5220425200100343,
+      "gap": 0.004061897660648461,
+      "corpus": "twic"
+    },
+    {
+      "family": "Indian Defense",
+      "band": "2500-2600",
+      "n_games": 334,
+      "white_score": 0.5389221556886228,
+      "ci_lo": 0.4853220518648633,
+      "ci_hi": 0.5916370911181206,
+      "draw_rate": 0.48502994011976047,
+      "book_cp": 30.879543094496366,
+      "predicted_score": 0.5220425200100343,
+      "gap": 0.016879635678588523,
+      "corpus": "twic"
+    },
+    {
+      "family": "Indian Defense",
+      "band": "2600+",
+      "n_games": 266,
+      "white_score": 0.5827067669172933,
+      "ci_lo": 0.5226809648071135,
+      "ci_hi": 0.640377659215276,
+      "draw_rate": 0.44360902255639095,
+      "book_cp": 30.879543094496366,
+      "predicted_score": 0.5220425200100343,
+      "gap": 0.06066424690725902,
+      "corpus": "twic"
+    },
+    {
+      "family": "King's Indian Defense",
+      "band": "2200-2400",
+      "n_games": 649,
+      "white_score": 0.5531587057010786,
+      "ci_lo": 0.5147069854374056,
+      "ci_hi": 0.5909848087129672,
+      "draw_rate": 0.2896764252696456,
+      "book_cp": 45.02568306010929,
+      "predicted_score": 0.5321169211845019,
+      "gap": 0.021041784516576678,
+      "corpus": "twic"
+    },
+    {
+      "family": "King's Indian Defense",
+      "band": "2400-2500",
+      "n_games": 314,
+      "white_score": 0.5700636942675159,
+      "ci_lo": 0.5147832731560678,
+      "ci_hi": 0.6236504623901917,
+      "draw_rate": 0.39490445859872614,
+      "book_cp": 45.02568306010929,
+      "predicted_score": 0.5321169211845019,
+      "gap": 0.037946773083013974,
+      "corpus": "twic"
+    },
+    {
+      "family": "King's Indian Defense",
+      "band": "2500-2600",
+      "n_games": 252,
+      "white_score": 0.6051587301587301,
+      "ci_lo": 0.5436603418618221,
+      "ci_hi": 0.6634990880354267,
+      "draw_rate": 0.4246031746031746,
+      "book_cp": 45.02568306010929,
+      "predicted_score": 0.5321169211845019,
+      "gap": 0.07304180897422818,
+      "corpus": "twic"
+    },
+    {
+      "family": "King's Indian Defense",
+      "band": "2600+",
+      "n_games": 178,
+      "white_score": 0.5617977528089888,
+      "ci_lo": 0.4883635424031936,
+      "ci_hi": 0.6326208748038702,
+      "draw_rate": 0.39325842696629215,
+      "book_cp": 45.02568306010929,
+      "predicted_score": 0.5321169211845019,
+      "gap": 0.02968083162448687,
+      "corpus": "twic"
+    },
+    {
+      "family": "Nimzo-Indian Defense",
+      "band": "2200-2400",
+      "n_games": 437,
+      "white_score": 0.5423340961098398,
+      "ci_lo": 0.49545627427954636,
+      "ci_hi": 0.5884740988975767,
+      "draw_rate": 0.3524027459954233,
+      "book_cp": 19.22640218878249,
+      "predicted_score": 0.513729692047918,
+      "gap": 0.028604404061921884,
+      "corpus": "twic"
+    },
+    {
+      "family": "Nimzo-Indian Defense",
+      "band": "2400-2500",
+      "n_games": 302,
+      "white_score": 0.4867549668874172,
+      "ci_lo": 0.43090337540454343,
+      "ci_hi": 0.542939293480265,
+      "draw_rate": 0.45695364238410596,
+      "book_cp": 19.22640218878249,
+      "predicted_score": 0.513729692047918,
+      "gap": -0.026974725160500757,
+      "corpus": "twic"
+    },
+    {
+      "family": "Nimzo-Indian Defense",
+      "band": "2500-2600",
+      "n_games": 256,
+      "white_score": 0.537109375,
+      "ci_lo": 0.4759303860873271,
+      "ci_hi": 0.5971910848395762,
+      "draw_rate": 0.48046875,
+      "book_cp": 19.22640218878249,
+      "predicted_score": 0.513729692047918,
+      "gap": 0.023379682952082037,
+      "corpus": "twic"
+    },
+    {
+      "family": "Nimzo-Indian Defense",
+      "band": "2600+",
+      "n_games": 232,
+      "white_score": 0.5668103448275862,
+      "ci_lo": 0.5024709784188724,
+      "ci_hi": 0.6289731773195554,
+      "draw_rate": 0.5387931034482759,
+      "book_cp": 19.22640218878249,
+      "predicted_score": 0.513729692047918,
+      "gap": 0.053080652779668225,
+      "corpus": "twic"
+    },
+    {
+      "family": "Queen's Gambit Declined",
+      "band": "2200-2400",
+      "n_games": 645,
+      "white_score": 0.4937984496124031,
+      "ci_lo": 0.4553650488143447,
+      "ci_hi": 0.5323052855168695,
+      "draw_rate": 0.3550387596899225,
+      "book_cp": 33.23683119037744,
+      "predicted_score": 0.52372276901666,
+      "gap": -0.029924319404256938,
+      "corpus": "twic"
+    },
+    {
+      "family": "Queen's Gambit Declined",
+      "band": "2400-2500",
+      "n_games": 471,
+      "white_score": 0.5498938428874734,
+      "ci_lo": 0.5047398555007337,
+      "ci_hi": 0.5942405202708919,
+      "draw_rate": 0.46709129511677283,
+      "book_cp": 33.23683119037744,
+      "predicted_score": 0.52372276901666,
+      "gap": 0.02617107387081341,
+      "corpus": "twic"
+    },
+    {
+      "family": "Queen's Gambit Declined",
+      "band": "2500-2600",
+      "n_games": 361,
+      "white_score": 0.5637119113573407,
+      "ci_lo": 0.5121481901260783,
+      "ci_hi": 0.6139339233171255,
+      "draw_rate": 0.556786703601108,
+      "book_cp": 33.23683119037744,
+      "predicted_score": 0.52372276901666,
+      "gap": 0.03998914234068063,
+      "corpus": "twic"
+    },
+    {
+      "family": "Queen's Gambit Declined",
+      "band": "2600+",
+      "n_games": 316,
+      "white_score": 0.5617088607594937,
+      "ci_lo": 0.506584333913031,
+      "ci_hi": 0.6153510240891801,
+      "draw_rate": 0.560126582278481,
+      "book_cp": 33.23683119037744,
+      "predicted_score": 0.52372276901666,
+      "gap": 0.03798609174283363,
+      "corpus": "twic"
+    },
+    {
+      "family": "Queen's Pawn Game",
+      "band": "2200-2400",
+      "n_games": 1010,
+      "white_score": 0.5183168316831683,
+      "ci_lo": 0.48748996308783393,
+      "ci_hi": 0.5490048897570287,
+      "draw_rate": 0.30198019801980197,
+      "book_cp": 34.60991580916745,
+      "predicted_score": 0.5247012436244747,
+      "gap": -0.006384411941306345,
+      "corpus": "twic"
+    },
+    {
+      "family": "Queen's Pawn Game",
+      "band": "2400-2500",
+      "n_games": 484,
+      "white_score": 0.5630165289256198,
+      "ci_lo": 0.5185015814032956,
+      "ci_hi": 0.6065390055413191,
+      "draw_rate": 0.40289256198347106,
+      "book_cp": 34.60991580916745,
+      "predicted_score": 0.5247012436244747,
+      "gap": 0.03831528530114514,
+      "corpus": "twic"
+    },
+    {
+      "family": "Queen's Pawn Game",
+      "band": "2500-2600",
+      "n_games": 343,
+      "white_score": 0.5553935860058309,
+      "ci_lo": 0.5024792102712157,
+      "ci_hi": 0.6070808886327219,
+      "draw_rate": 0.4577259475218659,
+      "book_cp": 34.60991580916745,
+      "predicted_score": 0.5247012436244747,
+      "gap": 0.030692342381356208,
+      "corpus": "twic"
+    },
+    {
+      "family": "Queen's Pawn Game",
+      "band": "2600+",
+      "n_games": 148,
+      "white_score": 0.5945945945945946,
+      "ci_lo": 0.5140709959732847,
+      "ci_hi": 0.6703316973597678,
+      "draw_rate": 0.43243243243243246,
+      "book_cp": 34.60991580916745,
+      "predicted_score": 0.5247012436244747,
+      "gap": 0.06989335097011995,
+      "corpus": "twic"
+    },
+    {
+      "family": "Ruy Lopez",
+      "band": "2200-2400",
+      "n_games": 712,
+      "white_score": 0.5393258426966292,
+      "ci_lo": 0.5025992862163381,
+      "ci_hi": 0.5756303109459392,
+      "draw_rate": 0.41292134831460675,
+      "book_cp": 35.20990312163617,
+      "predicted_score": 0.5251287418320374,
+      "gap": 0.014197100864591805,
+      "corpus": "twic"
+    },
+    {
+      "family": "Ruy Lopez",
+      "band": "2400-2500",
+      "n_games": 447,
+      "white_score": 0.5369127516778524,
+      "ci_lo": 0.49056858920073176,
+      "ci_hi": 0.5826278505244401,
+      "draw_rate": 0.4966442953020134,
+      "book_cp": 35.20990312163617,
+      "predicted_score": 0.5251287418320374,
+      "gap": 0.011784009845814958,
+      "corpus": "twic"
+    },
+    {
+      "family": "Ruy Lopez",
+      "band": "2500-2600",
+      "n_games": 472,
+      "white_score": 0.5635593220338984,
+      "ci_lo": 0.5184819927444293,
+      "ci_hi": 0.6076103875770895,
+      "draw_rate": 0.5550847457627118,
+      "book_cp": 35.20990312163617,
+      "predicted_score": 0.5251287418320374,
+      "gap": 0.038430580201860964,
+      "corpus": "twic"
+    },
+    {
+      "family": "Ruy Lopez",
+      "band": "2600+",
+      "n_games": 531,
+      "white_score": 0.5555555555555556,
+      "ci_lo": 0.5130416472709902,
+      "ci_hi": 0.5972713874667714,
+      "draw_rate": 0.591337099811676,
+      "book_cp": 35.20990312163617,
+      "predicted_score": 0.5251287418320374,
+      "gap": 0.030426813723518187,
+      "corpus": "twic"
+    },
+    {
+      "family": "Sicilian Defense",
+      "band": "2200-2400",
+      "n_games": 4083,
+      "white_score": 0.5170217976977712,
+      "ci_lo": 0.5016850271732977,
+      "ci_hi": 0.532326567501671,
+      "draw_rate": 0.29488121479304436,
+      "book_cp": 34.79705981750591,
+      "predicted_score": 0.5248345899055279,
+      "gap": -0.007812792207756658,
+      "corpus": "twic"
+    },
+    {
+      "family": "Sicilian Defense",
+      "band": "2400-2500",
+      "n_games": 1913,
+      "white_score": 0.5491374803972817,
+      "ci_lo": 0.5267633818809461,
+      "ci_hi": 0.5713146231039206,
+      "draw_rate": 0.4072138003136435,
+      "book_cp": 34.79705981750591,
+      "predicted_score": 0.5248345899055279,
+      "gap": 0.024302890491753826,
+      "corpus": "twic"
+    },
+    {
+      "family": "Sicilian Defense",
+      "band": "2500-2600",
+      "n_games": 1399,
+      "white_score": 0.5486061472480344,
+      "ci_lo": 0.5224315670111528,
+      "ci_hi": 0.5745145172794757,
+      "draw_rate": 0.4624731951393853,
+      "book_cp": 34.79705981750591,
+      "predicted_score": 0.5248345899055279,
+      "gap": 0.023771557342506466,
+      "corpus": "twic"
+    },
+    {
+      "family": "Sicilian Defense",
+      "band": "2600+",
+      "n_games": 837,
+      "white_score": 0.55973715651135,
+      "ci_lo": 0.5259089086951257,
+      "ci_hi": 0.5930195553580323,
+      "draw_rate": 0.45997610513739545,
+      "book_cp": 34.79705981750591,
+      "predicted_score": 0.5248345899055279,
+      "gap": 0.03490256660582214,
+      "corpus": "twic"
+    },
+    {
+      "family": "Slav Defense",
+      "band": "2200-2400",
+      "n_games": 462,
+      "white_score": 0.5508658008658008,
+      "ci_lo": 0.5052746116010868,
+      "ci_hi": 0.5956180523430522,
+      "draw_rate": 0.4090909090909091,
+      "book_cp": 35.68373879641485,
+      "predicted_score": 0.5254663294770483,
+      "gap": 0.025399471388752537,
+      "corpus": "twic"
+    },
+    {
+      "family": "Slav Defense",
+      "band": "2400-2500",
+      "n_games": 318,
+      "white_score": 0.5157232704402516,
+      "ci_lo": 0.4609355839328785,
+      "ci_hi": 0.5701356013955564,
+      "draw_rate": 0.5220125786163522,
+      "book_cp": 35.68373879641485,
+      "predicted_score": 0.5254663294770483,
+      "gap": -0.00974305903679673,
+      "corpus": "twic"
+    },
+    {
+      "family": "Slav Defense",
+      "band": "2500-2600",
+      "n_games": 268,
+      "white_score": 0.5559701492537313,
+      "ci_lo": 0.496108934246084,
+      "ci_hi": 0.6142494509311663,
+      "draw_rate": 0.5597014925373134,
+      "book_cp": 35.68373879641485,
+      "predicted_score": 0.5254663294770483,
+      "gap": 0.03050381977668304,
+      "corpus": "twic"
+    },
+    {
+      "family": "Slav Defense",
+      "band": "2600+",
+      "n_games": 215,
+      "white_score": 0.5558139534883721,
+      "ci_lo": 0.48899469994927575,
+      "ci_hi": 0.6206736629214035,
+      "draw_rate": 0.5162790697674419,
+      "book_cp": 35.68373879641485,
+      "predicted_score": 0.5254663294770483,
+      "gap": 0.030347624011323848,
+      "corpus": "twic"
+    },
+    {
+      "family": "Zukertort Opening",
+      "band": "2200-2400",
+      "n_games": 1318,
+      "white_score": 0.5345220030349014,
+      "ci_lo": 0.5075309951431126,
+      "ci_hi": 0.5613123518963512,
+      "draw_rate": 0.3209408194233687,
+      "book_cp": 31.088495575221238,
+      "predicted_score": 0.5221914797478758,
+      "gap": 0.012330523287025552,
+      "corpus": "twic"
+    },
+    {
+      "family": "Zukertort Opening",
+      "band": "2400-2500",
+      "n_games": 728,
+      "white_score": 0.5487637362637363,
+      "ci_lo": 0.5124537881069839,
+      "ci_hi": 0.5845617409364594,
+      "draw_rate": 0.45467032967032966,
+      "book_cp": 31.088495575221238,
+      "predicted_score": 0.5221914797478758,
+      "gap": 0.026572256515860482,
+      "corpus": "twic"
+    },
+    {
+      "family": "Zukertort Opening",
+      "band": "2500-2600",
+      "n_games": 579,
+      "white_score": 0.5578583765112263,
+      "ci_lo": 0.5171549449718749,
+      "ci_hi": 0.5977991008615042,
+      "draw_rate": 0.49740932642487046,
+      "book_cp": 31.088495575221238,
+      "predicted_score": 0.5221914797478758,
+      "gap": 0.03566689676335044,
+      "corpus": "twic"
+    },
+    {
+      "family": "Zukertort Opening",
+      "band": "2600+",
+      "n_games": 407,
+      "white_score": 0.5921375921375921,
+      "ci_lo": 0.5437470861103956,
+      "ci_hi": 0.6388050215632187,
+      "draw_rate": 0.4914004914004914,
+      "book_cp": 31.088495575221238,
+      "predicted_score": 0.5221914797478758,
+      "gap": 0.06994611238971626,
+      "corpus": "twic"
+    }
+  ],
+  "book_eval_nodes": 400000
+}

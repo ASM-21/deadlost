@@ -1,0 +1,260 @@
+{
+  "design": {
+    "corpus": "TWIC over-the-board classical only, pairings within 100 Elo",
+    "bands": [
+      "2200-2400",
+      "2400-2500",
+      "2500-2600",
+      "2600-3200"
+    ],
+    "games_evaluated": 520,
+    "lost_game_sides": 223,
+    "why": "Track 6 varied rating and playing format together and could not attribute its one surviving contrast to either. This holds format constant."
+  },
+  "by_band": [
+    {
+      "band": "2200-2400",
+      "n_lost_game_sides": 73,
+      "n_games": 70,
+      "save_rate": {
+        "point": 0.1095890410958904,
+        "ci_lo": 0.041666666666666664,
+        "ci_hi": 0.19185643123999246,
+        "n": 70
+      },
+      "draw_save_rate": {
+        "point": 0.0684931506849315,
+        "ci_lo": 0.0136986301369863,
+        "ci_hi": 0.14473684210526316,
+        "n": 70
+      },
+      "win_save_rate": {
+        "point": 0.0410958904109589,
+        "ci_lo": 0.0,
+        "ci_hi": 0.09090909090909091,
+        "n": 70
+      },
+      "base_draw_rate": 0.3158588855918233,
+      "draw_save_over_base_draw": 0.2168473131809992,
+      "median_entry_cp": -530.0
+    },
+    {
+      "band": "2400-2500",
+      "n_lost_game_sides": 55,
+      "n_games": 55,
+      "save_rate": {
+        "point": 0.05454545454545454,
+        "ci_lo": 0.0,
+        "ci_hi": 0.12727272727272726,
+        "n": 55
+      },
+      "draw_save_rate": {
+        "point": 0.05454545454545454,
+        "ci_lo": 0.0,
+        "ci_hi": 0.12727272727272726,
+        "n": 55
+      },
+      "win_save_rate": {
+        "point": 0.0,
+        "ci_lo": 0.0,
+        "ci_hi": 0.0,
+        "n": 55
+      },
+      "base_draw_rate": 0.4454742654308815,
+      "draw_save_over_base_draw": 0.12244355909694554,
+      "median_entry_cp": -533.0
+    },
+    {
+      "band": "2500-2600",
+      "n_lost_game_sides": 49,
+      "n_games": 48,
+      "save_rate": {
+        "point": 0.061224489795918366,
+        "ci_lo": 0.0,
+        "ci_hi": 0.13725490196078433,
+        "n": 48
+      },
+      "draw_save_rate": {
+        "point": 0.04081632653061224,
+        "ci_lo": 0.0,
+        "ci_hi": 0.10416666666666667,
+        "n": 48
+      },
+      "win_save_rate": {
+        "point": 0.02040816326530612,
+        "ci_lo": 0.0,
+        "ci_hi": 0.058823529411764705,
+        "n": 48
+      },
+      "base_draw_rate": 0.5141497620836464,
+      "draw_save_over_base_draw": 0.07938606519081086,
+      "median_entry_cp": -518.0
+    },
+    {
+      "band": "2600-3200",
+      "n_lost_game_sides": 46,
+      "n_games": 46,
+      "save_rate": {
+        "point": 0.06521739130434782,
+        "ci_lo": 0.0,
+        "ci_hi": 0.15217391304347827,
+        "n": 46
+      },
+      "draw_save_rate": {
+        "point": 0.06521739130434782,
+        "ci_lo": 0.0,
+        "ci_hi": 0.15217391304347827,
+        "n": 46
+      },
+      "win_save_rate": {
+        "point": 0.0,
+        "ci_lo": 0.0,
+        "ci_hi": 0.0,
+        "n": 46
+      },
+      "base_draw_rate": 0.5090036014405762,
+      "draw_save_over_base_draw": 0.1281275635767022,
+      "median_entry_cp": -529.0
+    }
+  ],
+  "gradients": {
+    "save_rate": {
+      "slope_per_band_step": -0.014666582827679438,
+      "ci_lo": -0.05504358655043586,
+      "ci_hi": 0.006679035250463823,
+      "excludes_zero": false,
+      "rates": [
+        {
+          "x": 0,
+          "rate": 0.1095890410958904,
+          "n": 73
+        },
+        {
+          "x": 1,
+          "rate": 0.05454545454545454,
+          "n": 55
+        },
+        {
+          "x": 2,
+          "rate": 0.061224489795918366,
+          "n": 49
+        },
+        {
+          "x": 3,
+          "rate": 0.06521739130434782,
+          "n": 46
+        }
+      ]
+    },
+    "draw_save_rate": {
+      "slope_per_band_step": -0.0033797591725091957,
+      "ci_lo": -0.013947696139476962,
+      "ci_hi": 0.024401064773735583,
+      "excludes_zero": false,
+      "rates": [
+        {
+          "x": 0,
+          "rate": 0.0684931506849315,
+          "n": 73
+        },
+        {
+          "x": 1,
+          "rate": 0.05454545454545454,
+          "n": 55
+        },
+        {
+          "x": 2,
+          "rate": 0.04081632653061224,
+          "n": 49
+        },
+        {
+          "x": 3,
+          "rate": 0.06521739130434782,
+          "n": 46
+        }
+      ]
+    },
+    "win_save_rate": {
+      "slope_per_band_step": -0.011286823655170246,
+      "ci_lo": -0.0410958904109589,
+      "ci_hi": 0.02040816326530612,
+      "excludes_zero": false,
+      "rates": [
+        {
+          "x": 0,
+          "rate": 0.0410958904109589,
+          "n": 73
+        },
+        {
+          "x": 1,
+          "rate": 0.0,
+          "n": 55
+        },
+        {
+          "x": 2,
+          "rate": 0.02040816326530612,
+          "n": 49
+        },
+        {
+          "x": 3,
+          "rate": 0.0,
+          "n": 46
+        }
+      ]
+    }
+  },
+  "normalised_draw_save_gradient": {
+    "slope_per_band_step": -0.03511188015736529,
+    "ci_lo": -0.09440375408405366,
+    "ci_hi": 0.048741498385891355,
+    "excludes_zero": false,
+    "ratios": [
+      0.217,
+      0.122,
+      0.079,
+      0.128
+    ]
+  },
+  "threshold_sensitivity": {
+    "lost_at_300cp": {
+      "n": 332,
+      "save_rate": 0.20481927710843373,
+      "gradient_excludes_zero": false
+    },
+    "lost_at_500cp": {
+      "n": 223,
+      "save_rate": 0.07623318385650224,
+      "gradient_excludes_zero": false
+    },
+    "lost_at_800cp": {
+      "n": 86,
+      "save_rate": 0.023255813953488372,
+      "gradient_excludes_zero": false
+    }
+  },
+  "resolution": {
+    "mde": 0.20522137037740595,
+    "units": "difference in proportion",
+    "method": "two-sample normal approximation",
+    "note": "baseline p=0.073, n=55 per group, design effect 2.19x from clustering",
+    "baseline_save_rate": 0.07264409418540278,
+    "n_lost_game_sides_per_band": 55,
+    "n_games_required_per_band_for_5pp": 927
+  },
+  "level_shift_vs_gradient": {
+    "online_rating_span": "1200-2200 (about 1000 Elo)",
+    "otb_rating_span": "2200-3200 (about 400 Elo of populated bands)",
+    "online_internal_gradient_excludes_zero": false,
+    "otb_internal_gradient_excludes_zero": false,
+    "online_mean_save_rate": 0.1885593220338983,
+    "otb_mean_save_rate": 0.07623318385650224,
+    "level_step": 0.11232613817739606,
+    "reading": "Neither corpus shows an internal rating gradient, and they differ by a large step. A mechanism in which strength alone makes lost positions harder to save would predict a decline within each corpus, which is absent across 1000 Elo online and 400 Elo over the board. The step is better explained by what differs between the corpora, of which playing format (online rapid vs classical OTB) is the most obvious candidate.",
+    "caveat": "The rating ranges do not overlap, so rating and format cannot be separated by controlling for one. This argument rests on the ABSENCE of within-corpus gradients, which is a weaker form of evidence, and both within-corpus nulls are themselves low-powered."
+  },
+  "limitations": [
+    "TWIC over-the-board coverage skews European and tournament-level; this is not all OTB chess.",
+    "Rating band and opponent strength move together by construction, so 'harder to save' may mean the defender is better or the attacker is better at converting. This design cannot separate defensive skill from conversion skill.",
+    "A null gradient here is a null on LARGE gradients only; see `resolution`."
+  ]
+}

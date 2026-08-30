@@ -1,0 +1,69 @@
+{
+  "benchmarks": {
+    "rating_inflation_cp_per_decade": 0.5,
+    "opening_score_per_pawn": 0.05
+  },
+  "nulls": {
+    "t4_inflation_acpl_per_decade": {
+      "point_estimate": 0.6938471245208739,
+      "ci": [
+        -0.6487388632872257,
+        1.9790143126793889
+      ],
+      "resolution_half_width": 1.3138765879833074,
+      "units": "cp per decade",
+      "excludes_zero": false,
+      "benchmark": 0.5,
+      "benchmark_would_have_been_detected": false,
+      "verdict": "An effect of 0.5 cp per decade would have fit inside this interval, so the null does NOT rule it out. The design cannot see effects this small."
+    },
+    "t8_within_player_acpl_per_decade": {
+      "point_estimate": 1.3215255877930951,
+      "ci": [
+        -0.3632502876371554,
+        3.0194430222674917
+      ],
+      "resolution_half_width": 1.6913466549523235,
+      "units": "cp per decade",
+      "excludes_zero": false,
+      "benchmark": 0.5,
+      "benchmark_would_have_been_detected": false,
+      "verdict": "An effect of 0.5 cp per decade would have fit inside this interval, so the null does NOT rule it out. The design cannot see effects this small."
+    },
+    "t8_curvature_spec_resolution": {
+      "mde": 6.475838432321272,
+      "units": "cp per decade",
+      "method": "half-width of observed bootstrap CI",
+      "note": "Descriptive resolution bound, not an 80%-power MDE. An effect near this size sits at the edge of what the observed interval could distinguish from zero."
+    },
+    "t2_opening_slope": {
+      "mde": 0.3918117644190595,
+      "units": "slope (y units per x unit)",
+      "method": "OLS slope power",
+      "note": "residual sd=0.02857, sum of squared x deviations=0.04174, n=12",
+      "benchmark": 0.05,
+      "benchmark_detectable": false,
+      "x_range_pawns": [
+        0.1922640218878249,
+        0.4502568306010929
+      ],
+      "why": "The x-axis spans about 0.26 pawns across every mainline opening. Slope resolution depends on the spread of x as much as on sample size, which is why this null is weak no matter how many games are added."
+    },
+    "t6_online_band_contrast": {
+      "mde": 0.23521916731295592,
+      "units": "difference in proportion",
+      "method": "two-sample normal approximation",
+      "note": "baseline p=0.187, n=94 per group, design effect 2.18x from clustering",
+      "baseline_rate": 0.18697584792553484,
+      "n_per_band": 94,
+      "n_required_for_5pp": 2081,
+      "n_required_for_10pp": 521,
+      "why": "The observed spread across online bands is a few points. This is the smallest band-to-band gap the current sample could have called real."
+    }
+  },
+  "clustering": {
+    "ci_width_ratio_clustered_over_naive": 1.4762955835882186,
+    "implied_design_effect_on_sample_size": 2.1794486501220787,
+    "note": "Interval width scales with the standard error and sample size with variance, so a 1.48x width penalty means roughly 2.2x the games are needed for the same resolution. Every MDE below carries this."
+  }
+}
