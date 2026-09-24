@@ -105,6 +105,10 @@ def select_lichess(df: pd.DataFrame, per_cell: int = 32) -> pd.DataFrame:
 
 
 def select_twic(df: pd.DataFrame, per_year: int = 12) -> pd.DataFrame:
+    # Selection deliberately includes every format, reproducing the committed
+    # samples exactly; non-classical games are dropped at load time
+    # (eval_run.load_evals). A fresh redraw restricted to classical games would
+    # add power but change every sampled game; see ROADMAP.md.
     d = df[(df.source == "twic")].copy()
     d = d[d.white_elo.between(TWIC_ELO_LO, TWIC_ELO_HI - 1) & d.black_elo.between(TWIC_ELO_LO, TWIC_ELO_HI - 1)]
     rng = np.random.default_rng(SEED + 1)
@@ -132,6 +136,10 @@ def select_otb_bands(df: pd.DataFrame, per_band: int = 130) -> pd.DataFrame:
     Pairings are restricted to within 100 Elo so a band label describes both
     players, not just one.
     """
+    # Selection deliberately includes every format, reproducing the committed
+    # samples exactly; non-classical games are dropped at load time
+    # (eval_run.load_evals). A fresh redraw restricted to classical games would
+    # add power but change every sampled game; see ROADMAP.md.
     d = df[df.source == "twic"].dropna(subset=["white_elo", "black_elo"]).copy()
     d = d[(d.white_elo - d.black_elo).abs() <= 100]
     rng = np.random.default_rng(SEED + 2)
@@ -190,15 +198,34 @@ def done_game_ids(tag: str) -> set[str]:
     return ids
 
 
-def load_evals(tag: str) -> pd.DataFrame:
-    """All move evaluations for a tag, deduplicated on (game_id, ply)."""
+#: Samples drawn from TWIC. Every analysis of these claims to describe classical
+#: over-the-board play, which TWIC stopped being predominantly in 2020 (see
+#: schema.classify_format). They are therefore filtered to classical games at
+#: load time, in ONE place, so that no track can forget to.
+TWIC_TAGS = frozenset({"twic", "otb", "panel"})
+
+
+def load_evals(tag: str, classical_only: bool | None = None) -> pd.DataFrame:
+    """All move evaluations for a tag, deduplicated on (game_id, ply).
+
+    For TWIC-derived tags, games that are not classical over-the-board are
+    dropped by default. Pass classical_only=False to get everything, which the
+    format-contamination audit does on purpose.
+    """
     files = sorted(shard_dir(tag).glob("shard_*.parquet"))
     if not files:
         raise FileNotFoundError(
             f"no engine evaluations for '{tag}'. Run: python -m chesslab.eval_run --which {tag}"
         )
     df = pd.concat([pd.read_parquet(f) for f in files], ignore_index=True)
-    return df.drop_duplicates(subset=["game_id", "ply"]).reset_index(drop=True)
+    df = df.drop_duplicates(subset=["game_id", "ply"]).reset_index(drop=True)
+    if classical_only is None:
+        classical_only = tag in TWIC_TAGS
+    if classical_only:
+        games = load_games()
+        keep = set(games.loc[games.format == "classical_otb", "game_id"])
+        df = df[df.game_id.isin(keep)].reset_index(drop=True)
+    return df
 
 
 def _write_shard(rows: list[dict], tag: str) -> None:

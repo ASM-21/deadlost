@@ -4,17 +4,17 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "chesslab"
-version = "1.0.0"
-description = "Eleven falsifiable analyses of 190,967 public chess games with Stockfish ground truth, including a falsification track, specification curves, and resolution bounds on every null."
+version = "1.1.0"
+description = "Nine claims about chess tested on 190,967 public games with Stockfish, positioned against the literature, with a falsification track, specification curves with joint inference, and resolution bounds on every null."
 readme = "README.md"
 requires-python = ">=3.10"
-license = { text = "MIT" }
-authors = [{ name = "Andrew" }]
+license = { text = "Apache-2.0" }
+authors = [{ name = "Andrew Morrissey" }]
 keywords = ["chess", "lichess", "twic", "stockfish", "elo", "blunders", "openings",
             "reproducible-research", "falsification", "open-data", "specification-curve"]
 classifiers = [
   "Programming Language :: Python :: 3",
-  "License :: OSI Approved :: MIT License",
+  "License :: OSI Approved :: Apache Software License",
   "Topic :: Scientific/Engineering :: Information Analysis",
 ]
 dependencies = [
@@ -25,6 +25,12 @@ dependencies = [
   "scipy>=1.10",
   "matplotlib>=3.7",
 ]
+
+[project.urls]
+Homepage = "https://github.com/ASM-21/chess-lab"
+Findings = "https://github.com/ASM-21/chess-lab/blob/main/FINDINGS.md"
+Literature = "https://github.com/ASM-21/chess-lab/blob/main/docs/LITERATURE.md"
+Issues = "https://github.com/ASM-21/chess-lab/issues"
 
 [project.optional-dependencies]
 dev = ["pytest>=7.4"]

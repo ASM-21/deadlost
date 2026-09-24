@@ -60,6 +60,20 @@ def build(twic_limit: int | None = None) -> pd.DataFrame:
         ],
         "lichess_tc_class_counts": df.loc[df.source == "lichess2017", "tc_class"].value_counts().to_dict(),
         "lichess_rated_share": float(df.loc[df.source == "lichess2017", "rated"].mean()),
+        "twic_format_counts": df.loc[df.source == "twic", "format"].value_counts().to_dict(),
+        "twic_format_by_era": {
+            era: df.loc[(df.source == "twic") & sel, "format"].value_counts(normalize=True).round(4).to_dict()
+            for era, sel in (
+                ("pre_2020", df.year < 2020),
+                ("2020_on", df.year >= 2020),
+            )
+        },
+        "format_note": (
+            "TWIC carries no TimeControl tag. Format is derived from Event and Site headers "
+            "(schema.classify_format). From 2020 TWIC is dominated by online blitz, so any TWIC "
+            "analysis claiming to describe classical over-the-board play must filter to "
+            "format == 'classical_otb'."
+        ),
         "eval_coverage_note": (
             "No upstream engine evaluations are used. Every centipawn number in this repo "
             "is computed locally by Stockfish 16 at a fixed node budget; see "

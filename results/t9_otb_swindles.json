@@ -7,239 +7,239 @@
       "2500-2600",
       "2600-3200"
     ],
-    "games_evaluated": 520,
-    "lost_game_sides": 223,
+    "games_evaluated": 378,
+    "lost_game_sides": 123,
     "why": "Track 6 varied rating and playing format together and could not attribute its one surviving contrast to either. This holds format constant."
   },
   "by_band": [
     {
       "band": "2200-2400",
-      "n_lost_game_sides": 73,
-      "n_games": 70,
+      "n_lost_game_sides": 33,
+      "n_games": 32,
       "save_rate": {
-        "point": 0.1095890410958904,
-        "ci_lo": 0.041666666666666664,
-        "ci_hi": 0.19185643123999246,
-        "n": 70
+        "point": 0.12121212121212122,
+        "ci_lo": 0.0,
+        "ci_hi": 0.2573319327731082,
+        "n": 32
       },
       "draw_save_rate": {
-        "point": 0.0684931506849315,
-        "ci_lo": 0.0136986301369863,
-        "ci_hi": 0.14473684210526316,
-        "n": 70
+        "point": 0.12121212121212122,
+        "ci_lo": 0.0,
+        "ci_hi": 0.2573319327731082,
+        "n": 32
       },
       "win_save_rate": {
-        "point": 0.0410958904109589,
+        "point": 0.0,
         "ci_lo": 0.0,
-        "ci_hi": 0.09090909090909091,
-        "n": 70
+        "ci_hi": 0.0,
+        "n": 32
       },
-      "base_draw_rate": 0.3158588855918233,
-      "draw_save_over_base_draw": 0.2168473131809992,
-      "median_entry_cp": -530.0
+      "base_draw_rate": 0.4252119499394429,
+      "draw_save_over_base_draw": 0.28506282861848964,
+      "median_entry_cp": -529.0
     },
     {
       "band": "2400-2500",
-      "n_lost_game_sides": 55,
-      "n_games": 55,
+      "n_lost_game_sides": 37,
+      "n_games": 37,
       "save_rate": {
-        "point": 0.05454545454545454,
+        "point": 0.02702702702702703,
         "ci_lo": 0.0,
-        "ci_hi": 0.12727272727272726,
-        "n": 55
+        "ci_hi": 0.08108108108108109,
+        "n": 37
       },
       "draw_save_rate": {
-        "point": 0.05454545454545454,
+        "point": 0.02702702702702703,
         "ci_lo": 0.0,
-        "ci_hi": 0.12727272727272726,
-        "n": 55
+        "ci_hi": 0.08108108108108109,
+        "n": 37
       },
       "win_save_rate": {
         "point": 0.0,
         "ci_lo": 0.0,
         "ci_hi": 0.0,
-        "n": 55
+        "n": 37
       },
-      "base_draw_rate": 0.4454742654308815,
-      "draw_save_over_base_draw": 0.12244355909694554,
-      "median_entry_cp": -533.0
+      "base_draw_rate": 0.5140632847815169,
+      "draw_save_over_base_draw": 0.05257529146146635,
+      "median_entry_cp": -531.0
     },
     {
       "band": "2500-2600",
-      "n_lost_game_sides": 49,
-      "n_games": 48,
+      "n_lost_game_sides": 31,
+      "n_games": 30,
       "save_rate": {
-        "point": 0.061224489795918366,
+        "point": 0.06451612903225806,
         "ci_lo": 0.0,
-        "ci_hi": 0.13725490196078433,
-        "n": 48
+        "ci_hi": 0.15625,
+        "n": 30
       },
       "draw_save_rate": {
-        "point": 0.04081632653061224,
+        "point": 0.03225806451612903,
         "ci_lo": 0.0,
-        "ci_hi": 0.10416666666666667,
-        "n": 48
+        "ci_hi": 0.1,
+        "n": 30
       },
       "win_save_rate": {
-        "point": 0.02040816326530612,
+        "point": 0.03225806451612903,
         "ci_lo": 0.0,
-        "ci_hi": 0.058823529411764705,
-        "n": 48
+        "ci_hi": 0.09090909090909091,
+        "n": 30
       },
-      "base_draw_rate": 0.5141497620836464,
-      "draw_save_over_base_draw": 0.07938606519081086,
-      "median_entry_cp": -518.0
+      "base_draw_rate": 0.5715197956577267,
+      "draw_save_over_base_draw": 0.0564426022706794,
+      "median_entry_cp": -517.0
     },
     {
       "band": "2600-3200",
-      "n_lost_game_sides": 46,
-      "n_games": 46,
+      "n_lost_game_sides": 22,
+      "n_games": 22,
       "save_rate": {
-        "point": 0.06521739130434782,
+        "point": 0.09090909090909091,
         "ci_lo": 0.0,
-        "ci_hi": 0.15217391304347827,
-        "n": 46
+        "ci_hi": 0.22727272727272727,
+        "n": 22
       },
       "draw_save_rate": {
-        "point": 0.06521739130434782,
+        "point": 0.09090909090909091,
         "ci_lo": 0.0,
-        "ci_hi": 0.15217391304347827,
-        "n": 46
+        "ci_hi": 0.22727272727272727,
+        "n": 22
       },
       "win_save_rate": {
         "point": 0.0,
         "ci_lo": 0.0,
         "ci_hi": 0.0,
-        "n": 46
+        "n": 22
       },
-      "base_draw_rate": 0.5090036014405762,
-      "draw_save_over_base_draw": 0.1281275635767022,
+      "base_draw_rate": 0.5804098645362973,
+      "draw_save_over_base_draw": 0.15662912790381373,
       "median_entry_cp": -529.0
     }
   ],
   "gradients": {
     "save_rate": {
-      "slope_per_band_step": -0.014666582827679438,
-      "ci_lo": -0.05504358655043586,
-      "ci_hi": 0.006679035250463823,
+      "slope_per_band_step": -0.007795889440113398,
+      "ci_lo": -0.09418509418509419,
+      "ci_hi": 0.037489102005231034,
       "excludes_zero": false,
       "rates": [
         {
           "x": 0,
-          "rate": 0.1095890410958904,
-          "n": 73
+          "rate": 0.12121212121212122,
+          "n": 33
         },
         {
           "x": 1,
-          "rate": 0.05454545454545454,
-          "n": 55
+          "rate": 0.02702702702702703,
+          "n": 37
         },
         {
           "x": 2,
-          "rate": 0.061224489795918366,
-          "n": 49
+          "rate": 0.06451612903225806,
+          "n": 31
         },
         {
           "x": 3,
-          "rate": 0.06521739130434782,
-          "n": 46
+          "rate": 0.09090909090909091,
+          "n": 22
         }
       ]
     },
     "draw_save_rate": {
-      "slope_per_band_step": -0.0033797591725091957,
-      "ci_lo": -0.013947696139476962,
-      "ci_hi": 0.024401064773735583,
+      "slope_per_band_step": -0.012579730687455704,
+      "ci_lo": -0.09418509418509419,
+      "ci_hi": 0.05865102639296187,
       "excludes_zero": false,
       "rates": [
         {
           "x": 0,
-          "rate": 0.0684931506849315,
-          "n": 73
+          "rate": 0.12121212121212122,
+          "n": 33
         },
         {
           "x": 1,
-          "rate": 0.05454545454545454,
-          "n": 55
+          "rate": 0.02702702702702703,
+          "n": 37
         },
         {
           "x": 2,
-          "rate": 0.04081632653061224,
-          "n": 49
+          "rate": 0.03225806451612903,
+          "n": 31
         },
         {
           "x": 3,
-          "rate": 0.06521739130434782,
-          "n": 46
+          "rate": 0.09090909090909091,
+          "n": 22
         }
       ]
     },
     "win_save_rate": {
-      "slope_per_band_step": -0.011286823655170246,
-      "ci_lo": -0.0410958904109589,
-      "ci_hi": 0.02040816326530612,
+      "slope_per_band_step": 0.00478384124734231,
+      "ci_lo": -0.03225806451612903,
+      "ci_hi": 0.03225806451612903,
       "excludes_zero": false,
       "rates": [
         {
           "x": 0,
-          "rate": 0.0410958904109589,
-          "n": 73
+          "rate": 0.0,
+          "n": 33
         },
         {
           "x": 1,
           "rate": 0.0,
-          "n": 55
+          "n": 37
         },
         {
           "x": 2,
-          "rate": 0.02040816326530612,
-          "n": 49
+          "rate": 0.03225806451612903,
+          "n": 31
         },
         {
           "x": 3,
           "rate": 0.0,
-          "n": 46
+          "n": 22
         }
       ]
     }
   },
   "normalised_draw_save_gradient": {
-    "slope_per_band_step": -0.03511188015736529,
-    "ci_lo": -0.09440375408405366,
-    "ci_hi": 0.048741498385891355,
+    "slope_per_band_step": -0.046609390764517054,
+    "ci_lo": -0.2324875371570233,
+    "ci_hi": 0.10018652563313432,
     "excludes_zero": false,
     "ratios": [
-      0.217,
-      0.122,
-      0.079,
-      0.128
+      0.285,
+      0.053,
+      0.056,
+      0.157
     ]
   },
   "threshold_sensitivity": {
     "lost_at_300cp": {
-      "n": 332,
-      "save_rate": 0.20481927710843373,
-      "gradient_excludes_zero": false
+      "n": 202,
+      "save_rate": 0.1782178217821782,
+      "gradient_excludes_zero": true
     },
     "lost_at_500cp": {
-      "n": 223,
-      "save_rate": 0.07623318385650224,
+      "n": 123,
+      "save_rate": 0.07317073170731707,
       "gradient_excludes_zero": false
     },
     "lost_at_800cp": {
-      "n": 86,
+      "n": 43,
       "save_rate": 0.023255813953488372,
       "gradient_excludes_zero": false
     }
   },
   "resolution": {
-    "mde": 0.20522137037740595,
+    "mde": 0.2835584206832343,
     "units": "difference in proportion",
     "method": "two-sample normal approximation",
-    "note": "baseline p=0.073, n=55 per group, design effect 2.19x from clustering",
-    "baseline_save_rate": 0.07264409418540278,
-    "n_lost_game_sides_per_band": 55,
-    "n_games_required_per_band_for_5pp": 927
+    "note": "baseline p=0.076, n=30 per group, design effect 2.19x from clustering",
+    "baseline_save_rate": 0.07591609204512431,
+    "n_lost_game_sides_per_band": 30,
+    "n_games_required_per_band_for_5pp": 965
   },
   "level_shift_vs_gradient": {
     "online_rating_span": "1200-2200 (about 1000 Elo)",
@@ -247,8 +247,8 @@
     "online_internal_gradient_excludes_zero": false,
     "otb_internal_gradient_excludes_zero": false,
     "online_mean_save_rate": 0.1885593220338983,
-    "otb_mean_save_rate": 0.07623318385650224,
-    "level_step": 0.11232613817739606,
+    "otb_mean_save_rate": 0.07317073170731707,
+    "level_step": 0.11538859032658123,
     "reading": "Neither corpus shows an internal rating gradient, and they differ by a large step. A mechanism in which strength alone makes lost positions harder to save would predict a decline within each corpus, which is absent across 1000 Elo online and 400 Elo over the board. The step is better explained by what differs between the corpora, of which playing format (online rapid vs classical OTB) is the most obvious candidate.",
     "caveat": "The rating ranges do not overlap, so rating and format cannot be separated by controlling for one. This argument rests on the ABSENCE of within-corpus gradients, which is a weaker form of evidence, and both within-corpus nulls are themselves low-powered."
   },

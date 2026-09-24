@@ -270,11 +270,181 @@ def run() -> dict:
     return out
 
 
+
+
+# --------------------------------------------------------------------------
+# Joint inference (step 3 of Simonsohn, Simmons & Nelson 2020)
+# --------------------------------------------------------------------------
+#
+# The literature search found that this track implemented steps 1 and 2 of
+# specification curve analysis (enumerate, display) and skipped step 3, joint
+# inference across all specifications. Without it, "every specification agrees
+# in sign" cannot be distinguished from "every specification shares the same
+# data", which is exactly the ambiguity C3 ran into.
+#
+# The null is imposed by permuting the analysis variable (rating band, time
+# budget, or year) across GAMES, which destroys any relationship between it and
+# play quality while keeping each game's moves together. Each permutation re-runs
+# every specification, and the observed median across specifications is compared
+# with the permutation distribution of that median.
+#
+# Speed comes from separating what a permutation changes from what it does not:
+# each specification's per-game aggregates are computed once, and a permutation
+# only reassigns which label each game carries.
+
+N_PERM = 500
+
+
+def _game_tables_c1(moves: pd.DataFrame) -> tuple[list[pd.DataFrame], list[dict]]:
+    specs = mv.enumerate_specs(C1_DECISIONS)
+    tables = []
+    for spec in specs:
+        d = _apply_common(moves, spec)
+        g = d.assign(hit=(d.loss_cp >= spec["blunder_cp"]).astype(float)).groupby("game_id").agg(
+            hits=("hit", "sum"), n=("hit", "size"), band=("band_lo", "first")
+        )
+        tables.append(g)
+    return tables, specs
+
+
+def _wslope(x: np.ndarray, y: np.ndarray, w: np.ndarray) -> float:
+    W = w.sum()
+    if W <= 0:
+        return np.nan
+    mx = (w * x).sum() / W
+    my = (w * y).sum() / W
+    sxx = (w * (x - mx) ** 2).sum()
+    return np.nan if sxx == 0 else float((w * (x - mx) * (y - my)).sum() / sxx)
+
+
+def _joint_c1(moves: pd.DataFrame, observed_median: float, n_perm: int = N_PERM) -> dict:
+    tables, _ = _game_tables_c1(moves)
+    games = sorted(set().union(*[set(t.index) for t in tables]))
+    band_of = moves.groupby("game_id").band_lo.first().reindex(games)
+    order = sorted(band_of.unique())
+    codes = band_of.map({b: i for i, b in enumerate(order)}).values.astype(int)
+    k = len(order)
+    xs_all = np.arange(k, dtype=float)
+    aligned = [(t.reindex(games).hits.fillna(0).values, t.reindex(games).n.fillna(0).values) for t in tables]
+
+    def est(h, n, c):
+        hs = np.bincount(c, weights=h, minlength=k)
+        ms = np.bincount(c, weights=n, minlength=k)
+        ok = ms > 0
+        if ok.sum() < 4:
+            return np.nan
+        return _wslope(xs_all[ok], hs[ok] / ms[ok], ms[ok])
+
+    rng = np.random.default_rng(stats.SEED)
+    null_medians = np.empty(n_perm)
+    for b in range(n_perm):
+        perm = rng.permutation(codes)
+        null_medians[b] = np.nanmedian([est(h, n, perm) for h, n in aligned])
+    return _summarise_joint(observed_median, null_medians, "rating band, permuted across games")
+
+
+def _joint_c2(moves: pd.DataFrame, observed_median: float, n_perm: int = N_PERM) -> dict:
+    specs = mv.enumerate_specs(C2_DECISIONS)
+    games = sorted(moves.game_id.unique())
+    secs = moves.groupby("game_id").est_total_seconds.first().reindex(games).values
+    aligned = []
+    for spec in specs:
+        d = _apply_common(moves, {**spec, "max_ply_cap": 0})
+        g = d.assign(hit=(d.loss_cp >= spec["blunder_cp"]).astype(float)).groupby("game_id").agg(
+            hits=("hit", "sum"), n=("hit", "size")
+        ).reindex(games).fillna(0)
+        aligned.append((g.hits.values, g.n.values, spec["split_seconds"]))
+
+    def est(h, n, s, split):
+        fast = s < split
+        nf, ns = n[fast].sum(), n[~fast].sum()
+        if nf < 200 or ns < 200:
+            return np.nan
+        return h[fast].sum() / nf - h[~fast].sum() / ns
+
+    rng = np.random.default_rng(stats.SEED + 1)
+    null_medians = np.empty(n_perm)
+    for b in range(n_perm):
+        perm = rng.permutation(secs)
+        null_medians[b] = np.nanmedian([est(h, n, perm, sp) for h, n, sp in aligned])
+    return _summarise_joint(observed_median, null_medians, "time budget, permuted across games")
+
+
+def _joint_c3(moves: pd.DataFrame, observed_median: float, n_perm: int = N_PERM) -> dict:
+    specs = mv.enumerate_specs(C3_DECISIONS)
+    games = sorted(moves.game_id.unique())
+    year_of = moves.groupby("game_id").year.first().reindex(games)
+    years = np.array(sorted(year_of.dropna().unique()), dtype=float)
+    ycode = year_of.map({y: i for i, y in enumerate(years)}).values
+    k = len(years)
+    aligned = []
+    for spec in specs:
+        lo, hi = (int(x) for x in spec["elo_window"].split("-"))
+        d = moves[moves.white_elo.between(lo, hi) & moves.black_elo.between(lo, hi)]
+        d = _apply_common(d, {**spec, "max_ply_cap": 0})
+        g = d.assign(loss=d.loss_cp.clip(upper=spec["winsor_cp"])).groupby("game_id").agg(
+            acpl=("loss", "mean"), n=("loss", "size")
+        ).reindex(games)
+        ok = g.acpl.notna().values & ~np.isnan(ycode.astype(float))
+        aligned.append((g.acpl.values[ok], g.n.values[ok].astype(float), ok))
+
+    def est(acpl, n, c):
+        cnt = np.bincount(c, minlength=k).astype(float)
+        sa = np.bincount(c, weights=acpl, minlength=k)
+        ns = np.bincount(c, weights=n, minlength=k)
+        keep = (cnt > 0) & (ns >= 100)
+        if keep.sum() < 8:
+            return np.nan
+        return _wslope(years[keep], sa[keep] / cnt[keep], ns[keep]) * 10
+
+    rng = np.random.default_rng(stats.SEED + 2)
+    null_medians = np.empty(n_perm)
+    base = ycode.copy()
+    for b in range(n_perm):
+        perm = rng.permutation(base)
+        null_medians[b] = np.nanmedian([est(a, n, perm[ok].astype(int)) for a, n, ok in aligned])
+    return _summarise_joint(observed_median, null_medians, "year, permuted across games")
+
+
+def _summarise_joint(observed: float, null: np.ndarray, how: str) -> dict:
+    null = null[np.isfinite(null)]
+    p = float(max((np.abs(null) >= abs(observed)).mean(), 1.0 / (len(null) + 1)))
+    return {
+        "method": "permutation null on the analysis variable; statistic = median estimate across all specifications",
+        "null_imposed_by": how,
+        "observed_median": observed,
+        "null_median_p025": float(np.percentile(null, 2.5)),
+        "null_median_p975": float(np.percentile(null, 97.5)),
+        "p_value_two_sided": p,
+        "n_permutations": int(len(null)),
+        "curve_distinguishable_from_null": bool(p < 0.05),
+    }
+
+
+def run_joint_inference(n_perm: int = N_PERM) -> dict:
+    """Step 3 for C1-C3. Writes into t10_multiverse.json alongside the curves."""
+    path = paths.RESULTS / "t10_multiverse.json"
+    out = json.loads(path.read_text())
+    li = _lichess_moves()
+    tw = _twic_moves()
+    out["C1_blunder_gradient_across_bands"]["joint_inference"] = _joint_c1(
+        li, out["C1_blunder_gradient_across_bands"]["median"], n_perm)
+    out["C2_fast_minus_slow_blunder_rate"]["joint_inference"] = _joint_c2(
+        li, out["C2_fast_minus_slow_blunder_rate"]["median"], n_perm)
+    out["C3_acpl_drift_per_decade"]["joint_inference"] = _joint_c3(
+        tw, out["C3_acpl_drift_per_decade"]["median"], n_perm)
+    out["joint_inference_reference"] = (
+        "Simonsohn, Simmons & Nelson (2020), Specification curve analysis, Nature Human Behaviour "
+        "4:1208-1214, doi:10.1038/s41562-020-0912-z. Step 3 of their procedure."
+    )
+    path.write_text(json.dumps(out, indent=2, default=float))
+    return out
+
+
 if __name__ == "__main__":
-    r = run()
+    run()
+    r = run_joint_inference()
     for k, v in r.items():
-        if isinstance(v, dict) and "verdict" in v:
-            print(f"\n{k}")
-            print(f"  median {v['median']:+.5g}  range [{v['min']:+.5g}, {v['max']:+.5g}]")
-            print(f"  {v['verdict']}")
-            print(f"  drivers: {json.dumps(v['variance_attribution']['shares_of_total_variance'])}")
+        if isinstance(v, dict) and "joint_inference" in v:
+            j = v["joint_inference"]
+            print(f"{k}: median {v['median']:+.5g}  joint p = {j['p_value_two_sided']:.3f}")

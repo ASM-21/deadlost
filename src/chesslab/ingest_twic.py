@@ -27,6 +27,7 @@ from .schema import (
     GameRecord,
     SchemaError,
     ValidationReport,
+    classify_format,
     clean_movetext,
     iter_boards,
     stable_game_id,
@@ -164,6 +165,9 @@ def ingest(paths: Iterable[Path], min_ply: int = 10):
                 increment_seconds=None,
                 eco=headers.get("ECO") or None,
                 opening_name=headers.get("Opening") or None,
+                event=headers.get("Event") or None,
+                site=headers.get("Site") or None,
+                format=classify_format(headers.get("Event"), headers.get("Site")),
             )
 
             reason = validate_record(rec, min_ply=min_ply)

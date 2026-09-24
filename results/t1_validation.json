@@ -48,5 +48,23 @@
     "blitz": 4
   },
   "lichess_rated_share": 0.8126449803096509,
+  "twic_format_counts": {
+    "classical_otb": 119794,
+    "online": 45116,
+    "fast_otb": 7520
+  },
+  "twic_format_by_era": {
+    "pre_2020": {
+      "classical_otb": 0.9548,
+      "fast_otb": 0.0324,
+      "online": 0.0127
+    },
+    "2020_on": {
+      "online": 0.5505,
+      "classical_otb": 0.393,
+      "fast_otb": 0.0566
+    }
+  },
+  "format_note": "TWIC carries no TimeControl tag. Format is derived from Event and Site headers (schema.classify_format). From 2020 TWIC is dominated by online blitz, so any TWIC analysis claiming to describe classical over-the-board play must filter to format == 'classical_otb'.",
   "eval_coverage_note": "No upstream engine evaluations are used. Every centipawn number in this repo is computed locally by Stockfish 16 at a fixed node budget; see results/t1_eval_scope.json for the exact scope."
 }

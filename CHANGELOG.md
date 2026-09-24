@@ -5,6 +5,55 @@ This project versions its *findings* as well as its code: a released number is
 pinned by a test and by an entry in `scripts/check_claims.py`, so any change to
 a published result is a deliberate, reviewable event rather than drift.
 
+## [1.1.0] - 2026-09-24
+
+The literature release. Results were positioned against published work after
+they existed, and the search changed them. **1.0.0 should not be cited**: three
+of its claims were artifacts of the error described first below.
+
+### Fixed: format contamination
+- The Week In Chess is majority online blitz from 2020 (55% online, 39%
+  classical, against 95.5% classical before) and carries no TimeControl tag.
+  1.0.0 treated every TWIC game as classical over-the-board play. Format is now
+  inferred from Event and Site headers (`schema.classify_format`), every
+  classical analysis filters on it at load time, and probe P8 guards the filter.
+- Found by a literature search, not by any test: Ben-Moshe & Genesove (2026)
+  report classical draw rates rising after 2020, while 1.0.0 reported them
+  falling.
+
+### Retracted
+- **Draw rates are falling** (track 5). On classical games they rise, +3.1
+  points per decade, consistent with the literature.
+- **Players play on longer after a position is lost** (probe P7). Online blitz.
+- **Enlarging the player panel flipped the sign of the drift estimate** (track 8).
+  The enlarged panel contained online games.
+- **A power-report benchmark citing "30-100 Elo/decade inflation" claims.**
+  Never sourced; the documented recent concern is deflation.
+
+### Reframed as replications or consistent results
+- Track 4 replicates Regan & Haworth (2011) and Regan, Macieja & Haworth (2012),
+  which used the same design and overlapping data.
+- Track 5's "White's edge grows with strength" is established in the literature.
+- Track 8's age-period-cohort limit is textbook (Fosse & Winship 2019).
+- Track 2's null is consistent with Park (2026), whose results also expose track
+  2's family-level aggregation as its main weakness.
+
+### Added
+- `docs/LITERATURE.md` and `docs/references.bib` (33 entries).
+- Joint inference for specification curves (Simonsohn, Simmons & Nelson 2020,
+  step 3). The time-control effect in track 3 is borderline under it (p = 0.052)
+  despite unanimous sign across 180 specifications.
+- Probe P8 (format contamination). `format`, `event` and `site` in the schema.
+- Post-2020 classical draw comparison in track 5.
+- Claims check now enforces the expected SIGN of every pinned number, and checks
+  retractions structurally rather than by keyword.
+
+### Changed
+- FINDINGS.md rewritten as nine numbered claims with status labels, scope
+  conditions and prior work.
+- Licence changed from MIT to Apache-2.0. Author metadata, ORCID and repository
+  URLs filled in. Engine evaluations (`data/eval/`) are now committed.
+
 ## [1.0.0] - 2026-08-30
 
 ### Added since the first draft

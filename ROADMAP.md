@@ -41,7 +41,21 @@ monotonicity claim and probe P1 destroyed its secondary one. What is left is one
 contrast confounded with playing format. Either find a corpus where rating and
 format can be varied independently, or drop the track.
 
-## The concrete next step
+## After 1.1.0
+
+**Redraw the TWIC samples from classical games only.** The current samples were
+drawn before the format problem was known; filtering at load time left 292 of
+348, 378 of 520 and 926 of 1,161 games. A classical-only redraw at the validated
+5,000-node budget would restore the lost power, at the cost of changing every
+sampled game and every pinned number.
+
+**Position-level track 2.** Park (2026) finds most of the engine-versus-human
+signal within opening families. Track 2 aggregates across them.
+
+**Resignation versus time forfeit over the board.** Needs a tournament source
+with termination tags.
+
+## The concrete next step (from 1.0.0)
 
 **Re-run the TWIC-based samples at 5,000 nodes and spend the savings on more
 games.** The calibration (see FINDINGS.md) validates the cheaper budget on two

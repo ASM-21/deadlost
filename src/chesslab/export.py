@@ -12,7 +12,7 @@ This writes three files:
   moves.parquet        one row per evaluated move, joined to game metadata
   games.parquet        one row per evaluated game, with sampling stratum
   DATA_DICTIONARY.md   what every column means, how it was produced, and the
-                       four traps that are easy to fall into with this data
+                       five traps that are easy to fall into with this data
 
 The data dictionary is not optional garnish. Three of the errors made while
 building this repo came from misreading a column: treating moves as independent
@@ -69,6 +69,7 @@ One row per scored move.
 | `result` | str | `1-0`, `0-1`, or `1/2-1/2` |
 | `year` | float | year of the game (TWIC only; the lichess corpus is one 2017 scrape) |
 | `tc_class` | str | time control class, or `otb` for over-the-board |
+| `format` | str | `classical_otb`, `fast_otb` or `online`; inferred from Event/Site for TWIC (see trap 5) |
 | `stratum` | str | the sampling cell this game was drawn from |
 
 ### Samples
@@ -91,7 +92,7 @@ One row per evaluated game: `game_id`, `sample`, `stratum`, `source`, ratings,
 `result`, `ply_count`, `year`, `tc_class`, `eco`, `opening_name`, `moves`
 (space-separated SAN).
 
-## Four traps
+## Five traps
 
 **1. Moves are not independent observations.** One game contributes ~70
 correlated moves; one player contributes many correlated games. Confidence
@@ -118,9 +119,15 @@ classical at 2200+. They do not overlap in rating. Any comparison spanning both
 varies two things at once. The `otb` sample exists precisely so rating can be
 varied with format held constant.
 
+**5. TWIC is not all classical over-the-board chess.** From 2020 it is majority
+online blitz (chess.com "Titled Tuesday" and similar), and TWIC PGN has no
+TimeControl tag. The `format` column is inferred from Event and Site headers.
+Filter to `format == "classical_otb"` before describing classical play. An earlier
+analysis on this data got a headline backwards by not doing so.
+
 ## Licence
 
-Code MIT. Game scores are facts and not copyrightable; see NOTICE for the
+Code Apache-2.0. Game scores are facts and not copyrightable; see NOTICE for the
 upstream sources and their terms. Stockfish (GPL-3.0) was invoked as a separate
 process and is neither included nor linked.
 """
@@ -146,14 +153,14 @@ def build_tables() -> tuple[pd.DataFrame, pd.DataFrame]:
 
         meta_cols = [
             "game_id", "source", "white_elo", "black_elo", "result",
-            "year", "tc_class", "ply_count", "eco", "opening_name", "moves",
+            "year", "tc_class", "format", "ply_count", "eco", "opening_name", "moves",
             "base_seconds", "increment_seconds",
         ]
         meta = games[meta_cols].merge(strata, on="game_id", how="inner")
         meta = meta.assign(sample=tag)
 
         m = ev.merge(
-            meta[["game_id", "sample", "stratum", "white_elo", "black_elo", "result", "year", "tc_class"]],
+            meta[["game_id", "sample", "stratum", "white_elo", "black_elo", "result", "year", "tc_class", "format"]],
             on="game_id", how="inner",
         )
         move_frames.append(m)
@@ -167,7 +174,7 @@ def build_tables() -> tuple[pd.DataFrame, pd.DataFrame]:
 
     cols = [
         "game_id", "sample", "ply", "mover", "fullmove", "cp_before", "cp_after",
-        "loss_cp", "white_elo", "black_elo", "result", "year", "tc_class", "stratum",
+        "loss_cp", "white_elo", "black_elo", "result", "year", "tc_class", "format", "stratum",
     ]
     moves = moves[[c for c in cols if c in moves.columns]]
     return moves, gdf

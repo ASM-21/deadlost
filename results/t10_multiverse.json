@@ -67,7 +67,17 @@
       "note": "Between-group sum of squares per decision, as a share of total. Decisions are not orthogonal, so shares need not sum to 1. Use as a ranking of which choice moved the answer most."
     },
     "estimates": [],
-    "verdict": "100% of 180 specifications share the median's sign; the reported specification sits at the 74% percentile of the curve; 100% point the direction the headline claims"
+    "verdict": "100% of 180 specifications share the median's sign; the reported specification sits at the 74% percentile of the curve; 100% point the direction the headline claims",
+    "joint_inference": {
+      "method": "permutation null on the analysis variable; statistic = median estimate across all specifications",
+      "null_imposed_by": "rating band, permuted across games",
+      "observed_median": -0.01841102956317863,
+      "null_median_p025": -0.0036540241453291104,
+      "null_median_p975": 0.003642990922632212,
+      "p_value_two_sided": 0.001996007984031936,
+      "n_permutations": 500,
+      "curve_distinguishable_from_null": true
+    }
   },
   "C2_fast_minus_slow_blunder_rate": {
     "n_specs": 180,
@@ -134,22 +144,32 @@
       "note": "Between-group sum of squares per decision, as a share of total. Decisions are not orthogonal, so shares need not sum to 1. Use as a ranking of which choice moved the answer most."
     },
     "estimates": [],
-    "verdict": "100% of 180 specifications share the median's sign; the reported specification sits at the 68% percentile of the curve; 100% point the direction the headline claims"
+    "verdict": "100% of 180 specifications share the median's sign; the reported specification sits at the 68% percentile of the curve; 100% point the direction the headline claims",
+    "joint_inference": {
+      "method": "permutation null on the analysis variable; statistic = median estimate across all specifications",
+      "null_imposed_by": "time budget, permuted across games",
+      "observed_median": 0.009184630821680785,
+      "null_median_p025": -0.009329683237310014,
+      "null_median_p975": 0.009326370297839963,
+      "p_value_two_sided": 0.052,
+      "n_permutations": 500,
+      "curve_distinguishable_from_null": false
+    }
   },
   "C3_acpl_drift_per_decade": {
     "n_specs": 144,
     "n_estimated": 144,
     "n_undefined": 0,
-    "median": 1.4241775187680472,
-    "mean": 1.46550207530222,
-    "min": 0.9590533273060036,
-    "max": 2.1712519339171275,
-    "p05": 1.0763645916477225,
-    "p95": 1.9156330747626704,
+    "median": -1.3082855100437438,
+    "mean": -1.3268572674632921,
+    "min": -1.919758180747827,
+    "max": -0.8190330696243536,
+    "p05": -1.747313570220471,
+    "p95": -0.9571487168767933,
     "share_same_sign_as_median": 1.0,
-    "share_positive": 1.0,
-    "headline_estimate": 1.4452679225054732,
-    "headline_percentile_in_curve": 0.5416666666666666,
+    "share_positive": 0.0,
+    "headline_estimate": -0.8600050735995832,
+    "headline_percentile_in_curve": 0.9791666666666666,
     "decisions": [
       {
         "name": "winsor_cp",
@@ -192,14 +212,25 @@
     ],
     "variance_attribution": {
       "shares_of_total_variance": {
-        "winsor_cp": 0.6396101157787236,
-        "skip_ply": 0.1974874289187378,
-        "min_moves_per_game": 0.016400799118428507,
+        "winsor_cp": 0.5030297321238054,
+        "skip_ply": 0.18761846205143035,
+        "min_moves_per_game": 0.06697406575328092,
         "elo_window": 0.0
       },
       "note": "Between-group sum of squares per decision, as a share of total. Decisions are not orthogonal, so shares need not sum to 1. Use as a ranking of which choice moved the answer most."
     },
     "estimates": [],
-    "verdict": "100% of 144 specifications share the median's sign; the reported specification sits at the 54% percentile of the curve"
-  }
+    "verdict": "100% of 144 specifications share the median's sign; the reported specification sits at the 98% percentile of the curve",
+    "joint_inference": {
+      "method": "permutation null on the analysis variable; statistic = median estimate across all specifications",
+      "null_imposed_by": "year, permuted across games",
+      "observed_median": -1.3082855100437438,
+      "null_median_p025": -1.3611593430524638,
+      "null_median_p975": 1.4323824435057377,
+      "p_value_two_sided": 0.064,
+      "n_permutations": 500,
+      "curve_distinguishable_from_null": false
+    }
+  },
+  "joint_inference_reference": "Simonsohn, Simmons & Nelson (2020), Specification curve analysis, Nature Human Behaviour 4:1208-1214, doi:10.1038/s41562-020-0912-z. Step 3 of their procedure."
 }

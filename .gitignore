@@ -6,5 +6,6 @@ build/
 dist/
 data/raw/
 data/derived/
-data/eval/
 export/
+# Engine output IS committed (data/eval/): it is the one expensive artifact.
+results/_pre_format_fix/

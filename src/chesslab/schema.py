@@ -61,7 +61,17 @@ COLUMNS = [
     "opening_name",
     "ply_count",
     "moves",
+    "event",
+    "site",
+    "format",
 ]
+
+#: Playing format, derived at ingest. This column exists because an earlier
+#: build assumed every TWIC game was classical over-the-board play. From 2020
+#: onward TWIC's coverage is dominated by online blitz (chess.com "Titled
+#: Tuesday" and similar), and TWIC PGN carries no TimeControl tag, so nothing
+#: downstream could see the change. See `classify_format` and FINDINGS.md.
+FORMATS = ("classical_otb", "fast_otb", "online")
 
 
 @dataclass
@@ -87,6 +97,9 @@ class GameRecord:
     increment_seconds: int | None = None
     eco: str | None = None
     opening_name: str | None = None
+    event: str | None = None
+    site: str | None = None
+    format: str = "classical_otb"
 
     def as_row(self) -> dict:
         d = asdict(self)
@@ -201,6 +214,37 @@ def parse_increment_code(code: str) -> tuple[int | None, int | None]:
         return (int(float(base) * 60), int(float(inc)))
     except ValueError:
         return (None, None)
+
+
+_ONLINE_SITE = re.compile(r"(^|\s)INT$|chess\.com|lichess|chess24|playchess|\bICC\b|internet", re.I)
+_ONLINE_EVENT = re.compile(
+    r"titled\s*tue|\bon/?l\b|\bonline\b|chess\.com|lichess|chess24|\bSCC\b|speed\s*chess|"
+    r"bullet|\binternet\b|\bUS Chess League\b|\bPRO Chess League\b",
+    re.I,
+)
+_FAST_EVENT = re.compile(r"\brapid\b|\bblitz\b|armageddon|\bspeed\b|\bbullet\b", re.I)
+
+
+def classify_format(event: str | None, site: str | None) -> str:
+    """Derive playing format from PGN Event and Site headers.
+
+    TWIC uses the site suffix `INT` for internet events (e.g. "chess.com INT").
+    Online is checked first, because an online event is often ALSO a blitz
+    event and online is the stronger distinction for every track here.
+
+    Validated against the 2020+ issues, where the dominant site is
+    "chess.com INT" and the dominant event is "Titled Tuesday". Errs toward
+    leaving an ambiguous event classified as classical, so the classical subset
+    may retain a small residue of misclassified fast games; it will not lose
+    genuine classical games to over-eager matching.
+    """
+    ev = event or ""
+    st = site or ""
+    if _ONLINE_SITE.search(st) or _ONLINE_EVENT.search(ev):
+        return "online"
+    if _FAST_EVENT.search(ev):
+        return "fast_otb"
+    return "classical_otb"
 
 
 def rating_band(elo: float | None) -> str | None:

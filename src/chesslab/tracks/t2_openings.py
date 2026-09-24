@@ -184,7 +184,7 @@ def run(skip_engine: bool = False, book_eval_budget: float | None = None) -> dic
 
     li = games[(games.source == "lichess2017") & (games.rated == True)].copy()  # noqa: E712
     li = li[li.white_band == li.black_band]
-    tw = games[games.source == "twic"].dropna(subset=["white_elo", "black_elo"]).copy()
+    tw = games[(games.source == "twic") & (games.format == "classical_otb")].dropna(subset=["white_elo", "black_elo"]).copy()
     tw = tw[(tw.white_elo - tw.black_elo).abs() <= 100]
     tw["band"] = pd.cut(
         tw.white_elo,

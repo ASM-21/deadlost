@@ -465,3 +465,54 @@ def test_export_documents_every_sample():
 
     for tag in TAGS:
         assert f"`{tag}`" in DATA_DICTIONARY
+
+
+# --------------------------------------------------------------------------
+# what ships: identity, licence, placeholders
+# --------------------------------------------------------------------------
+
+from pathlib import Path as _P  # noqa: E402
+
+_ROOT = _P(__file__).resolve().parents[1]
+
+
+def test_licence_is_apache_with_the_right_holder():
+    text = (_ROOT / "LICENSE").read_text()
+    assert "Apache License" in text and "Version 2.0" in text
+    assert "Copyright 2026 Andrew Morrissey" in text
+
+
+def test_citation_identifies_the_author():
+    text = (_ROOT / "CITATION.cff").read_text()
+    assert "family-names: Morrissey" in text
+    assert "0009-0004-8758-2687" in text
+    assert "github.com/ASM-21/chess-lab" in text
+    assert "license: Apache-2.0" in text
+
+
+def test_no_placeholders_ship():
+    for rel in ("README.md", "CITATION.cff", "pyproject.toml", "NOTICE", "FINDINGS.md",
+                ".github/ISSUE_TEMPLATE/config.yml", "docs/FAQ.md"):
+        text = (_ROOT / rel).read_text()
+        for bad in ("OWNER/", "YOUR-USERNAME", "lorem ipsum", "TODO"):
+            assert bad not in text, f"{rel} contains placeholder {bad!r}"
+
+
+def test_versions_agree():
+    import re as _re
+
+    import chesslab
+
+    pyproj = _re.search(r'^version = "([^"]+)"', (_ROOT / "pyproject.toml").read_text(), _re.M).group(1)
+    cff = _re.search(r"^version: (\S+)", (_ROOT / "CITATION.cff").read_text(), _re.M).group(1)
+    assert chesslab.__version__ == pyproj == cff
+
+
+def test_classify_format_on_real_twic_headers():
+    from chesslab.schema import classify_format
+
+    assert classify_format("Titled Tuesday Blitz Jan 3rd Early", "chess.com INT") == "online"
+    assert classify_format("Betsys ch-CZE On/L Blitz 2024", "Czech Republic CZE") == "online"
+    assert classify_format("Tata Steel Masters", "Wijk aan Zee NED") == "classical_otb"
+    assert classify_format("World Rapid 2023", "Samarkand UZB") == "fast_otb"
+    assert classify_format("29th ECC Open 2013", "Rhodes GRE") == "classical_otb"

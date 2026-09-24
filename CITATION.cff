@@ -1,28 +1,34 @@
 cff-version: 1.2.0
-title: "chess-lab: falsifiable analyses of large public chess corpora"
-message: "If you use these findings or methods, please cite this repository."
+title: "chess-lab: falsifiable analyses of public chess games against engine ground truth"
+message: "If you use these findings or methods, please cite this repository. If you cite a null result, cite its resolution bound with it."
 type: software
 authors:
-  - given-names: Andrew
-    affiliation: "independent"
-version: 1.0.0
-date-released: "2026-08-12"
-license: MIT
+  - family-names: Morrissey
+    given-names: Andrew
+    orcid: "https://orcid.org/0009-0004-8758-2687"
+repository-code: "https://github.com/ASM-21/chess-lab"
+url: "https://github.com/ASM-21/chess-lab"
+version: 1.1.0
+date-released: "2026-09-24"
+license: Apache-2.0
 keywords:
   - chess
   - stockfish
-  - elo
-  - reproducibility
+  - lichess
+  - reproducible-research
   - falsification
+  - specification-curve
 abstract: >-
-  Eleven independent analyses of 190,967 public chess games (a 2017 lichess.org
-  scrape and a 1998-2026 sample of The Week In Chess tournament issues), using
-  Stockfish 16 at a fixed node budget as ground truth. Covers blunder rate
-  versus thinking time, White's first-move advantage over time, whether
-  engine-approved openings win more, rating inflation measured both
-  cross-sectionally and within players' careers, and why lost positions are
-  saved far more often online than over the board (resignation norms, not
-  skill). Includes a falsification track that attempts to break the other
-  tracks, specification curves over every defensible analytic choice, and a
-  stated minimum detectable effect for every null result. Two claims were
-  retracted before release and both retractions are enforced by tests.
+  Nine claims about chess tested on 190,967 public games (a 2017 lichess.org
+  scrape and a 1998-2026 sample of The Week In Chess), using Stockfish 16 at a
+  fixed node budget as the measuring instrument, and positioned against the
+  published literature. The most defensibly new result is that lost positions
+  are saved far more often online than in classical over-the-board play because
+  over-the-board players resign: of players who went on to lose, 32.0% online
+  played the position to checkmate against 3.5% over the board. Other results
+  replicate known findings on blunder rates, White's advantage and rating drift,
+  or are consistent with recent work on draw rates and opening evaluation. The
+  repository includes a falsification track with eight probes, specification
+  curves with joint inference, and a stated resolution for every null. Six
+  earlier claims were withdrawn, three of them after a literature search showed
+  the tournament corpus had become majority online blitz from 2020.

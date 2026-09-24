@@ -65,3 +65,13 @@ effects model, any regressor that differs from another by a group-constant
 becomes identical after demeaning. `career_year` and `year` within a player are
 the textbook case. The symptom is two coefficients coming back equal to many
 decimal places; the solver will not warn you.
+
+**Know what format your games are.** The Week In Chess became majority online
+blitz in 2020 and has no time-control tag. Three results in 1.0.0 were really
+measuring that switch. Filter on the `format` column, and let probe P8 fail
+loudly if you forget.
+
+**Search the literature after you have results, and write down what changed.**
+It is the check that caught the format problem, and none of the automated ones
+did. docs/LITERATURE.md opens with a table of what the search changed; add to
+it rather than to the reference list alone.

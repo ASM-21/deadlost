@@ -84,7 +84,7 @@ def lichess_by_band(games: pd.DataFrame) -> dict:
 
 
 def twic_by_band(games: pd.DataFrame) -> dict:
-    d = games[games.source == "twic"].dropna(subset=["white_elo", "black_elo"])
+    d = games[(games.source == "twic") & (games.format == "classical_otb")].dropna(subset=["white_elo", "black_elo"])
     d = d[(d.white_elo - d.black_elo).abs() <= 50]  # near-equal pairings
     d = _outcome_frame(d)
     res = {}
@@ -105,7 +105,7 @@ def twic_by_year(games: pd.DataFrame, elo_lo: int = 2200, elo_hi: int = 3199, mi
     version this repo treats as the headline.
     """
     min_games = MIN_GAMES if min_games is None else min_games
-    d = games[games.source == "twic"].dropna(subset=["white_elo", "black_elo", "year"])
+    d = games[(games.source == "twic") & (games.format == "classical_otb")].dropna(subset=["white_elo", "black_elo", "year"])
     d = d[(d.white_elo - d.black_elo).abs() <= 50]
     d = d[d.white_elo.between(elo_lo, elo_hi) & d.black_elo.between(elo_lo, elo_hi)]
     d = _outcome_frame(d)
@@ -125,6 +125,50 @@ def twic_by_year(games: pd.DataFrame, elo_lo: int = 2200, elo_hi: int = 3199, mi
             }
         )
     return pd.DataFrame(rows).sort_values("year").reset_index(drop=True)
+
+
+def post_2020_draw_step(games: pd.DataFrame) -> dict:
+    """Did classical draw rates step up after neural-network engines spread?
+
+    Ben-Moshe & Genesove (2026, arXiv:2606.12893) report that after NNUE engines
+    became freely available in fall 2020, classical draw rates rose by about four
+    percentage points, in 3.9 million rated classical games. This compares
+    2015-2019 with 2021-2025 in classical TWIC, skipping 2020 because it is the
+    transition year and the year most disrupted by cancelled events.
+
+    It is a consistency check on a far larger study, not an independent test of
+    it: TWIC is a few thousand games per window, so the interval is wide.
+    """
+    d = games[(games.source == "twic") & (games.format == "classical_otb")].dropna(
+        subset=["white_elo", "black_elo", "year"])
+    d = d[(d.white_elo - d.black_elo).abs() <= 50]
+    d = d.assign(draw=(d.result == "1/2-1/2").astype(float))
+    out = {}
+    for label, lo, hi in (("2400-2499", 2400, 2499), ("2200_plus", 2200, 3199)):
+        x = d[d.white_elo.between(lo, hi) & d.black_elo.between(lo, hi)]
+        pre = x[x.year.between(2015, 2019)]
+        post = x[x.year.between(2021, 2025)]
+        both = pd.concat([post.assign(grp=1.0), pre.assign(grp=0.0)])
+        iv = stats.cluster_bootstrap_pairs(
+            both.draw.values, both.grp.values, both.white_id.fillna("na").values,
+            lambda v, g: v[g == 1].mean() - v[g == 0].mean(),
+        )
+        out[label] = {
+            "draw_rate_2015_2019": float(pre.draw.mean()),
+            "draw_rate_2021_2025": float(post.draw.mean()),
+            "n_2015_2019": int(len(pre)),
+            "n_2021_2025": int(len(post)),
+            "difference": iv.point,
+            "ci_lo": iv.lo,
+            "ci_hi": iv.hi,
+            "excludes_zero": bool(iv.lo * iv.hi > 0),
+        }
+    out["comparison"] = (
+        "Ben-Moshe & Genesove report a rise of about four points after 2020. The 2400-2499 point "
+        "estimate here is close to that, but the interval includes zero: directionally consistent, "
+        "not an independent confirmation."
+    )
+    return out
 
 
 def run() -> dict:
@@ -162,6 +206,7 @@ def run() -> dict:
     out = {
         "lichess2017_by_rating_band": li,
         "twic_by_elo_band": tw_band,
+        "post_2020_draw_step": post_2020_draw_step(games),
         "twic_yearly": yearly.to_dict(orient="records"),
         "twic_yearly_fixed_band_2400_2499": yearly_fixed.to_dict(orient="records"),
         "twic_time_trends": trends,

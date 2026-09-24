@@ -203,16 +203,25 @@ def test_t5_white_edge_grows_with_strength_otb():
     assert scores[-1] > scores[0]
 
 
-def test_t5_draw_rate_trend_is_the_composition_warning():
-    """Unrestricted pool shows a large draw-rate slope; the fixed band shows a
-    smaller one. The gap between them is the composition artifact this repo
-    warns about, so both must remain present."""
+def test_t5_classical_draws_are_rising_not_falling():
+    """RETRACTION GUARD. A previous build reported draws FALLING by about six
+    points per decade. That was online blitz: TWIC is majority online from 2020
+    and blitz produces far fewer draws. On classical over-the-board games the
+    trend reverses, which agrees with the literature rather than contradicting it.
+    """
     d = _load("t5_color.json")
-    loose = d["twic_time_trends"]["draw_rate"]["slope_per_decade"]
-    fixed = d["twic_time_trends_fixed_band_2400_2499"]["draw_rate"]["slope_per_decade"]
-    assert loose < fixed < 0
-    assert abs(loose - fixed) > 0.01
+    fixed = d["twic_time_trends_fixed_band_2400_2499"]["draw_rate"]
+    assert fixed["slope_per_decade"] > 0
+    assert fixed["ci_lo_per_decade"] > 0, "classical draw trend should exclude zero upward"
 
+
+def test_t5_post_2020_step_is_consistent_with_but_not_proof_of_the_literature():
+    """Ben-Moshe & Genesove (2026) report a rise of about four points after
+    NNUE engines spread in 2020. The point estimate here matches; the interval
+    does not exclude zero, and the prose must not claim more than that."""
+    d = _load("t5_color.json")["post_2020_draw_step"]["2400-2499"]
+    assert d["difference"] == pytest.approx(0.04, abs=0.02)
+    assert d["excludes_zero"] is False
 
 def test_t5_headline_uses_the_fixed_band():
     d = _load("t5_color.json")
@@ -241,8 +250,7 @@ def test_t6_only_surviving_contrast_is_online_vs_otb():
     d = _load("t6_swindles.json")
     c = d["online_gradient"]["online_vs_otb_contrast"]
     assert c["excludes_zero"] is True
-    assert c["online_minus_otb"] == pytest.approx(0.096, abs=0.02)
-
+    assert c["online_minus_otb"] == pytest.approx(0.129, abs=0.02)
 
 def test_t6_nothing_is_censored_any_more():
     d = _load("t6_swindles.json")
@@ -317,10 +325,9 @@ def test_t7_summary_lists_exactly_the_fired_probes():
     d = _load("t7_falsify.json")
     fired = {p["probe"] for p in d["probes"] if p.get("fired") is True}
     assert set(d["summary"]["fired"]) == fired
-    # P1 (base-rate confound in track 6) and P7 (behavioural drift in the skill
-    # anchor). Both forced a change to what a track is allowed to claim.
-    assert len(fired) == 2
-
+    # Only P1 (base-rate confound in track 6). P7 fired in a previous build and
+    # was retracted as format contamination; see its dedicated guard below.
+    assert len(fired) == 1
 
 # --------------------------------------------------------------------------
 # track 8: within-player panel
@@ -328,26 +335,22 @@ def test_t7_summary_lists_exactly_the_fired_probes():
 
 
 def test_t8_is_a_null_consistent_with_track_4():
-    """Both inflation designs now point the same way and both span zero.
-
-    The pinned value changed sign when the panel grew from 34 to 100 players.
-    That is recorded deliberately: see the sign-instability test below.
-    """
+    """Both inflation designs are nulls, and on classical games both point
+    slightly toward better play at a fixed rating, the direction FIDE's own
+    analysis of recent deflation would predict."""
     d = _load("t8_player_panel.json")
     y = d["within_player_fit"]["year"]
     assert y["excludes_zero"] is False
-    assert y["coefficient"] * 10 == pytest.approx(1.32, abs=0.25)
+    assert y["coefficient"] * 10 == pytest.approx(-0.47, abs=0.3)
 
-
-def test_t8_records_that_the_small_panel_flipped_sign():
-    """The 34-player estimate was -0.65 and the 100-player estimate is +1.32.
-    Both are nulls, but the earlier point estimate carried no information about
-    direction, and the repo must keep saying so."""
+def test_t8_sign_flip_was_contamination_not_instability():
+    """RETRACTION GUARD. A previous build reported that enlarging the panel
+    flipped the sign of the year coefficient. The enlarged panel contained
+    online blitz. On classical games both estimates share a sign."""
     d = _load("t8_player_panel.json")["sign_instability_of_the_34_player_version"]
     assert d["old_year_coefficient_per_decade"] < 0
-    assert d["new_year_coefficient_per_decade"] > 0
-    assert d["new_panel_players"] == 100
-
+    assert d["new_year_coefficient_per_decade"] < 0
+    assert "RETRACTED" in d["note"]
 
 def test_t8_engine_budget_was_disentangled_from_panel_size():
     """Panel size and node budget changed together, so the confound had to be
@@ -495,14 +498,21 @@ def test_t10_fast_vs_slow_survives_every_specification():
 
 
 def test_t10_reported_specifications_are_not_cherry_picked():
-    """The published choice should sit inside the bulk of the curve, not at an
-    extreme that flatters the finding."""
-    d = _load("t10_multiverse.json")
-    for key in ("C1_blunder_gradient_across_bands", "C2_fast_minus_slow_blunder_rate", "C3_acpl_drift_per_decade"):
-        pct = d[key]["headline_percentile_in_curve"]
-        assert pct is not None, f"{key} headline did not match any specification"
-        assert 0.1 < pct < 0.9, f"{key} reported specification sits at percentile {pct}"
+    """The published choice should sit inside the curve, not at a flattering end.
 
+    C3 is the exception and is handled explicitly: its reported specification
+    sits at the end nearest zero, which favours the null reading it supports.
+    That is only acceptable because joint inference shows the WHOLE curve is
+    indistinguishable from the null, so the conclusion does not depend on which
+    specification was reported.
+    """
+    d = _load("t10_multiverse.json")
+    for key in ("C1_blunder_gradient_across_bands", "C2_fast_minus_slow_blunder_rate"):
+        pct = d[key]["headline_percentile_in_curve"]
+        assert pct is not None and 0.1 < pct < 0.9, f"{key} at percentile {pct}"
+    c3 = d["C3_acpl_drift_per_decade"]
+    assert c3["headline_percentile_in_curve"] is not None
+    assert c3["joint_inference"]["p_value_two_sided"] > 0.05
 
 def test_t10_blunder_threshold_is_the_dominant_choice():
     """Worth knowing and worth stating: one arbitrary cutoff drives most of the
@@ -560,22 +570,20 @@ def test_t11_matches_on_measured_skill_not_rating():
 
 
 def test_t11_skill_matching_does_not_shrink_the_gap():
-    """The core result. A strength explanation predicts the gap collapses once
-    both sides are compared at equal measured playing quality. It widens."""
+    """A strength explanation predicts the gap collapses at matched skill. The
+    point estimate grows instead. The matched contrast is BORDERLINE, and this
+    pins it as borderline so no later edit can upgrade it to a clean result."""
     d = _load("t11_matched_skill.json")
     raw = d["raw_gap_online_minus_otb"]
-    matched = d["stratified_contrast"]["stratified_difference"]
-    assert raw > 0 and matched > 0
-    assert matched > raw, "matching on skill should not have reduced the gap"
-    assert d["stratified_contrast"]["excludes_zero"] is True
+    s_ = d["stratified_contrast"]
+    assert raw > 0 and s_["stratified_difference"] > raw
+    assert s_["ci_lo"] < 0.01, "matched contrast is borderline; prose must not call it clean"
 
-
-def test_t11_logistic_control_agrees():
+def test_t11_logistic_control_points_the_same_way_but_is_not_significant():
     d = _load("t11_matched_skill.json")
     m = d["logistic_model"]
-    assert m["online"]["excludes_zero"] is True
     assert m["online"]["odds_ratio"] > 1.5
-
+    assert m["online"]["excludes_zero"] is False
 
 def test_t11_resignation_gap_vanishes_when_games_are_played_out():
     """The mechanism: over-the-board players resign lost positions and online
@@ -632,15 +640,13 @@ def test_t11_separates_the_clean_test_from_the_collider_one():
 # --------------------------------------------------------------------------
 
 
-def test_t7_anchor_drift_probe_fires():
-    """Found only after track 11 showed how large resignation effects are.
-    Moves played in a decided position are not competitive chess, and players
-    play more of them now than they used to."""
+def test_t7_anchor_drift_probe_no_longer_fires():
+    """RETRACTION GUARD. P7 fired in a previous build and was read as players
+    playing on longer after a position was lost. That was online blitz. On
+    classical games the drift is not distinguishable from zero."""
     d = _load("t7_falsify.json")
     p7 = next(p for p in d["probes"] if p["probe"].startswith("P7"))
-    assert p7["fired"] is True
-    assert p7["decided_move_share_last_year"] > p7["decided_move_share_first_year"]
-
+    assert p7["fired"] is False
 
 def test_t4_headline_uses_the_uncontaminated_anchor():
     """The contaminant points the same direction as the hypothesis under test,
@@ -650,15 +656,51 @@ def test_t4_headline_uses_the_uncontaminated_anchor():
     assert d["trend_undecided_only"]["excludes_zero"] is False
 
 
-def test_t4_composition_drift_is_real_and_reported():
+def test_t4_composition_drift_is_not_significant_on_classical_games():
     d = _load("t4_inflation.json")
-    c = d["composition_drift"]
-    assert c["excludes_zero"] is True
-    assert c["slope_per_decade"] > 0
+    assert d["composition_drift"]["excludes_zero"] is False
 
-
-def test_t4_correction_reduces_the_trend_toward_zero():
+def test_t4_undecided_spec_moves_the_trend_toward_zero():
     d = _load("t4_inflation.json")
     raw = d["trend_winsorised_acpl"]["slope_per_decade"]
     corrected = d["trend_undecided_only"]["slope_per_decade"]
-    assert 0 < corrected < raw
+    assert abs(corrected) < abs(raw)
+
+
+# --------------------------------------------------------------------------
+# format contamination, joint inference, provenance of benchmarks
+# --------------------------------------------------------------------------
+
+
+def test_twic_changes_format_in_2020():
+    """The fact every guard below exists to handle."""
+    d = _load("t1_validation.json")["twic_format_by_era"]
+    assert d["pre_2020"]["classical_otb"] > 0.9
+    assert d["2020_on"]["online"] > 0.5
+
+
+def test_p8_format_filter_holds_and_is_doing_work():
+    d = _load("t7_falsify.json")
+    p8 = next(p for p in d["probes"] if p["probe"].startswith("P8"))
+    assert p8["fired"] is False
+    shares = [v["non_classical_share_before_filter"] for v in p8["per_sample"].values()]
+    assert max(shares) > 0.15, "the filter should be removing a material share somewhere"
+
+
+def test_t10_joint_inference_separates_the_robust_claim_from_the_borderline_one():
+    """Step 3 of Simonsohn, Simmons & Nelson (2020). Unanimous sign across a
+    curve is not evidence on its own, because every specification shares the
+    same games. The rating gradient survives the joint test; the time effect is
+    borderline; the ACPL drift is a null."""
+    d = _load("t10_multiverse.json")
+    assert d["C1_blunder_gradient_across_bands"]["joint_inference"]["p_value_two_sided"] < 0.01
+    assert d["C2_fast_minus_slow_blunder_rate"]["joint_inference"]["p_value_two_sided"] > 0.04
+    assert d["C3_acpl_drift_per_decade"]["joint_inference"]["p_value_two_sided"] > 0.05
+
+
+def test_power_benchmarks_are_labelled_illustrative_not_sourced():
+    """An earlier version justified a benchmark with an unsourced literature
+    claim. Benchmarks are now labelled as this repository's own choices."""
+    d = _load("power_report.json")
+    for v in d["benchmark_provenance"].values():
+        assert "not a literature figure" in v

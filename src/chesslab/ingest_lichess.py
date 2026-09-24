@@ -138,6 +138,9 @@ def ingest(csv_path: Path, check_legality: bool = True, limit: int | None = None
             increment_seconds=inc,
             eco=(row.get("opening_eco") or None),
             opening_name=(row.get("opening_name") or None),
+            event="lichess rated game",
+            site="lichess.org",
+            format="online",
         )
 
         reason = validate_record(rec)

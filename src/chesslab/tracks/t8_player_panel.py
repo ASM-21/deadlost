@@ -62,13 +62,15 @@ below, and the year coefficient is reported as the compound quantity it is.
 Also: TWIC reports tournament chess. A player's TWIC games are not their whole
 year, and appearing in TWIC at all is selective.
 
-PANEL SIZE, AND A LESSON ABOUT THE FIRST VERSION. This track originally ran on
-34 players and reported a year coefficient of -0.65 cp per decade. At 100
-players it reports +1.32. The estimate did not merely tighten, it **changed
-sign**, which means the original number carried no information about direction
-at all. Both intervals span zero and both are therefore nulls, but anyone who
-had read the 34-player point estimate as "play is getting better at a fixed
-rating" would have been reading noise.
+PANEL SIZE, AND A RETRACTED LESSON. This track originally ran on 34 players and
+reported -0.65 cp per decade. Enlarged to 100 players, a previous build reported
++1.32 and concluded that the small panel's estimate had carried no directional
+information. **That conclusion was retracted.** The larger panel had been drawn
+from TWIC without a format filter, and TWIC is majority online blitz from 2020,
+which inflates centipawn loss late in the period. Restricted to classical
+over-the-board games, the enlarged panel gives a coefficient with the SAME sign
+as the original. There was no sign instability, only contamination. Both are
+nulls.
 
 The panel was expanded and re-evaluated at a cheaper engine budget in the same
 step, so the two changes were deliberately disentangled before drawing that
@@ -108,6 +110,8 @@ PANEL_TAG = "panel"
 
 def player_game_frame(games: pd.DataFrame) -> pd.DataFrame:
     """One row per (player, game): stack White and Black perspectives."""
+    # Used for panel SELECTION only, so it spans every format to reproduce the
+    # committed panel; the analysis drops non-classical games at load time.
     tw = games[games.source == "twic"].dropna(subset=["white_elo", "black_elo", "year"])
     w = tw[["game_id", "year", "white_id", "white_elo"]].rename(columns={"white_id": "pid", "white_elo": "elo"})
     w["color"] = "white"
@@ -388,10 +392,11 @@ def run() -> dict:
             for name, fit in ladder.items()
         },
         "power_note": (
-            "100 players and 584 player-years is enough to estimate a within-player rating gradient and "
-            "a year term, and still not enough to add career curvature on top: that spec's year interval "
-            "is about four times wider and its curvature term does not exclude zero. Tripling the panel "
-            "did not fix it, because the limit is collinearity rather than sample size."
+            "The classical panel is enough to estimate a within-player rating gradient and a year term, "
+            "and still not enough to add career curvature on top: that spec's year interval is several "
+            "times wider and its curvature term does not exclude zero. Enlarging the panel did not fix "
+            "it, because the limit is collinearity rather than sample size, which is the standard "
+            "age-period-cohort result (Fosse & Winship 2019)."
         ),
         "sign_instability_of_the_34_player_version": {
             "old_panel_players": 34,
@@ -399,9 +404,9 @@ def run() -> dict:
             "new_panel_players": 100,
             "new_year_coefficient_per_decade": None,
             "note": (
-                "Filled in from the current fit below. The earlier, smaller panel produced the opposite "
-                "sign. Both are nulls, but the point estimate was not stable enough to be read as a "
-                "direction."
+                "RETRACTED as a finding. A previous build reported that enlarging the panel flipped the "
+                "sign. That enlarged panel included online blitz games. On classical games only, the new "
+                "estimate (filled in below) has the same sign as the original. Both are nulls."
             ),
         },
         "engine_budget_invariance": {
@@ -412,7 +417,9 @@ def run() -> dict:
             "budget_ratio_trend_excludes_zero": False,
             "note": (
                 "The panel was enlarged and re-evaluated at a cheaper budget together, so the two were "
-                "separated before interpreting the result. Search depth does not interact with year."
+                "separated. Search depth does not interact with year. Measured before the format filter "
+                "existed; the comparison is between node budgets on identical games, so contamination "
+                "affects both sides equally and does not bear on this conclusion."
             ),
         },
         "player_summary": g.groupby("pid")

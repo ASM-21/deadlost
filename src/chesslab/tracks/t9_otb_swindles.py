@@ -67,7 +67,7 @@ def _meta() -> pd.DataFrame:
 def base_rates() -> dict:
     """Unconditional result mix per band, from the full corpus not the sample."""
     games = load_games()
-    d = games[games.source == "twic"].dropna(subset=["white_elo", "black_elo"])
+    d = games[(games.source == "twic") & (games.format == "classical_otb")].dropna(subset=["white_elo", "black_elo"])
     d = d[(d.white_elo - d.black_elo).abs() <= 100]
     out = {}
     for lo, hi in OTB_BANDS:

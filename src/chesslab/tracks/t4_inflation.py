@@ -28,17 +28,21 @@ Three further things that would corrupt ACPL if left alone, all handled:
    positions the engine already scores past +/-200cp.
 3. **Winsorisation.** One resignation-worthy move can dominate a game's mean.
    ACPL is reported both raw and winsorised at 300cp per move.
-4. **Resignation-timing drift, discovered late and via track 11.** Moves played
-   in an already-lost position are not a measurement of competitive skill: they
-   are what happens after the contest is over. Over-the-board players now play
-   roughly four more such moves per decade than they did in the 1990s, so the
-   *composition* of the scored move sample drifts even if nobody's skill
-   changes. In this sample the share of scored moves made in decided positions
-   rises from 1.4% to 4.6% across the period. That inflates measured ACPL over
-   time for a purely behavioural reason, and it points in the same direction
-   that genuine rating inflation would. The preferred anchor therefore excludes
-   decided positions entirely; see `trend_undecided_only`, which is the
-   specification this track treats as primary.
+4. **Moves played after the contest is decided.** A move made in an
+   already-lost position is not a measurement of competitive skill. The
+   preferred anchor therefore excludes decided positions; see
+   `trend_undecided_only`, which this track treats as primary.
+
+   A previous build went further and reported that players had started playing
+   on longer over the period (probe P7), which would have drifted the anchor in
+   the same direction as inflation. **That was retracted.** It was online blitz,
+   not a behavioural change: TWIC is majority online blitz from 2020, where
+   players play on, and once games are restricted to classical over-the-board
+   play the drift is not distinguishable from zero. The undecided-only
+   specification is kept on principle rather than because of a measured drift.
+
+5. **Format.** Only classical over-the-board games enter this track. See
+   `schema.classify_format` and probe P8.
 
 Run:  python -m chesslab.tracks.t4_inflation
 """
@@ -235,11 +239,10 @@ def run() -> dict:
                 "clear the minimum, so the comparison against the all-moves spec is like for like."
             ),
             "effect_of_the_correction": (
-                "The trend moves from +1.33 to +1.20 cp per decade. Modest, because decided positions are "
-                "still a small minority of scored moves even at the end of the period. It matters more "
-                "for the interpretation than for the number: it removes a contaminant that points the "
-                "same way as the hypothesis under test, which is exactly the kind that would otherwise "
-                "manufacture a positive result."
+                "Decided positions are a small minority of scored moves, so excluding them moves the "
+                "trend only modestly. The specification is retained because post-decision moves do not "
+                "measure competitive skill, not because a composition drift was found; the drift an "
+                "earlier build reported was format contamination (see probe P7 and P8)."
             ),
         },
         "composition_drift": composition,

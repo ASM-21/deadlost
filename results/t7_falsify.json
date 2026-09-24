@@ -3,7 +3,7 @@
     {
       "probe": "P1 base-rate confound in track 6",
       "fired": true,
-      "verdict": "master draw-save is 0.18x its own base draw rate vs 0.43x for amateurs; PROBE FIRES: once each group is normalised by how often it draws anyway, the master 'defensive skill' reading does not survive.",
+      "verdict": "master draw-save is 0.12x its own base draw rate vs 0.43x for amateurs; PROBE FIRES: once each group is normalised by how often it draws anyway, the master 'defensive skill' reading does not survive.",
       "detail": [
         {
           "band": "1200-1400",
@@ -52,12 +52,12 @@
         },
         {
           "band": "2400-2499 (OTB)",
-          "base_draw_rate_all_games": 0.4454742654308815,
-          "draw_save_rate_from_lost": 0.07857142857142857,
-          "ratio_save_to_base": 0.17637703155631443,
-          "total_save_rate": 0.09285714285714286,
-          "n_lost_game_sides": 140,
-          "n_draw_saves": 11
+          "base_draw_rate_all_games": 0.5140632847815169,
+          "draw_save_rate_from_lost": 0.0594059405940594,
+          "ratio_save_to_base": 0.11556153172718345,
+          "total_save_rate": 0.0594059405940594,
+          "n_lost_game_sides": 101,
+          "n_draw_saves": 6
         }
       ]
     },
@@ -144,7 +144,7 @@
     {
       "probe": "P5 censoring bounds in track 6",
       "fired": false,
-      "verdict": "OTB save rate at its most favourable bound is 0.093; the weakest amateur band at its least favourable is 0.161. probe passes: the ordering holds under the worst censoring assumption.",
+      "verdict": "OTB save rate at its most favourable bound is 0.059; the weakest amateur band at its least favourable is 0.161. probe passes: the ordering holds under the worst censoring assumption.",
       "detail": [
         {
           "band": "1400-1600",
@@ -183,9 +183,9 @@
         },
         {
           "band": "2400-2499 (OTB)",
-          "excluded_rate": 0.09285714285714286,
-          "worst_case_lower": 0.09285714285714286,
-          "worst_case_upper": 0.09285714285714286,
+          "excluded_rate": 0.0594059405940594,
+          "worst_case_lower": 0.0594059405940594,
+          "worst_case_upper": 0.0594059405940594,
           "n_censored": 0
         }
       ]
@@ -200,27 +200,66 @@
     },
     {
       "probe": "P7 anchor composition drift",
-      "fired": true,
+      "fired": false,
       "decided_move_share_first_year": 0.06944444444444445,
-      "decided_move_share_last_year": 0.0893760539629005,
-      "slope_per_decade": 0.030802240428723753,
-      "acpl_trend_all_moves": 1.3265461921089614,
-      "acpl_trend_undecided_only": 1.2009483425946024,
-      "share_of_trend_removed": 0.09468034378409533,
-      "verdict": "PROBE FIRES: the share of scored moves made in already-decided positions rises over the period (0.069 to 0.089), so the skill anchor drifts for behavioural reasons. Track 4 now reports an undecided-positions-only anchor as its headline; the uncorrected trend should not be cited.",
+      "decided_move_share_last_year": 0.06666666666666667,
+      "slope_per_decade": 0.011227601480795995,
+      "acpl_trend_all_moves": -0.909859380016092,
+      "acpl_trend_undecided_only": -0.7084504458045897,
+      "share_of_trend_removed": 0.22136270574903577,
+      "verdict": "probe passes: no time trend in the composition of the scored move sample.",
       "why_it_matters": "The contaminant points the same direction as the hypothesis under test. A repo that only looked at the uncorrected anchor would have had a standing chance of reporting behavioural drift as rating inflation."
+    },
+    {
+      "probe": "P8 format contamination",
+      "fired": false,
+      "per_sample": {
+        "otb": {
+          "games_evaluated": 520,
+          "non_classical_share_before_filter": 0.27307692307692305,
+          "games_reaching_analysis": 378,
+          "non_classical_reaching_analysis": 0
+        },
+        "panel": {
+          "games_evaluated": 1161,
+          "non_classical_share_before_filter": 0.20241171403962102,
+          "games_reaching_analysis": 926,
+          "non_classical_reaching_analysis": 0
+        },
+        "twic": {
+          "games_evaluated": 348,
+          "non_classical_share_before_filter": 0.16091954022988506,
+          "games_reaching_analysis": 292,
+          "non_classical_reaching_analysis": 0
+        }
+      },
+      "twic_format_by_era": {
+        "pre_2020": {
+          "classical_otb": 0.9548,
+          "fast_otb": 0.0324,
+          "online": 0.0127
+        },
+        "2020_on": {
+          "online": 0.5505,
+          "classical_otb": 0.393,
+          "fast_otb": 0.0566
+        }
+      },
+      "verdict": "probe passes: the classical filter holds for every TWIC-derived sample. Without it, a fifth or more of several samples would be online or fast chess, concentrated after 2020.",
+      "history": "This probe was written after the fact. An earlier build treated all of TWIC as classical over-the-board play. The error was found by a literature search, not by any test: a 2026 study reported classical draw rates RISING after 2020 while this repo reported them falling, and chasing the contradiction exposed the contamination."
     }
   ],
   "summary": {
     "fired": [
-      "P1 base-rate confound in track 6",
-      "P7 anchor composition drift"
+      "P1 base-rate confound in track 6"
     ],
     "passed": [
       "P2 engine depth",
       "P3 permutation null for band gradient",
       "P5 censoring bounds in track 6",
-      "P6 evaluation determinism"
+      "P6 evaluation determinism",
+      "P7 anchor composition drift",
+      "P8 format contamination"
     ],
     "informational": [
       "P4 cost of ignoring clustering"

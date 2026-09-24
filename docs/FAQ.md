@@ -8,6 +8,14 @@ does when a result does not survive scrutiny. Two claims were withdrawn, three
 nulls are labelled as underpowered against the effects people care about, and
 five bugs found during the build are documented rather than quietly fixed.
 
+### Is any of this new?
+
+Mostly not, and the repository says which parts are which. The literature
+review (docs/LITERATURE.md) found that the rating-drift design, the White
+advantage gradient and the age-period-cohort limit are all established. What is
+new is claim 9, and some of the method: format inference for TWIC, the
+decided-position filter, and joint inference applied to these questions.
+
 ### Why not use the full Lichess database?
 
 `database.lichess.org` is not reachable from every environment, so the corpora
@@ -18,23 +26,34 @@ is almost entirely rapid, which is why the bullet-versus-blitz question in track
 
 ### Which findings should I actually trust?
 
-In descending order:
+In descending order of confidence:
 
-1. **Track 3** (blunder rate by rating and time control). Survives all 180
-   analytic specifications, a label-permutation null, and a 4x deeper engine.
-2. **Track 5** (White's advantage). Large corpus, simple estimand, composition
-   artifact identified and reported alongside the corrected version.
-3. **Track 2** (openings). A clean null, but see the resolution bound.
-4. **Tracks 4 and 8** (inflation). Two designs, two nulls, neither powered to
-   rule out the drift rate commonly claimed.
-5. **Track 11** (why the save-rate gap exists). A strong identification chain
-   with a directly measured mechanism, but built on the narrow overlap between
-   two unusual subpopulations.
-6. **Tracks 6 and 9** (saving lost positions). The weakest work here. Two
-   retractions, and their surviving contrast turned out not to be about chess
-   skill at all; read them as inputs to track 11.
+1. **Claim 1** (blunder rate falls with rating). Survives all 180 analytic
+   specifications under joint inference (p = 0.002), a permutation null, and a
+   fourfold-deeper engine. It is also a replication of well-known work.
+2. **Claim 9** (lost positions are saved online because over-the-board players
+   resign). A large, precise difference measured without conditioning on
+   anything after the position is lost, with its online half checked against
+   independent Lichess statistics. Rests on a 114-game over-the-board sample.
+3. **Claim 4** (White's edge grows with strength). Large corpus, simple
+   estimand, known result.
+4. **Claims 5 and 6** (rising draws; opening evaluations). Consistent with
+   recent literature, not independent tests of it.
+5. **Claim 2** (time control). Borderline once analytic flexibility is
+   accounted for.
+6. **Claims 7 and 8** (rating drift). Nulls that cannot rule out moderate
+   drift in either direction.
 
 `chesslab limits` prints this in machine-checkable form.
+
+### Was anything in this repository wrong?
+
+Yes, six things, all listed in FINDINGS.md. The largest was that the tournament
+corpus, The Week In Chess, became majority online blitz in 2020, and three
+results built on it were really measuring the switch from classical to online
+play. No test caught it. A literature search did: a 2026 paper found classical
+draw rates rising after 2020, this repository found them falling, and the
+contradiction led straight to the data.
 
 ### Why is the engine budget fixed by nodes instead of time?
 
@@ -67,11 +86,11 @@ said, it was cut.
 
 ### What is the single most interesting result?
 
-Track 11. Lost positions are saved more than twice as often online as over the
-board, and the reason is not that online players defend better. It is that
-over-the-board players resign: of those who ended up losing, 5.8% played the
-position to checkmate against 32.0% online. You cannot save a game you have
-already resigned.
+Claim 9. Lost positions are saved far more often online than over the board, and
+the reason is not that online players defend better. It is that over-the-board
+players resign: of those who ended up losing, 3.5% played the position to
+checkmate in classical play against 32.0% online. You cannot save a game you have
+already resigned. No prior study comparing this across formats was found.
 
 Getting there required noticing that the metadata thought to be necessary was
 not necessary at all. TWIC carries no termination tags, which looked like a dead

@@ -25,13 +25,32 @@ from chesslab import power  # noqa: E402
 from chesslab.paths import RESULTS  # noqa: E402
 
 #: Effect sizes that would matter if real, fixed in advance.
+#: Effect sizes used to judge whether a null is informative. These are
+#: ILLUSTRATIVE magnitudes chosen by this repository, not figures taken from the
+#: literature, and they are labelled that way wherever they are reported.
+#:
+#: An earlier version of this file justified the rating benchmark with the line
+#: "commonly repeated claims about FIDE inflation run at 30-100 Elo/decade". That
+#: figure was never sourced, and the literature search contradicted its framing:
+#: the documented concern of the last decade is rating DEFLATION, concentrated
+#: below 2000 and driven by a tenfold growth of the rated pool (Sonas 2023, 2024,
+#: the analysis behind FIDE's March 2024 compression), while engine-anchored
+#: studies find little or no drift in either direction at master level (Regan &
+#: Haworth 2011; Regan, Macieja & Haworth 2012). The benchmark is therefore
+#: stated as a symmetric drift magnitude, with no claim about who asserts it.
 BENCHMARKS = {
-    # Commonly repeated claims about FIDE inflation run at 30-100 Elo/decade.
-    # At the within-panel gradient of ~0.010 cp per Elo, 50 Elo is ~0.5 cp.
-    "rating_inflation_cp_per_decade": 0.5,
-    # A quarter-pawn of engine evaluation is the sort of edge opening books
-    # argue about; at track 2's scale that maps to a few points of score.
+    # 50 Elo per decade of drift in EITHER direction. At the within-panel
+    # gradient of ~0.010 cp per Elo point, that is ~0.5 cp of ACPL per decade.
+    "rating_drift_cp_per_decade": 0.5,
+    # A quarter-pawn of engine evaluation, mapped to score at track 2's scale.
     "opening_score_per_pawn": 0.05,
+}
+BENCHMARK_PROVENANCE = {
+    "rating_drift_cp_per_decade": (
+        "Illustrative: 50 Elo/decade in either direction, converted with the within-player "
+        "rating gradient from track 8. Chosen by this repository; not a literature figure."
+    ),
+    "opening_score_per_pawn": "Illustrative: chosen by this repository; not a literature figure.",
 }
 
 
@@ -41,7 +60,12 @@ def load(name: str) -> dict | None:
 
 
 def main() -> int:
-    out: dict = {"benchmarks": BENCHMARKS, "nulls": {}, "clustering": {}}
+    out: dict = {
+        "benchmarks": BENCHMARKS,
+        "benchmark_provenance": BENCHMARK_PROVENANCE,
+        "nulls": {},
+        "clustering": {},
+    }
 
     t7 = load("t7_falsify.json")
     width_ratio = 1.0
@@ -68,7 +92,7 @@ def main() -> int:
             tr["ci_lo_per_decade"],
             tr["ci_hi_per_decade"],
             "cp per decade",
-            benchmark=BENCHMARKS["rating_inflation_cp_per_decade"],
+            benchmark=BENCHMARKS["rating_drift_cp_per_decade"],
         )
 
     # --- track 8: within-player inflation null
@@ -80,7 +104,7 @@ def main() -> int:
             y["ci_lo"] * 10,
             y["ci_hi"] * 10,
             "cp per decade",
-            benchmark=BENCHMARKS["rating_inflation_cp_per_decade"],
+            benchmark=BENCHMARKS["rating_drift_cp_per_decade"],
         )
         ladder = t8.get("specification_ladder", {})
         if "with_career_curvature" in ladder:

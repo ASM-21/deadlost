@@ -38,21 +38,21 @@ TRACKS = [
      "Blunder rate falls about 3.4x from 1200 to 2200. Faster games blunder roughly 29% more than "
      "slower ones, tested as a difference rather than by comparing interval overlap. Time control "
      "shifts the mean by a little; which two humans sat down shifts it by a lot."),
-    (5, "White's first-move advantage", "t5_color.json", "t5_white_advantage_by_year.png",
-     "White scores above parity in every over-the-board band, and the edge grows with strength rather "
-     "than shrinking. Draw rates are falling, not rising, which is the opposite of the usual claim. "
-     "The unrestricted version of that trend is a composition artifact and is published alongside it."),
+    (5, "White's first-move advantage and draw rates", "t5_color.json", "t5_white_advantage_by_year.png",
+     "White scores above parity in every classical band and the edge grows with strength, a known result. "
+     "Classical draw rates are rising, consistent with Ben-Moshe & Genesove (2026). An earlier build said the "
+     "opposite; the tournament corpus had become majority online blitz from 2020, and that headline was "
+     "retracted once a literature search exposed the contradiction."),
     (2, "Do engine-approved openings win more?", "t2_openings.json", "t2_book_exit_eval.png",
      "No, at any rating. Nothing survives multiplicity correction and the sign of the rank correlation "
      "flips between bands. The mechanical reason is range compression: every mainline opening evaluates "
      "within a 26 centipawn band."),
-    (4, "Rating inflation, at fixed nominal rating", "t4_inflation.json", "t4_acpl_at_fixed_rating.png",
-     "No detectable drift. The design cannot separate inflation from a change in who holds a rating, "
-     "and it is not powered to rule out the drift rate people actually claim."),
-    (8, "Rating inflation, following the same players", "t8_player_panel.json", "t8_within_player_acpl.png",
-     "Null again, from a different direction. Player fixed effects remove the composition confound "
-     "entirely, then run into the age-period-cohort problem: within a player, calendar year and career "
-     "stage are the same regressor after demeaning."),
+    (4, "Rating drift at a fixed rating", "t4_inflation.json", "t4_acpl_at_fixed_rating.png",
+     "No detectable drift, replicating Regan & Haworth (2011) on overlapping data. Resolution is about "
+     "+/-1.5 cp per decade, too coarse to settle either inflation or the deflation FIDE's own analysis documented."),
+    (8, "Rating drift, following the same players", "t8_player_panel.json", "t8_within_player_acpl.png",
+     "Null again from a different design. Within one person, calendar time and career stage cannot be separated "
+     "without an assumption: the standard age-period-cohort problem, reproduced here rather than discovered."),
     (9, "Saving lost positions, format held constant", "t9_otb_swindles.json", "t9_otb_swindle_by_band.png",
      "No gradient across 400 Elo of over-the-board play. Combined with the online sample, both corpora "
      "are internally flat and separated by a large step, which points at playing format rather than "
@@ -66,12 +66,13 @@ TRACKS = [
      "the whole difference without invoking chess skill at all."),
     (10, "Do the findings survive their own analytic choices?", "t10_multiverse.json",
      "t10_curve_blunder_gradient.png",
-     "Track 3's gradient is negative in all 180 defensible specifications and the reported choice sits "
-     "at the 74th percentile. One arbitrary decision, the blunder threshold, drives 94% of the spread."),
+     "Every defensible combination of analytic choices, then joint inference across the whole curve. The rating "
+     "gradient survives (p = 0.002). The time-control effect agrees in sign in all 180 specifications but is only "
+     "borderline jointly (p = 0.052), because every specification shares the same games."),
     (7, "The track that attacks the others", "t7_falsify.json", "t7_p1_base_rate_confound.png",
-     "Six probes with pass conditions fixed in advance. One still fires, against track 6, and forced a "
-     "published claim to be withdrawn. Two others record bugs that were real and are now fixed at the "
-     "cause."),
+     "Eight probes with pass conditions fixed in advance. One fires today and forced a retraction. Three others "
+     "record bugs that were real. The largest error of all was caught by none of them: it was found by reading a "
+     "paper whose result disagreed with this one."),
 ]
 
 CSS = """
@@ -144,13 +145,13 @@ def build() -> Path:
         "games and Stockfish 16, including a track whose only job is to break the others.'>",
         f"<style>{CSS}</style></head><body>",
         "<header><div class='wrap'><h1>chess-lab</h1>",
-        "<p class='tag'>Eleven questions people repeat about chess, checked against "
-        f"{rows:,} real games and Stockfish 16. One track exists only to break the others.</p>",
+        "<p class='tag'>Nine claims about chess, tested on "
+        f"{rows:,} public games with Stockfish 16, positioned against the literature.</p>",
         "<div class='chips'>",
-        "<span class='chip bad'>2 claims retracted</span>",
-        "<span class='chip'>180/180 specifications</span>",
+        "<span class='chip bad'>6 claims retracted</span>",
+        "<span class='chip'>literature-checked</span>",
         "<span class='chip'>every null bounded</span>",
-        "<span class='chip'>107 tests</span>",
+        "<span class='chip'>122 tests</span>",
         f"<span class='chip'>{fired} of {n_probes} probes still fire</span>",
         "</div></div></header><div class='wrap'>",
     ]

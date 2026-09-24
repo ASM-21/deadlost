@@ -1,16 +1,20 @@
 {
   "benchmarks": {
-    "rating_inflation_cp_per_decade": 0.5,
+    "rating_drift_cp_per_decade": 0.5,
     "opening_score_per_pawn": 0.05
+  },
+  "benchmark_provenance": {
+    "rating_drift_cp_per_decade": "Illustrative: 50 Elo/decade in either direction, converted with the within-player rating gradient from track 8. Chosen by this repository; not a literature figure.",
+    "opening_score_per_pawn": "Illustrative: chosen by this repository; not a literature figure."
   },
   "nulls": {
     "t4_inflation_acpl_per_decade": {
-      "point_estimate": 0.6938471245208739,
+      "point_estimate": -1.1335831749706469,
       "ci": [
-        -0.6487388632872257,
-        1.9790143126793889
+        -2.5832912787923306,
+        0.384735296869993
       ],
-      "resolution_half_width": 1.3138765879833074,
+      "resolution_half_width": 1.4840132878311618,
       "units": "cp per decade",
       "excludes_zero": false,
       "benchmark": 0.5,
@@ -18,12 +22,12 @@
       "verdict": "An effect of 0.5 cp per decade would have fit inside this interval, so the null does NOT rule it out. The design cannot see effects this small."
     },
     "t8_within_player_acpl_per_decade": {
-      "point_estimate": 1.3215255877930951,
+      "point_estimate": -0.472407500236236,
       "ci": [
-        -0.3632502876371554,
-        3.0194430222674917
+        -1.978323209944918,
+        1.0862508981579322
       ],
-      "resolution_half_width": 1.6913466549523235,
+      "resolution_half_width": 1.532287054051425,
       "units": "cp per decade",
       "excludes_zero": false,
       "benchmark": 0.5,
@@ -31,23 +35,23 @@
       "verdict": "An effect of 0.5 cp per decade would have fit inside this interval, so the null does NOT rule it out. The design cannot see effects this small."
     },
     "t8_curvature_spec_resolution": {
-      "mde": 6.475838432321272,
+      "mde": 6.186161407067565,
       "units": "cp per decade",
       "method": "half-width of observed bootstrap CI",
       "note": "Descriptive resolution bound, not an 80%-power MDE. An effect near this size sits at the edge of what the observed interval could distinguish from zero."
     },
     "t2_opening_slope": {
-      "mde": 0.3918117644190595,
+      "mde": 0.39975107737944077,
       "units": "slope (y units per x unit)",
       "method": "OLS slope power",
-      "note": "residual sd=0.02857, sum of squared x deviations=0.04174, n=12",
+      "note": "residual sd=0.02883, sum of squared x deviations=0.04082, n=12",
       "benchmark": 0.05,
       "benchmark_detectable": false,
       "x_range_pawns": [
-        0.1922640218878249,
-        0.4502568306010929
+        0.2002643573381951,
+        0.4533065693430657
       ],
-      "why": "The x-axis spans about 0.26 pawns across every mainline opening. Slope resolution depends on the spread of x as much as on sample size, which is why this null is weak no matter how many games are added."
+      "why": "The x-axis spans about 0.25 pawns across every mainline opening. Slope resolution depends on the spread of x as much as on sample size, which is why this null is weak no matter how many games are added."
     },
     "t6_online_band_contrast": {
       "mde": 0.23521916731295592,

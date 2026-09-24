@@ -31,17 +31,17 @@ ROOT = Path(__file__).resolve().parents[2]
 #: The summaries are deliberately hedged where the underlying result is weak;
 #: a CLI that overstates is worse than no CLI.
 TRACKS = {
-    1: ("t1_validation.json", "Ingested 190,967 games from two public corpora; 1,748 engine-scored."),
-    2: ("t2_openings.json", "Engine-assessed opening quality does not predict practical results at any rating."),
-    3: ("t3_blunders.json", "Blunder rate falls ~3.4x from 1200 to 2200; faster games blunder ~29% more."),
-    4: ("t4_inflation.json", "No detectable rating inflation, but underpowered to rule out the rate people claim."),
-    5: ("t5_color.json", "White's edge grows with strength; draws are falling, not rising."),
-    6: ("t6_swindles.json", "Weakest track. Two claims retracted; the surviving contrast is confounded with format."),
-    7: ("t7_falsify.json", "Seven probes against the other tracks. Two still fire."),
-    8: ("t8_player_panel.json", "Within-player inflation null over 100 players. Removes composition confound, hits age-period-cohort."),
-    9: ("t9_otb_swindles.json", "No save-rate gradient across 400 Elo of OTB play; the online/OTB gap looks like format."),
-    10: ("t10_multiverse.json", "Track 3's findings hold in 180/180 analytic specifications."),
-    11: ("t11_matched_skill.json", "The online/OTB save gap is resignation norms, not chess skill."),
+    1: ("t1_validation.json", "Ingested 190,967 games; TWIC is majority online blitz from 2020 and is filtered to classical."),
+    2: ("t2_openings.json", "Engine opening evaluations do not predict practical results (consistent with Park 2026)."),
+    3: ("t3_blunders.json", "Blunder rate falls ~3.4x from 1200 to 2200; the time-control effect is borderline."),
+    4: ("t4_inflation.json", "No detectable rating drift at fixed rating; replicates Regan & Haworth; underpowered."),
+    5: ("t5_color.json", "White's edge grows with strength (replication); classical draw rates are rising."),
+    6: ("t6_swindles.json", "Weakest track. Two claims retracted; superseded by track 11."),
+    7: ("t7_falsify.json", "Eight probes against the other tracks. One fires (P1)."),
+    8: ("t8_player_panel.json", "Within-player drift null; calendar time and ageing are not separable (textbook APC)."),
+    9: ("t9_otb_swindles.json", "No save-rate gradient across OTB ratings; the online/OTB gap is not about strength."),
+    10: ("t10_multiverse.json", "Specification curves with joint inference: rating gradient robust, time effect borderline."),
+    11: ("t11_matched_skill.json", "New: lost positions are saved online because OTB players resign (32.0% vs 3.5% play to mate)."),
 }
 
 
@@ -116,6 +116,8 @@ def cmd_limits(args) -> int:
     for line in (
         "track 2: opening choice is self-selected, so a line's score partly measures who plays it",
         "track 4: inflation and population change predict identical trends at fixed rating",
+        "TWIC 2020+: majority online blitz with no time-control tag; classical analyses depend on the "
+        "format inferred from event and site headers",
         "track 8: within a player, calendar year and career stage are the same regressor",
         "track 6/9: online rapid and OTB classical do not overlap in rating, so format and strength "
         "cannot be separated",

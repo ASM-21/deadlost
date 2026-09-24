@@ -36,6 +36,13 @@ PROBES
      trend. This probe was written after track 11 showed how large resignation
      effects are in this data.
 
+  P8 format contamination. Every TWIC-derived analysis claims to describe
+     classical over-the-board chess. From 2020, TWIC is majority online blitz
+     and carries no TimeControl tag, so a filter must hold at load time. An
+     earlier build had no such filter, and it produced a retracted headline
+     (falling draw rates) and a retracted probe result (P7). Pass condition:
+     no non-classical game reaches any TWIC-derived engine sample.
+
   P6 evaluation determinism. Every centipawn number assumes the engine gives
      the same answer for the same position regardless of what it searched
      before. It does not, unless the transposition table is explicitly reset
@@ -92,7 +99,7 @@ def p1_base_rate_confound() -> dict:
     for band, cell in li.groupby("white_band"):
         if len(cell) >= 200:
             base[band] = {"draw_rate": float((cell.result == "1/2-1/2").mean()), "n": int(len(cell))}
-    tw = games[games.source == "twic"].dropna(subset=["white_elo", "black_elo"])
+    tw = games[(games.source == "twic") & (games.format == "classical_otb")].dropna(subset=["white_elo", "black_elo"])
     tw = tw[tw.white_elo.between(2400, 2499) & tw.black_elo.between(2400, 2499)]
     base["2400-2499 (OTB)"] = {"draw_rate": float((tw.result == "1/2-1/2").mean()), "n": int(len(tw))}
 
@@ -456,6 +463,52 @@ def p7_anchor_composition_drift() -> dict:
     }
 
 
+def p8_format_contamination() -> dict:
+    """No online or fast game may reach an analysis that claims classical play."""
+    from ..eval_run import TWIC_TAGS
+
+    games = load_games().set_index("game_id")
+    per_tag = {}
+    leaked_total = 0
+    for tag in sorted(TWIC_TAGS):
+        try:
+            unfiltered = load_evals(tag, classical_only=False)
+            filtered = load_evals(tag)
+        except FileNotFoundError:
+            continue
+        g_all = unfiltered.game_id.unique()
+        g_kept = filtered.game_id.unique()
+        fmt_all = games.loc[g_all, "format"]
+        fmt_kept = games.loc[g_kept, "format"]
+        leaked = int((fmt_kept != "classical_otb").sum())
+        leaked_total += leaked
+        per_tag[tag] = {
+            "games_evaluated": int(len(g_all)),
+            "non_classical_share_before_filter": float((fmt_all != "classical_otb").mean()),
+            "games_reaching_analysis": int(len(g_kept)),
+            "non_classical_reaching_analysis": leaked,
+        }
+    t1 = json.loads((paths.RESULTS / "t1_validation.json").read_text())
+    return {
+        "probe": "P8 format contamination",
+        "fired": bool(leaked_total > 0),
+        "per_sample": per_tag,
+        "twic_format_by_era": t1.get("twic_format_by_era"),
+        "verdict": (
+            f"PROBE FIRES: {leaked_total} non-classical games reach analyses that claim classical play."
+            if leaked_total
+            else "probe passes: the classical filter holds for every TWIC-derived sample. Without it, a "
+            "fifth or more of several samples would be online or fast chess, concentrated after 2020."
+        ),
+        "history": (
+            "This probe was written after the fact. An earlier build treated all of TWIC as classical "
+            "over-the-board play. The error was found by a literature search, not by any test: a 2026 "
+            "study reported classical draw rates RISING after 2020 while this repo reported them "
+            "falling, and chasing the contradiction exposed the contamination."
+        ),
+    }
+
+
 def run(depth_budget: float | None = None) -> dict:
     probes = [
         p1_base_rate_confound(),
@@ -465,6 +518,7 @@ def run(depth_budget: float | None = None) -> dict:
         p5_censoring_bounds(),
         p6_determinism(),
         p7_anchor_composition_drift(),
+        p8_format_contamination(),
     ]
     out = {
         "probes": probes,

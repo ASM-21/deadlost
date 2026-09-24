@@ -41,178 +41,54 @@ def get(path: str):
 
 #: (label, markdown literal as written, source path, tolerance)
 #: Tolerance is absolute; use 0 for integers and exact strings.
-CLAIMS: list[tuple[str, str, str, float]] = [
-    ("games ingested", "190,967", "t1_validation.json:rows", 0),
-    ("lichess games", "18,537", "t1_validation.json:by_source.lichess2017", 0),
-    ("twic games", "172,430", "t1_validation.json:by_source.twic", 0),
-    (
-        "blunder rate 1200-1400",
-        "8.3%",
-        "t3_blunders.json:by_rating_band.1200-1400.blunder_rate.point",
-        0.002,
-    ),
-    (
-        "blunder rate 2000-2200",
-        "2.5%",
-        "t3_blunders.json:by_rating_band.2000-2200.blunder_rate.point",
-        0.002,
-    ),
-    (
-        "fast-vs-slow relative increase",
-        "29%",
-        "t3_blunders.json:fast_vs_slow_difference.relative_increase",
-        0.02,
-    ),
-    (
-        "opening eval spread",
-        "25.8",
-        "t2_openings.json:engine_eval_spread_cp.range",
-        0.3,
-    ),
-    (
-        "acpl drift per decade (track 4)",
-        "0.69",
-        "t4_inflation.json:trend_adjusted.acpl_year_coefficient_per_decade",
-        0.05,
-    ),
-    (
-        "white score 2200-2400",
-        "0.530",
-        "t5_color.json:twic_by_elo_band.2200-2400.white_score.point",
-        0.003,
-    ),
-    (
-        "white score 2600+",
-        "0.553",
-        "t5_color.json:twic_by_elo_band.2600-3200.white_score.point",
-        0.003,
-    ),
-    (
-        "draw rate slope per decade",
-        "5.9%",
-        "t5_color.json:twic_time_trends_fixed_band_2400_2499.draw_rate.slope_per_decade",
-        0.005,
-    ),
-    (
-        "swindle rate OTB masters",
-        "9.3%",
-        "t6_swindles.json:by_rating_band.2400-2499 (OTB).swindle_rate.point",
-        0.005,
-    ),
-    (
-        "online minus OTB save contrast",
-        "9.6%",
-        "t6_swindles.json:online_gradient.online_vs_otb_contrast.online_minus_otb",
-        0.01,
-    ),
-    (
-        "clustering width ratio",
-        "1.48",
-        "t7_falsify.json:probes[3].mean_width_ratio",
-        0.08,
-    ),
-    (
-        "t9 lost game-sides",
-        "223",
-        "t9_otb_swindles.json:design.lost_game_sides",
-        0,
-    ),
-    (
-        "t9 otb mean save rate",
-        "7.6%",
-        "t9_otb_swindles.json:level_shift_vs_gradient.otb_mean_save_rate",
-        0.004,
-    ),
-    (
-        "t9 online mean save rate",
-        "18.9%",
-        "t9_otb_swindles.json:level_shift_vs_gradient.online_mean_save_rate",
-        0.004,
-    ),
-    (
-        "t4 resolution half-width",
-        "1.31",
-        "power_report.json:nulls.t4_inflation_acpl_per_decade.resolution_half_width",
-        0.03,
-    ),
-    (
-        "t8 resolution half-width",
-        "1.69",
-        "power_report.json:nulls.t8_within_player_acpl_per_decade.resolution_half_width",
-        0.06,
-    ),
-    (
-        "clustering design effect",
-        "2.18",
-        "power_report.json:clustering.implied_design_effect_on_sample_size",
-        0.03,
-    ),
-    (
-        "t10 specs for C1",
-        "180",
-        "t10_multiverse.json:C1_blunder_gradient_across_bands.n_estimated",
-        0,
-    ),
-    (
-        "t10 blunder threshold variance share",
-        "94%",
-        "t10_multiverse.json:C1_blunder_gradient_across_bands.variance_attribution.shares_of_total_variance.blunder_cp",
-        0.01,
-    ),
-    (
-        "t11 raw gap",
-        "11.0%",
-        "t11_matched_skill.json:raw_gap_online_minus_otb",
-        0.004,
-    ),
-    (
-        "t11 matched gap",
-        "17.3%",
-        "t11_matched_skill.json:stratified_contrast.stratified_difference",
-        0.006,
-    ),
-    (
-        "t11 online odds ratio at matched skill",
-        "2.59",
-        "t11_matched_skill.json:logistic_model.online.odds_ratio",
-        0.06,
-    ),
-    (
-        "t11 online played-to-mate rate",
-        "32.0%",
-        "t11_matched_skill.json:resignation_rate.by_corpus.online.played_to_mate",
-        0.005,
-    ),
-    (
-        "t11 otb played-to-mate rate",
-        "5.8%",
-        "t11_matched_skill.json:resignation_rate.by_corpus.otb.played_to_mate",
-        0.005,
-    ),
-    (
-        "t4 undecided-only trend",
-        "1.20",
-        "t4_inflation.json:trend_undecided_only.slope_per_decade",
-        0.04,
-    ),
-    (
-        "panel players",
-        "100",
-        "t8_player_panel.json:design.players",
-        0,
-    ),
-    (
-        "panel player-years",
-        "584",
-        "t8_player_panel.json:design.player_years",
-        0,
-    ),
-    (
-        "t8 year coefficient per decade",
-        "1.32",
-        "t8_player_panel.json:sign_instability_of_the_34_player_version.new_year_coefficient_per_decade",
-        0.25,
-    ),
+#: (label, literal as written in prose, source path, tolerance, expected sign)
+#:
+#: Expected sign is "+" or "-". Prose states magnitudes ("falls 0.71 cp per
+#: decade", "rises 3.1 points"), so literals are unsigned and the sign is
+#: declared here. An earlier version compared absolute values instead, which
+#: meant a result that REVERSED direction but kept its magnitude would have
+#: passed. That is the failure a claims check most needs to catch: the retracted
+#: "draws falling" headline and its classical replacement differ in sign.
+CLAIMS: list[tuple[str, str, str, float, str]] = [
+    ("games ingested", "190,967", "t1_validation.json:rows", 0, "+"),
+    ("lichess games", "18,537", "t1_validation.json:by_source.lichess2017", 0, "+"),
+    ("twic games", "172,430", "t1_validation.json:by_source.twic", 0, "+"),
+    ("classical twic games", "119,794", "t1_validation.json:twic_format_counts.classical_otb", 0, "+"),
+    ("blunder rate 1200-1400", "8.3%", "t3_blunders.json:by_rating_band.1200-1400.blunder_rate.point", 0.002, "+"),
+    ("blunder rate 2000-2200", "2.5%", "t3_blunders.json:by_rating_band.2000-2200.blunder_rate.point", 0.002, "+"),
+    ("fast-vs-slow relative increase", "29%", "t3_blunders.json:fast_vs_slow_difference.relative_increase", 0.02, "+"),
+    ("C1 specifications", "180", "t10_multiverse.json:C1_blunder_gradient_across_bands.n_estimated", 0, "+"),
+    ("C1 joint p", "0.002", "t10_multiverse.json:C1_blunder_gradient_across_bands.joint_inference.p_value_two_sided", 0.004, "+"),
+    ("C2 joint p", "0.052", "t10_multiverse.json:C2_fast_minus_slow_blunder_rate.joint_inference.p_value_two_sided", 0.02, "+"),
+    ("C3 joint p", "0.064", "t10_multiverse.json:C3_acpl_drift_per_decade.joint_inference.p_value_two_sided", 0.03, "+"),
+    ("blunder threshold variance share", "94%",
+     "t10_multiverse.json:C1_blunder_gradient_across_bands.variance_attribution.shares_of_total_variance.blunder_cp", 0.01, "+"),
+    ("white score 2200-2400", "0.533", "t5_color.json:twic_by_elo_band.2200-2400.white_score.point", 0.003, "+"),
+    ("white score 2600+", "0.558", "t5_color.json:twic_by_elo_band.2600-3200.white_score.point", 0.003, "+"),
+    ("classical draw trend per decade", "3.1%",
+     "t5_color.json:twic_time_trends_fixed_band_2400_2499.draw_rate.slope_per_decade", 0.004, "+"),
+    ("post-2020 draw step", "4.0%", "t5_color.json:post_2020_draw_step.2400-2499.difference", 0.004, "+"),
+    ("opening eval spread", "25.3", "t2_openings.json:engine_eval_spread_cp.range", 0.3, "+"),
+    ("t4 drift per decade", "0.71", "t4_inflation.json:trend_undecided_only.slope_per_decade", 0.03, "-"),
+    ("t4 resolution", "1.48", "power_report.json:nulls.t4_inflation_acpl_per_decade.resolution_half_width", 0.03, "+"),
+    ("t8 drift per decade", "0.47", "t8_player_panel.json:sign_instability_of_the_34_player_version.new_year_coefficient_per_decade", 0.03, "-"),
+    ("t8 resolution", "1.53", "power_report.json:nulls.t8_within_player_acpl_per_decade.resolution_half_width", 0.03, "+"),
+    ("panel players", "96", "t8_player_panel.json:design.players", 0, "+"),
+    ("panel player-years", "470", "t8_player_panel.json:design.player_years", 0, "+"),
+    ("online minus OTB save contrast", "12.9%", "t6_swindles.json:online_gradient.online_vs_otb_contrast.online_minus_otb", 0.004, "+"),
+    ("t9 lost game-sides", "123", "t9_otb_swindles.json:design.lost_game_sides", 0, "+"),
+    ("t9 otb mean save rate", "7.3%", "t9_otb_swindles.json:level_shift_vs_gradient.otb_mean_save_rate", 0.004, "+"),
+    ("t9 online mean save rate", "18.9%", "t9_otb_swindles.json:level_shift_vs_gradient.online_mean_save_rate", 0.004, "+"),
+    ("t11 raw gap", "11.3%", "t11_matched_skill.json:raw_gap_online_minus_otb", 0.004, "+"),
+    ("t11 matched gap", "16.5%", "t11_matched_skill.json:stratified_contrast.stratified_difference", 0.004, "+"),
+    ("t11 odds ratio", "2.47", "t11_matched_skill.json:logistic_model.online.odds_ratio", 0.03, "+"),
+    ("t11 online played to mate", "32.0%", "t11_matched_skill.json:resignation_rate.by_corpus.online.played_to_mate", 0.004, "+"),
+    ("t11 otb played to mate", "3.5%", "t11_matched_skill.json:resignation_rate.by_corpus.otb.played_to_mate", 0.004, "+"),
+    ("t11 mate-rate difference", "28.5%", "t11_matched_skill.json:resignation_rate.difference.played_to_mate_online_minus_otb", 0.004, "+"),
+    ("clustering width ratio", "1.48", "t7_falsify.json:probes[3].mean_width_ratio", 0.03, "+"),
+    ("TWIC online share from 2020", "55%", "t1_validation.json:twic_format_by_era.2020_on.online", 0.006, "+"),
+    ("TWIC classical share before 2020", "95.5%", "t1_validation.json:twic_format_by_era.pre_2020.classical_otb", 0.002, "+"),
+    ("clustering design effect", "2.18", "power_report.json:clustering.implied_design_effect_on_sample_size", 0.03, "+"),
 ]
 
 
@@ -222,7 +98,7 @@ def parse_literal(text: str) -> float:
 
 def check_registry() -> list[str]:
     errs = []
-    for label, literal, path, tol in CLAIMS:
+    for label, literal, path, tol, sign in CLAIMS:
         try:
             actual = float(get(path))
         except FileNotFoundError:
@@ -232,41 +108,41 @@ def check_registry() -> list[str]:
             errs.append(f"BAD PATH         {label}: {path} ({exc})")
             continue
         claimed = parse_literal(literal)
-        # Prose quotes magnitudes for declines ("falls 5.9%"); compare on
-        # absolute value when the registered literal is unsigned.
-        if not literal.startswith("-") and actual < 0:
-            actual = abs(actual)
-        if abs(actual - claimed) > tol:
-            errs.append(f"DRIFT            {label}: prose says {literal} ({claimed:g}), results say {actual:g}")
+        if sign == "-" and actual >= 0:
+            errs.append(f"SIGN REVERSED    {label}: prose describes a decline, results say {actual:+g}")
+            continue
+        if sign == "+" and actual < 0:
+            errs.append(f"SIGN REVERSED    {label}: prose describes an increase, results say {actual:+g}")
+            continue
+        if abs(abs(actual) - claimed) > tol:
+            errs.append(f"DRIFT            {label}: prose says {literal}, results say {actual:g}")
     return errs
 
 
 def check_retractions() -> list[str]:
-    """A retracted claim must stay retracted, and stay visible.
+    """Every probe that fires must be answered in FINDINGS.md's retractions table.
 
-    FINDINGS.md carries a retraction for the track 6 'masters save by drawing'
-    reading. If probe P1 ever stops firing, the retraction text has to be
-    revisited rather than silently left in place, and if the retraction text
-    disappears while P1 still fires, the repo is publishing a claim it knows is
-    unsupported.
+    An earlier version searched for the word "RETRACTED" anywhere in the file,
+    which any stray use of the word would satisfy. This checks structure instead:
+    a "## Retractions" section must exist, and each firing probe's identifier
+    must appear inside it.
     """
-    errs = []
     findings = ROOT / "FINDINGS.md"
     if not findings.exists():
         return ["MISSING          FINDINGS.md"]
     text = findings.read_text()
+    if "## Retractions" not in text:
+        return ["MISSING SECTION  FINDINGS.md has no '## Retractions' section"]
+    section = text.split("## Retractions", 1)[1].split("\n## ", 1)[0]
     try:
         probes = get("t7_falsify.json:probes")
     except FileNotFoundError:
         return ["MISSING RESULTS  t7_falsify.json not built"]
-    p1 = next((p for p in probes if p["probe"].startswith("P1")), None)
-    if p1 is None:
-        return ["BAD PATH         probe P1 not found"]
-    has_retraction = "RETRACTED" in text
-    if p1["fired"] and not has_retraction:
-        errs.append("MISSING RETRACTION  probe P1 fires but FINDINGS.md carries no RETRACTED entry")
-    if not p1["fired"] and has_retraction:
-        errs.append("STALE RETRACTION    probe P1 no longer fires; revisit the RETRACTED entry")
+    errs = []
+    for pr in probes:
+        pid = pr["probe"].split()[0]
+        if pr.get("fired") is True and pid not in section:
+            errs.append(f"UNANSWERED PROBE {pid} fires but the retractions table does not mention it")
     return errs
 
 
@@ -283,7 +159,7 @@ def check_every_percent_in_readme_is_registered() -> list[str]:
     body = re.sub(r"<[^>]+>", " ", body)              # html tags (badges)
     body = re.sub(r"https?://\S+", " ", body)          # bare urls
     body = re.sub(r"\]\([^)]*\)", "] ", body)          # markdown link targets
-    registered = {lit for _, lit, _, _ in CLAIMS}
+    registered = {lit for _, lit, _, _, _ in CLAIMS}
     found = set(re.findall(r"\b\d[\d,]*\.?\d*%", body))
     unregistered = {f for f in found if f not in registered}
     # Percentages that are definitions or scope statements rather than findings.
@@ -292,8 +168,64 @@ def check_every_percent_in_readme_is_registered() -> list[str]:
     return [f"UNREGISTERED     README percentage {u} is not bound to a results path" for u in sorted(unregistered)]
 
 
+#: Caveats that must survive editing. Each qualifies a claim that would be
+#: overstated without it. Deleting one fails the build, which is the point: a
+#: caveat removed during a "tidy-up" is the commonest way a careful document
+#: turns into an overclaiming one.
+REQUIRED_CAVEATS = {
+    "FINDINGS.md": [
+        "not an independent confirmation",      # claim 5 vs Ben-Moshe & Genesove
+        "joint inference across the curve",     # claim 2 is borderline, not established
+        "is a bound",                           # claim 9: resignation vs time forfeit
+        "itself borderline",                    # claim 9: matched-skill contrast
+        "rules out only very large drift",      # claim 7: resolution
+        "not a new\nresult",                   # claim 8: textbook APC
+        "found by reading a paper",             # retractions 3-5 provenance
+    ],
+    "README.md": [
+        "No prior study comparing this across formats",
+        "rests on a narrow skill overlap",
+    ],
+}
+
+#: Words that overclaim for an observational repository. Allowed only inside a
+#: line that also negates or scopes them.
+OVERCLAIM = ("proves", "proven", "definitive", "first ever", "groundbreaking", "conclusively")
+
+
+def check_caveats_and_overclaiming() -> list[str]:
+    errs = []
+    for fname, phrases in REQUIRED_CAVEATS.items():
+        path = ROOT / fname
+        if not path.exists():
+            continue
+        text = " ".join(path.read_text().split())
+        for ph in phrases:
+            needle = " ".join(ph.replace("\\n", " ").split())
+            if needle not in text:
+                errs.append(f"CAVEAT DELETED   {fname}: missing required caveat '{needle}'")
+    for fname in ("README.md", "FINDINGS.md", "docs/LITERATURE.md"):
+        path = ROOT / fname
+        if not path.exists():
+            continue
+        for i, line in enumerate(path.read_text().splitlines(), 1):
+            low = line.lower()
+            for word in OVERCLAIM:
+                # Word boundaries: "improves" must not match "proves".
+                if re.search(r"\b" + re.escape(word) + r"\b", low) and not any(
+                    neg in low for neg in ("not ", "no ", "never", "cannot")
+                ):
+                    errs.append(f"OVERCLAIM        {fname}:{i} uses '{word}'")
+    return errs
+
+
 def main() -> int:
-    errs = check_registry() + check_retractions() + check_every_percent_in_readme_is_registered()
+    errs = (
+        check_registry()
+        + check_retractions()
+        + check_every_percent_in_readme_is_registered()
+        + check_caveats_and_overclaiming()
+    )
     if errs:
         print("claims check FAILED\n")
         for e in errs:

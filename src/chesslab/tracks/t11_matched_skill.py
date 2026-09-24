@@ -461,12 +461,16 @@ def run() -> dict:
         "share_of_gap_explained_by_skill_matching": explained,
         "resolution": {**mde.as_dict(), "note": "smallest gap the matched comparison could have resolved"},
         "reading": (
-            "Matching on measured skill does not shrink the gap; it widens it. If the online/over-the-board "
-            "difference were a strength effect it should collapse toward zero once both sides are compared "
-            "at equal engine-measured playing quality. Instead the corpora differ by more at matched skill "
-            "than in aggregate, because the stronger over-the-board population was masking the effect. "
-            "The leading remaining explanation is behavioural rather than skill-based: over-the-board "
-            "players resign lost positions and online players play them out."
+            "Matching on measured skill does not shrink the gap: the point estimate is larger at matched "
+            "skill than in aggregate. A strength explanation predicts it should collapse toward zero. The "
+            "matched contrast is itself only borderline (its interval reaches zero), so the weight of the "
+            "argument rests on the resignation measurement, which is large and precise: over-the-board "
+            "players almost never play a lost position to checkmate."
+        ),
+        "format_note": (
+            "The over-the-board side is classical TWIC only. A previous build drew it without a format "
+            "filter, so about a fifth of it was online blitz. Removing those games made the resignation "
+            "gap larger, as expected if online players play on."
         ),
         "what_remains_unidentified": [
             "ACPL is a noisy skill proxy; measurement error attenuates the control, so residual strength "

@@ -1,5 +1,8 @@
 chess-lab
-Copyright (c) 2026 Andrew
+Copyright 2026 Andrew Morrissey
+
+Licensed under the Apache License, Version 2.0 (see LICENSE). Third-party
+data and software used by this project keep their own terms, listed below.
 
 This product includes and depends on third-party work as follows.
 
@@ -7,8 +10,8 @@ STOCKFISH
   Stockfish (https://stockfishchess.org) is licensed GPL-3.0. chess-lab invokes
   Stockfish as a separate executable process over the UCI protocol. It does not
   link against, embed, modify or redistribute Stockfish, and no Stockfish source
-  or binary is included in this repository. The MIT licence of chess-lab applies
-  to chess-lab's own code. Users must obtain Stockfish themselves under its own
+  or binary is included in this repository. The Apache-2.0 licence of chess-lab
+  applies to chess-lab's own code. Users must obtain Stockfish themselves under its own
   terms.
 
 python-chess
@@ -26,6 +29,8 @@ DATA
   The Week In Chess (TWIC)
     PGN issues 210-1649 retrieved from the rozim/ChessData GitHub mirror. TWIC
     is compiled and published by Mark Crowther (https://theweekinchess.com).
+    From 2020 the coverage is majority online blitz; chess-lab infers format
+    from Event and Site headers and restricts classical analyses accordingly.
     The moves of a chess game are facts and are not subject to copyright;
     compilations and accompanying editorial content may be. This repository
     stores no TWIC text or annotations, redistributes no PGN files, and uses
@@ -35,5 +40,10 @@ DATA
   lichess-org/chess-openings
     ECO opening classification tables, CC0 1.0.
 
-No data files are redistributed in this repository. scripts/fetch_data.sh
+ENGINE EVALUATIONS
+  data/eval/ contains Stockfish evaluations of the games above, produced by
+  this project. They are chess-lab's own output and are distributed under the
+  same Apache-2.0 terms as the code.
+
+No third-party data files are redistributed in this repository. scripts/fetch_data.sh
 retrieves them from their upstream sources at build time.
