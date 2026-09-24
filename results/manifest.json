@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-09-24T21:24:54.397626+00:00",
+  "created_utc": "2026-09-24T21:30:57.375008+00:00",
   "environment": {
     "python_chess": "1.11.2",
     "numpy": "2.4.4",
@@ -7,7 +7,7 @@
     "scipy": "1.17.1",
     "python": "3.12.3",
     "engine": "Stockfish 16",
-    "git_commit": "089723562d952da0b2d5197214e6f020a8ae62dd"
+    "git_commit": "67cb5dbd0421f60569fafb05e2b8101718daad10"
   },
   "file_count": 138,
   "files": {
@@ -145,9 +145,9 @@
     },
     "src/chesslab/tracks/t7_falsify.py": {
       "group": "code",
-      "sha256": "d569c6fc7d2d86b57f3a66e95c62ff39d19da6f3ce7a35b102a7af8fcf11c700",
-      "bytes": 26135,
-      "mtime": "2026-09-24T21:08:46.706705+00:00"
+      "sha256": "6c13c874c6f0234800c3f60c26158a03ab4ced08a457d206f5cc67142b76f859",
+      "bytes": 26346,
+      "mtime": "2026-09-24T21:30:43.138710+00:00"
     },
     "src/chesslab/tracks/t8_player_panel.py": {
       "group": "code",
@@ -193,9 +193,9 @@
     },
     "scripts/manifest.py": {
       "group": "code",
-      "sha256": "cdb65f7bcb7614cfefed5073355a3f31a410eb40bd41ae25ee624707381871cf",
-      "bytes": 6708,
-      "mtime": "2026-08-30T03:10:27+00:00"
+      "sha256": "7779e3df91cc13e0b8046ec054f85a18cf1e002b25505cbf107031c72dd3782b",
+      "bytes": 7728,
+      "mtime": "2026-09-24T21:30:43.138492+00:00"
     },
     "scripts/power_report.py": {
       "group": "code",
@@ -217,103 +217,103 @@
     },
     "results/node_calibration.json": {
       "group": "results",
-      "sha256": "4b0f247b11552be7130f6d5fb59a004aba732d131a07cbb72f51f439d4c8f742",
+      "sha256": "9f58a5a7998be1827c82db917705c0b64ea6756db48023ce1ef0915f07478167",
       "bytes": 2287,
       "mtime": "2026-08-30T03:10:27+00:00"
     },
     "results/power_report.json": {
       "group": "results",
-      "sha256": "e0bb7e5821da6717b3fbb196f6bd146f256b52c951546a2f703f59998abf1ac3",
+      "sha256": "118e3fdc22bbae76f5e6300b844e9870dc58040c0efd3eec615c31b710d5a92e",
       "bytes": 3322,
       "mtime": "2026-09-24T21:24:43.020486+00:00"
     },
     "results/t10_multiverse.json": {
       "group": "results",
-      "sha256": "32fdf7f4c7b64e95769a379d6d3a76f773b76effeedcc4b267b4e0aa6cf943d3",
+      "sha256": "7b565a0f9f254403b7f9dd90e9391ad6875eda8378d224dc98140b2507394b9f",
       "bytes": 8469,
       "mtime": "2026-09-24T21:24:29.339760+00:00"
     },
     "results/t11_matched_skill.json": {
       "group": "results",
-      "sha256": "5038fe735ca91db6557dc699fd73f3a0013668b550a096fafdba358a880ac60d",
+      "sha256": "59444b967940e285df71347aec0fcc8fd9511d446c28cb66cb3c6fa18781866f",
       "bytes": 9134,
       "mtime": "2026-09-24T21:24:07.571200+00:00"
     },
     "results/t1_eval_scope_lichess.json": {
       "group": "results",
-      "sha256": "c9ff65e20c72f6fe01254b66f11bbc5027b80a8f91f0b58880ece453a2ce06c6",
+      "sha256": "921ab7e916bce12e6b723ce89c443eb3cf6fb900780509083120cf8da304ccdd",
       "bytes": 1369,
       "mtime": "2026-08-30T03:10:27+00:00"
     },
     "results/t1_eval_scope_otb.json": {
       "group": "results",
-      "sha256": "b21bc591661c83539b70fdf8ffaf8fb00386580454a939899e337d6014c76baa",
+      "sha256": "e9ff1970bd2b34a60cac3bf2e9c86ff21962445b493878d81c8d6b7d4bf04ffa",
       "bytes": 561,
       "mtime": "2026-08-30T03:10:27+00:00"
     },
     "results/t1_eval_scope_panel.json": {
       "group": "results",
-      "sha256": "0645af7f7c93e453871e22fbfde5eb9a8003747e94be2dc74f6abb79a5f4a2e7",
+      "sha256": "a6253bbc48e9d5dcfbcfa00f45121cc271f93ba6b72ec108181dce950a3a6336",
       "bytes": 32756,
       "mtime": "2026-08-30T03:10:27+00:00"
     },
     "results/t1_eval_scope_twic.json": {
       "group": "results",
-      "sha256": "8ecf4d8ef4e74095e0a66e3a23da03b94879892a005e7913ea0d111a687ed480",
+      "sha256": "d44649e5dbdf18273d9e9532df01807a0285fab783b8a1938f3bc603eb927237",
       "bytes": 1314,
       "mtime": "2026-08-30T03:10:27+00:00"
     },
     "results/t1_validation.json": {
       "group": "results",
-      "sha256": "771f46864e63ebf0ae33ed1357d7fcbb989305724750327a8ac0114b96692695",
+      "sha256": "8faa7b8193fccf0323b39bac093ca213c5a71d15eae87d9e85721cc478992c8c",
       "bytes": 1887,
       "mtime": "2026-09-24T21:21:29.446484+00:00"
     },
     "results/t2_openings.json": {
       "group": "results",
-      "sha256": "767e07f0147c846f2714f82b4a00d0590de65062fb183e6aa3aa2295f34bf635",
+      "sha256": "52673c1f82d4472023821392050723a3a913cc0113f73f3426bc70f358160289",
       "bytes": 32349,
       "mtime": "2026-09-24T21:21:33.388292+00:00"
     },
     "results/t3_blunders.json": {
       "group": "results",
-      "sha256": "41bc2af4e9b95a0b95a668d3d4d27f25e422f6c526cc7084047bc5b29613bf9b",
+      "sha256": "2fb3529620877c725f462aad852e0d9e4f1efe4ba3f04f42c4c8bd73538d1a64",
       "bytes": 10652,
       "mtime": "2026-09-24T21:21:42.356936+00:00"
     },
     "results/t4_inflation.json": {
       "group": "results",
-      "sha256": "a3dcf270d896d90785309f7244d06d65d0cc9e01b414df7fbb1b8fddb21ff740",
+      "sha256": "a8e01b3b0c889c84467add4b6fc1775c5bc8e524a24c07351ce708f7ff7a65b3",
       "bytes": 12111,
       "mtime": "2026-09-24T21:21:44.656211+00:00"
     },
     "results/t5_color.json": {
       "group": "results",
-      "sha256": "5c36f4b78a7b3c3a8a1ea6d3e2e1698f861afc7d74acf137f7b84f2fb50d1ae3",
+      "sha256": "9fc6fa0fffeace36c41106cb3c89aae1e41aa8271b764720fa29a0fd0ad0acb1",
       "bytes": 20787,
       "mtime": "2026-09-24T21:22:28.535120+00:00"
     },
     "results/t6_swindles.json": {
       "group": "results",
-      "sha256": "a3b0772e37e68dce0fc30ce4b6e56c9a864efaf7a0ad0f8786c238ad3cd19eb7",
+      "sha256": "b387d421adde122099919b4c109f466deaad87a01a29885b3b13192481644b0b",
       "bytes": 10088,
       "mtime": "2026-09-24T21:22:52.704402+00:00"
     },
     "results/t7_falsify.json": {
       "group": "results",
-      "sha256": "48428d7e67d8b29448e42977f51e242cca706604692bc2a1d20b60cd09ae6681",
+      "sha256": "2553bdba6fee456adf3a4915e3a736a66a44c5d2c3600b1767bbacb65d1459fa",
       "bytes": 10062,
-      "mtime": "2026-09-24T21:24:42.673846+00:00"
+      "mtime": "2026-09-24T21:30:57.038272+00:00"
     },
     "results/t8_player_panel.json": {
       "group": "results",
-      "sha256": "74499c31449d8c1d1716d21cb85b8aec72e912e2c08f188c2f032105f57437b8",
+      "sha256": "fbd9b2d71e5258bf4ecd9095a91fc5c694355478f3131aa2590187d22963fc9b",
       "bytes": 21335,
       "mtime": "2026-09-24T21:23:32.599220+00:00"
     },
     "results/t9_otb_swindles.json": {
       "group": "results",
-      "sha256": "90809cb268e5abf2161ca32ffc3538b68ec03ef26a7debbe477a53808b59472b",
+      "sha256": "7807b86ff31ba896d9561890a43c78257e11eaee5f8ec4abd767e2e27476b134",
       "bytes": 7268,
       "mtime": "2026-09-24T21:23:40.605948+00:00"
     },

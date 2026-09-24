@@ -50,8 +50,33 @@ TRACKED = {
 SELF_EXCLUDE = {"results/manifest.json"}
 
 
+def _canonical_json(obj):
+    """Round floats to 10 significant digits, recursively.
+
+    Results files are regenerated on whatever NumPy and BLAS build the user has.
+    Least-squares sums then differ in the last floating-point digit between
+    builds (observed: 0.384735296869993 against 0.38473529686998914). That is not
+    drift, and hashing raw bytes reported it as drift. Ten significant digits is
+    far below the precision any claim in this repository relies on.
+    """
+    if isinstance(obj, float):
+        return float(f"{obj:.10g}")
+    if isinstance(obj, dict):
+        return {k: _canonical_json(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [_canonical_json(v) for v in obj]
+    return obj
+
+
 def sha256(path: Path) -> str:
     h = hashlib.sha256()
+    if path.suffix == ".json":
+        try:
+            data = _canonical_json(json.loads(path.read_text()))
+            h.update(json.dumps(data, sort_keys=True).encode())
+            return h.hexdigest()
+        except (json.JSONDecodeError, UnicodeDecodeError):
+            pass
     with open(path, "rb") as fh:
         for chunk in iter(lambda: fh.read(1 << 20), b""):
             h.update(chunk)

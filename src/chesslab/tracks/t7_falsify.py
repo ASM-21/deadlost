@@ -182,7 +182,10 @@ def p2_depth_sensitivity(n_games: int = DEPTH_CHECK_GAMES, nodes: int = DEPTH_CH
                 if time_budget is not None and _t.time() - t0 > time_budget:
                     break
     deep = pd.concat([have, pd.DataFrame(rows)], ignore_index=True) if rows else have
-    if len(deep):
+    if rows:
+        # Only rewrite the cache when something new was evaluated. Rewriting an
+        # unchanged cache reorders rows, changes its bytes, and makes the
+        # provenance manifest report drift that is not there.
         deep = deep.drop_duplicates(subset=["game_id", "ply"])
         deep.to_parquet(cache, index=False)
 
