@@ -85,6 +85,30 @@ CLAIMS: list[tuple[str, str, str, float, str]] = [
     ("t11 online played to mate", "32.0%", "t11_matched_skill.json:resignation_rate.by_corpus.online.played_to_mate", 0.004, "+"),
     ("t11 otb played to mate", "3.5%", "t11_matched_skill.json:resignation_rate.by_corpus.otb.played_to_mate", 0.004, "+"),
     ("t11 mate-rate difference", "28.5%", "t11_matched_skill.json:resignation_rate.difference.played_to_mate_online_minus_otb", 0.004, "+"),
+    ("detector replay sample", "4,000", "t11_matched_skill.json:detector_validation.replay_sample_size", 0, "+"),
+    ("classical OTB mate share", "4.3%",
+     "t11_matched_skill.json:corpus_scale_within_player.by_format_all_players[0].mate_share", 0.002, "+"),
+    ("fast OTB mate share", "6.3%",
+     "t11_matched_skill.json:corpus_scale_within_player.by_format_all_players[1].mate_share", 0.002, "+"),
+    ("TWIC online mate share", "18.6%",
+     "t11_matched_skill.json:corpus_scale_within_player.by_format_all_players[2].mate_share", 0.002, "+"),
+    ("within-player players", "558",
+     "t11_matched_skill.json:corpus_scale_within_player.within_player.online_minus_classical_otb.players", 0, "+"),
+    ("within-player online minus classical", "11.6%",
+     "t11_matched_skill.json:corpus_scale_within_player.within_player.online_minus_classical_otb.mean_within_player_difference",
+     0.003, "+"),
+    ("within-player fast minus classical", "3.6%",
+     "t11_matched_skill.json:corpus_scale_within_player.within_player.fast_otb_minus_classical_otb.mean_within_player_difference",
+     0.003, "+"),
+    ("within-player online minus fast", "9.7%",
+     "t11_matched_skill.json:corpus_scale_within_player.within_player.online_minus_fast_otb.mean_within_player_difference",
+     0.003, "+"),
+    ("within-player online mate share", "15.6%",
+     "t11_matched_skill.json:corpus_scale_within_player.within_player.online_minus_classical_otb.mate_share_online",
+     0.002, "+"),
+    ("within-player classical mate share", "4.0%",
+     "t11_matched_skill.json:corpus_scale_within_player.within_player.online_minus_classical_otb.mate_share_classical_otb",
+     0.002, "+"),
     ("clustering width ratio", "1.48", "t7_falsify.json:probes[3].mean_width_ratio", 0.03, "+"),
     ("TWIC online share from 2020", "55%", "t1_validation.json:twic_format_by_era.2020_on.online", 0.006, "+"),
     ("TWIC classical share before 2020", "95.5%", "t1_validation.json:twic_format_by_era.pre_2020.classical_otb", 0.002, "+"),
@@ -181,10 +205,11 @@ REQUIRED_CAVEATS = {
         "rules out only very large drift",      # claim 7: resolution
         "not a new\nresult",                   # claim 8: textbook APC
         "found by reading a paper",             # retractions 3-5 provenance
+        "upper bound on the effect of the medium",  # claim 9: online vs fast still differs in speed
     ],
     "README.md": [
         "No prior study comparing this across formats",
-        "rests on a narrow skill overlap",
+        "still carries some speed difference",
     ],
 }
 

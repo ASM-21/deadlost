@@ -148,6 +148,83 @@
     "why_this_is_the_clean_test": "Unlike the threshold analysis, this conditions on nothing post-treatment. It asks, of the players who ended up losing, what share played the position to checkmate rather than stopping early. A player who stops early forgoes any chance of saving the game, so a large difference here is a direct behavioural explanation for a difference in save rates.",
     "caveat": "'Stopped early' bundles resignation with losing on time, and the two cannot be separated for TWIC, which carries no termination tags. For the online corpus they can: the tag breakdown is reported above. Over-the-board classical games rarely end on time, so the over-the-board figure is close to a pure resignation rate."
   },
+  "detector_validation": {
+    "replay_sample_size": 4000,
+    "replay_sample_mates": 351,
+    "agreement_with_board_replay": 1.0,
+    "lichess_games": 18537,
+    "agreement_with_lichess_mate_tag": 1.0
+  },
+  "corpus_scale_within_player": {
+    "quantity": "share of a player's decisive losses that ended in checkmate",
+    "min_losses_per_format": 5,
+    "by_format_all_players": [
+      {
+        "format": "classical_otb",
+        "decisive_games": 80343,
+        "mate_share": 0.04318982363118131
+      },
+      {
+        "format": "fast_otb",
+        "decisive_games": 5753,
+        "mate_share": 0.06327133669389884
+      },
+      {
+        "format": "online",
+        "decisive_games": 40496,
+        "mate_share": 0.18631469774792572
+      }
+    ],
+    "lichess_online_mate_share": 0.33469064585454134,
+    "within_player": {
+      "online_minus_classical_otb": {
+        "players": 558,
+        "mean_within_player_difference": 0.11596641328239239,
+        "ci_lo": 0.10334515290471352,
+        "ci_hi": 0.12884500713375596,
+        "excludes_zero": true,
+        "mate_share_online": 0.1563242555908782,
+        "mate_share_classical_otb": 0.04035784230848582,
+        "median_loser_elo": {
+          "classical_otb": 2365.0,
+          "online": 2382.0
+        }
+      },
+      "fast_otb_minus_classical_otb": {
+        "players": 149,
+        "mean_within_player_difference": 0.03616882664920646,
+        "ci_lo": 0.021854230048587074,
+        "ci_hi": 0.05074816470345115,
+        "excludes_zero": true,
+        "mate_share_fast_otb": 0.05670128223682858,
+        "mate_share_classical_otb": 0.020532455587622126,
+        "median_loser_elo": {
+          "classical_otb": 2399.0,
+          "fast_otb": 2411.0
+        }
+      },
+      "online_minus_fast_otb": {
+        "players": 99,
+        "mean_within_player_difference": 0.09705390983246695,
+        "ci_lo": 0.06485984628202868,
+        "ci_hi": 0.1280652803885961,
+        "excludes_zero": true,
+        "mate_share_online": 0.15719420818374352,
+        "mate_share_fast_otb": 0.06014029835127659,
+        "median_loser_elo": {
+          "fast_otb": 2432.0,
+          "online": 2404.0
+        }
+      }
+    },
+    "reading": "Holding the player fixed, losses end in checkmate far more often online than in classical over-the-board play. Fast over-the-board play (rapid and blitz at a board) sits much closer to classical than to online. Most of the difference comes with the online medium; a smaller part comes with speed.",
+    "limits": [
+      "Online TWIC is mostly 3+1 blitz (Titled Tuesday), while fast over-the-board mixes rapid and blitz. The online-minus-fast contrast therefore still carries some speed difference, and should be read as an upper bound on the effect of the medium alone.",
+      "Losing on time ends a game without mate. That is far more common online, so it pushes the online mate share DOWN: the contrast is, if anything, understated.",
+      "This is mate share among all decisive losses, not among positions that were first clearly lost. It is the population-scale analogue of the engine-based measure, not the same quantity.",
+      "Players who appear in both formats are a selected group: active, mostly titled, and willing to play online. The result describes them."
+    ]
+  },
   "resignation_mechanism": {
     "duration": {
       "median_moves_after_entry_online": 16.0,

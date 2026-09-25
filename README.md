@@ -17,11 +17,12 @@ positioned against the published literature, and attacked by a track whose only
 job is to break the others.**
 
 **The sharpest result.** Lost positions are saved far more often online than over
-the board, and it is not because online players defend better. Of players who
-went on to lose, 32.0% online played the lost position all the way to checkmate,
-against 3.5% in classical over-the-board play. You cannot save a game you have
-already resigned. No prior study comparing this across formats turned up in the
-literature search.
+the board, and it is not because online players defend better. It is because
+over-the-board players resign. Comparing the same 558 titled players with
+themselves, 15.6% of their online losses end in checkmate against 4.0% of their
+classical losses. Playing fast at a board barely moves that; moving online moves
+it a lot. You cannot save a game you have already resigned. No prior study
+comparing this across formats turned up in the literature search.
 
 **The most useful thing it did.** Reading the literature after the results
 existed caught an error no test had: from 2020, the tournament corpus is mostly
@@ -53,7 +54,7 @@ reproduced), **Consistent** (agrees with prior work, not an independent test),
 | 6 | Engine opening evaluations don't predict practical results | Consistent | No band survives multiplicity correction | Park 2026 |
 | 7 | No detectable rating drift at fixed rating | Null, replicates | −0.71 cp/decade, resolution ±1.48 | Regan & Haworth 2011; Sonas 2023 |
 | 8 | Calendar time and ageing can't be separated within a career | Replicates | Curvature term uninformative at any panel size | Fosse & Winship 2019 |
-| 9 | Lost positions are saved online because OTB players resign | **New** | 32.0% vs 3.5% play to mate; gap 28.5% (CI 22.2 to 34.9) | None found |
+| 9 | Lost positions are saved online because OTB players resign | **New** | Same 558 players: +11.6% of losses end in mate online (CI 10.3 to 12.9); online vs fast OTB +9.7% | None found |
 
 Full argument, scope conditions and the six retractions: [FINDINGS.md](FINDINGS.md).
 
@@ -144,9 +145,9 @@ own terms, listed in [NOTICE](NOTICE). Stockfish is neither bundled nor linked.
 ## Citing
 
 See [CITATION.cff](CITATION.cff). If you cite a null, cite its resolution with
-it. If you cite claim 9, note that it rests on a narrow skill overlap between
-two unusual subpopulations and on a 114-game over-the-board sample of
-eventually-lost positions.
+it. If you cite claim 9, note that online TWIC is mostly blitz, so the
+online-versus-fast comparison still carries some speed difference, and that the
+players compared are a selected, mostly titled group.
 
 <sub>Topics: chess, stockfish, lichess, reproducible-research, falsification,
 specification-curve, open-data, statistics, python</sub>

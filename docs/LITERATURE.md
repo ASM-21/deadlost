@@ -27,7 +27,7 @@ except where a note says otherwise.
 | 7 | Track 8: "only curvature is separately identifiable" presented as a discovery | Textbook age-period-cohort result (Mason et al. 1973; reviewed by Fosse & Winship 2019) | Reframed as a **known identification limit**, rediscovered in a within-player setting |
 | 8 | Track 10 implemented specification curves | Simonsohn, Simmons & Nelson (2020) define a third step, **joint inference** across all specifications, which was missing | Implemented. Result: the rating gradient survives (p = 0.002), the time effect is **borderline** (p = 0.052), the ACPL drift is a null (p = 0.064) |
 | 9 | Track 2: engine evaluation does not predict practical opening results | Park (2026): engine evaluation is not a sufficient statistic for human outcomes, across 16.1M position occurrences, with most variance **within** opening family | **Consistent**, and it exposes a limitation: track 2 aggregates at family level, which washes out the within-family signal |
-| 10 | Track 11: online and over-the-board players differ in whether they play lost positions out | No prior comparison found. Online side checked against Siu & Istead (2026), whose Lichess termination shares put checkmate at 27-28% of games | Kept as the repository's most defensibly new result, with an **external consistency check** on its online half |
+| 10 | Track 11: online and over-the-board players differ in whether they play lost positions out | No prior comparison found. Online side checked against Siu & Istead (2026), whose Lichess termination shares put checkmate at 27-28% of games | Kept as the repository's most defensibly new result, with an **external consistency check**. Later strengthened with a within-player comparison of 558 players across formats |
 
 Four of these ten came from one error, found by reading a single paper whose
 result disagreed with this repository's. No test, probe or specification curve
@@ -199,6 +199,12 @@ sides end in checkmate in the 2017 rapid corpus. The small gap is expected: thei
 samples include bullet and blitz, where games are far more often lost on time.
 That external agreement is the reason to trust the online half of the comparison;
 the over-the-board half (3.5% played to checkmate) has no published comparator.
+
+**Within-player evidence.** The strongest support comes from comparing the same
+558 titled players with themselves: 15.6% of their online losses end in mate
+against 4.0% of their classical over-the-board losses. Fast over-the-board play
+moves the figure only slightly. This design holds skill and population fixed and
+needs no engine, which is why it can use the whole corpus.
 
 **Methodological debts.** Track 11's play-on threshold analysis conditions on
 how long a game continued, which is a post-treatment collider; **Elwert &

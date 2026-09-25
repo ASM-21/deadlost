@@ -41,7 +41,7 @@ TRACKS = {
     8: ("t8_player_panel.json", "Within-player drift null; calendar time and ageing are not separable (textbook APC)."),
     9: ("t9_otb_swindles.json", "No save-rate gradient across OTB ratings; the online/OTB gap is not about strength."),
     10: ("t10_multiverse.json", "Specification curves with joint inference: rating gradient robust, time effect borderline."),
-    11: ("t11_matched_skill.json", "New: lost positions are saved online because OTB players resign (32.0% vs 3.5% play to mate)."),
+    11: ("t11_matched_skill.json", "New: lost positions are saved online because OTB players resign; same 558 players mate 11.6 pts more online."),
 }
 
 

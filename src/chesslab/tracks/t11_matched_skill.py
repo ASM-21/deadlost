@@ -423,6 +423,161 @@ def resignation_mechanism(d: pd.DataFrame) -> dict:
     }
 
 
+def _ends_in_mate_symbol(moves: pd.Series) -> pd.Series:
+    """Checkmate from the SAN suffix of the final move. Validated below."""
+    return moves.str.split().str[-1].str.endswith("#")
+
+
+def detector_validation(n: int = 4000) -> dict:
+    """Is the '#' suffix a reliable witness of checkmate in both corpora?
+
+    Checked two independent ways: against a full board replay of a random sample
+    spanning both corpora, and against Lichess's own termination tag on every
+    Lichess game. Agreement on both is what licenses using it on TWIC, which has
+    no termination tags at all.
+    """
+    from ..schema import final_board
+    from .t1_ingest import load_games
+
+    g = load_games()
+    g = g.assign(mate_sym=_ends_in_mate_symbol(g.moves))
+    samp = g.sample(n=min(n, len(g)), random_state=stats.SEED)
+    replay = []
+    for m in samp.moves:
+        try:
+            replay.append(final_board(m).is_checkmate())
+        except Exception:  # noqa: BLE001
+            replay.append(None)
+    samp = samp.assign(mate_replay=replay).dropna(subset=["mate_replay"])
+    li = g[g.source == "lichess2017"]
+    return {
+        "replay_sample_size": int(len(samp)),
+        "replay_sample_mates": int(samp.mate_replay.astype(bool).sum()),
+        "agreement_with_board_replay": float((samp.mate_sym == samp.mate_replay.astype(bool)).mean()),
+        "lichess_games": int(len(li)),
+        "agreement_with_lichess_mate_tag": float(((li.termination == "mate") == li.mate_sym).mean()),
+    }
+
+
+def within_player_format_contrast(min_losses: int = 5, n_boot: int = 2000) -> dict:
+    """Same players, their own losses, compared across formats.
+
+    Track 11's matched-skill analysis compared different people who happened to
+    have similar engine-measured skill, on 114 over-the-board games. TWIC names
+    its players, and many titled players appear both in classical tournaments and
+    in online events such as Titled Tuesday. Comparing each player's losses with
+    themselves holds skill, rating and population fixed by construction.
+
+    The quantity is the share of a player's decisive LOSSES that ended in
+    checkmate. It is the population-scale analogue of track 11's "played a lost
+    position to checkmate", needs no engine, and so can use the whole corpus.
+    """
+    from .t1_ingest import load_games
+
+    g = load_games()
+    t = g[(g.source == "twic") & (g.result != "1/2-1/2")].copy()
+    t["mate"] = _ends_in_mate_symbol(t.moves)
+    t["loser"] = np.where(t.result == "1-0", t.black_id, t.white_id)
+    t["loser_elo"] = np.where(t.result == "1-0", t.black_elo, t.white_elo)
+    t = t.dropna(subset=["loser"])
+
+    by_format = (
+        t.groupby("format").agg(decisive_games=("mate", "size"), mate_share=("mate", "mean")).reset_index()
+    )
+    li = g[(g.source == "lichess2017") & (g.result != "1/2-1/2")]
+    lichess_share = float(_ends_in_mate_symbol(li.moves).mean())
+
+    per = t.groupby(["loser", "format"]).agg(n=("mate", "size"), mate=("mate", "mean")).reset_index()
+    wide = per.pivot(index="loser", columns="format", values=["n", "mate"])
+    rng = np.random.default_rng(stats.SEED)
+    contrasts = {}
+    for a, b in (("online", "classical_otb"), ("fast_otb", "classical_otb"), ("online", "fast_otb")):
+        if ("n", a) not in wide.columns or ("n", b) not in wide.columns:
+            continue
+        ok = (wide[("n", a)] >= min_losses) & (wide[("n", b)] >= min_losses)
+        w = wide[ok]
+        d = (w[("mate", a)] - w[("mate", b)]).values
+        if len(d) < 20:
+            continue
+        # Resampling players is the cluster bootstrap here: each player is one
+        # observation, however many games they lost.
+        boots = np.array([rng.choice(d, size=len(d), replace=True).mean() for _ in range(n_boot)])
+        lo, hi = np.percentile(boots, [2.5, 97.5])
+        elo = t[t.loser.isin(w.index)].groupby("format").loser_elo.median()
+        contrasts[f"{a}_minus_{b}"] = {
+            "players": int(len(d)),
+            "mean_within_player_difference": float(d.mean()),
+            "ci_lo": float(lo),
+            "ci_hi": float(hi),
+            "excludes_zero": bool(lo * hi > 0),
+            f"mate_share_{a}": float(w[("mate", a)].mean()),
+            f"mate_share_{b}": float(w[("mate", b)].mean()),
+            "median_loser_elo": {k: float(v) for k, v in elo.items() if k in (a, b)},
+        }
+
+    return {
+        "quantity": "share of a player's decisive losses that ended in checkmate",
+        "min_losses_per_format": min_losses,
+        "by_format_all_players": by_format.to_dict(orient="records"),
+        "lichess_online_mate_share": lichess_share,
+        "within_player": contrasts,
+        "reading": (
+            "Holding the player fixed, losses end in checkmate far more often online than in classical "
+            "over-the-board play. Fast over-the-board play (rapid and blitz at a board) sits much closer "
+            "to classical than to online. Most of the difference comes with the online medium; a smaller "
+            "part comes with speed."
+        ),
+        "limits": [
+            "Online TWIC is mostly 3+1 blitz (Titled Tuesday), while fast over-the-board mixes rapid and "
+            "blitz. The online-minus-fast contrast therefore still carries some speed difference, and "
+            "should be read as an upper bound on the effect of the medium alone.",
+            "Losing on time ends a game without mate. That is far more common online, so it pushes the "
+            "online mate share DOWN: the contrast is, if anything, understated.",
+            "This is mate share among all decisive losses, not among positions that were first clearly "
+            "lost. It is the population-scale analogue of the engine-based measure, not the same quantity.",
+            "Players who appear in both formats are a selected group: active, mostly titled, and willing "
+            "to play online. The result describes them.",
+        ],
+    }
+
+
+def _figure_within_player(wp: dict) -> None:
+    rows = [
+        ("online_minus_classical_otb", "Online vs classical\nover the board"),
+        ("fast_otb_minus_classical_otb", "Fast over the board\nvs classical"),
+        ("online_minus_fast_otb", "Online vs fast\nover the board"),
+    ]
+    rows = [(k, lab) for k, lab in rows if k in wp]
+    if not rows:
+        return
+    fig, ax = viz.new_fig(8.6, 4.4)
+    ys = np.arange(len(rows))[::-1]
+    for y, (k, _lab) in zip(ys, rows, strict=True):
+        v = wp[k]
+        pt = v["mean_within_player_difference"] * 100
+        lo, hi = v["ci_lo"] * 100, v["ci_hi"] * 100
+        color = viz.PALETTE[0] if k.startswith("online") else viz.PALETTE[2]
+        ax.errorbar(pt, y, xerr=[[pt - lo], [hi - pt]], fmt="o", ms=8, capsize=4, lw=1.8, color=color)
+        ax.text(hi + 0.4, y, f"+{pt:.1f} pts   ({v['players']} players)", va="center", fontsize=8.5)
+    ax.axvline(0, color="#888888", lw=0.9, ls="--")
+    ax.set_yticks(ys)
+    ax.set_yticklabels([lab for _, lab in rows], fontsize=8.5)
+    ax.set_xlim(-1, max(wp[k]["ci_hi"] for k, _ in rows) * 100 + 6)
+    viz.finish(
+        fig, ax,
+        "Same players, their own losses: how many more end in checkmate?",
+        "Within-player difference in share of losses ending in checkmate (percentage points)",
+        "",
+        paths.figure_path("t11_within_player_formats.png"),
+        note=(
+            "chess-lab track 11. Each player is compared with themselves, so skill and population are held "
+            "fixed. Moving online adds far more than speeding up at a board. Online TWIC is mostly blitz, so "
+            "the bottom row still carries some speed difference. 95% intervals resample players."
+        ),
+        legend=False,
+    )
+
+
 def run() -> dict:
     d = build_entries()
     support = support_table(d)
@@ -457,6 +612,8 @@ def run() -> dict:
         "stratified_contrast": strat,
         "logistic_model": model,
         "resignation_rate": resignation_rate(d),
+        "detector_validation": detector_validation(),
+        "corpus_scale_within_player": within_player_format_contrast(),
         "resignation_mechanism": resignation_mechanism(d),
         "share_of_gap_explained_by_skill_matching": explained,
         "resolution": {**mde.as_dict(), "note": "smallest gap the matched comparison could have resolved"},
@@ -485,6 +642,7 @@ def run() -> dict:
         ],
     }
     (paths.RESULTS / "t11_matched_skill.json").write_text(json.dumps(out, indent=2, default=float))
+    _figure_within_player(out["corpus_scale_within_player"]["within_player"])
     _figure(d, support, raw_gap, matched)
     return out
 

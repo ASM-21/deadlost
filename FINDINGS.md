@@ -33,7 +33,7 @@ Each claim carries one status label.
 | 6 | Engine opening evaluations do not predict practical results | Consistent | No rating band survives multiplicity correction |
 | 7 | No detectable rating drift at a fixed rating | Null, replicates | −0.71 cp/decade, resolution ±1.48 |
 | 8 | Within a career, calendar time and ageing cannot be separated | Replicates (textbook) | Curvature term interval ±6.2 cp/decade |
-| 9 | Lost positions are saved far more online, because over-the-board players resign | **New** | 32.0% vs 3.5% play a lost position to checkmate |
+| 9 | Lost positions are saved far more online, because over-the-board players resign | **New** | Same 558 players: +11.6 points more of their losses end in mate online |
 
 Claim 9 is the one result this repository can defend as new. Claims 1 and 4 are
 robust replications. Claims 5 through 8 agree with or reproduce prior work and
@@ -204,45 +204,59 @@ result. Strittmatter, Sunde & Zegners (2020) go further with birth years and a
 **The question.** Once a position is clearly lost (worse than −500 centipawns),
 how often is it still drawn or won? Online, about 19% of the time. Over the board
 in classical play, about 7%. Tracks 6 and 9 could not say why, because the two
-corpora differ in rating, format, and population at once, and their rating ranges
-do not overlap.
+corpora differ in rating, format and population at once.
 
-**Matching on measured skill rather than rating.** A lichess rapid rating and a
-FIDE classical rating are different scales on different populations. But every
-game here is scored by the same engine at the same settings, so average
-centipawn loss before the position went bad is one instrument applied to both.
-Strong online players and weaker over-the-board players overlap at 20-40 cp.
-At matched skill, the gap does not shrink: the point estimate rises from 11.3 to
-16.5 points. That contrast is itself borderline (interval −0.3 to +28.3), so the
-argument does not rest on it.
+**The behaviour, measured directly.** Checkmate can be read from the final move's
+`#` suffix. That witness agrees with a full board replay in all 4,000 games of a
+random sample (351 of them checkmates) and with Lichess's own termination tag in
+all 18,537 Lichess games, which is what licenses using it on TWIC, where no
+termination tags exist. Among engine-identified lost positions that went on to
+lose, 32.0% of online players played to checkmate against 3.5% in classical
+over-the-board play, a difference of 28.5 points (interval 22.2 to 34.9) on 114
+over-the-board games. A resigned game cannot be saved.
 
-**The mechanism, measured directly.** Checkmate can be recovered from the move
-list, and that recovery reproduces Lichess's own termination tag exactly (32.0%
-against 32.0%), which validates it for TWIC, where no tags exist. Among
-players who ended up losing:
+**The same players, compared with themselves.** The engine-based comparison
+involves different people. TWIC names its players, and many titled players appear
+both in classical tournaments and in online events such as Titled Tuesday. Taking
+each player's decisive losses and comparing them with that same player's losses
+in another format holds skill, rating and population fixed by construction:
 
-|  | Played to checkmate | Stopped early |
-|---|---|---|
-| Online | 32.0% | 68.0% |
-| Over the board, classical | 3.5% | 96.5% |
+| Same players | Players | Losses ending in mate | Within-player difference |
+|---|---|---|---|
+| Online vs classical over the board | 558 | 15.6% vs 4.0% | **+11.6 points** (10.3 to 12.9) |
+| Fast over the board vs classical | 149 | 5.7% vs 2.1% | +3.6 points (2.2 to 5.1) |
+| Online vs fast over the board | 99 | 15.7% vs 6.0% | **+9.7 points** (6.6 to 12.8) |
 
-A difference of 28.5 points (interval 22.2 to 34.9). Over-the-board players
-almost never play a lost position to its conclusion, and a resigned game cannot
-be saved. This conditions on nothing that happens after the position is lost.
+The two groups in the first row have almost the same median rating (2,382 online,
+2,365 classical). Speeding the game up at a board adds a little; moving it online
+adds much more. Across all decisive games the pattern is the same: 4.3% end in
+mate in classical over-the-board play, 6.3% in fast over-the-board play, 18.6% in
+TWIC's online events and 33.5% on Lichess.
 
-**Scope.** "Stopped early" combines resignation with losing on time, and the two
-cannot be separated for TWIC. Classical games rarely end on the clock, so 96.5%
-is close to a resignation rate but is a bound.
+**Matching on engine-measured skill points the same way.** Strong online players
+and weaker over-the-board players overlap at 20-40 cp of pre-entry centipawn loss.
+At matched skill the gap does not shrink (11.3 to 16.5 points), though that
+contrast is itself borderline (interval −0.3 to +28.3). The within-player result
+makes it unnecessary to lean on.
 
-**Prior work.** No study comparing resignation across formats was found. Siu &
-Istead (2026) report checkmate ending about 27-28% of Lichess games across
-millions of games; the 32.0% here, in a rapid-only corpus with fewer time
-forfeits, is consistent with that. Zhang et al. (2024) model resignation as a
-learned human behaviour, which is the framing this result supports. **New as far
-as the search could determine.**
+**Scope and limits.** Online TWIC is mostly 3+1 blitz, while fast over-the-board
+play mixes rapid and blitz, so the online-versus-fast contrast still carries some
+speed difference and is an upper bound on the effect of the medium alone. Losing
+on time ends a game without mate and is far more common online, which pushes the
+online figures down, so the contrasts are if anything understated. For the
+engine-based measure, "stopped early" combines resignation with time forfeits,
+which cannot be separated over the board; 96.5% is close to a resignation rate but
+is a bound. Players active in both formats are a selected, mostly titled group.
 
-**What it means for tracks 6 and 9.** "Saving lost positions" turns out to
-measure whether playing on is the norm, not defensive skill.
+**Prior work.** No study comparing resignation or playing-to-mate across formats
+was found. Siu & Istead (2026) report checkmate ending about 27-28% of Lichess
+games at scale; the 33.5% of decisive Lichess games here is consistent, given a
+rapid-only corpus with fewer time forfeits. Zhang et al. (2024) model resignation
+as a learned human behaviour, the framing this result supports. **New as far as
+the search could determine.**
+
+**What it means for tracks 6 and 9.** "Saving lost positions" measures whether
+playing on is the norm in a setting, not defensive skill.
 
 ---
 

@@ -48,6 +48,12 @@ of its claims were artifacts of the error described first below.
 - Claims check now enforces the expected SIGN of every pinned number, and checks
   retractions structurally rather than by keyword.
 
+- Claim 9 strengthened with a within-player comparison across formats: the same
+  558 titled players end 11.6 points more of their losses in checkmate online than
+  in classical over-the-board play (CI 10.3 to 12.9). Engine-free, using a
+  checkmate detector validated at 100% agreement against board replay and
+  Lichess's termination tags.
+
 ### Changed
 - FINDINGS.md rewritten as nine numbered claims with status labels, scope
   conditions and prior work.

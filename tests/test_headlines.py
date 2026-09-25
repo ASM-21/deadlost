@@ -704,3 +704,43 @@ def test_power_benchmarks_are_labelled_illustrative_not_sourced():
     d = _load("power_report.json")
     for v in d["benchmark_provenance"].values():
         assert "not a literature figure" in v
+
+
+# --------------------------------------------------------------------------
+# claim 9 at corpus scale: same players, across formats
+# --------------------------------------------------------------------------
+
+
+def test_t11_mate_detector_is_exact():
+    """The '#' suffix is the witness TWIC's missing termination tags force us to
+    use. It must agree with a board replay and with Lichess's own tag."""
+    d = _load("t11_matched_skill.json")["detector_validation"]
+    assert d["agreement_with_board_replay"] == 1.0
+    assert d["replay_sample_mates"] > 100, "the replay check must include real mates"
+    assert d["agreement_with_lichess_mate_tag"] == 1.0
+
+
+def test_t11_same_players_mate_more_online():
+    """The strongest evidence for claim 9: the same people, compared with
+    themselves, so skill and population are fixed by construction."""
+    c = _load("t11_matched_skill.json")["corpus_scale_within_player"]["within_player"]
+    oc = c["online_minus_classical_otb"]
+    assert oc["players"] >= 500
+    assert oc["excludes_zero"] is True
+    assert oc["mean_within_player_difference"] == pytest.approx(0.116, abs=0.01)
+    elos = oc["median_loser_elo"]
+    assert abs(elos["online"] - elos["classical_otb"]) < 100, "populations should be comparable"
+
+
+def test_t11_medium_matters_more_than_speed():
+    """Fast over-the-board play sits near classical, far from online."""
+    c = _load("t11_matched_skill.json")["corpus_scale_within_player"]["within_player"]
+    speed = c["fast_otb_minus_classical_otb"]["mean_within_player_difference"]
+    medium = c["online_minus_fast_otb"]["mean_within_player_difference"]
+    assert medium > 2 * speed
+    assert c["online_minus_fast_otb"]["excludes_zero"] is True
+
+
+def test_t11_corpus_scale_states_its_limits():
+    lim = " ".join(_load("t11_matched_skill.json")["corpus_scale_within_player"]["limits"])
+    assert "upper bound" in lim and "understated" in lim and "selected group" in lim

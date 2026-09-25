@@ -57,13 +57,12 @@ TRACKS = [
      "No gradient across 400 Elo of over-the-board play. Combined with the online sample, both corpora "
      "are internally flat and separated by a large step, which points at playing format rather than "
      "strength."),
-    (11, "Is the save-rate gap skill, or is it format?", "t11_matched_skill.json", "t11_matched_skill.png",
-     "The deepest result here. Matching online and over-the-board players on engine-measured skill, "
-     "rather than on rating scales that are not comparable across the two, does not shrink the gap: it "
-     "widens it to 17.3 points. The mechanism is behavioural and measurable without conditioning on "
-     "anything. Of players who ended up losing, 32.0% online played the position to checkmate against "
-     "5.8% over the board. A player who resigns forgoes any chance of saving the game, which explains "
-     "the whole difference without invoking chess skill at all."),
+    (11, "Is the save-rate gap skill, or is it format?", "t11_matched_skill.json", "t11_within_player_formats.png",
+     "The one result here that appears to be new. Lost positions are saved far more often online because "
+     "over-the-board players resign. Comparing the same 558 titled players with themselves, 15.6% of their "
+     "online losses end in checkmate against 4.0% of their classical over-the-board losses. Fast play at a "
+     "board moves that only slightly; moving online moves it a lot. Checkmate is read from the move list, a "
+     "method validated against board replay and Lichess's own tags with 100% agreement."),
     (10, "Do the findings survive their own analytic choices?", "t10_multiverse.json",
      "t10_curve_blunder_gradient.png",
      "Every defensible combination of analytic choices, then joint inference across the whole curve. The rating "
