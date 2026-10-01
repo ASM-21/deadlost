@@ -104,6 +104,14 @@ def _elo(v: str | None) -> int | None:
         return None
 
 
+def _fide(v: str | None) -> int | None:
+    try:
+        n = int(v) if v else 0
+    except ValueError:
+        return None
+    return n if n > 0 else None
+
+
 def ingest(paths: Iterable[Path], min_ply: int = 10):
     """Ingest TWIC issues. Returns `(records, report)`.
 
@@ -168,6 +176,10 @@ def ingest(paths: Iterable[Path], min_ply: int = 10):
                 event=headers.get("Event") or None,
                 site=headers.get("Site") or None,
                 format=classify_format(headers.get("Event"), headers.get("Site")),
+                # FIDE IDs appear in TWIC from roughly 2011. They allow exact
+                # identity linkage to other sources that carry them.
+                white_fide=_fide(headers.get("WhiteFideId")),
+                black_fide=_fide(headers.get("BlackFideId")),
             )
 
             reason = validate_record(rec, min_ply=min_ply)

@@ -22,5 +22,10 @@ seq 210 26 1649 | xargs -P 8 -I{} sh -c \
   'test -s '"$RAW"'/twic/twic{}.pgn || curl -fsSL --max-time 180 -o '"$RAW"'/twic/twic{}.pgn \
    "https://raw.githubusercontent.com/rozim/ChessData/master/Twic/twic{}.pgn"'
 
+echo "==> chess.com Titled Tuesday exports, pinned 1-in-5 event sample (~78 MB, 90 files)"
+mkdir -p "$RAW/titled_tuesday"
+xargs -P 8 -I{} sh -c 'f=$(basename "{}"); test -s '"$RAW"'/titled_tuesday/"$f" || curl -fsSL --max-time 120 -o '"$RAW"'/titled_tuesday/"$f" "{}"' \
+  < data/titled_tuesday_events.txt
+
 echo "==> done"
 du -sh "$RAW"

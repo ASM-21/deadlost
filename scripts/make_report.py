@@ -63,6 +63,12 @@ TRACKS = [
      "online losses end in checkmate against 4.0% of their classical over-the-board losses. Fast play at a "
      "board moves that only slightly; moving online moves it a lot. Checkmate is read from the move list, a "
      "method validated against board replay and Lichess's own tags with 100% agreement."),
+    (12, "An independent test, with players linked by FIDE ID", "t12_titled_tuesday.json", "t12_how_losses_end.png",
+     "165,852 chess.com Titled Tuesday games, a source that shares nothing with TWIC except the players. Their "
+     "checkmate share (18.1%) matches TWIC's online events (18.6%). Linking the same players by FIDE ID, their "
+     "online losses end in checkmate 12.4 points more often than their classical ones, and 10.7 points more "
+     "often than their over-the-board BLITZ losses, so the gap is not about speed. Online, about 30% of losses "
+     "are time forfeits: playing on is partly a bet on the opponent's clock."),
     (10, "Do the findings survive their own analytic choices?", "t10_multiverse.json",
      "t10_curve_blunder_gradient.png",
      "Every defensible combination of analytic choices, then joint inference across the whole curve. The rating "
@@ -147,10 +153,10 @@ def build() -> Path:
         "<p class='tag'>Nine claims about chess, tested on "
         f"{rows:,} public games with Stockfish 16, positioned against the literature.</p>",
         "<div class='chips'>",
-        "<span class='chip bad'>6 claims retracted</span>",
+        "<span class='chip bad'>7 claims retracted</span>",
         "<span class='chip'>literature-checked</span>",
         "<span class='chip'>every null bounded</span>",
-        "<span class='chip'>122 tests</span>",
+        "<span class='chip'>137 tests</span>",
         f"<span class='chip'>{fired} of {n_probes} probes still fire</span>",
         "</div></div></header><div class='wrap'>",
     ]

@@ -17,6 +17,7 @@ the corpus can still run the suite.
 from __future__ import annotations
 
 import json
+from pathlib import Path
 
 import pytest
 
@@ -744,3 +745,53 @@ def test_t11_medium_matters_more_than_speed():
 def test_t11_corpus_scale_states_its_limits():
     lim = " ".join(_load("t11_matched_skill.json")["corpus_scale_within_player"]["limits"])
     assert "upper bound" in lim and "understated" in lim and "selected group" in lim
+
+
+# --------------------------------------------------------------------------
+# track 12: independent replication with FIDE-ID linkage
+# --------------------------------------------------------------------------
+
+
+def test_t12_independent_source_agrees_on_online_mate_share():
+    """chess.com's own exports and TWIC's reports of online events share no
+    pipeline. They should agree if the figure describes the play."""
+    d = _load("t12_titled_tuesday.json")["source_agreement"]
+    assert abs(d["difference"]) < 0.02
+
+
+def test_t12_linked_gap_replicates_and_survives_matched_time_control():
+    """The decisive test: same FIDE IDs, blitz online against blitz over the
+    board. If the gap were about speed, it would vanish here."""
+    L = _load("t12_titled_tuesday.json")["linked_within_player"]
+    c, b = L["online_vs_classical"], L["online_vs_blitz_otb"]
+    assert c["players"] >= 500 and c["mate_excludes_zero"] is True
+    assert c["mate_difference"] == pytest.approx(0.124, abs=0.01)
+    assert b["players"] >= 100 and b["mate_excludes_zero"] is True
+    assert b["mate_difference"] > 0.07
+
+
+def test_t12_clock_bet_is_measured_not_assumed():
+    """The audit's main warning. A third of online losses being flags is what
+    turned 'online players play on' into 'concession plus clock betting'."""
+    m = _load("t12_titled_tuesday.json")["termination_mix"]
+    assert 0.2 < m["loss_types"]["time"] < 0.45
+    sens = m["flag_threshold_sensitivity"]
+    times = [sens[f"flag_at_or_below_{s}s"]["time"] for s in (0, 1, 2, 5)]
+    assert times == sorted(times), "a looser flag threshold must classify more losses as time"
+
+
+def test_t12_concession_contrast_is_reported_as_a_bound():
+    for v in _load("t12_titled_tuesday.json")["linked_within_player"].values():
+        assert "upper bound" in v["conceded_note"]
+
+
+def test_t12_lichess_saves_are_decomposed():
+    s = _load("t12_titled_tuesday.json")["lichess_save_mechanism"]["save_routes"]
+    assert abs(sum(s.values()) - 1.0) < 1e-6
+    assert s["won_on_the_board"] > s["won_because_opponent_ran_out_of_time"]
+
+
+def test_retraction_7_is_recorded():
+    text = (Path(__file__).resolve().parents[1] / "FINDINGS.md").read_text()
+    assert "| 7 | An external check of claim 9 citing Siu & Istead" in text
+    assert "27-28%" not in text.replace("27-28% Lichess checkmate share", "")

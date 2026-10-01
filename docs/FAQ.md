@@ -32,9 +32,9 @@ In descending order of confidence:
    specifications under joint inference (p = 0.002), a permutation null, and a
    fourfold-deeper engine. It is also a replication of well-known work.
 2. **Claim 9** (lost positions are saved online because over-the-board players
-   resign). A large, precise difference measured without conditioning on
-   anything after the position is lost, with its online half checked against
-   independent Lichess statistics. Rests on a 114-game over-the-board sample.
+   concede). Replicated on an independent source with players linked by FIDE
+   ID (730 players), and it survives matching on time control. Only its
+   checkmate contrast is a clean estimate; concession contrasts are bounds.
 3. **Claim 4** (White's edge grows with strength). Large corpus, simple
    estimand, known result.
 4. **Claims 5 and 6** (rising draws; opening evaluations). Consistent with
@@ -48,7 +48,7 @@ In descending order of confidence:
 
 ### Was anything in this repository wrong?
 
-Yes, six things, all listed in FINDINGS.md. The largest was that the tournament
+Yes, seven things, all listed in FINDINGS.md. The largest was that the tournament
 corpus, The Week In Chess, became majority online blitz in 2020, and three
 results built on it were really measuring the switch from classical to online
 play. No test caught it. A literature search did: a 2026 paper found classical
@@ -88,9 +88,11 @@ said, it was cut.
 
 Claim 9. Lost positions are saved far more often online than over the board, and
 the reason is not that online players defend better. It is that over-the-board
-players resign: of those who ended up losing, 3.5% played the position to
-checkmate in classical play against 32.0% online. You cannot save a game you have
-already resigned. No prior study comparing this across formats was found.
+players concede. The same 730 titled players, linked by FIDE ID across chess.com's
+exports and TWIC, end 16.6% of their online losses in checkmate against 4.3% of
+their classical ones, and the gap survives comparing blitz with blitz. Online,
+about 30% of their losses are time forfeits, so playing on is partly a bet on the
+clock. Its closest prior work studies resignation online only.
 
 Getting there required noticing that the metadata thought to be necessary was
 not necessary at all. TWIC carries no termination tags, which looked like a dead

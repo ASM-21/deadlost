@@ -64,6 +64,8 @@ COLUMNS = [
     "event",
     "site",
     "format",
+    "white_fide",
+    "black_fide",
 ]
 
 #: Playing format, derived at ingest. This column exists because an earlier
@@ -100,6 +102,8 @@ class GameRecord:
     event: str | None = None
     site: str | None = None
     format: str = "classical_otb"
+    white_fide: int | None = None
+    black_fide: int | None = None
 
     def as_row(self) -> dict:
         d = asdict(self)

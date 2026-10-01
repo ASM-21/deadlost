@@ -19,6 +19,7 @@ echo "== track 6: swindles ==";       python -m chesslab.tracks.t6_swindles
 echo "== track 8: player panel ==";   python -m chesslab.tracks.t8_player_panel
 echo "== track 9: otb swindles ==";   python -m chesslab.tracks.t9_otb_swindles
 echo "== track 7: falsification ==";  python -m chesslab.tracks.t7_falsify
+echo "== track 12: titled tuesday ==";  python -m chesslab.tracks.t12_titled_tuesday
 echo "== track 11: matched skill ==";  python -m chesslab.tracks.t11_matched_skill
 echo "== track 10: multiverse ==";    python -m chesslab.tracks.t10_multiverse
 echo "== power report ==";            python scripts/power_report.py

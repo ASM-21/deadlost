@@ -8,9 +8,11 @@ produced a false headline, it turned several "findings" into replications, and
 it exposed a missing step in the multiverse analysis. Those changes are listed
 first, because they are the useful part.
 
-Full bibliographic entries are in [`references.bib`](references.bib). Every
-source below was located and checked during the search in September 2026,
-except where a note says otherwise.
+Full bibliographic entries are in [`references.bib`](references.bib). Sources
+were located in a first search in September 2026 and then **audited against
+primary sources in a second pass**, which corrected several details and found
+the closest prior work to claim 9. Anything still resting on a secondary source
+is flagged where it is used.
 
 ---
 
@@ -21,15 +23,17 @@ except where a note says otherwise.
 | 1 | Track 5: draw rates in master chess are **falling**, contrary to the usual claim | Ben-Moshe & Genesove (2026) report classical draw rates **rose** about four points after neural-network engines spread in 2020, in 3.9M rated classical games | Chasing the contradiction showed TWIC is majority **online blitz** from 2020 and carries no time-control tag. The ingester had labelled every game classical. Headline **retracted**; on classical games draws are rising (+3.1 pp/decade) |
 | 2 | Probe P7: players now play on longer after a position is lost, drifting the skill anchor | Same root cause as 1 | **Retracted**. Online blitz players play on; classical players did not change |
 | 3 | Track 8: enlarging the panel from 34 to 100 players **flipped the sign** of the year coefficient | Same root cause as 1 | **Retracted**. The enlarged panel contained online games; on classical games both estimates share a sign |
-| 4 | Power report benchmark justified by "commonly repeated claims of 30-100 Elo/decade inflation" | The documented concern of the last decade is **deflation** (Sonas 2023, 2024); engine-anchored studies find little drift either way (Regan & Haworth 2011) | Unsourced claim **removed**. Benchmark relabelled as an illustrative, symmetric magnitude |
+| 4 | Power report benchmark justified by "commonly repeated claims of 30-100 Elo/decade inflation" | The documented concern of the last decade is **deflation** across the rated pool (Sonas 2023, 2024); engine-anchored studies find little drift either way (Regan & Haworth 2011) | Unsourced claim **removed**. Benchmark relabelled as an illustrative, symmetric magnitude |
 | 5 | Track 4 presented as a test of rating inflation | Regan & Haworth (2011) and Regan, Macieja & Haworth (2012) used the same design (engine-measured error at fixed rating across time) and **the same TWIC corpus** | Track 4 reframed as a **replication**. Its own contribution is narrower: a decided-position filter and an explicit resolution bound |
 | 6 | Track 5: White's edge grows with playing strength, presented as a finding | Established in database studies (Adorján 2004, as summarised by Brams & Ismail 2021; González-Díaz & Palacios-Huerta 2016) | Reframed as a **replication** |
 | 7 | Track 8: "only curvature is separately identifiable" presented as a discovery | Textbook age-period-cohort result (Mason et al. 1973; reviewed by Fosse & Winship 2019) | Reframed as a **known identification limit**, rediscovered in a within-player setting |
 | 8 | Track 10 implemented specification curves | Simonsohn, Simmons & Nelson (2020) define a third step, **joint inference** across all specifications, which was missing | Implemented. Result: the rating gradient survives (p = 0.002), the time effect is **borderline** (p = 0.052), the ACPL drift is a null (p = 0.064) |
-| 9 | Track 2: engine evaluation does not predict practical opening results | Park (2026): engine evaluation is not a sufficient statistic for human outcomes, across 16.1M position occurrences, with most variance **within** opening family | **Consistent**, and it exposes a limitation: track 2 aggregates at family level, which washes out the within-family signal |
-| 10 | Track 11: online and over-the-board players differ in whether they play lost positions out | No prior comparison found. Online side checked against Siu & Istead (2026), whose Lichess termination shares put checkmate at 27-28% of games | Kept as the repository's most defensibly new result, with an **external consistency check**. Later strengthened with a within-player comparison of 558 players across formats |
+| 9 | Track 2: engine evaluation does not predict practical opening results | Park (2026): engine evaluation is not a sufficient statistic for human outcomes, across 16.1M position occurrences, analysed at the level of individual positions | **Consistent**, and it exposes a limitation: track 2 aggregates at family level, coarser than the level where Park finds the signal |
+| 10 | Track 11: online and over-the-board players differ in whether they play lost positions out | No prior comparison found. Closest prior work: Purohit & Srivastava (2026) model resignation on Lichess, online only; Künn, Seel & Zegners (2022) compare the same players online and over the board, but on move quality | Kept as **new, partially anticipated**. Strengthened twice: within-player in TWIC (558 players), then independently with FIDE-ID linkage to chess.com exports (track 12) |
+| 11 | Track 11 cited Siu & Istead (2026) for a 27-28% Lichess checkmate share as an external check | The audit could not find that figure in the paper's main text | **Retracted** as a citation. Replaced by a genuinely independent check: chess.com Titled Tuesday exports give 18.1% against TWIC online's 18.6% |
+| 12 | Claim 9 attributed the gap to resignation | The audit flagged the main threat: in online blitz, playing on is partly a bet on the opponent's clock | **Tested** in track 12. About 30% of online titled losses are time forfeits, so the mechanism is restated as concession plus clock betting. The checkmate gap survives matching on time control |
 
-Four of these ten came from one error, found by reading a single paper whose
+Four of the first ten came from one error, found by reading a single paper whose
 result disagreed with this repository's. No test, probe or specification curve
 had caught it, because every one of them ran on the contaminated data. A new
 probe (P8) now guards against it.
@@ -56,7 +60,12 @@ supplemented with TWIC.
 
 **Künn, Palacios & Pestel (2023)** used engine-evaluated moves from real
 tournaments as an outcome measure for decision quality in an economics setting,
-which is the methodological template tracks 4, 8, 9 and 11 follow. **Strittmatter,
+which is the methodological template tracks 4, 8, 9 and 11 follow. **Künn, Seel
+& Zegners (2022)** compared the same elite players online (the 2020 Magnus
+Carlsen Invitational) and over the board (Rapid World Championships), finding
+worse engine-measured move quality online. That is the within-player
+online-versus-over-the-board design that tracks 11 and 12 use, applied to a
+different outcome. **Strittmatter,
 Sunde & Zegners (2020)** used engine-benchmarked performance to trace individual
 careers over 125 years.
 
@@ -131,17 +140,19 @@ an independent confirmation, and it is reported that way.
 
 ## 5. Engine evaluation and practical results in openings (track 2)
 
-**Park (2026)** examined positions that engines assess as equal and found
+**Park (2026)** examined positions that Stockfish 18 assesses as equal and found
 reproducible, systematic differences in how they score in human play, persisting
-after calibration for rating, across 16.1 million position occurrences. The
-paper's conclusion is that engine evaluation is not a sufficient statistic for
-human outcomes, and that most of the unexplained variance lies within opening
-families rather than between them.
+after calibration for rating, across 16.1 million position occurrences in
+Lichess games. The paper's conclusion is that engine evaluation is not a
+sufficient statistic for human outcomes. An earlier version of this review also
+attributed to Park the finding that most unexplained variance lies within opening
+families; the audit could not confirm that from the full text, so it is no longer
+claimed here.
 
 Track 2's null, that engine evaluation at book exit does not predict practical
 score across the most-played families at any rating, is what Park's result
-predicts. It also identifies track 2's weakness: aggregating to family level
-discards the level of detail where Park finds the signal. A position-level
+predicts. It also identifies track 2's weakness: Park works position by position,
+and aggregating to family level discards that detail. A position-level
 reanalysis would be a better test and is listed in the roadmap.
 
 The self-selection problem track 2 already states (players choose openings they
@@ -155,10 +166,11 @@ Park's.
 Two literatures bear on this. The engine-anchored one (Regan & Haworth 2011;
 Regan, Macieja & Haworth 2012) finds little or no inflation at master level.
 The rating-system one reached a different concern: **Sonas (2023, 2024)**, in
-analysis commissioned by FIDE, documented substantial rating **deflation** over
-the preceding decade, concentrated below 2000 and driven by the rated pool
-growing roughly tenfold since 2003, which led FIDE to apply a one-time
-compression to ratings below 2000 in March 2024.
+analysis for FIDE, documented rating **deflation** present throughout the rated
+pool, with the strongest players most shielded from it, as the list grew from
+fewer than 40,000 players in 2003 to more than 400,000 in 2023. FIDE's response,
+effective 1 March 2024, was a one-time correction applied only to ratings below
+2000.
 
 Track 4 is a replication of the Regan design on classical TWIC and agrees with
 it: no detectable drift at 2400-2499 (−0.71 cp/decade, interval −1.90 to +0.41).
@@ -166,7 +178,8 @@ Its point estimate leans toward better play at a fixed rating, the direction
 deflation would predict, but it cannot distinguish that from zero, and its
 resolution (about ±1.5 cp/decade, roughly ±140 Elo per decade at the within-player
 gradient) is too coarse to settle either the inflation or the deflation question.
-Sonas's deflation is concentrated well below the 2400-2499 band studied here.
+FIDE's 2024 correction did not touch the 2400-2499 band studied here, and Sonas
+describes the strongest players as the least affected by the deflation.
 
 Track 8 follows the same players over time, the design **Strittmatter, Sunde &
 Zegners (2020)** used over a much longer span. It runs into the problem their
@@ -181,44 +194,69 @@ not a discovery of this repository.
 
 ---
 
-## 7. Why lost positions are saved online (tracks 6, 9 and 11)
+## 7. Why lost positions are saved online (tracks 6, 9, 11 and 12)
 
-No study comparing resignation behaviour between online and over-the-board play
-was found. Two strands are adjacent.
+*Verdict from the audit: apparently new, partially anticipated.* No study was
+found that compares, between online and over-the-board play, how often a lost
+game is played to checkmate, attributes the difference to concession behaviour,
+or checks it within the same players. Three strands come close.
 
-**Human-like engines that model resignation.** **Zhang et al. (2024)** train
-ALLIE to predict when human players resign, treating resignation as a learned
-behaviour rather than an outcome of the position alone. That is the framing track
-11 needs: whether a lost position gets saved depends on whether the player keeps
-playing.
+**Resignation as a behavioural decision.** **Purohit & Srivastava (2026)** is the
+closest prior work. They model when players quit in roughly a million Lichess
+classical games, finding that stronger players persevere longer, that players
+persevere more against stronger opponents, and that a history of quitting
+predicts more quitting. That is the mechanism claim 9 relies on, studied
+carefully, but online only: there is no over-the-board arm and no cross-format
+comparison. **Zhang et al. (2025)** train ALLIE to predict human resignations,
+and **Siu & Istead (2026)** predict termination type, including resignation, on
+both online and over-the-board-derived data, which is consistent with resignation
+being a learned, setting-dependent behaviour.
 
-**Termination statistics at scale.** **Siu & Istead (2026)** report termination
-shares for millions of Lichess games, with checkmate ending about 27-28% of games
-in both 2014 and 2022 samples. Track 11 finds 32.0% of lost-and-lost online game
-sides end in checkmate in the 2017 rapid corpus. The small gap is expected: their
-samples include bullet and blitz, where games are far more often lost on time.
-That external agreement is the reason to trust the online half of the comparison;
-the over-the-board half (3.5% played to checkmate) has no published comparator.
+**Same players, online and over the board.** **Künn, Seel & Zegners (2022)** use
+exactly the within-player cross-format design, on engine-measured move quality.
+Claim 9 applies the design to how games end.
 
-**Within-player evidence.** The strongest support comes from comparing the same
-558 titled players with themselves: 15.6% of their online losses end in mate
-against 4.0% of their classical over-the-board losses. Fast over-the-board play
-moves the figure only slightly. This design holds skill and population fixed and
-needs no engine, which is why it can use the whole corpus.
+**Informal claims.** Chess blogs assert that players resign later online than
+over the board, without data, and a data-driven blog post (**Coulombe 2021**,
+not peer reviewed) reports that in Lichess bullet, comebacks from lost positions
+come almost entirely from flagging. The second is the strongest warning in the
+literature against reading claim 9 as pure "resignation norms".
 
-**Methodological debts.** Track 11's play-on threshold analysis conditions on
-how long a game continued, which is a post-treatment collider; **Elwert &
-Winship (2014)** describe the bias and why it cannot be read as a decomposition.
-The direct measurement, which conditions on nothing post-treatment, is the one
-the argument rests on.
+**What tracks 11 and 12 add.** Track 11 measured the difference directly: of
+players who went on to lose a clearly lost position, 32.0% online played to
+checkmate against 3.5% in classical over-the-board play, and the same 558 TWIC
+players lose 11.6 points more often to checkmate online. Track 12 then took the
+audit's warning seriously. Using chess.com's own Titled Tuesday exports, which
+record each player's final clock and FIDE ID, it linked the same players to their
+over-the-board games in TWIC:
 
-*Status.* New as far as this search could determine. Readers with knowledge of
-prior work comparing resignation across formats are invited to say so through the
-"Challenge a finding" issue template.
+- the gap replicates on an independent source (+12.4 points, 730 players);
+- it survives matching on time control, online blitz against over-the-board
+  blitz (+10.7 points, 154 players), so it is not about speed;
+- about 30% of these players' online losses are time forfeits, so playing on
+  online is in large part a bet on the opponent's clock, as Coulombe's analysis
+  would predict.
+
+The mechanism is therefore restated: over-the-board players concede lost
+positions; online players concede far less often and frequently play on against
+the clock. In the rapid Lichess corpus, about a fifth of saved lost positions
+were won because the opponent ran out of time.
+
+**Methodological debts.** Track 11's play-on threshold analysis conditions on how
+long a game continued, a post-treatment collider (**Elwert & Winship 2014**). The
+direct and linked measurements condition on nothing after the position is lost,
+and the argument rests on those.
+
+Readers who know of prior work comparing resignation across formats are invited
+to say so through the "Challenge a finding" issue template.
 
 ---
 
 ## 8. Methods this repository relies on
+
+No specification-curve or multiverse analysis applied to chess data was found in
+either search. Track 10 may be the first; that is noted, not claimed.
+
 
 - **Specification curves and multiverse analysis.** Simonsohn, Simmons & Nelson
   (2020); Steegen, Tuerlinckx, Gelman & Vanpaemel (2016). The motivating problem
@@ -235,7 +273,10 @@ prior work comparing resignation across formats are invited to say so through th
 
 Searches were run in September 2026 through general web search and publisher and
 arXiv pages, starting from the question each track asks and then following
-reference lists. Paywalled full texts were not always accessible, so some
+reference lists. A second, independent audit pass in the same month checked
+every citation against primary sources (Crossref, publisher pages, arXiv, FIDE
+documents), searched specifically for prior work on claim 9, and searched for
+reachable data mirrors by file name as well as by topic. Paywalled full texts were not always accessible, so some
 characterisations rest on abstracts and on how later papers summarise earlier
 ones; those are the claims most worth checking against the originals. Several of
 the most relevant papers are 2026 preprints and may change before publication.

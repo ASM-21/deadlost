@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-09-25T21:10:47.741537+00:00",
+  "created_utc": "2026-10-01T02:43:00.531491+00:00",
   "environment": {
     "python_chess": "1.11.2",
     "numpy": "2.4.4",
@@ -7,21 +7,21 @@
     "scipy": "1.17.1",
     "python": "3.12.3",
     "engine": "Stockfish 16",
-    "git_commit": "cce4a7377537735b377ee1ed201d803515044dc0"
+    "git_commit": "7475ce41880ec7eb561ee3238d4d16e05c5e2dce"
   },
-  "file_count": 138,
+  "file_count": 141,
   "files": {
     "src/chesslab/__init__.py": {
       "group": "code",
-      "sha256": "439d469cbc01c1a4a006d75a7989b0b97281a14ed226e962b37555c2987d473c",
+      "sha256": "e745d746afd2c4eba839b1920ace996e6bdc6273d9a77dc9b0af7a72577b3bfc",
       "bytes": 91,
-      "mtime": "2026-09-24T21:18:29.020056+00:00"
+      "mtime": "2026-10-01T02:37:52.612425+00:00"
     },
     "src/chesslab/cli.py": {
       "group": "code",
-      "sha256": "7db71b263d0368bdb4c3202776c0e76703f26caf3a3c4f0bc29aaf2c42acb92d",
-      "bytes": 8961,
-      "mtime": "2026-09-25T21:05:17.241190+00:00"
+      "sha256": "bc9052af913839dc2e7d1084d25bc3c9480f0da279e04c7308e6cfe72ae27717",
+      "bytes": 9121,
+      "mtime": "2026-10-01T02:42:55.696462+00:00"
     },
     "src/chesslab/engine.py": {
       "group": "code",
@@ -47,11 +47,17 @@
       "bytes": 5330,
       "mtime": "2026-09-23T11:19:29.242918+00:00"
     },
+    "src/chesslab/ingest_titled_tuesday.py": {
+      "group": "code",
+      "sha256": "0ee330d36de51c0fc600b9c426b9287f2a5b261e0539a354b46a5750a029bc96",
+      "bytes": 6224,
+      "mtime": "2026-10-01T02:30:28.346783+00:00"
+    },
     "src/chesslab/ingest_twic.py": {
       "group": "code",
-      "sha256": "571a27451530930d155a27e0d2560808f91398d97901a3d015eab8e2555b4665",
-      "bytes": 6435,
-      "mtime": "2026-09-24T21:20:07.205236+00:00"
+      "sha256": "1244085d59229128fac3616165a74a268f8cfea4eb0d3d6b1a18d90a96c44a3e",
+      "bytes": 6863,
+      "mtime": "2026-10-01T02:31:20.698090+00:00"
     },
     "src/chesslab/multiverse.py": {
       "group": "code",
@@ -79,9 +85,9 @@
     },
     "src/chesslab/schema.py": {
       "group": "code",
-      "sha256": "41eecdbd8fc4f42cbc3e382466bf6edd2f01e1da8ec402934cf556146f93e707",
-      "bytes": 11094,
-      "mtime": "2026-09-23T11:19:54.433085+00:00"
+      "sha256": "3178e5d2d63dfe1f6c3b719811fce7f8da43331f2b93e9184f013255c7e666dd",
+      "bytes": 11198,
+      "mtime": "2026-10-01T02:31:20.697637+00:00"
     },
     "src/chesslab/stats.py": {
       "group": "code",
@@ -106,6 +112,12 @@
       "sha256": "66f40cbd9a5087ea157fda15ea07ca3d524bf43d8c18a4f28d96c7badff556e7",
       "bytes": 31847,
       "mtime": "2026-09-25T21:10:47.685960+00:00"
+    },
+    "src/chesslab/tracks/t12_titled_tuesday.py": {
+      "group": "code",
+      "sha256": "55921bc827a04bcc7f3702e16b2e3618cf140ada7dc53620e45bdf8b9aab8927",
+      "bytes": 13370,
+      "mtime": "2026-10-01T02:34:32.517127+00:00"
     },
     "src/chesslab/tracks/t1_ingest.py": {
       "group": "code",
@@ -133,9 +145,9 @@
     },
     "src/chesslab/tracks/t5_color.py": {
       "group": "code",
-      "sha256": "f54f2899366e5d0e38183c77e883bde4a9a0f2c5eb9b619e73d8eddf9fb0d939",
-      "bytes": 11747,
-      "mtime": "2026-09-24T21:10:48.259114+00:00"
+      "sha256": "0122724894ff233a454c9803d3d62534b98721f9a03387344542d38a9a4addd2",
+      "bytes": 11757,
+      "mtime": "2026-10-01T02:37:05.188648+00:00"
     },
     "src/chesslab/tracks/t6_swindles.py": {
       "group": "code",
@@ -175,9 +187,9 @@
     },
     "scripts/check_claims.py": {
       "group": "code",
-      "sha256": "37201328135a9395f8b880c7fe29c60f924bd3a3fc2a0c834b001d25e4369426",
-      "bytes": 14132,
-      "mtime": "2026-09-25T21:05:27.311836+00:00"
+      "sha256": "71031e1d77d73b087ab90798eb6ccc94fbd9d98fb9b4cc6860c56838b591f85e",
+      "bytes": 15585,
+      "mtime": "2026-10-01T02:37:22.382212+00:00"
     },
     "scripts/init_repo.py": {
       "group": "code",
@@ -187,9 +199,9 @@
     },
     "scripts/make_report.py": {
       "group": "code",
-      "sha256": "03f36546bbcc6725e88c674d76116c15a3f82178c455e6cb2b516bd523b721bf",
-      "bytes": 13715,
-      "mtime": "2026-09-25T21:05:51.304847+00:00"
+      "sha256": "233c882c8ce68194a4dd577e743a07090e92d5f88810423c72c1dd01637c20e3",
+      "bytes": 14361,
+      "mtime": "2026-10-01T02:37:52.613548+00:00"
     },
     "scripts/manifest.py": {
       "group": "code",
@@ -205,15 +217,15 @@
     },
     "tests/test_core.py": {
       "group": "code",
-      "sha256": "624e7c6d8ce77ad2945ca113498d71bb413f08c252ef0be1f3e52791c3c9584c",
+      "sha256": "af4847b8fc54e9f2f6237acca6db404a33c2db5cf778e5d34aaef8189d70e70a",
       "bytes": 16911,
-      "mtime": "2026-09-24T21:20:23.510696+00:00"
+      "mtime": "2026-10-01T02:37:33.139690+00:00"
     },
     "tests/test_headlines.py": {
       "group": "code",
-      "sha256": "52c4033ddd0058f5647a158f47ce7a09d714016289a69df9a93001424e510463",
-      "bytes": 31663,
-      "mtime": "2026-09-25T21:04:47.941577+00:00"
+      "sha256": "1f486e5e3355a738d48813aa0749f12e97e8fc63624e68efd87dea9e0877bfbb",
+      "bytes": 34034,
+      "mtime": "2026-10-01T02:37:52.582588+00:00"
     },
     "results/node_calibration.json": {
       "group": "results",
@@ -225,19 +237,25 @@
       "group": "results",
       "sha256": "118e3fdc22bbae76f5e6300b844e9870dc58040c0efd3eec615c31b710d5a92e",
       "bytes": 3322,
-      "mtime": "2026-09-25T21:10:31.103543+00:00"
+      "mtime": "2026-10-01T02:42:29.756470+00:00"
     },
     "results/t10_multiverse.json": {
       "group": "results",
       "sha256": "7b565a0f9f254403b7f9dd90e9391ad6875eda8378d224dc98140b2507394b9f",
       "bytes": 8469,
-      "mtime": "2026-09-25T21:10:17.110953+00:00"
+      "mtime": "2026-10-01T02:42:13.676900+00:00"
     },
     "results/t11_matched_skill.json": {
       "group": "results",
       "sha256": "817cb1b668225b8608fd646ed23ebe0e29bbd882fb67e317d6e553505febd2df",
       "bytes": 12413,
-      "mtime": "2026-09-25T21:09:55.198909+00:00"
+      "mtime": "2026-10-01T02:41:37.377274+00:00"
+    },
+    "results/t12_titled_tuesday.json": {
+      "group": "results",
+      "sha256": "ab51ccaaae1f543ed446704064b5adf7a544a1aa8e18be5cf1abfade2787b48f",
+      "bytes": 5069,
+      "mtime": "2026-10-01T02:41:48.856162+00:00"
     },
     "results/t1_eval_scope_lichess.json": {
       "group": "results",
@@ -267,67 +285,67 @@
       "group": "results",
       "sha256": "8faa7b8193fccf0323b39bac093ca213c5a71d15eae87d9e85721cc478992c8c",
       "bytes": 1887,
-      "mtime": "2026-09-25T21:07:10.219992+00:00"
+      "mtime": "2026-10-01T02:38:29.734990+00:00"
     },
     "results/t2_openings.json": {
       "group": "results",
       "sha256": "52673c1f82d4472023821392050723a3a913cc0113f73f3426bc70f358160289",
       "bytes": 32349,
-      "mtime": "2026-09-25T21:07:14.244291+00:00"
+      "mtime": "2026-10-01T02:38:34.260682+00:00"
     },
     "results/t3_blunders.json": {
       "group": "results",
       "sha256": "2fb3529620877c725f462aad852e0d9e4f1efe4ba3f04f42c4c8bd73538d1a64",
       "bytes": 10652,
-      "mtime": "2026-09-25T21:07:23.142726+00:00"
+      "mtime": "2026-10-01T02:38:44.211991+00:00"
     },
     "results/t4_inflation.json": {
       "group": "results",
       "sha256": "a8e01b3b0c889c84467add4b6fc1775c5bc8e524a24c07351ce708f7ff7a65b3",
       "bytes": 12111,
-      "mtime": "2026-09-25T21:07:25.495199+00:00"
+      "mtime": "2026-10-01T02:38:46.931377+00:00"
     },
     "results/t5_color.json": {
       "group": "results",
       "sha256": "9fc6fa0fffeace36c41106cb3c89aae1e41aa8271b764720fa29a0fd0ad0acb1",
       "bytes": 20787,
-      "mtime": "2026-09-25T21:08:08.426565+00:00"
+      "mtime": "2026-10-01T02:39:35.807840+00:00"
     },
     "results/t6_swindles.json": {
       "group": "results",
       "sha256": "b387d421adde122099919b4c109f466deaad87a01a29885b3b13192481644b0b",
       "bytes": 10088,
-      "mtime": "2026-09-25T21:08:32.203978+00:00"
+      "mtime": "2026-10-01T02:40:04.034885+00:00"
     },
     "results/t7_falsify.json": {
       "group": "results",
       "sha256": "2553bdba6fee456adf3a4915e3a736a66a44c5d2c3600b1767bbacb65d1459fa",
       "bytes": 10062,
-      "mtime": "2026-09-25T21:10:30.741365+00:00"
+      "mtime": "2026-10-01T02:42:29.344959+00:00"
     },
     "results/t8_player_panel.json": {
       "group": "results",
       "sha256": "fbd9b2d71e5258bf4ecd9095a91fc5c694355478f3131aa2590187d22963fc9b",
       "bytes": 21335,
-      "mtime": "2026-09-25T21:09:11.349350+00:00"
+      "mtime": "2026-10-01T02:40:48.467442+00:00"
     },
     "results/t9_otb_swindles.json": {
       "group": "results",
       "sha256": "7807b86ff31ba896d9561890a43c78257e11eaee5f8ec4abd767e2e27476b134",
       "bytes": 7268,
-      "mtime": "2026-09-25T21:09:19.468896+00:00"
+      "mtime": "2026-10-01T02:40:57.557767+00:00"
     },
     "README.md": {
       "group": "prose",
-      "sha256": "099ffeca41a05b89c6951a667a4fb5a4c5bb54d50283c0c147090a0f3d431e58",
-      "bytes": 8556,
-      "mtime": "2026-09-25T21:05:17.240582+00:00"
+      "sha256": "39f44655bbce2290907d47576fda2e2890714dc860953285e2b30f6f28b0ec89",
+      "bytes": 9107,
+      "mtime": "2026-10-01T02:37:52.613274+00:00"
     },
     "FINDINGS.md": {
       "group": "prose",
-      "sha256": "292b9850107e0e0c8a37d04a299f811d408e9002899c90ce18a176385e314686",
-      "bytes": 17792,
-      "mtime": "2026-09-25T21:05:27.311637+00:00"
+      "sha256": "1379b40cddc99e64b759a55085df91cc54835e817466480f6fda840f74a2801c",
+      "bytes": 20098,
+      "mtime": "2026-10-01T02:37:05.188218+00:00"
     },
     "ROADMAP.md": {
       "group": "prose",
@@ -343,27 +361,27 @@
     },
     "NOTICE": {
       "group": "prose",
-      "sha256": "85e0b473b1a6fc71e8fa4653100fad76c61a878b26546f9204a69bafd92f8996",
-      "bytes": 2310,
-      "mtime": "2026-09-24T21:18:29.019635+00:00"
+      "sha256": "3da32935a0c562966ecbcdcaa915940bac1de269dfabc1bd188e59459437528e",
+      "bytes": 2728,
+      "mtime": "2026-10-01T02:34:32.757992+00:00"
     },
     "pyproject.toml": {
       "group": "config",
-      "sha256": "c5100d8e3ef5fa3247e19693036ef75df9d12613ffdb8aac792efb79d3cf191a",
+      "sha256": "62ae25a0e857792c8a57a02d80d51d69ff9e94d616fb214635e65b3004b3cfde",
       "bytes": 1941,
-      "mtime": "2026-09-24T21:18:29.019805+00:00"
+      "mtime": "2026-10-01T02:37:52.612095+00:00"
     },
     "scripts/build_all.sh": {
       "group": "config",
-      "sha256": "d43e7b8a0123efbb2e49cea275d00a4880a9fc8db69b4fc1de1b898a303c00af",
-      "bytes": 1924,
-      "mtime": "2026-08-30T03:10:27+00:00"
+      "sha256": "e8ed178012fbb3add83337f5a779d6b0075f5d43c2aa4ece0b6af959b7397c68",
+      "bytes": 2009,
+      "mtime": "2026-10-01T02:34:32.518383+00:00"
     },
     "scripts/fetch_data.sh": {
       "group": "config",
-      "sha256": "93e12f24b92795ca389d4781fa9ce3281921bae0fea4fc018615190b10878f24",
-      "bytes": 977,
-      "mtime": "2026-08-30T03:10:27+00:00"
+      "sha256": "84a30c066e2c05b38db5461109807345cac1e154db7646fcfdab4789c5b993ae",
+      "bytes": 1284,
+      "mtime": "2026-10-01T02:34:32.517950+00:00"
     },
     ".github/workflows/ci.yml": {
       "group": "config",

@@ -130,7 +130,7 @@ def twic_by_year(games: pd.DataFrame, elo_lo: int = 2200, elo_hi: int = 3199, mi
 def post_2020_draw_step(games: pd.DataFrame) -> dict:
     """Did classical draw rates step up after neural-network engines spread?
 
-    Ben-Moshe & Genesove (2026, arXiv:2606.12893) report that after NNUE engines
+    Ben-Moshe & Genesove (2026, arXiv:2606.12893) report that after neural-network engines
     became freely available in fall 2020, classical draw rates rose by about four
     percentage points, in 3.9 million rated classical games. This compares
     2015-2019 with 2021-2025 in classical TWIC, skipping 2020 because it is the

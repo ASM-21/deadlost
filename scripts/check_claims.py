@@ -109,6 +109,15 @@ CLAIMS: list[tuple[str, str, str, float, str]] = [
     ("within-player classical mate share", "4.0%",
      "t11_matched_skill.json:corpus_scale_within_player.within_player.online_minus_classical_otb.mate_share_classical_otb",
      0.002, "+"),
+    ("titled tuesday games", "165,852", "t12_titled_tuesday.json:termination_mix.games", 0, "+"),
+    ("titled tuesday mate share", "18.1%", "t12_titled_tuesday.json:source_agreement.titled_tuesday_mate_share", 0.002, "+"),
+    ("linked players vs classical", "730", "t12_titled_tuesday.json:linked_within_player.online_vs_classical.players", 0, "+"),
+    ("linked gap vs classical", "12.4%", "t12_titled_tuesday.json:linked_within_player.online_vs_classical.mate_difference", 0.003, "+"),
+    ("linked online mate share", "16.6%", "t12_titled_tuesday.json:linked_within_player.online_vs_classical.mate_share_online", 0.002, "+"),
+    ("linked classical mate share", "4.3%", "t12_titled_tuesday.json:linked_within_player.online_vs_classical.mate_share_otb", 0.002, "+"),
+    ("linked players vs OTB blitz", "154", "t12_titled_tuesday.json:linked_within_player.online_vs_blitz_otb.players", 0, "+"),
+    ("linked gap vs OTB blitz", "10.7%", "t12_titled_tuesday.json:linked_within_player.online_vs_blitz_otb.mate_difference", 0.003, "+"),
+    ("online time-forfeit share", "30%", "t12_titled_tuesday.json:termination_mix.loss_types.time", 0.006, "+"),
     ("clustering width ratio", "1.48", "t7_falsify.json:probes[3].mean_width_ratio", 0.03, "+"),
     ("TWIC online share from 2020", "55%", "t1_validation.json:twic_format_by_era.2020_on.online", 0.006, "+"),
     ("TWIC classical share before 2020", "95.5%", "t1_validation.json:twic_format_by_era.pre_2020.classical_otb", 0.002, "+"),
@@ -206,10 +215,14 @@ REQUIRED_CAVEATS = {
         "not a new\nresult",                   # claim 8: textbook APC
         "found by reading a paper",             # retractions 3-5 provenance
         "upper bound on the effect of the medium",  # claim 9: online vs fast still differs in speed
+        "Only the checkmate contrast is a clean estimate",  # claim 9: concession is bounded
+        "partially anticipated",                # claim 9: closest prior work exists
+        "an upper bound, since it includes",    # claim 9: OTB non-mate includes time forfeits
     ],
     "README.md": [
-        "No prior study comparing this across formats",
+        "studies resignation online only",
         "still carries some speed difference",
+        "concession contrasts are bounds",
     ],
 }
 

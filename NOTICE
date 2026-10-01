@@ -37,6 +37,13 @@ DATA
     only the move sequences and standard result/rating/date tags for
     statistical analysis. Users fetching this data should respect TWIC's terms.
 
+  chess.com Titled Tuesday exports
+    Retrieved via github.com/ianrastall/titled-tuesday-archive, which publishes
+    chess.com's event exports renamed and sorted, with no licence stated. A
+    pinned one-in-five sample of events (data/titled_tuesday_events.txt) is
+    fetched at build time and is not redistributed. Only move sequences, results,
+    final clock times, time controls and FIDE identifiers are used.
+
   lichess-org/chess-openings
     ECO opening classification tables, CC0 1.0.
 

@@ -1,0 +1,113 @@
+{
+  "source": {
+    "archive": "github.com/ianrastall/titled-tuesday-archive (chess.com exports; no licence stated)",
+    "sampling": "every fifth event in the archive's link list, pinned in data/titled_tuesday_events.txt",
+    "why": "Carries FIDE IDs and final clocks, which TWIC lacks, so online losses can be split into checkmate, time forfeit and concession, and players can be linked exactly to their over-the-board games."
+  },
+  "termination_mix": {
+    "games": 165852,
+    "events": 90,
+    "years": [
+      2021,
+      2026
+    ],
+    "time_controls": {
+      "180+1": 105969,
+      "300": 20156,
+      "180+2": 2675
+    },
+    "draw_rate": 0.08844029616766756,
+    "decisive_games": 151182,
+    "clock_tags_present": 0.9886494423939358,
+    "loser_fide_present": 0.9492201452553876,
+    "loss_types": {
+      "conceded": 0.514,
+      "time": 0.3034,
+      "checkmate": 0.1826
+    },
+    "flag_threshold_sensitivity": {
+      "flag_at_or_below_0s": {
+        "conceded": 0.5683,
+        "time": 0.2492,
+        "checkmate": 0.1826
+      },
+      "flag_at_or_below_1s": {
+        "conceded": 0.514,
+        "time": 0.3034,
+        "checkmate": 0.1826
+      },
+      "flag_at_or_below_2s": {
+        "conceded": 0.4695,
+        "time": 0.348,
+        "checkmate": 0.1826
+      },
+      "flag_at_or_below_5s": {
+        "time": 0.4275,
+        "conceded": 0.39,
+        "checkmate": 0.1826
+      }
+    }
+  },
+  "source_agreement": {
+    "titled_tuesday_mate_share": 0.1809276236589012,
+    "twic_online_mate_share": 0.18631469774792572,
+    "difference": -0.0053870740890245294,
+    "note": "Two sources with no shared pipeline: chess.com's own exports and TWIC's reports of online events. Agreement is evidence that the online figure is a property of the play, not of how either source records games."
+  },
+  "linked_within_player": {
+    "online_vs_classical": {
+      "players": 730,
+      "mate_share_online": 0.16636971904983291,
+      "mate_share_otb": 0.04250988088820482,
+      "mate_difference": 0.12385983816162809,
+      "mate_ci_lo": 0.11233553023958148,
+      "mate_ci_hi": 0.1350937156961534,
+      "mate_excludes_zero": true,
+      "online_time_forfeit_share": 0.283395119932187,
+      "online_conceded_share": 0.55023516101798,
+      "otb_non_mate_share": 0.9574901191117952,
+      "conceded_difference_bound": -0.4072549580938152,
+      "conceded_ci_lo": -0.4238604595641759,
+      "conceded_ci_hi": -0.3904192606471348,
+      "conceded_note": "Over the board, non-mate losses include time forfeits, so 'OTB non-mate' is an upper bound on OTB concession and this difference is a bound on the concession gap, not an estimate."
+    },
+    "online_vs_blitz_otb": {
+      "players": 154,
+      "mate_share_online": 0.17429883554304748,
+      "mate_share_otb": 0.06723126829500718,
+      "mate_difference": 0.10706756724804031,
+      "mate_ci_lo": 0.08294157684287204,
+      "mate_ci_hi": 0.13250557935127344,
+      "mate_excludes_zero": true,
+      "online_time_forfeit_share": 0.28853210729589823,
+      "online_conceded_share": 0.5371690571610542,
+      "otb_non_mate_share": 0.9327687317049929,
+      "conceded_difference_bound": -0.3955996745439385,
+      "conceded_ci_lo": -0.43023714933689716,
+      "conceded_ci_hi": -0.3607774603725366,
+      "conceded_note": "Over the board, non-mate losses include time forfeits, so 'OTB non-mate' is an upper bound on OTB concession and this difference is a bound on the concession gap, not an estimate."
+    }
+  },
+  "lichess_save_mechanism": {
+    "lost_game_sides": 472,
+    "saved": 89,
+    "save_routes": {
+      "won_because_opponent_ran_out_of_time": 0.20224719101123595,
+      "won_on_the_board": 0.6741573033707865,
+      "drawn": 0.12359550561797752
+    },
+    "how_the_rest_lost": {
+      "resign": 0.5692,
+      "mate": 0.329,
+      "outoftime": 0.1018
+    },
+    "reading": "A large share of online saves are wins on the clock, not on the board. That does not weaken the claim that saves depend on not conceding, since a player who resigns cannot win on time, but it changes what 'saving' means online: much of it is a successful bet on the opponent's clock."
+  },
+  "conclusion": "Independent of TWIC's own online coverage, the same players' losses end in checkmate far more often online than over the board, and the gap survives matching on time control (online blitz against over-the-board blitz). Online, roughly half of these players' losses are conceded with time remaining and close to a third are time forfeits, so playing on is in large part a bet on the clock. Over the board, at least nine in ten losses end without mate.",
+  "limits": [
+    "Over-the-board concession cannot be separated from over-the-board time forfeits, so concession contrasts are bounds; only the checkmate contrast is a clean estimate.",
+    "A one-in-five sample of archived events; the archive itself is described by its maintainer as incomplete.",
+    "Players active in both formats are a selected, mostly titled group.",
+    "Online ratings in the export are chess.com ratings and are not used."
+  ]
+}

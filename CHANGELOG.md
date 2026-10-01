@@ -5,6 +5,39 @@ This project versions its *findings* as well as its code: a released number is
 pinned by a test and by an entry in `scripts/check_claims.py`, so any change to
 a published result is a deliberate, reviewable event rather than drift.
 
+## [1.2.0] - 2026-10-01
+
+The audit release. Every citation was checked against its primary source, the
+literature on claim 9 was searched specifically, and the main threat the search
+identified was tested with new data.
+
+### Added
+- **Track 12**: an independent replication of claim 9 on 165,852 chess.com Titled
+  Tuesday games, a source that shares nothing with TWIC except the players.
+  Players are linked to their over-the-board games by exact FIDE ID, which TWIC
+  records from about 2011 (now in the schema as `white_fide` / `black_fide`).
+  The checkmate gap replicates (+12.4 points, 730 players) and survives
+  matching on time control (+10.7, blitz against over-the-board blitz).
+- Online losses split into checkmate, time forfeit and concession using each
+  player's final clock. About 30% of online titled losses are time forfeits,
+  so the mechanism is restated as concession plus clock betting.
+- How lost positions are saved on Lichess: about a fifth by the opponent running
+  out of time, about two thirds won on the board.
+- Closest prior work for claim 9: Purohit & Srivastava (2026) and Künn, Seel &
+  Zegners (2022). Claim 9 is now labelled new but partially anticipated.
+
+### Retracted
+- **Retraction 7.** An external check citing Siu & Istead (2026) for a 27-28%
+  Lichess checkmate share. The figure could not be found in the paper.
+
+### Corrected
+- Park (2026): author Jesung Park; Stockfish 18; the "most variance within
+  opening family" attribution could not be confirmed and was removed.
+- Sonas (2023, 2024): titles and URLs; deflation is described across the whole
+  rated pool, with FIDE's March 2024 correction applied only below 2000.
+- ALLIE is an ICLR 2025 paper; full authors added. DOIs added for Guid & Bratko,
+  Guid, Pérez & Bratko, Cameron & Miller and Wilson; JSTOR URL for Holm.
+
 ## [1.1.0] - 2026-09-24
 
 The literature release. Results were positioned against published work after

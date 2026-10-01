@@ -8,8 +8,8 @@ authors:
     orcid: "https://orcid.org/0009-0004-8758-2687"
 repository-code: "https://github.com/ASM-21/chess-lab"
 url: "https://github.com/ASM-21/chess-lab"
-version: 1.1.0
-date-released: "2026-09-24"
+version: 1.2.0
+date-released: "2026-10-01"
 license: Apache-2.0
 keywords:
   - chess
@@ -22,13 +22,16 @@ abstract: >-
   Nine claims about chess tested on 190,967 public games (a 2017 lichess.org
   scrape and a 1998-2026 sample of The Week In Chess), using Stockfish 16 at a
   fixed node budget as the measuring instrument, and positioned against the
-  published literature. The most defensibly new result is that lost positions
-  are saved far more often online than in classical over-the-board play because
-  over-the-board players resign: of players who went on to lose, 32.0% online
-  played the position to checkmate against 3.5% over the board. Other results
+  published literature, with an independent replication on 165,852 chess.com
+  Titled Tuesday games. The most defensibly new result is that lost positions
+  are saved far more often online than over the board because over-the-board
+  players concede: linking the same 730 titled players by FIDE ID across two
+  unrelated sources, 16.6% of their online losses end in checkmate against 4.3%
+  of their classical over-the-board losses, and the gap holds when both are
+  blitz. About 30% of their online losses are time forfeits. Other results
   replicate known findings on blunder rates, White's advantage and rating drift,
   or are consistent with recent work on draw rates and opening evaluation. The
   repository includes a falsification track with eight probes, specification
-  curves with joint inference, and a stated resolution for every null. Six
+  curves with joint inference, and a stated resolution for every null. Seven
   earlier claims were withdrawn, three of them after a literature search showed
   the tournament corpus had become majority online blitz from 2020.

@@ -21,7 +21,7 @@ build: ## Full rebuild: ingest, engine, all tracks, checks (~1h, resumable)
 
 tracks: ## Re-run every analysis track from cached engine evaluations (fast)
 	@for t in t1_ingest t2_openings t3_blunders t4_inflation t5_color \
-	          t6_swindles t8_player_panel t9_otb_swindles t11_matched_skill t10_multiverse t7_falsify; do \
+	          t6_swindles t8_player_panel t9_otb_swindles t11_matched_skill t12_titled_tuesday t10_multiverse t7_falsify; do \
 	  echo "== $$t"; $(PY) -m chesslab.tracks.$$t >/dev/null || exit 1; \
 	done
 	$(PY) scripts/power_report.py

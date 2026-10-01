@@ -429,7 +429,7 @@ def test_cli_runs_with_no_arguments():
 def test_cli_findings_lists_every_track():
     from chesslab.cli import TRACKS
 
-    assert set(TRACKS) == set(range(1, 12))
+    assert set(TRACKS) == set(range(1, 13))
     for _, (fname, summary) in TRACKS.items():
         assert fname.endswith(".json")
         assert summary and "{" not in summary, "summary must not leak a format placeholder"

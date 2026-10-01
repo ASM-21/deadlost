@@ -1,12 +1,12 @@
 # Findings
 
-Nine claims about chess, tested on 190,967 public games with Stockfish 16 as the
+Nine claims about chess, tested on 190,967 public games plus an independent sample of 165,852 online titled games, with Stockfish 16 as the
 measuring instrument, and positioned against the published literature. This
 document is the citable summary. The reasoning behind each number is in the
 track modules; the literature is reviewed in [docs/LITERATURE.md](docs/LITERATURE.md).
 
 Every number here is pinned by a test and bound to a results file by
-`scripts/check_claims.py`. Six earlier claims have been withdrawn; they are
+`scripts/check_claims.py`. Seven earlier claims have been withdrawn; they are
 listed in [Retractions](#retractions) rather than deleted.
 
 ## Reading this document
@@ -33,9 +33,10 @@ Each claim carries one status label.
 | 6 | Engine opening evaluations do not predict practical results | Consistent | No rating band survives multiplicity correction |
 | 7 | No detectable rating drift at a fixed rating | Null, replicates | −0.71 cp/decade, resolution ±1.48 |
 | 8 | Within a career, calendar time and ageing cannot be separated | Replicates (textbook) | Curvature term interval ±6.2 cp/decade |
-| 9 | Lost positions are saved far more online, because over-the-board players resign | **New** | Same 558 players: +11.6 points more of their losses end in mate online |
+| 9 | Lost positions are saved far more online, because over-the-board players concede | **New**, partially anticipated | Same players linked by FIDE ID: +12.4 points more of their losses end in mate online; +10.7 at matched time control |
 
-Claim 9 is the one result this repository can defend as new. Claims 1 and 4 are
+Claim 9 is the one result this repository can defend as new, though its mechanism
+has been studied online (see its prior work). Claims 1 and 4 are
 robust replications. Claims 5 through 8 agree with or reproduce prior work and
 add a resolution bound or a scope condition. Claim 2 is where honest handling of
 analytic choices turned an apparently unanimous result into a borderline one.
@@ -161,10 +162,9 @@ there is little variation for evaluation to explain.
 line's score partly measures who plays it; no observational design removes that.
 
 **Prior work.** Park (2026) finds engine evaluation is not a sufficient statistic
-for human outcomes across 16.1 million position occurrences, with most of the
-unexplained variance *within* opening families. That supports the null and
-identifies its weakness: family-level aggregation discards the level of detail
-where the signal lives.
+for human outcomes across 16.1 million position occurrences, working position by
+position. That supports the null and identifies its weakness: family-level
+aggregation is far coarser than the level at which Park finds the signal.
 
 ### 7. No detectable rating drift at a fixed rating
 
@@ -182,9 +182,10 @@ That rules out only very large drift in either direction.
 **Prior work.** Regan & Haworth (2011) and Regan, Macieja & Haworth (2012) used
 the same design, engine-measured error at fixed rating over time, on overlapping
 data including TWIC, and found little or no inflation. **Replication.** The
-live policy concern is the opposite: FIDE-commissioned analysis documented rating
-deflation over the past decade, concentrated below 2000 (Sonas 2023, 2024),
-well below the band studied here.
+live policy concern is the opposite: analysis for FIDE documented rating deflation
+across the rated pool over the past decade, with the strongest players least
+affected (Sonas 2023, 2024). FIDE's one-time correction in March 2024 applied only
+below 2000, so it does not touch the band studied here.
 
 ### 8. Within a career, calendar time and ageing cannot be separated
 
@@ -199,7 +200,7 @@ Fosse & Winship 2019), rediscovered here in a within-player setting, not a new
 result. Strittmatter, Sunde & Zegners (2020) go further with birth years and a
 125-year span; TWIC has neither.
 
-### 9. Lost positions are saved far more often online, because over-the-board players resign
+### 9. Lost positions are saved far more often online, because over-the-board players concede
 
 **The question.** Once a position is clearly lost (worse than −500 centipawns),
 how often is it still drawn or won? Online, about 19% of the time. Over the board
@@ -215,11 +216,9 @@ lose, 32.0% of online players played to checkmate against 3.5% in classical
 over-the-board play, a difference of 28.5 points (interval 22.2 to 34.9) on 114
 over-the-board games. A resigned game cannot be saved.
 
-**The same players, compared with themselves.** The engine-based comparison
-involves different people. TWIC names its players, and many titled players appear
-both in classical tournaments and in online events such as Titled Tuesday. Taking
-each player's decisive losses and comparing them with that same player's losses
-in another format holds skill, rating and population fixed by construction:
+**The same players, compared with themselves.** TWIC names its players, and many
+titled players appear both in classical tournaments and in online events. Holding
+the player fixed, so that skill and population cannot differ:
 
 | Same players | Players | Losses ending in mate | Within-player difference |
 |---|---|---|---|
@@ -227,36 +226,66 @@ in another format holds skill, rating and population fixed by construction:
 | Fast over the board vs classical | 149 | 5.7% vs 2.1% | +3.6 points (2.2 to 5.1) |
 | Online vs fast over the board | 99 | 15.7% vs 6.0% | **+9.7 points** (6.6 to 12.8) |
 
-The two groups in the first row have almost the same median rating (2,382 online,
-2,365 classical). Speeding the game up at a board adds a little; moving it online
-adds much more. Across all decisive games the pattern is the same: 4.3% end in
-mate in classical over-the-board play, 6.3% in fast over-the-board play, 18.6% in
-TWIC's online events and 33.5% on Lichess.
+Across all decisive games the pattern is the same: 4.3% end in mate in classical
+over-the-board play, 6.3% in fast over-the-board play, 18.6% in TWIC's online
+events and 33.5% on Lichess.
+
+**An independent replication, linked by FIDE ID (track 12).** All of the above
+uses TWIC for both sides of the online comparison. Track 12 replaces the online
+side with chess.com's own Titled Tuesday exports, 165,852 games from a source
+that shares nothing with TWIC except the players, and links players exactly by
+FIDE ID. The two sources agree on the online checkmate share (18.1% against
+18.6%), and:
+
+| Same players, linked by FIDE ID | Players | Losses ending in mate | Difference |
+|---|---|---|---|
+| Online blitz vs classical over the board | 730 | 16.6% vs 4.3% | **+12.4 points** (11.2 to 13.5) |
+| Online blitz vs **blitz** over the board | 154 | 17.4% vs 6.7% | **+10.7 points** (8.3 to 13.3) |
+
+The second row matches the time control, so the gap is not about speed. It is
+about the medium.
+
+**The mechanism, restated after testing it.** The earlier version of this claim
+said online players play on while over-the-board players resign. The audit
+warned that in online blitz, playing on is partly a bet on the opponent's clock,
+and chess.com's exports record each player's final clock, so it can be checked.
+Of these titled players' online losses, 18.3% were checkmates, 30.3% were time
+forfeits and 51.4% were conceded with time still on the clock. The time-forfeit share
+ranges from 25% to 43% as the threshold moves from 0 to 5 seconds. Over the board, at
+least nine losses in ten end without mate. So: over-the-board players concede
+lost positions. Online, the same players concede 55% of their losses, against at
+most 96% of their classical over-the-board losses (an upper bound, since it includes
+time forfeits), and much of the rest of the time they play on against the clock. In the rapid Lichess corpus, where clocks
+matter less, 20% of saved lost positions were won because the opponent ran out of
+time and 67% were won on the board.
 
 **Matching on engine-measured skill points the same way.** Strong online players
 and weaker over-the-board players overlap at 20-40 cp of pre-entry centipawn loss.
 At matched skill the gap does not shrink (11.3 to 16.5 points), though that
-contrast is itself borderline (interval −0.3 to +28.3). The within-player result
-makes it unnecessary to lean on.
+contrast is itself borderline (interval −0.3 to +28.3). The within-player results
+make it unnecessary to lean on.
 
-**Scope and limits.** Online TWIC is mostly 3+1 blitz, while fast over-the-board
-play mixes rapid and blitz, so the online-versus-fast contrast still carries some
-speed difference and is an upper bound on the effect of the medium alone. Losing
-on time ends a game without mate and is far more common online, which pushes the
-online figures down, so the contrasts are if anything understated. For the
-engine-based measure, "stopped early" combines resignation with time forfeits,
-which cannot be separated over the board; 96.5% is close to a resignation rate but
-is a bound. Players active in both formats are a selected, mostly titled group.
+**Scope and limits.** Only the checkmate contrast is a clean estimate. Over the
+board, resignation and time forfeit cannot be separated, so "conceded" contrasts
+are bounds, and for the engine-based measure "stopped early" combines the two;
+96.5% is close to a resignation rate but is a bound. Within TWIC, online events
+are mostly blitz while fast over-the-board play mixes rapid and blitz, so that
+online-versus-fast contrast is an upper bound on the effect of the medium alone;
+track 12's blitz-against-blitz comparison is the cleaner test. Players active in
+both formats are a selected, mostly titled group.
 
-**Prior work.** No study comparing resignation or playing-to-mate across formats
-was found. Siu & Istead (2026) report checkmate ending about 27-28% of Lichess
-games at scale; the 33.5% of decisive Lichess games here is consistent, given a
-rapid-only corpus with fewer time forfeits. Zhang et al. (2024) model resignation
-as a learned human behaviour, the framing this result supports. **New as far as
-the search could determine.**
+**Prior work.** The audit's verdict is *apparently new, partially anticipated*.
+Purohit & Srivastava (2026) model resignation decisions on Lichess and find that
+stronger players persevere longer, but study online play only. Künn, Seel &
+Zegners (2022) compare the same players online and over the board, but measure
+move quality rather than how games end. Zhang et al. (2025) and Siu & Istead
+(2026) model resignation as a learned behaviour. A blog analysis (Coulombe 2021,
+not peer reviewed) attributes bullet comebacks to flagging, which is what track
+12 confirmed matters. No study comparing how often lost games are played to
+checkmate across formats was found.
 
 **What it means for tracks 6 and 9.** "Saving lost positions" measures whether
-playing on is the norm in a setting, not defensive skill.
+conceding is the norm in a setting, not defensive skill.
 
 ---
 
@@ -272,9 +301,10 @@ Each is pinned by a test that fails if the withdrawn claim returns.
 | 4 | Players now play on longer after a position is lost (probe P7) | Same contamination: online blitz players play on | Re-run after the format fix |
 | 5 | Enlarging the player panel flipped the sign of the drift estimate (track 8) | Same contamination in the enlarged panel | Re-run after the format fix |
 | 6 | Power-report benchmark justified by "commonly repeated claims of 30-100 Elo/decade inflation" | Never sourced; the documented concern is deflation | Literature search (Sonas 2023, 2024) |
+| 7 | An external check of claim 9 citing Siu & Istead (2026) for a 27-28% Lichess checkmate share | The figure could not be found in the paper during a citation audit | Citation audit; replaced by the independent Titled Tuesday check (track 12) |
 
 Retractions 3 to 5 share one cause and were found by reading a paper, not by any
-test. Every probe and specification curve had run on the contaminated data and
+test. Retraction 7 was found by checking citations against their sources. Every probe and specification curve had run on the contaminated data and
 passed. Probe P8 now guards against it.
 
 ---

@@ -1,27 +1,31 @@
-% chess-lab bibliography. Located and checked during the September 2026 search
-% unless a `note` field says otherwise.
+% chess-lab bibliography. Located and checked during the September 2026 searches,
+% and audited against primary sources in a second pass the same month. A `note`
+% field flags anything still taken from a secondary source.
 
 % ---------------------------------------------------------------- engine-measured skill
 @inproceedings{regan2011intrinsic,
   author    = {Regan, Kenneth W. and Haworth, Guy McC.},
   title     = {Intrinsic Chess Ratings},
-  booktitle = {Proceedings of the Twenty-Fifth AAAI Conference on Artificial Intelligence},
-  year      = {2011},
+  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
   volume    = {25},
   number    = {1},
+  pages     = {834--839},
+  year      = {2011},
   doi       = {10.1609/aaai.v25i1.7951}
 }
 
 @inproceedings{regan2012distributions,
-  author    = {Regan, Kenneth W. and Macieja, Bartlomiej and Haworth, Guy McC.},
+  author    = {Regan, Kenneth W. and Macieja, Bart{\l}omiej and Haworth, Guy McC.},
   title     = {Understanding Distributions of Chess Performances},
-  booktitle = {Advances in Computer Games (ACG 2011)},
+  booktitle = {Advances in Computer Games (ACG 13)},
+  editor    = {van den Herik, H. Jaap and Plaat, Aske},
   series    = {Lecture Notes in Computer Science},
   volume    = {7168},
   pages     = {230--243},
   publisher = {Springer},
   year      = {2012},
-  doi       = {10.1007/978-3-642-31866-5_20}
+  doi       = {10.1007/978-3-642-31866-5_20},
+  note      = {Uses ChessBase Big 2009 supplemented with The Week In Chess through issue 893}
 }
 
 @article{guid2006champions,
@@ -32,18 +36,18 @@
   number  = {2},
   pages   = {65--73},
   year    = {2006},
-  note    = {Details from citing works' reference lists}
+  doi     = {10.3233/ICG-2006-29203}
 }
 
 @article{guid2008crafty,
   author  = {Guid, Matej and P{\'e}rez, Aritz and Bratko, Ivan},
-  title   = {How Trustworthy is {Crafty}'s Analysis of World Chess Champions?},
+  title   = {How Trustworthy is {CRAFTY}'s Analysis of World Chess Champions?},
   journal = {ICGA Journal},
   volume  = {31},
   number  = {3},
   pages   = {131--144},
   year    = {2008},
-  note    = {Details from citing works' reference lists}
+  doi     = {10.3233/ICG-2008-31302}
 }
 
 @article{kunn2023indoor,
@@ -120,17 +124,19 @@
   year   = {2026},
   eprint = {2606.12893},
   archivePrefix = {arXiv},
-  note   = {Preprint}
+  primaryClass  = {econ.GN},
+  note   = {Preprint. 3.9 million rated classical games, March 2015 to November 2023}
 }
 
 @misc{park2026engineequal,
-  author = {Park},
+  author = {Park, Jesung},
   title  = {Engine-Equal, Human-Unequal: A Reproducible Outcome Skew in Engine-Assessed Equal
             Chess Positions},
   year   = {2026},
   eprint = {2607.25655},
   archivePrefix = {arXiv},
-  note   = {Preprint. Author given name not verified in the search}
+  primaryClass  = {cs.AI},
+  note   = {Preprint. Uses Stockfish 18 on Lichess October 2025 games}
 }
 
 @inproceedings{brams2021fairer,
@@ -157,8 +163,10 @@
   author    = {Adorj{\'a}n, Andr{\'a}s},
   title     = {Black is Still {OK}!},
   publisher = {Batsford},
+  address   = {London},
   year      = {2004},
-  note      = {Cited via Brams and Ismail (2021); primary source not consulted}
+  isbn      = {9780713488708},
+  note      = {Rating-band figures are cited via Brams and Ismail (2021); not checked in the book}
 }
 
 % ---------------------------------------------------------------- ratings
@@ -171,37 +179,85 @@
 
 @techreport{sonas2023proposal,
   author      = {Sonas, Jeff},
-  title       = {Proposal for Changes to the {FIDE} Rating System},
+  title       = {Sonas Proposal: Repairing the {FIDE} Standard Elo Rating System},
   institution = {FIDE},
   year        = {2023},
-  note        = {Analysis commissioned by FIDE documenting rating deflation; basis for the
-                 March 2024 compression of ratings below 2000}
+  month       = jul,
+  url         = {https://www.fide.com/docs/presentations/Sonas%20Proposal%20-%20Repairing%20the%20FIDE%20Standard%20Elo%20Rating%20System.pdf},
+  note        = {Dated 20 July 2023. Describes deflation present throughout the rating pool}
 }
 
 @techreport{sonas2024final,
   author      = {Sonas, Jeff},
-  title       = {Final Report on {FIDE} Rating System Changes},
-  institution = {FIDE},
-  year        = {2024}
+  title       = {Compression and Calculation Improvements: Final Report},
+  institution = {FIDE Qualification Commission},
+  year        = {2024},
+  month       = jan,
+  url         = {https://qc.fide.com/wp-content/uploads/2024/03/Sonas-Final-Report-as-of-11-JAN-2024.pdf},
+  note        = {The one-time adjustment for ratings below 2000 took effect on 1 March 2024}
 }
 
 % ---------------------------------------------------------------- human-like play, resignation
-@misc{zhang2024allie,
-  author = {Zhang, Yiming and others},
-  title  = {Human-Aligned Chess with a Bit of Search},
-  year   = {2024},
-  eprint = {2410.03893},
-  archivePrefix = {arXiv},
-  note   = {Full author list not verified in the search}
+@inproceedings{zhang2025allie,
+  author    = {Zhang, Yiming and Jacob, Athul Paul and Lai, Vivian and Fried, Daniel and Ippolito, Daphne},
+  title     = {Human-Aligned Chess With a Bit of Search},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2025},
+  eprint    = {2410.03893},
+  archivePrefix = {arXiv}
 }
 
 @misc{siu2026unimaia,
   author = {Siu, Sherman and Istead, Lesley},
-  title  = {Steering Chess Policies with Language for Human-like Play},
+  title  = {{UniMaia}: Steering Chess Policies with Language for Human-like Play},
   year   = {2026},
   eprint = {2605.27767},
   archivePrefix = {arXiv},
-  note   = {Preprint. Reports Lichess termination-type shares}
+  note   = {Preprint. Predicts termination type, including resignation, on Lichess and on an
+            over-the-board-plus-online benchmark}
+}
+
+@article{purohit2026quitting,
+  author  = {Purohit, Hariharan and Srivastava, Nisheeth},
+  title   = {A Metacognitive Appraisal of Quitting in Chess},
+  journal = {Cognitive Science},
+  volume  = {50},
+  number  = {3},
+  pages   = {e70193},
+  year    = {2026},
+  doi     = {10.1111/cogs.70193},
+  note    = {Closest prior work to claim 9: models resignation hazard on Lichess classical games,
+             online only}
+}
+
+@article{kunn2022remote,
+  author  = {K{\"u}nn, Steffen and Seel, Christian and Zegners, Dainis},
+  title   = {Cognitive Performance in Remote Work: Evidence from Professional Chess},
+  journal = {The Economic Journal},
+  volume  = {132},
+  number  = {643},
+  pages   = {1218--1232},
+  year    = {2022},
+  doi     = {10.1093/ej/ueab094},
+  note    = {Same players online and over the board; measures move quality, not termination}
+}
+
+@misc{coulombe2021resign,
+  author = {Coulombe, Patrick},
+  title  = {When Should You Resign?},
+  year   = {2021},
+  howpublished = {Chess Digits blog, web.chessdigits.com},
+  note   = {Secondary source, not peer reviewed. Lichess May 2019 games; comebacks in bullet
+            attributed to flagging}
+}
+
+@misc{ianrastall_tt,
+  author = {Rastall, Ian},
+  title  = {titled-tuesday-archive},
+  howpublished = {GitHub repository, github.com/ianrastall/titled-tuesday-archive},
+  year   = {2026},
+  note   = {chess.com Titled Tuesday exports, renamed and sorted; no licence stated. Used for
+            track 12 via a pinned one-in-five event sample}
 }
 
 % ---------------------------------------------------------------- methods
@@ -267,6 +323,17 @@
   doi     = {10.1146/annurev-soc-073018-022616}
 }
 
+@article{holford1983apc,
+  author  = {Holford, Theodore R.},
+  title   = {The Estimation of Age, Period and Cohort Effects for Vital Rates},
+  journal = {Biometrics},
+  volume  = {39},
+  number  = {2},
+  pages   = {311--324},
+  year    = {1983},
+  doi     = {10.2307/2531004}
+}
+
 @article{mason1973cohort,
   author  = {Mason, Karen Oppenheim and Mason, William M. and Winsborough, H. H. and Poole, W. Kenneth},
   title   = {Some Methodological Issues in Cohort Analysis of Archival Data},
@@ -285,7 +352,7 @@
   number  = {2},
   pages   = {317--372},
   year    = {2015},
-  note    = {Standard reference; bibliographic details not re-verified in the 2026 search}
+  doi     = {10.3368/jhr.50.2.317}
 }
 
 @article{wilson1927probable,
@@ -296,7 +363,7 @@
   number  = {158},
   pages   = {209--212},
   year    = {1927},
-  note    = {Standard reference; bibliographic details not re-verified in the 2026 search}
+  doi     = {10.1080/01621459.1927.10502953}
 }
 
 @article{holm1979sequential,
@@ -307,7 +374,7 @@
   number  = {2},
   pages   = {65--70},
   year    = {1979},
-  note    = {Standard reference; bibliographic details not re-verified in the 2026 search}
+  url     = {https://www.jstor.org/stable/4615733}
 }
 
 % ---------------------------------------------------------------- software and data
