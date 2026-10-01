@@ -516,3 +516,59 @@ def test_classify_format_on_real_twic_headers():
     assert classify_format("Tata Steel Masters", "Wijk aan Zee NED") == "classical_otb"
     assert classify_format("World Rapid 2023", "Samarkand UZB") == "fast_otb"
     assert classify_format("29th ECC Open 2013", "Rhodes GRE") == "classical_otb"
+
+
+# --------------------------------------------------------------------------
+# Titled Tuesday ingestion reads the pinned list, nothing more, nothing less
+# --------------------------------------------------------------------------
+
+
+def _tiny_tt_zip(path, result="1-0"):
+    import zipfile as _zf
+
+    pgn = (
+        '[Event "t"]\n[Date "2024.01.02"]\n[White "A, B"]\n[Black "C, D"]\n'
+        f'[Result "{result}"]\n[TimeControl "180+1"]\n[WhiteFideId "1"]\n[BlackFideId "2"]\n'
+        '[WhiteClock "0:01:00"]\n[BlackClock "0:00:30"]\n\n'
+        f"1. e4 e5 2. Qh5 Nc6 3. Bc4 Nf6 4. Qxf7# {result}\n"
+    )
+    with _zf.ZipFile(path, "w") as z:
+        z.writestr(path.stem + ".pgn", pgn)
+
+
+def test_titled_tuesday_ingest_ignores_files_not_in_the_pinned_list(tmp_path):
+    from chesslab import ingest_titled_tuesday as itt
+
+    _tiny_tt_zip(tmp_path / "titled-tuesday_2024-01-02a.zip")
+    _tiny_tt_zip(tmp_path / "titled-tuesday_2099-01-01a.zip")  # stray, not pinned
+    events = tmp_path / "events.txt"
+    events.write_text("https://example.invalid/2024/titled-tuesday_2024-01-02a.zip\n")
+    df = itt.ingest(tmp_path, events_file=events)
+    assert len(df) == 1
+
+
+def test_titled_tuesday_ingest_fails_loudly_on_a_missing_pinned_event(tmp_path):
+    from chesslab import ingest_titled_tuesday as itt
+
+    events = tmp_path / "events.txt"
+    events.write_text("https://example.invalid/2024/titled-tuesday_2024-01-02a.zip\n")
+    with pytest.raises(FileNotFoundError):
+        itt.ingest(tmp_path, events_file=events)
+
+
+def test_titled_tuesday_ingest_fails_loudly_on_a_corrupt_pinned_event(tmp_path):
+    from chesslab import ingest_titled_tuesday as itt
+
+    (tmp_path / "titled-tuesday_2024-01-02a.zip").write_bytes(b"not a zip")
+    events = tmp_path / "events.txt"
+    events.write_text("https://example.invalid/2024/titled-tuesday_2024-01-02a.zip\n")
+    with pytest.raises(ValueError):
+        itt.ingest(tmp_path, events_file=events)
+
+
+def test_pinned_event_list_matches_the_documented_sample():
+    from chesslab import ingest_titled_tuesday as itt
+
+    names = itt.pinned_events()
+    assert len(names) == 90 and len(set(names)) == 90
+    assert all(n.startswith("titled-tuesday_") and n.endswith(".zip") for n in names)

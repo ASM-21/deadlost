@@ -29,7 +29,7 @@ There is no Termination tag, but none is needed. A loss is classified as:
               the board, which is resignation (or, rarely, abandonment).
 
 Source: github.com/ianrastall/titled-tuesday-archive (chess.com exports, renamed
-and sorted; no licence stated). Fetched at build time from a pinned event list
+and sorted; the repository is MIT-licensed). Fetched at build time from a pinned event list
 and not redistributed. Game scores are facts; see NOTICE.
 """
 
@@ -140,13 +140,48 @@ def classify_loss(row: pd.Series, flag_seconds: float = FLAG_SECONDS) -> str | N
     return "time" if loser_clock <= flag_seconds else "conceded"
 
 
-def ingest(raw_dir: Path) -> pd.DataFrame:
+#: The pinned event list. Ingestion reads exactly these events and nothing else.
+EVENTS_FILE = Path(__file__).resolve().parents[2] / "data" / "titled_tuesday_events.txt"
+
+
+def pinned_events(events_file: Path = EVENTS_FILE) -> list[str]:
+    """ZIP file names in the pinned sample, in list order."""
+    return [
+        line.strip().rsplit("/", 1)[-1]
+        for line in events_file.read_text().splitlines()
+        if line.strip() and not line.startswith("#")
+    ]
+
+
+def ingest(raw_dir: Path, events_file: Path = EVENTS_FILE) -> pd.DataFrame:
+    """Parse exactly the pinned events.
+
+    An earlier version globbed every ZIP in `raw_dir` and silently skipped any
+    that failed to open. Both made the sample depend on the state of the disk
+    rather than on the pinned list: an extra file from another download would
+    enter the analysis, and a truncated download would quietly leave it, and in
+    neither case would anything say so. Now any pinned event that is missing or
+    corrupt is an error, and files not in the list are ignored.
+    """
+    names = pinned_events(events_file)
+    missing = [n for n in names if not (raw_dir / n).is_file()]
+    if missing:
+        raise FileNotFoundError(
+            f"{len(missing)} pinned Titled Tuesday events are missing under {raw_dir}, "
+            f"e.g. {missing[:3]}; run scripts/fetch_data.sh"
+        )
     rows: list[dict] = []
-    for z in sorted(raw_dir.glob("*.zip")):
+    corrupt: list[str] = []
+    for n in names:
         try:
-            rows.extend(parse_zip(z))
+            rows.extend(parse_zip(raw_dir / n))
         except zipfile.BadZipFile:
-            continue
+            corrupt.append(n)
+    if corrupt:
+        raise ValueError(
+            f"{len(corrupt)} pinned Titled Tuesday events are corrupt, e.g. {corrupt[:3]}; "
+            "delete them and re-run scripts/fetch_data.sh"
+        )
     df = pd.DataFrame(rows)
     if df.empty:
         return df

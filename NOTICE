@@ -39,7 +39,9 @@ DATA
 
   chess.com Titled Tuesday exports
     Retrieved via github.com/ianrastall/titled-tuesday-archive, which publishes
-    chess.com's event exports renamed and sorted, with no licence stated. A
+    chess.com's event exports renamed and sorted, under an MIT licence
+    (Copyright (c) 2026 ianrastall). The underlying game records are chess.com's
+    exports, and game scores themselves are facts. A
     pinned one-in-five sample of events (data/titled_tuesday_events.txt) is
     fetched at build time and is not redistributed. Only move sequences, results,
     final clock times, time controls and FIDE identifiers are used.

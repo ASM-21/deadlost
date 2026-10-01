@@ -138,7 +138,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 |---|---|---|
 | datasnaek Lichess 2017 scrape, via ogreowl/chess-analysis | online corpus | CC0 |
 | The Week In Chess issues 210-1649, via rozim/ChessData | over-the-board corpus | move scores are facts; see NOTICE |
-| chess.com Titled Tuesday exports, via ianrastall/titled-tuesday-archive | independent online corpus (track 12) | no licence stated; fetched, not redistributed |
+| chess.com Titled Tuesday exports, via ianrastall/titled-tuesday-archive | independent online corpus (track 12) | archive MIT; game scores are facts; fetched, not redistributed |
 | lichess-org/chess-openings | opening classification | CC0 |
 | Stockfish 16 | evaluations | GPL-3.0, run as a separate process |
 

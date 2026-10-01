@@ -204,7 +204,7 @@ def run() -> dict:
     lichess = lichess_save_mechanism()
     out = {
         "source": {
-            "archive": "github.com/ianrastall/titled-tuesday-archive (chess.com exports; no licence stated)",
+            "archive": "github.com/ianrastall/titled-tuesday-archive (chess.com exports; repository MIT-licensed)",
             "sampling": "every fifth event in the archive's link list, pinned in data/titled_tuesday_events.txt",
             "why": (
                 "Carries FIDE IDs and final clocks, which TWIC lacks, so online losses can be split into "

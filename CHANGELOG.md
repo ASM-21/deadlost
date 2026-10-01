@@ -5,6 +5,27 @@ This project versions its *findings* as well as its code: a released number is
 pinned by a test and by an entry in `scripts/check_claims.py`, so any change to
 a published result is a deliberate, reviewable event rather than drift.
 
+## [1.2.1] - 2026-10-01
+
+An independent review of 1.2.0. The track 12 headline was re-implemented from
+the raw files with separate code and reproduces: 730 players, +12.4 points
+(CI 11.2 to 13.5), and the online loss split agrees to within half a point.
+No finding changes. Three defects in how the data were handled are fixed.
+
+### Fixed
+- **Titled Tuesday ingestion read whatever was on disk.** It globbed every ZIP
+  in the raw folder instead of the pinned event list, so a stray download would
+  have entered the sample unannounced. It now reads exactly the 90 pinned events.
+- **A corrupt download was silently dropped.** A ZIP that failed to open was
+  skipped with no message, which would have shrunk the sample invisibly. Missing
+  or corrupt pinned events are now errors.
+- **The archive's licence was misstated** as "no licence stated" in NOTICE,
+  README, the bibliography, the ingester and the track 12 results. The archive
+  repository is MIT-licensed.
+
+Rebuilding track 12 from raw files through the corrected ingester changes no
+reported number.
+
 ## [1.2.0] - 2026-10-01
 
 The audit release. Every citation was checked against its primary source, the
