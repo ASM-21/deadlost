@@ -30,7 +30,7 @@ lost game-sides per band. `scripts/power_report.py` gives the smallest
 band-to-band gap this can resolve. It is not small. A null here means "no large
 gradient", not "no gradient".
 
-Run:  python -m chesslab.tracks.t9_otb_swindles
+Run:  python -m deadlost.tracks.t9_otb_swindles
 """
 
 from __future__ import annotations
@@ -301,7 +301,7 @@ def _figure(out: dict) -> None:
         "Share of lost game-sides saved",
         paths.figure_path("t9_otb_swindle_by_band.png"),
         note=(
-            "chess-lab track 9. All games are TWIC over-the-board classical, so unlike track 6 the "
+            "deadlost track 9. All games are TWIC over-the-board classical, so unlike track 6 the "
             f"rating comparison is not confounded with playing format. Slope {g.get('slope_per_band_step', float('nan')):+.4f} "
             f"per band step [{g.get('ci_lo', float('nan')):+.4f}, {g.get('ci_hi', float('nan')):+.4f}]. "
             "95% game-clustered bootstrap."

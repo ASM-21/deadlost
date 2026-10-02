@@ -5,7 +5,7 @@ home. Rather than leaving dead links for someone to find later, they use an
 explicit `OWNER` placeholder and this script rewrites them in one pass.
 
 Usage:
-    python scripts/init_repo.py andrew            # github.com/andrew/chess-lab
+    python scripts/init_repo.py andrew            # github.com/andrew/deadlost
     python scripts/init_repo.py andrew my-fork    # github.com/andrew/my-fork
     python scripts/init_repo.py --check           # exit 1 if placeholders remain
 """
@@ -24,7 +24,7 @@ TARGETS = [
     "docs/FAQ.md",
     "CHANGELOG.md",
 ]
-PLACEHOLDER = re.compile(r"github\.com/OWNER/chess-lab")
+PLACEHOLDER = re.compile(r"github\.com/OWNER/deadlost")
 
 
 def check() -> int:
@@ -74,7 +74,7 @@ def main() -> int:
     if args[0] == "--check":
         return check()
     owner = args[0]
-    repo = args[1] if len(args) > 1 else "chess-lab"
+    repo = args[1] if len(args) > 1 else "deadlost"
     return apply(owner, repo)
 
 

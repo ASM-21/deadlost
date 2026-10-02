@@ -25,7 +25,7 @@ UPPER bound on over-the-board concession. Over-the-board blitz does produce time
 forfeits, so the concession contrast against OTB blitz is an upper bound on its
 magnitude. Both are reported as such.
 
-Run:  python -m chesslab.tracks.t12_titled_tuesday
+Run:  python -m deadlost.tracks.t12_titled_tuesday
 """
 
 from __future__ import annotations
@@ -312,7 +312,7 @@ def _figure(out: dict) -> None:
         "",
         paths.figure_path("t12_how_losses_end.png"),
         note=(
-            "chess-lab track 12. Online: chess.com Titled Tuesday exports. Over the board: TWIC. Players linked "
+            "deadlost track 12. Online: chess.com Titled Tuesday exports. Over the board: TWIC. Players linked "
             "by FIDE ID. Online losses split by the loser's final clock; over the board, resignation and time "
             "forfeit cannot be separated."
         ),

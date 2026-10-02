@@ -1,4 +1,4 @@
-# chess-lab
+# deadlost
 # `make help` lists everything. Engine stages are resumable; interrupting is safe.
 
 PY ?= python
@@ -22,7 +22,7 @@ build: ## Full rebuild: ingest, engine, all tracks, checks (~1h, resumable)
 tracks: ## Re-run every analysis track from cached engine evaluations (fast)
 	@for t in t1_ingest t2_openings t3_blunders t4_inflation t5_color \
 	          t6_swindles t8_player_panel t9_otb_swindles t11_matched_skill t12_titled_tuesday t10_multiverse t7_falsify; do \
-	  echo "== $$t"; $(PY) -m chesslab.tracks.$$t >/dev/null || exit 1; \
+	  echo "== $$t"; $(PY) -m deadlost.tracks.$$t >/dev/null || exit 1; \
 	done
 	$(PY) scripts/power_report.py
 
@@ -33,7 +33,7 @@ lint: ## Run ruff
 	ruff check src scripts tests
 
 verify: ## Run tests, claims check and manifest check
-	$(PY) -m chesslab.cli verify
+	$(PY) -m deadlost.cli verify
 
 test: ## Run the test suite only
 	$(PY) -m pytest -q
@@ -45,7 +45,7 @@ manifest: ## Record current content hashes as the reference state
 	$(PY) scripts/manifest.py write
 
 export: ## Write the reusable dataset and data dictionary
-	$(PY) -m chesslab.cli export
+	$(PY) -m deadlost.cli export
 
 figures: tracks ## Regenerate all figures
 	@ls figures/

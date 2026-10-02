@@ -1,6 +1,6 @@
 """Track 1: build the shared games table.
 
-Run:  python -m chesslab.tracks.t1_ingest
+Run:  python -m deadlost.tracks.t1_ingest
 
 Writes `data/derived/games.parquet` and `results/t1_validation.json`.
 """
@@ -86,7 +86,7 @@ def build(twic_limit: int | None = None) -> pd.DataFrame:
 
 def load_games() -> pd.DataFrame:
     if not paths.GAMES_PARQUET.exists():
-        raise FileNotFoundError("games.parquet missing; run python -m chesslab.tracks.t1_ingest")
+        raise FileNotFoundError("games.parquet missing; run python -m deadlost.tracks.t1_ingest")
     return pd.read_parquet(paths.GAMES_PARQUET)
 
 

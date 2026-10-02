@@ -10,7 +10,7 @@ body:
         been retracted after exactly this kind of scrutiny, and every retraction is
         pinned by a test so it cannot quietly return.
 
-        Before filing, it may save you time to check `chesslab limits`, which lists
+        Before filing, it may save you time to check `deadlost limits`, which lists
         every known confound and the resolution bound on every null. If your objection
         is "this null does not rule out X", it is probably already documented there.
   - type: input

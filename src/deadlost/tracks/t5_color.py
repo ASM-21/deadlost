@@ -20,7 +20,7 @@ CLUSTERING. Elite tournament chess is a small world: a few thousand players
 generate all of TWIC, and strong players appear hundreds of times. Confidence
 intervals here resample *players*, not games.
 
-Run:  python -m chesslab.tracks.t5_color
+Run:  python -m deadlost.tracks.t5_color
 """
 
 from __future__ import annotations
@@ -244,7 +244,7 @@ def _figure(yearly: pd.DataFrame, li: dict) -> None:
         "Year",
         "Proportion",
         paths.figure_path("t5_white_advantage_by_year.png"),
-        note="chess-lab track 5. Sampled TWIC issues, ~2 per year. Dashed line is parity.",
+        note="deadlost track 5. Sampled TWIC issues, ~2 per year. Dashed line is parity.",
     )
 
     if li:
@@ -264,7 +264,7 @@ def _figure(yearly: pd.DataFrame, li: dict) -> None:
             "Rating band",
             "White score (W + ½D)",
             paths.figure_path("t5_white_advantage_by_band.png"),
-            note="chess-lab track 5. Wilson 95% intervals.",
+            note="deadlost track 5. Wilson 95% intervals.",
             legend=False,
         )
 

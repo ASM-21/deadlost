@@ -29,7 +29,7 @@ a game still running at that point has an unobserved ending. Those game-sides
 are excluded and counted, rather than being silently treated as losses, which
 would bias the swindle rate downward.
 
-Run:  python -m chesslab.tracks.t6_swindles
+Run:  python -m deadlost.tracks.t6_swindles
 """
 
 from __future__ import annotations
@@ -296,7 +296,7 @@ def _figure(out: dict) -> None:
         "Rating band",
         "Share of lost game-sides saved",
         paths.figure_path("t6_swindle_rate.png"),
-        note="chess-lab track 6. Unit is game-side. Censored game-sides excluded. 95% game-clustered bootstrap.",
+        note="deadlost track 6. Unit is game-side. Censored game-sides excluded. 95% game-clustered bootstrap.",
     )
 
 

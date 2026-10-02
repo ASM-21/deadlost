@@ -6,10 +6,10 @@ import chess
 import numpy as np
 import pytest
 
-from chesslab import openings, stats
-from chesslab.engine import MoveEval, clamp, score_to_cp
-from chesslab.ingest_twic import _iso_date, _year_from_date, iter_pgn_games
-from chesslab.schema import (
+from deadlost import openings, stats
+from deadlost.engine import MoveEval, clamp, score_to_cp
+from deadlost.ingest_twic import _iso_date, _year_from_date, iter_pgn_games
+from deadlost.schema import (
     GameRecord,
     SchemaError,
     classify_time_control,
@@ -320,7 +320,7 @@ def _eco_or_skip():
     SKIP rather than fail: CI runs the suite on a fresh clone with no corpus,
     and a hard failure there makes the whole suite red for a missing optional
     input. This was caught by installing into a clean venv."""
-    from chesslab import paths
+    from deadlost import paths
 
     if not (paths.RAW / "eco_a.tsv").exists():
         pytest.skip("ECO tables not fetched; run scripts/fetch_data.sh")
@@ -362,7 +362,7 @@ def test_book_exit_fen_is_playable_and_matches_ply():
 
 
 def _engine_or_skip():
-    from chesslab.engine import find_engine
+    from deadlost.engine import find_engine
 
     path = find_engine()
     if not path:
@@ -383,7 +383,7 @@ def test_evaluator_is_order_independent():
     silently breaks reproducibility. This test is the guard on that fix.
     """
     _engine_or_skip()
-    from chesslab.engine import Evaluator
+    from deadlost.engine import Evaluator
 
     with Evaluator(nodes=15000) as ev:
         first = [m.loss_cp for m in ev.eval_game("A", GAME_A, max_ply=999)]
@@ -396,7 +396,7 @@ def test_evaluator_is_order_independent():
 def test_evaluator_matches_a_fresh_process():
     """A game evaluated mid-run must equal the same game evaluated alone."""
     _engine_or_skip()
-    from chesslab.engine import Evaluator
+    from deadlost.engine import Evaluator
 
     with Evaluator(nodes=15000) as ev:
         _ = [m.loss_cp for m in ev.eval_game("B", GAME_B, max_ply=999)]
@@ -412,22 +412,22 @@ def test_evaluator_matches_a_fresh_process():
 
 
 def test_cli_entry_point_imports():
-    """pyproject declares a `chesslab` console script. It shipped for several
+    """pyproject declares a `deadlost` console script. It shipped for several
     commits pointing at a module that did not exist, so anyone who installed
     the package got a command that crashed on import."""
-    from chesslab.cli import main
+    from deadlost.cli import main
 
     assert callable(main)
 
 
 def test_cli_runs_with_no_arguments():
-    from chesslab.cli import main
+    from deadlost.cli import main
 
     assert main([]) == 0
 
 
 def test_cli_findings_lists_every_track():
-    from chesslab.cli import TRACKS
+    from deadlost.cli import TRACKS
 
     assert set(TRACKS) == set(range(1, 13))
     for _, (fname, summary) in TRACKS.items():
@@ -438,14 +438,14 @@ def test_cli_findings_lists_every_track():
 def test_cli_summaries_hedge_the_weak_tracks():
     """A CLI that overstates is worse than none. The tracks this repo does not
     trust must say so in their one-line summary."""
-    from chesslab.cli import TRACKS
+    from deadlost.cli import TRACKS
 
     assert "underpowered" in TRACKS[4][1].lower()
     assert "retracted" in TRACKS[6][1].lower()
 
 
 def test_cli_unknown_track_is_an_error_not_a_crash():
-    from chesslab.cli import main
+    from deadlost.cli import main
 
     assert main(["findings", "--track", "99"]) == 1
 
@@ -453,7 +453,7 @@ def test_cli_unknown_track_is_an_error_not_a_crash():
 def test_export_data_dictionary_documents_the_traps():
     """The dictionary ships with the data because three of the errors made
     building this repo came from misreading a column."""
-    from chesslab.export import DATA_DICTIONARY
+    from deadlost.export import DATA_DICTIONARY
 
     lowered = DATA_DICTIONARY.lower()
     for phrase in ("not independent", "endogenous", "floored at zero", "confounded"):
@@ -461,7 +461,7 @@ def test_export_data_dictionary_documents_the_traps():
 
 
 def test_export_documents_every_sample():
-    from chesslab.export import DATA_DICTIONARY, TAGS
+    from deadlost.export import DATA_DICTIONARY, TAGS
 
     for tag in TAGS:
         assert f"`{tag}`" in DATA_DICTIONARY
@@ -486,7 +486,7 @@ def test_citation_identifies_the_author():
     text = (_ROOT / "CITATION.cff").read_text()
     assert "family-names: Morrissey" in text
     assert "0009-0004-8758-2687" in text
-    assert "github.com/ASM-21/chess-lab" in text
+    assert "github.com/ASM-21/deadlost" in text
     assert "license: Apache-2.0" in text
 
 
@@ -501,15 +501,15 @@ def test_no_placeholders_ship():
 def test_versions_agree():
     import re as _re
 
-    import chesslab
+    import deadlost
 
     pyproj = _re.search(r'^version = "([^"]+)"', (_ROOT / "pyproject.toml").read_text(), _re.M).group(1)
     cff = _re.search(r"^version: (\S+)", (_ROOT / "CITATION.cff").read_text(), _re.M).group(1)
-    assert chesslab.__version__ == pyproj == cff
+    assert deadlost.__version__ == pyproj == cff
 
 
 def test_classify_format_on_real_twic_headers():
-    from chesslab.schema import classify_format
+    from deadlost.schema import classify_format
 
     assert classify_format("Titled Tuesday Blitz Jan 3rd Early", "chess.com INT") == "online"
     assert classify_format("Betsys ch-CZE On/L Blitz 2024", "Czech Republic CZE") == "online"
@@ -537,7 +537,7 @@ def _tiny_tt_zip(path, result="1-0"):
 
 
 def test_titled_tuesday_ingest_ignores_files_not_in_the_pinned_list(tmp_path):
-    from chesslab import ingest_titled_tuesday as itt
+    from deadlost import ingest_titled_tuesday as itt
 
     _tiny_tt_zip(tmp_path / "titled-tuesday_2024-01-02a.zip")
     _tiny_tt_zip(tmp_path / "titled-tuesday_2099-01-01a.zip")  # stray, not pinned
@@ -548,7 +548,7 @@ def test_titled_tuesday_ingest_ignores_files_not_in_the_pinned_list(tmp_path):
 
 
 def test_titled_tuesday_ingest_fails_loudly_on_a_missing_pinned_event(tmp_path):
-    from chesslab import ingest_titled_tuesday as itt
+    from deadlost import ingest_titled_tuesday as itt
 
     events = tmp_path / "events.txt"
     events.write_text("https://example.invalid/2024/titled-tuesday_2024-01-02a.zip\n")
@@ -557,7 +557,7 @@ def test_titled_tuesday_ingest_fails_loudly_on_a_missing_pinned_event(tmp_path):
 
 
 def test_titled_tuesday_ingest_fails_loudly_on_a_corrupt_pinned_event(tmp_path):
-    from chesslab import ingest_titled_tuesday as itt
+    from deadlost import ingest_titled_tuesday as itt
 
     (tmp_path / "titled-tuesday_2024-01-02a.zip").write_bytes(b"not a zip")
     events = tmp_path / "events.txt"
@@ -567,7 +567,7 @@ def test_titled_tuesday_ingest_fails_loudly_on_a_corrupt_pinned_event(tmp_path):
 
 
 def test_pinned_event_list_matches_the_documented_sample():
-    from chesslab import ingest_titled_tuesday as itt
+    from deadlost import ingest_titled_tuesday as itt
 
     names = itt.pinned_events()
     assert len(names) == 90 and len(set(names)) == 90

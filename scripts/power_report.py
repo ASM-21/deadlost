@@ -21,8 +21,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 import numpy as np  # noqa: E402
 
-from chesslab import power  # noqa: E402
-from chesslab.paths import RESULTS  # noqa: E402
+from deadlost import power  # noqa: E402
+from deadlost.paths import RESULTS  # noqa: E402
 
 #: Effect sizes that would matter if real, fixed in advance.
 #: Effect sizes used to judge whether a null is informative. These are

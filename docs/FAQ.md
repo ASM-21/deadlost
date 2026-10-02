@@ -44,7 +44,7 @@ In descending order of confidence:
 6. **Claims 7 and 8** (rating drift). Nulls that cannot rule out moderate
    drift in either direction.
 
-`chesslab limits` prints this in machine-checkable form.
+`deadlost limits` prints this in machine-checkable form.
 
 ### Was anything in this repository wrong?
 
@@ -73,7 +73,7 @@ estimate toward zero rather than reordering it.
 
 ### Can I reuse the evaluations?
 
-Yes, that is the point of `chesslab export`. It writes 147,799 scored moves from 2,056 games
+Yes, that is the point of `deadlost export`. It writes 147,799 scored moves from 2,056 games
 joined to game metadata plus a data dictionary. The evaluations are the only
 expensive artifact here; everything else is minutes of pandas.
 

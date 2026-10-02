@@ -29,7 +29,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from chesslab.paths import FIGURES, RESULTS, ROOT  # noqa: E402
+from deadlost.paths import FIGURES, RESULTS, ROOT  # noqa: E402
 
 OUT = ROOT / "docs" / "index.html"
 
@@ -145,11 +145,11 @@ def build() -> Path:
     parts = [
         "<!doctype html><html lang='en'><head><meta charset='utf-8'>",
         "<meta name='viewport' content='width=device-width,initial-scale=1'>",
-        "<title>chess-lab: falsifiable chess research</title>",
+        "<title>deadlost: falsifiable chess research</title>",
         "<meta name='description' content='Ten questions about chess checked against 190,967 public "
         "games and Stockfish 16, including a track whose only job is to break the others.'>",
         f"<style>{CSS}</style></head><body>",
-        "<header><div class='wrap'><h1>chess-lab</h1>",
+        "<header><div class='wrap'><h1>deadlost</h1>",
         "<p class='tag'>Nine claims about chess, tested on "
         f"{rows:,} public games with Stockfish 16, positioned against the literature.</p>",
         "<div class='chips'>",
@@ -220,10 +220,10 @@ def build() -> Path:
                  "make build     # ~1h, engine-bound, resumable\n"
                  "make verify    # tests + claims check + manifest check</pre>")
     parts.append("<p>The engine evaluations are the only expensive artifact here, roughly an hour of "
-                 "single-core Stockfish. <code>chesslab export</code> writes them as 125,673 scored "
+                 "single-core Stockfish. <code>deadlost export</code> writes them as 125,673 scored "
                  "moves joined to game metadata, with a data dictionary documenting four traps, three "
                  "of which produced real errors during this build.</p>")
-    parts.append("<p><code>chesslab limits</code> prints every known confound and resolution bound. If "
+    parts.append("<p><code>deadlost limits</code> prints every known confound and resolution bound. If "
                  "you think a finding is wrong, there is an issue template for exactly that: it is the "
                  "contribution this project most wants.</p>")
 

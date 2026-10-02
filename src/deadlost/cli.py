@@ -1,18 +1,18 @@
 """Command-line interface.
 
-`pyproject.toml` has declared a `chesslab` console script since the first
+`pyproject.toml` has declared a `deadlost` console script since the first
 commit. This module is what it points at.
 
 The design goal is that someone who has cloned this repo can answer three
 questions without reading any source: what does it claim, how far can those
 claims be trusted, and how do I regenerate them.
 
-    chesslab findings              what the repo concludes, one line per track
-    chesslab findings --track 3    the detail for one track
-    chesslab limits                resolution bounds and known confounds
-    chesslab status                what is built, what is stale, what is missing
-    chesslab verify                run every consistency check
-    chesslab export                write a documented analysis dataset
+    deadlost findings              what the repo concludes, one line per track
+    deadlost findings --track 3    the detail for one track
+    deadlost limits                resolution bounds and known confounds
+    deadlost status                what is built, what is stale, what is missing
+    deadlost verify                run every consistency check
+    deadlost export                write a documented analysis dataset
 """
 
 from __future__ import annotations
@@ -73,12 +73,12 @@ def cmd_findings(args) -> int:
             print(f"\n... truncated; full file at results/{fname}")
         return 0
 
-    print("chess-lab findings\n")
+    print("deadlost findings\n")
     for n, (fname, summary) in sorted(TRACKS.items()):
         built = "  " if (paths.RESULTS / fname).exists() else " !"
         print(f"{built}{n:>3}. {summary}")
-    print("\n ! = not built. Detail: chesslab findings --track N")
-    print(" Caveats and resolution bounds: chesslab limits")
+    print("\n ! = not built. Detail: deadlost findings --track N")
+    print(" Caveats and resolution bounds: deadlost limits")
     return 0
 
 
@@ -129,7 +129,7 @@ def cmd_limits(args) -> int:
 
 def cmd_status(args) -> int:
     """What exists, what is stale, what is missing."""
-    print("chess-lab status\n")
+    print("deadlost status\n")
 
     corpus = paths.GAMES_PARQUET
     print(f"corpus:      {'built' if corpus.exists() else 'MISSING (run scripts/fetch_data.sh)'}")
@@ -149,7 +149,7 @@ def cmd_status(args) -> int:
             [sys.executable, str(ROOT / "scripts" / "manifest.py"), "check"],
             capture_output=True, text=True,
         )
-        print(f"manifest:    {'no drift' if r.returncode == 0 else 'DRIFT DETECTED (chesslab verify)'}")
+        print(f"manifest:    {'no drift' if r.returncode == 0 else 'DRIFT DETECTED (deadlost verify)'}")
     else:
         print("manifest:    not written")
     return 0
@@ -185,7 +185,7 @@ def cmd_export(args) -> int:
 
 
 def main(argv: list[str] | None = None) -> int:
-    ap = argparse.ArgumentParser(prog="chesslab", description=__doc__.split("\n")[0])
+    ap = argparse.ArgumentParser(prog="deadlost", description=__doc__.split("\n")[0])
     sub = ap.add_subparsers(dest="cmd")
 
     f = sub.add_parser("findings", help="what the repo concludes")

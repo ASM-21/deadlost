@@ -5,6 +5,22 @@ This project versions its *findings* as well as its code: a released number is
 pinned by a test and by an entry in `scripts/check_claims.py`, so any change to
 a published result is a deliberate, reviewable event rather than drift.
 
+## [1.3.0] - 2026-10-02
+
+### Changed
+- **Renamed from chess-lab to deadlost.** "Dead lost" is chess slang for a position
+  so hopeless that only the opponent can save it, which is where this project's
+  sharpest result lives. The old name was shared by over 400 GitHub repositories,
+  and its Python package name, `chesslab`, is already taken on PyPI by an
+  unrelated project, so `pip install chesslab` would have installed someone
+  else's code.
+- The package is now `deadlost`, imported as `import deadlost`; the command is
+  `deadlost` (`deadlost findings`, `deadlost limits`, ...); environment variables
+  are `DEADLOST_ENGINE` and `DEADLOST_ROOT`; the repository URL is
+  github.com/ASM-21/deadlost. Earlier entries below keep the old name, as it was.
+- No result changes. Every figure and results file was regenerated under the new
+  name and every pinned number reproduces.
+
 ## [1.2.2] - 2026-10-02
 
 ### Changed

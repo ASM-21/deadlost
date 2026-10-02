@@ -7,7 +7,7 @@ set, so publishing is two commands.
 ## 1. Push
 
 ```bash
-git remote add origin git@github.com:ASM-21/chess-lab.git
+git remote add origin git@github.com:ASM-21/deadlost.git
 git push -u origin main --tags
 ```
 
@@ -32,7 +32,7 @@ CHANGELOG.md for why it should not be cited.
 ## Verifying it worked
 
 ```bash
-git clone https://github.com/ASM-21/chess-lab && cd chess-lab
+git clone https://github.com/ASM-21/deadlost && cd deadlost
 pip install -e ".[dev]" && python -m pytest -q    # passes with no corpus and no engine
 bash scripts/fetch_data.sh && make tracks            # reproduces every pinned number from committed engine output
 python scripts/check_claims.py

@@ -48,7 +48,7 @@ resignation norms and opponent pool all at once. This track narrows the
 explanation from "rating or format" to "something bundled with format", which
 is progress and not a resolution.
 
-Run:  python -m chesslab.tracks.t11_matched_skill
+Run:  python -m deadlost.tracks.t11_matched_skill
 """
 
 from __future__ import annotations
@@ -570,7 +570,7 @@ def _figure_within_player(wp: dict) -> None:
         "",
         paths.figure_path("t11_within_player_formats.png"),
         note=(
-            "chess-lab track 11. Each player is compared with themselves, so skill and population are held "
+            "deadlost track 11. Each player is compared with themselves, so skill and population are held "
             "fixed. Moving online adds far more than speeding up at a board. Online TWIC is mostly blitz, so "
             "the bottom row still carries some speed difference. 95% intervals resample players."
         ),
@@ -662,7 +662,7 @@ def _figure(d: pd.DataFrame, support: dict, raw_gap: float, matched: float | Non
         ax.set_xticks(xs)
         ax.set_xticklabels([r["acpl_bin"] for r in rows])
     note = (
-        "chess-lab track 11. Bins are pre-entry average centipawn loss, measured by the same engine at the "
+        "deadlost track 11. Bins are pre-entry average centipawn loss, measured by the same engine at the "
         "same node budget in both corpora, so this compares players of equal measured strength rather than "
         "equal nominal rating. "
         + (f"Raw gap {raw_gap:+.3f}; after skill matching {matched:+.3f}." if matched is not None else "")

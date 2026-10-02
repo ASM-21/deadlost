@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 320" width="1280" height="320" role="img" aria-label="chess-lab: falsifiable chess research">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 320" width="1280" height="320" role="img" aria-label="deadlost: falsifiable chess research">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#12212f"/>
@@ -12,7 +12,7 @@
   <rect width="1280" height="320" fill="url(#bg)"/>
   <rect width="1280" height="320" fill="url(#board)"/>
   <rect x="0" y="0" width="6" height="320" fill="#c0504d"/>
-  <text x="72" y="128" font-family="Georgia,'Times New Roman',serif" font-size="72" fill="#ffffff" letter-spacing="-1">chess-lab</text>
+  <text x="72" y="128" font-family="Georgia,'Times New Roman',serif" font-size="72" fill="#ffffff" letter-spacing="-1">deadlost</text>
   <text x="76" y="176" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif" font-size="26" fill="#9ec5e8">Falsifiable chess research against 190,967 public games.</text>
   <text x="76" y="214" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif" font-size="26" fill="#9ec5e8">Nine claims. Checked against the literature, then attacked.</text>
   <g font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif" font-size="17" fill="#cfe3f5">

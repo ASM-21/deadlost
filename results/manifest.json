@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-10-02T03:11:39.716768+00:00",
+  "created_utc": "2026-10-02T18:37:31.513152+00:00",
   "environment": {
     "python_chess": "1.11.2",
     "numpy": "2.4.4",
@@ -7,173 +7,173 @@
     "scipy": "1.17.1",
     "python": "3.12.3",
     "engine": "Stockfish 16",
-    "git_commit": "52da22193c0348e44572e2d6b9f52e580034c67d"
+    "git_commit": "f77e8c760f023e9d7f13be9cd6e971143ad50727"
   },
   "file_count": 141,
   "files": {
-    "src/chesslab/__init__.py": {
+    "src/deadlost/__init__.py": {
       "group": "code",
-      "sha256": "d5959374d7eb8c3cc73cbe328e9114b9e76afed5a126d7acb3a2804f5b6e73ca",
-      "bytes": 91,
-      "mtime": "2026-10-02T03:04:52.140673+00:00"
+      "sha256": "d0c385bf6d4d9df9d30e1b70ae69970ef7f393db9c84b9b8f9b22e5c273e0bd4",
+      "bytes": 90,
+      "mtime": "2026-10-02T18:31:51.033066+00:00"
     },
-    "src/chesslab/cli.py": {
+    "src/deadlost/cli.py": {
       "group": "code",
-      "sha256": "bc9052af913839dc2e7d1084d25bc3c9480f0da279e04c7308e6cfe72ae27717",
-      "bytes": 9121,
-      "mtime": "2026-10-01T02:42:55.696462+00:00"
+      "sha256": "7a2608104e066a5ddd3e5cba070131372f1aed9acb5e3b252515971e697c14c7",
+      "bytes": 9119,
+      "mtime": "2026-10-02T18:31:25.339501+00:00"
     },
-    "src/chesslab/engine.py": {
+    "src/deadlost/engine.py": {
       "group": "code",
-      "sha256": "a667f0da622116f5763ba7bb3c3ecdafcb6a9674cbf7e5dbeb853a203a5fd123",
+      "sha256": "8f6b3cc94902ebc20d9d8bdf908bb662538028f1c28c3042aae2d7be52d7fc4d",
       "bytes": 7958,
-      "mtime": "2026-08-30T03:10:27+00:00"
+      "mtime": "2026-10-02T18:31:25.339738+00:00"
     },
-    "src/chesslab/eval_run.py": {
+    "src/deadlost/eval_run.py": {
       "group": "code",
-      "sha256": "7bbdfdc342ed7c7faec07bb05c17247574f66344acabc39de04b39362e9f002b",
+      "sha256": "7667f8eadc4e7942551194597fb3f215c830d91498b01a8db02cf4cfd9048295",
       "bytes": 13691,
-      "mtime": "2026-09-24T21:18:04.503034+00:00"
+      "mtime": "2026-10-02T18:31:25.340100+00:00"
     },
-    "src/chesslab/export.py": {
+    "src/deadlost/export.py": {
       "group": "code",
-      "sha256": "ce04a0accbed7d90708796c7102a397a4e60049a98c6365d9337172de648a857",
-      "bytes": 9022,
-      "mtime": "2026-09-24T21:18:58.519370+00:00"
+      "sha256": "48ff214cbadcf902f75a9df247ef036a690f5e5176c5cc8526f7f3e049708bb4",
+      "bytes": 9020,
+      "mtime": "2026-10-02T18:31:25.340455+00:00"
     },
-    "src/chesslab/ingest_lichess.py": {
+    "src/deadlost/ingest_lichess.py": {
       "group": "code",
       "sha256": "c6ef816c0ac44156c83ef253474df6fb751b39acf5e3cdd1761774f8f26417d9",
       "bytes": 5330,
       "mtime": "2026-09-23T11:19:29.242918+00:00"
     },
-    "src/chesslab/ingest_titled_tuesday.py": {
+    "src/deadlost/ingest_titled_tuesday.py": {
       "group": "code",
       "sha256": "405fbcdb2d859c2884e0798b64181e369c72182f5ca92a2f4230b39fe02334da",
       "bytes": 7787,
       "mtime": "2026-10-01T11:32:59.245698+00:00"
     },
-    "src/chesslab/ingest_twic.py": {
+    "src/deadlost/ingest_twic.py": {
       "group": "code",
       "sha256": "1244085d59229128fac3616165a74a268f8cfea4eb0d3d6b1a18d90a96c44a3e",
       "bytes": 6863,
       "mtime": "2026-10-01T02:31:20.698090+00:00"
     },
-    "src/chesslab/multiverse.py": {
+    "src/deadlost/multiverse.py": {
       "group": "code",
       "sha256": "f2e0e6335a072414d662199793b35b4a0a420b30cc6223d99a05575bf17736d6",
       "bytes": 8637,
       "mtime": "2026-08-30T03:10:27+00:00"
     },
-    "src/chesslab/openings.py": {
+    "src/deadlost/openings.py": {
       "group": "code",
       "sha256": "9346c240f855454326dbbd258209da1ec96bbb6ad70216df919c907f4ad27b4a",
       "bytes": 3363,
       "mtime": "2026-08-30T03:10:27+00:00"
     },
-    "src/chesslab/paths.py": {
+    "src/deadlost/paths.py": {
       "group": "code",
-      "sha256": "ccdc691d965dd3f8e79138e89094c124611d1925f5715fad2a4162379366856d",
+      "sha256": "f353838b07e8b644d327ed263952e97c0dff87eaeb00c96ae2003e496afae844",
       "bytes": 721,
-      "mtime": "2026-08-30T03:10:27+00:00"
+      "mtime": "2026-10-02T18:31:25.340742+00:00"
     },
-    "src/chesslab/power.py": {
+    "src/deadlost/power.py": {
       "group": "code",
       "sha256": "c0f256caf03341ae6a70a2c0c1f235eb641126449b1f38201595509cd5325056",
       "bytes": 7299,
       "mtime": "2026-08-30T03:10:27+00:00"
     },
-    "src/chesslab/schema.py": {
+    "src/deadlost/schema.py": {
       "group": "code",
-      "sha256": "3178e5d2d63dfe1f6c3b719811fce7f8da43331f2b93e9184f013255c7e666dd",
-      "bytes": 11198,
-      "mtime": "2026-10-01T02:31:20.697637+00:00"
+      "sha256": "4690562e6b05334e3fc2a4d4a11440ac53ee98267ab86ec774fbf84f00847e49",
+      "bytes": 11197,
+      "mtime": "2026-10-02T18:31:25.340931+00:00"
     },
-    "src/chesslab/stats.py": {
+    "src/deadlost/stats.py": {
       "group": "code",
       "sha256": "567e8a8c1f82c9034aa25243ad4d75fe96b735b28bd8963aee585917789397b6",
       "bytes": 6420,
       "mtime": "2026-08-30T03:10:27+00:00"
     },
-    "src/chesslab/tracks/__init__.py": {
+    "src/deadlost/tracks/__init__.py": {
       "group": "code",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "bytes": 0,
       "mtime": "2026-08-30T03:10:27+00:00"
     },
-    "src/chesslab/tracks/t10_multiverse.py": {
+    "src/deadlost/tracks/t10_multiverse.py": {
       "group": "code",
-      "sha256": "ee17c169de8c8425a6b071ad6dab4f57b3d180698534b6db46a0a37756f8302e",
-      "bytes": 20090,
-      "mtime": "2026-09-24T21:20:23.510456+00:00"
+      "sha256": "c93a0eadb6275d27174f6775114036a88c9e8e2652d0b92afaaab10af999f9df",
+      "bytes": 20087,
+      "mtime": "2026-10-02T18:31:25.341156+00:00"
     },
-    "src/chesslab/tracks/t11_matched_skill.py": {
+    "src/deadlost/tracks/t11_matched_skill.py": {
       "group": "code",
-      "sha256": "66f40cbd9a5087ea157fda15ea07ca3d524bf43d8c18a4f28d96c7badff556e7",
-      "bytes": 31847,
-      "mtime": "2026-09-25T21:10:47.685960+00:00"
+      "sha256": "d27dd8efd376df2c370cf59ceb4b34cadfb2142e8fef8635a0e7fe50a6f2bfaf",
+      "bytes": 31845,
+      "mtime": "2026-10-02T18:31:25.341465+00:00"
     },
-    "src/chesslab/tracks/t12_titled_tuesday.py": {
+    "src/deadlost/tracks/t12_titled_tuesday.py": {
       "group": "code",
-      "sha256": "30c4851260af936de45af291e0594779d291e8ef3419c619fb87e65486ec4159",
-      "bytes": 15122,
-      "mtime": "2026-10-02T03:11:11.513461+00:00"
+      "sha256": "08bb33ca9642d8100f4e3befa4f25b5802a7544d5f0238bc4e36f5e80b318b8e",
+      "bytes": 15121,
+      "mtime": "2026-10-02T18:31:25.341845+00:00"
     },
-    "src/chesslab/tracks/t1_ingest.py": {
+    "src/deadlost/tracks/t1_ingest.py": {
       "group": "code",
-      "sha256": "b0d16cb714be1a18c440ced9db35c9962c34bdec0d22b417c87f418c38d5dd1f",
+      "sha256": "59698293cc4aa8f92e61b889473359063bcc10cc67f154d777ae4c31994a00fd",
       "bytes": 3698,
-      "mtime": "2026-09-23T11:19:35.099336+00:00"
+      "mtime": "2026-10-02T18:31:25.342041+00:00"
     },
-    "src/chesslab/tracks/t2_openings.py": {
+    "src/deadlost/tracks/t2_openings.py": {
       "group": "code",
-      "sha256": "96983a11333c8e7ac3bdfaa7b15db0e66d603a9f324b2e62f2fc5318f85dff79",
-      "bytes": 16774,
-      "mtime": "2026-09-23T11:21:15.943790+00:00"
+      "sha256": "149364d4b800ccd6d564759151b44a68fd564dc443178eaa797b92f3c802854c",
+      "bytes": 16772,
+      "mtime": "2026-10-02T18:31:25.342269+00:00"
     },
-    "src/chesslab/tracks/t3_blunders.py": {
+    "src/deadlost/tracks/t3_blunders.py": {
       "group": "code",
-      "sha256": "7e59638e89b3ac083b55bcbf72458de12bba4858f585f6ba21eaa05433fd78c7",
-      "bytes": 12571,
-      "mtime": "2026-08-30T03:10:27+00:00"
+      "sha256": "b7448b285c92544b3c7c416a326e1067ea9778c7273dbec5f5aead0108424c6a",
+      "bytes": 12570,
+      "mtime": "2026-10-02T18:31:25.342551+00:00"
     },
-    "src/chesslab/tracks/t4_inflation.py": {
+    "src/deadlost/tracks/t4_inflation.py": {
       "group": "code",
-      "sha256": "f5427b6be8b9d750a6a86cb2e0524724069086a3d28e9350aa325e7ee0e8e5d9",
-      "bytes": 13151,
-      "mtime": "2026-09-24T21:08:46.706984+00:00"
+      "sha256": "5246e952d618842d230e6b7a2c53ff308461d374a73294ae2a0b3797e170e081",
+      "bytes": 13150,
+      "mtime": "2026-10-02T18:31:25.342774+00:00"
     },
-    "src/chesslab/tracks/t5_color.py": {
+    "src/deadlost/tracks/t5_color.py": {
       "group": "code",
-      "sha256": "0122724894ff233a454c9803d3d62534b98721f9a03387344542d38a9a4addd2",
-      "bytes": 11757,
-      "mtime": "2026-10-01T02:37:05.188648+00:00"
+      "sha256": "7630a960a2501d4095d29731d2cf89db798429f165fa3fb36a383fbde2e87d78",
+      "bytes": 11755,
+      "mtime": "2026-10-02T18:31:25.342960+00:00"
     },
-    "src/chesslab/tracks/t6_swindles.py": {
+    "src/deadlost/tracks/t6_swindles.py": {
       "group": "code",
-      "sha256": "b53a1308222d76d84a4211812b82d585de0fa0d13af6acfd0b76134c1f481969",
-      "bytes": 12684,
-      "mtime": "2026-08-30T03:10:27+00:00"
+      "sha256": "61965a53c2a8f4730a08d0499e372f8f434366a85de6f3b14e22efc62182b0b3",
+      "bytes": 12683,
+      "mtime": "2026-10-02T18:31:25.343127+00:00"
     },
-    "src/chesslab/tracks/t7_falsify.py": {
+    "src/deadlost/tracks/t7_falsify.py": {
       "group": "code",
-      "sha256": "6c13c874c6f0234800c3f60c26158a03ab4ced08a457d206f5cc67142b76f859",
-      "bytes": 26346,
-      "mtime": "2026-09-24T21:30:43.138710+00:00"
+      "sha256": "b090f6005c0b0366e108abc69687a33a03ae4d3dcba4b2a03afb7fe7f3e0436d",
+      "bytes": 26345,
+      "mtime": "2026-10-02T18:31:25.343320+00:00"
     },
-    "src/chesslab/tracks/t8_player_panel.py": {
+    "src/deadlost/tracks/t8_player_panel.py": {
       "group": "code",
-      "sha256": "b403ef89618a976ae194af2154a15a45c0b51163f37e4bc47a4003a62072cf7b",
-      "bytes": 23345,
-      "mtime": "2026-09-24T21:18:04.503249+00:00"
+      "sha256": "75c443e10a3a33a401457f017b6cb5de84c0eeb4cdfb20ca7a68b0cd05f059dc",
+      "bytes": 23344,
+      "mtime": "2026-10-02T18:31:25.343663+00:00"
     },
-    "src/chesslab/tracks/t9_otb_swindles.py": {
+    "src/deadlost/tracks/t9_otb_swindles.py": {
       "group": "code",
-      "sha256": "ec4aea056b4f75ebbf4d082d52fbb41d324d0eacd3a0641f0b8b2172e3bd95be",
-      "bytes": 13769,
-      "mtime": "2026-09-23T11:21:15.944854+00:00"
+      "sha256": "105008ffb97f2a7f3ce0035c8c8c98dafa879cfd4be7615f4552cf8c9a6a11b8",
+      "bytes": 13768,
+      "mtime": "2026-10-02T18:31:25.343956+00:00"
     },
-    "src/chesslab/viz.py": {
+    "src/deadlost/viz.py": {
       "group": "code",
       "sha256": "0dde3187ac70904174a4a9a732d3693a4f6e7a13efa0cf1dfa8bbc3949075a9e",
       "bytes": 1576,
@@ -181,9 +181,9 @@
     },
     "scripts/calibrate_nodes.py": {
       "group": "code",
-      "sha256": "9b92865939cf3591d9de3c191544849aef374ca38f99dfbbc1f32d387d2256c8",
+      "sha256": "be8a35164f1518e48ce4b1a2c41a83cdc4ca3ed99856a3d9b1ff9099fdf64d75",
       "bytes": 15026,
-      "mtime": "2026-08-30T03:10:27+00:00"
+      "mtime": "2026-10-02T18:31:25.338014+00:00"
     },
     "scripts/check_claims.py": {
       "group": "code",
@@ -193,39 +193,39 @@
     },
     "scripts/init_repo.py": {
       "group": "code",
-      "sha256": "f96600a0bdd887925cb989245d42278ea1998d7634c7473325d895da5c6eefb3",
-      "bytes": 2442,
-      "mtime": "2026-08-30T03:10:27+00:00"
+      "sha256": "12d8366648ca1ef862780a5dd4a8714f495a638356ca3f10d49408d9d3c53f50",
+      "bytes": 2439,
+      "mtime": "2026-10-02T18:31:25.338345+00:00"
     },
     "scripts/make_report.py": {
       "group": "code",
-      "sha256": "233c882c8ce68194a4dd577e743a07090e92d5f88810423c72c1dd01637c20e3",
-      "bytes": 14361,
-      "mtime": "2026-10-01T02:37:52.613548+00:00"
+      "sha256": "e4f3e6e37cb0f750730bf3687282ab3c138006f55d294047cfc3db3b55a25dd7",
+      "bytes": 14359,
+      "mtime": "2026-10-02T18:31:25.338584+00:00"
     },
     "scripts/manifest.py": {
       "group": "code",
-      "sha256": "7779e3df91cc13e0b8046ec054f85a18cf1e002b25505cbf107031c72dd3782b",
+      "sha256": "3b67f1abce009c03063a8cd50a533371aa0f67e90574addf434897f85572a80f",
       "bytes": 7728,
-      "mtime": "2026-09-24T21:30:43.138492+00:00"
+      "mtime": "2026-10-02T18:31:25.338935+00:00"
     },
     "scripts/power_report.py": {
       "group": "code",
-      "sha256": "9878315b8702208df63266c3800a1345632f6154ddf40d935cbe9f5e0f49e28d",
+      "sha256": "8d0a7405a6441ec2b2709a4336a1978585e621a934f23b48eb43812674fdd57e",
       "bytes": 7733,
-      "mtime": "2026-09-23T11:26:13.613993+00:00"
+      "mtime": "2026-10-02T18:31:25.339134+00:00"
     },
     "tests/test_core.py": {
       "group": "code",
-      "sha256": "d138e3d4fdd18a873aac27e3fb6caa1059956bca4436438212e0186d892feb73",
-      "bytes": 19150,
-      "mtime": "2026-10-01T11:33:11.517589+00:00"
+      "sha256": "a0e55fbf488d7bd129c5be1c01d755fcd986e9163c06ba066d6b0d98b4518271",
+      "bytes": 19149,
+      "mtime": "2026-10-02T18:31:25.344226+00:00"
     },
     "tests/test_headlines.py": {
       "group": "code",
-      "sha256": "551451a125b99dd699f623d69195fdafdffca0f4aef8084888b7b5d4a1fd0919",
+      "sha256": "a3add1251e07f535cbc9f5be646d6842b23fd4d7fc582f7bf80689e002feb423",
       "bytes": 34412,
-      "mtime": "2026-10-02T03:10:52.633556+00:00"
+      "mtime": "2026-10-02T18:31:25.344641+00:00"
     },
     "results/node_calibration.json": {
       "group": "results",
@@ -237,25 +237,25 @@
       "group": "results",
       "sha256": "118e3fdc22bbae76f5e6300b844e9870dc58040c0efd3eec615c31b710d5a92e",
       "bytes": 3322,
-      "mtime": "2026-10-01T02:42:29.756470+00:00"
+      "mtime": "2026-10-02T18:37:15.769243+00:00"
     },
     "results/t10_multiverse.json": {
       "group": "results",
       "sha256": "7b565a0f9f254403b7f9dd90e9391ad6875eda8378d224dc98140b2507394b9f",
       "bytes": 8469,
-      "mtime": "2026-10-01T02:42:13.676900+00:00"
+      "mtime": "2026-10-02T18:36:51.089888+00:00"
     },
     "results/t11_matched_skill.json": {
       "group": "results",
       "sha256": "817cb1b668225b8608fd646ed23ebe0e29bbd882fb67e317d6e553505febd2df",
       "bytes": 12413,
-      "mtime": "2026-10-01T02:41:37.377274+00:00"
+      "mtime": "2026-10-02T18:36:08.535717+00:00"
     },
     "results/t12_titled_tuesday.json": {
       "group": "results",
       "sha256": "688115afe6a78943db658ea745521280c6c1ce56de30890d2912800835584383",
       "bytes": 5550,
-      "mtime": "2026-10-02T03:11:23.932189+00:00"
+      "mtime": "2026-10-02T18:36:24.625368+00:00"
     },
     "results/t1_eval_scope_lichess.json": {
       "group": "results",
@@ -285,61 +285,61 @@
       "group": "results",
       "sha256": "8faa7b8193fccf0323b39bac093ca213c5a71d15eae87d9e85721cc478992c8c",
       "bytes": 1887,
-      "mtime": "2026-10-01T02:38:29.734990+00:00"
+      "mtime": "2026-10-02T18:32:43.980479+00:00"
     },
     "results/t2_openings.json": {
       "group": "results",
       "sha256": "52673c1f82d4472023821392050723a3a913cc0113f73f3426bc70f358160289",
       "bytes": 32349,
-      "mtime": "2026-10-01T02:38:34.260682+00:00"
+      "mtime": "2026-10-02T18:32:49.440469+00:00"
     },
     "results/t3_blunders.json": {
       "group": "results",
       "sha256": "2fb3529620877c725f462aad852e0d9e4f1efe4ba3f04f42c4c8bd73538d1a64",
       "bytes": 10652,
-      "mtime": "2026-10-01T02:38:44.211991+00:00"
+      "mtime": "2026-10-02T18:33:00.422339+00:00"
     },
     "results/t4_inflation.json": {
       "group": "results",
       "sha256": "a8e01b3b0c889c84467add4b6fc1775c5bc8e524a24c07351ce708f7ff7a65b3",
       "bytes": 12111,
-      "mtime": "2026-10-01T02:38:46.931377+00:00"
+      "mtime": "2026-10-02T18:33:03.182130+00:00"
     },
     "results/t5_color.json": {
       "group": "results",
       "sha256": "9fc6fa0fffeace36c41106cb3c89aae1e41aa8271b764720fa29a0fd0ad0acb1",
       "bytes": 20787,
-      "mtime": "2026-10-01T02:39:35.807840+00:00"
+      "mtime": "2026-10-02T18:33:54.976163+00:00"
     },
     "results/t6_swindles.json": {
       "group": "results",
       "sha256": "b387d421adde122099919b4c109f466deaad87a01a29885b3b13192481644b0b",
       "bytes": 10088,
-      "mtime": "2026-10-01T02:40:04.034885+00:00"
+      "mtime": "2026-10-02T18:34:24.185390+00:00"
     },
     "results/t7_falsify.json": {
       "group": "results",
       "sha256": "2553bdba6fee456adf3a4915e3a736a66a44c5d2c3600b1767bbacb65d1459fa",
       "bytes": 10062,
-      "mtime": "2026-10-01T02:42:29.344959+00:00"
+      "mtime": "2026-10-02T18:37:10.778121+00:00"
     },
     "results/t8_player_panel.json": {
       "group": "results",
       "sha256": "fbd9b2d71e5258bf4ecd9095a91fc5c694355478f3131aa2590187d22963fc9b",
       "bytes": 21335,
-      "mtime": "2026-10-01T02:40:48.467442+00:00"
+      "mtime": "2026-10-02T18:35:14.574767+00:00"
     },
     "results/t9_otb_swindles.json": {
       "group": "results",
       "sha256": "7807b86ff31ba896d9561890a43c78257e11eaee5f8ec4abd767e2e27476b134",
       "bytes": 7268,
-      "mtime": "2026-10-01T02:40:57.557767+00:00"
+      "mtime": "2026-10-02T18:35:24.448799+00:00"
     },
     "README.md": {
       "group": "prose",
-      "sha256": "d257f3ed9a2f259229dae39cf062a044afb468392323bf027229ed19caa7571e",
-      "bytes": 12385,
-      "mtime": "2026-10-02T03:11:11.517433+00:00"
+      "sha256": "5e8b19412e853b172c4201311b654cb73235b1454914018c628189c5d575fdea",
+      "bytes": 12599,
+      "mtime": "2026-10-02T18:31:51.033442+00:00"
     },
     "FINDINGS.md": {
       "group": "prose",
@@ -361,21 +361,21 @@
     },
     "NOTICE": {
       "group": "prose",
-      "sha256": "8533d7a33c4d89208b5995f3fcc209896f4823b8f3833a91de3b74de7ed72a52",
-      "bytes": 3213,
-      "mtime": "2026-10-02T03:06:05.649539+00:00"
+      "sha256": "c763378ef1323b97a7fb4539a9f63ee4006ce7620bae6b7263f25256d68d16a5",
+      "bytes": 3207,
+      "mtime": "2026-10-02T18:31:25.324775+00:00"
     },
     "pyproject.toml": {
       "group": "config",
-      "sha256": "3e30eca4a3343d352f3355ad20195ffb3e559dcd97e07d16992825afb1482a84",
-      "bytes": 1941,
-      "mtime": "2026-10-02T03:04:52.139860+00:00"
+      "sha256": "b8870877ce502b14a0e33f68d5fca41f1c5fc7f3ed74bd15c4daaa7ffbd06d61",
+      "bytes": 1937,
+      "mtime": "2026-10-02T18:31:51.032414+00:00"
     },
     "scripts/build_all.sh": {
       "group": "config",
-      "sha256": "e8ed178012fbb3add83337f5a779d6b0075f5d43c2aa4ece0b6af959b7397c68",
+      "sha256": "32468442f7da70d161096c6b83dc482720e980ecfca5debb6a801294aa5569f9",
       "bytes": 2009,
-      "mtime": "2026-10-01T02:34:32.518383+00:00"
+      "mtime": "2026-10-02T18:31:25.337851+00:00"
     },
     "scripts/fetch_data.sh": {
       "group": "config",

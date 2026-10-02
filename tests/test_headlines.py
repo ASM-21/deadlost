@@ -21,7 +21,7 @@ from pathlib import Path
 
 import pytest
 
-from chesslab import paths
+from deadlost import paths
 
 
 def _load(name: str) -> dict:

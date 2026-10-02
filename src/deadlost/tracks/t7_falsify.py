@@ -54,7 +54,7 @@ PROBES
      condition: bounding the excluded cases both ways does not flip the
      band ordering.
 
-Run:  python -m chesslab.tracks.t7_falsify
+Run:  python -m deadlost.tracks.t7_falsify
 """
 
 from __future__ import annotations
@@ -567,7 +567,7 @@ def _figure(probes: list[dict]) -> None:
         "Rating band",
         "Proportion",
         paths.figure_path("t7_p1_base_rate_confound.png"),
-        note="chess-lab track 7. Labels are the ratio of the two bars; a cell with no draw-saves is "
+        note="deadlost track 7. Labels are the ratio of the two bars; a cell with no draw-saves is "
              "labelled as a count instead. Masters draw far more overall AND save lost positions as draws "
              "at a LOWER multiple of their own base rate (0.13x) than amateurs do (0.24x mean). The "
              "amateur mean includes a 0/73 cell, so excluding it would widen the gap, not narrow it.",

@@ -24,7 +24,7 @@ Tick what applies:
 ## Checks
 
 ```
-chesslab verify
+deadlost verify
 ```
 
 - [ ] `tests` pass

@@ -1,5 +1,5 @@
 blank_issues_enabled: true
 contact_links:
   - name: Known limitations
-    url: https://github.com/ASM-21/chess-lab/blob/main/FINDINGS.md
+    url: https://github.com/ASM-21/deadlost/blob/main/FINDINGS.md
     about: Resolution bounds, retracted claims and unfixable confounds are documented before you file.

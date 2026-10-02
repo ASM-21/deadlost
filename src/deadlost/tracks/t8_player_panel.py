@@ -86,7 +86,7 @@ four times the headline spec's width, and the curvature term itself remains
 indistinguishable from zero. The obstacle is not the number of players but the
 collinearity described above, which more players cannot dissolve.
 
-Run:  python -m chesslab.tracks.t8_player_panel
+Run:  python -m deadlost.tracks.t8_player_panel
 """
 
 from __future__ import annotations
@@ -478,7 +478,7 @@ def _figure(g: pd.DataFrame, fit: dict) -> None:
         "ACPL minus that player's career mean (cp)",
         paths.figure_path("t8_within_player_acpl.png"),
         note=(
-            "chess-lab track 8. Thin lines are individual careers. Lower is better play. The fitted year "
+            "deadlost track 8. Thin lines are individual careers. Lower is better play. The fitted year "
             f"coefficient after controlling for the player's own rating is {yc.get('coefficient', float('nan')):.2f} cp/year "
             f"[{yc.get('ci_lo', float('nan')):.2f}, {yc.get('ci_hi', float('nan')):.2f}]."
         ),

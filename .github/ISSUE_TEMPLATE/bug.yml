@@ -15,14 +15,14 @@ body:
       label: How to reproduce
       placeholder: |
         ./scripts/fetch_data.sh
-        python -m chesslab.tracks.t3_blunders
+        python -m deadlost.tracks.t3_blunders
     validations:
       required: true
   - type: textarea
     id: env
     attributes:
       label: Environment
-      description: Output of `chesslab status`, plus your Python and Stockfish versions.
+      description: Output of `deadlost status`, plus your Python and Stockfish versions.
       render: shell
     validations:
       required: false

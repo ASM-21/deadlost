@@ -1,4 +1,4 @@
-"""Shared game schema for chess-lab.
+"""Shared game schema for deadlost.
 
 Every track reads the same table. One row is one game. `moves` is a
 space-separated SAN token string with move numbers, annotations and comments

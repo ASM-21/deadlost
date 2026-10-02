@@ -30,7 +30,7 @@ So the comparison is made in a way that survives that:
 COLOR. Openings are inherently colored, so everything is reported as White's
 score and every opening is analysed from White's side.
 
-Run:  python -m chesslab.tracks.t2_openings
+Run:  python -m deadlost.tracks.t2_openings
 """
 
 from __future__ import annotations
@@ -370,7 +370,7 @@ def _figure(both: pd.DataFrame, fam_cp: pd.DataFrame, band_order: list[str]) -> 
         "Rating band (lichess online, then TWIC over-the-board)",
         "White score gap (practical - predicted)",
         paths.figure_path("t2_opening_gap_by_band.png"),
-        note="chess-lab track 2. Positive = the opening scores better in practice than its engine evaluation implies. "
+        note="deadlost track 2. Positive = the opening scores better in practice than its engine evaluation implies. "
         "The two corpora are different populations; the x-axis is ordered, not continuous.",
         legend=False,
     )
@@ -387,7 +387,7 @@ def _figure(both: pd.DataFrame, fam_cp: pd.DataFrame, band_order: list[str]) -> 
         "Centipawns (White POV)",
         "",
         paths.figure_path("t2_book_exit_eval.png"),
-        note="chess-lab track 2. Note the narrow range: mainline openings differ by far less than practical results do.",
+        note="deadlost track 2. Note the narrow range: mainline openings differ by far less than practical results do.",
         legend=False,
     )
 

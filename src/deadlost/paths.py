@@ -5,7 +5,7 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
-ROOT = Path(os.environ.get("CHESSLAB_ROOT", Path(__file__).resolve().parents[2]))
+ROOT = Path(os.environ.get("DEADLOST_ROOT", Path(__file__).resolve().parents[2]))
 
 DATA = ROOT / "data"
 RAW = DATA / "raw"

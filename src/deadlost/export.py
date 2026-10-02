@@ -33,9 +33,9 @@ from .tracks.t1_ingest import load_games
 
 TAGS = ("lichess", "twic", "panel", "otb")
 
-DATA_DICTIONARY = """# chess-lab analysis dataset
+DATA_DICTIONARY = """# deadlost analysis dataset
 
-Engine-scored chess moves with game metadata. Produced by chess-lab; see
+Engine-scored chess moves with game metadata. Produced by deadlost; see
 FINDINGS.md for what was concluded from it and README.md for how to regenerate.
 
 ## Provenance

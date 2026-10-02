@@ -46,9 +46,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 import numpy as np  # noqa: E402
 import pandas as pd  # noqa: E402
 
-from chesslab import engine as eng  # noqa: E402
-from chesslab import paths, stats  # noqa: E402
-from chesslab.tracks.t1_ingest import load_games  # noqa: E402
+from deadlost import engine as eng  # noqa: E402
+from deadlost import paths, stats  # noqa: E402
+from deadlost.tracks.t1_ingest import load_games  # noqa: E402
 
 REFERENCE_NODES = 80_000
 BLUNDER_CP = 300
@@ -110,7 +110,7 @@ def main() -> int:
         # The earlier n=24 attempt failed precisely on sample size: its measured
         # attenuation was non-monotone in the node budget, which cannot happen
         # as a real effect.
-        from chesslab.eval_run import load_evals as _load_evals
+        from deadlost.eval_run import load_evals as _load_evals
 
         reference_nodes = 20000
         prod = _load_evals("lichess")

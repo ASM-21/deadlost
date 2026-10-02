@@ -37,7 +37,7 @@ are strongly correlated and their spread is not a confidence interval. This
 audits robustness to choices, not sampling error. Track 7's probes and the
 power report cover the other two failure modes.
 
-Run:  python -m chesslab.tracks.t10_multiverse
+Run:  python -m deadlost.tracks.t10_multiverse
 """
 
 from __future__ import annotations
@@ -248,7 +248,7 @@ def run() -> dict:
         "Specification curve: blunder-rate gradient across rating bands",
         "Slope per band step",
         paths.figure_path("t10_curve_blunder_gradient.png"),
-        note="chess-lab track 10. Every defensible combination of four analytic choices. Negative means "
+        note="deadlost track 10. Every defensible combination of four analytic choices. Negative means "
              "blunder rate falls as rating rises. Gold line is the specification reported in track 3.",
     )
     mv.curve_figure(
@@ -256,7 +256,7 @@ def run() -> dict:
         "Specification curve: fast-minus-slow blunder rate",
         "Difference in blunders per move",
         paths.figure_path("t10_curve_fast_vs_slow.png"),
-        note="chess-lab track 10. Positive means faster games blunder more. Gold line is the "
+        note="deadlost track 10. Positive means faster games blunder more. Gold line is the "
              "specification reported in track 3.",
     )
     mv.curve_figure(
@@ -264,7 +264,7 @@ def run() -> dict:
         "Specification curve: ACPL drift at fixed nominal rating",
         "cp per decade",
         paths.figure_path("t10_curve_acpl_drift.png"),
-        note="chess-lab track 10. Track 4 reports this as a null; the curve shows whether that null "
+        note="deadlost track 10. Track 4 reports this as a null; the curve shows whether that null "
              "depends on the choices behind it. Gold line is the reported specification.",
     )
     return out

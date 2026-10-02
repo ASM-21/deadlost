@@ -20,7 +20,7 @@ Two properties matter for running this on a small machine:
    `data/eval/<tag>/shard_*.parquet`; re-invoking skips ids already on disk.
    Losing the process costs at most one shard.
 
-Run:  python -m chesslab.eval_run --which lichess --per-cell 32 --nodes 20000
+Run:  python -m deadlost.eval_run --which lichess --per-cell 32 --nodes 20000
 """
 
 from __future__ import annotations
@@ -215,7 +215,7 @@ def load_evals(tag: str, classical_only: bool | None = None) -> pd.DataFrame:
     files = sorted(shard_dir(tag).glob("shard_*.parquet"))
     if not files:
         raise FileNotFoundError(
-            f"no engine evaluations for '{tag}'. Run: python -m chesslab.eval_run --which {tag}"
+            f"no engine evaluations for '{tag}'. Run: python -m deadlost.eval_run --which {tag}"
         )
     df = pd.concat([pd.read_parquet(f) for f in files], ignore_index=True)
     df = df.drop_duplicates(subset=["game_id", "ply"]).reset_index(drop=True)

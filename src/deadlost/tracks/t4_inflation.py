@@ -44,7 +44,7 @@ Three further things that would corrupt ACPL if left alone, all handled:
 5. **Format.** Only classical over-the-board games enter this track. See
    `schema.classify_format` and probe P8.
 
-Run:  python -m chesslab.tracks.t4_inflation
+Run:  python -m deadlost.tracks.t4_inflation
 """
 
 from __future__ import annotations
@@ -290,7 +290,7 @@ def _figure(tbl: pd.DataFrame) -> None:
         "Year",
         "Average centipawn loss per move",
         paths.figure_path("t4_acpl_at_fixed_rating.png"),
-        note="chess-lab track 4. Lower ACPL is better play. A rising line at fixed rating is consistent with "
+        note="deadlost track 4. Lower ACPL is better play. A rising line at fixed rating is consistent with "
         "inflation OR with the 2400-2499 pool changing composition; this design cannot separate them.",
         legend=False,
     )

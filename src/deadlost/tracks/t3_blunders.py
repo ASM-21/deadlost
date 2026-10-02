@@ -26,7 +26,7 @@ game length itself varies with time control.
 CLUSTERING. Confidence intervals resample games, not moves. Sixty moves from
 one game are one draw from the population of games, not sixty.
 
-Run:  python -m chesslab.tracks.t3_blunders
+Run:  python -m deadlost.tracks.t3_blunders
 """
 
 from __future__ import annotations
@@ -299,7 +299,7 @@ def _figure(cells: pd.DataFrame, df: pd.DataFrame) -> None:
         "Nominal seconds per move ((base + 40*inc) / 40)",
         "Blunders per move",
         paths.figure_path("t3_blunder_rate_vs_time.png"),
-        note="chess-lab track 3. Lichess 2017 rated sample, Stockfish 16. Bars are 95% game-clustered bootstrap. "
+        note="deadlost track 3. Lichess 2017 rated sample, Stockfish 16. Bars are 95% game-clustered bootstrap. "
         "No bullet/blitz in corpus: the fast end of the curve is unobserved.",
     )
 

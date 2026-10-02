@@ -45,8 +45,8 @@ DEFAULT_MAX_PLY = 256  # covers the longest game in either corpus; nothing is ce
 
 
 def find_engine() -> str | None:
-    """Locate a Stockfish binary. `CHESSLAB_ENGINE` overrides the search."""
-    env = os.environ.get("CHESSLAB_ENGINE")
+    """Locate a Stockfish binary. `DEADLOST_ENGINE` overrides the search."""
+    env = os.environ.get("DEADLOST_ENGINE")
     if env and os.path.exists(env):
         return env
     for name in ("stockfish", "stockfish16", "stockfish15"):
@@ -107,7 +107,7 @@ class Evaluator:
         if not self.path:
             raise RuntimeError(
                 "No Stockfish binary found. Install it (apt-get install stockfish, "
-                "brew install stockfish) or set CHESSLAB_ENGINE."
+                "brew install stockfish) or set DEADLOST_ENGINE."
             )
         self.nodes = nodes
         self.engine = chess.engine.SimpleEngine.popen_uci(self.path)

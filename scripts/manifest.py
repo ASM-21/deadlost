@@ -36,7 +36,7 @@ MANIFEST = ROOT / "results" / "manifest.json"
 
 #: Globs recorded in the manifest, grouped so a diff says what kind of thing moved.
 TRACKED = {
-    "code": ["src/chesslab/**/*.py", "scripts/*.py", "tests/*.py"],
+    "code": ["src/deadlost/**/*.py", "scripts/*.py", "tests/*.py"],
     "results": ["results/*.json"],
     "prose": ["README.md", "FINDINGS.md", "ROADMAP.md", "CONTRIBUTING.md", "NOTICE"],
     "config": ["pyproject.toml", "scripts/*.sh", ".github/workflows/*.yml"],
@@ -120,7 +120,7 @@ def environment() -> dict:
     env["python"] = sys.version.split()[0]
     try:
         sys.path.insert(0, str(ROOT / "src"))
-        from chesslab.engine import engine_id
+        from deadlost.engine import engine_id
 
         env["engine"] = engine_id()
     except Exception:  # noqa: BLE001

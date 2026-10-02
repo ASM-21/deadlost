@@ -1,9 +1,9 @@
 <p align="center">
-  <img src="assets/banner.svg" alt="chess-lab" width="100%">
+  <img src="assets/banner.svg" alt="deadlost" width="100%">
 </p>
 
 <p align="center">
-  <a href="https://github.com/ASM-21/chess-lab/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/ASM-21/chess-lab/actions/workflows/ci.yml/badge.svg"></a>
+  <a href="https://github.com/ASM-21/deadlost/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/ASM-21/deadlost/actions/workflows/ci.yml/badge.svg"></a>
   <img alt="tests" src="https://img.shields.io/badge/tests-142%20passing-1f4e79">
   <img alt="pinned numbers" src="https://img.shields.io/badge/pinned%20numbers-57-1f4e79">
   <img alt="claims retracted" src="https://img.shields.io/badge/claims%20retracted-7-c0504d">
@@ -11,10 +11,13 @@
   <img alt="licence" src="https://img.shields.io/badge/licence-Apache--2.0-green">
 </p>
 
-<h1 align="center">chess-lab</h1>
+<h1 align="center">deadlost</h1>
 
 <p align="center"><b>Chess folk wisdom, tested on hundreds of thousands of real games with Stockfish as the referee.<br>
 Then attacked, as hard as it was built, by a track whose only job is to break the others.</b></p>
+
+<p align="center"><i>dead lost</i> (chess): a position so hopeless that only the opponent can save it.<br>
+It is where this project's sharpest result lives: whether players concede those positions or play them out.</p>
 
 <p align="center">
   <a href="FINDINGS.md">Findings</a> ·
@@ -58,7 +61,7 @@ Srivastava 2026).
 ```bash
 pip install -e ".[dev]"            # Python 3.10+
 bash scripts/fetch_data.sh         # ~230 MB of public games from GitHub mirrors
-make tracks && chesslab findings   # every result, from the committed engine output
+make tracks && deadlost findings   # every result, from the committed engine output
 ```
 
 That reproduces every number in this repository in minutes, because the
@@ -124,7 +127,7 @@ literature after the results existed did what no automated check could.
 - **Unanimous agreement is not taken as evidence.** All 180 specifications of
   claim 2 agree in sign, yet joint inference across them finds it borderline: they
   all use the same games.
-- **Every null says what it could have missed.** `chesslab limits` prints the
+- **Every null says what it could have missed.** `deadlost limits` prints the
   resolution of each one.
 - **Moves are not independent observations.** Intervals resample whole games or
   players; doing otherwise would make them 1.48x too narrow.
@@ -136,13 +139,13 @@ literature after the results existed did what no automated check could.
 ## Use it
 
 ```bash
-chesslab findings       # one line per claim
-chesslab limits         # resolution bounds, confounds, retractions
-chesslab verify         # tests, claims check and provenance manifest, in one go
-chesslab export         # 148k engine-scored moves, with a data dictionary
+deadlost findings       # one line per claim
+deadlost limits         # resolution bounds, confounds, retractions
+deadlost verify         # tests, claims check and provenance manifest, in one go
+deadlost export         # 148k engine-scored moves, with a data dictionary
 ```
 
-`chesslab export` is the part most worth reusing: engine evaluations are the only
+`deadlost export` is the part most worth reusing: engine evaluations are the only
 expensive artifact here. Its data dictionary documents five traps in this data,
 four of which caused real errors while building this repository.
 
@@ -177,12 +180,12 @@ difference; the blitz-against-blitz comparison above is the cleaner test. The
 players compared are a selected, mostly titled group.
 
 ```bibtex
-@software{morrissey_chesslab_2026,
+@software{morrissey_deadlost_2026,
   author  = {Morrissey, Andrew},
-  title   = {chess-lab: falsifiable analyses of public chess games against engine ground truth},
+  title   = {deadlost: falsifiable analyses of public chess games against engine ground truth},
   year    = {2026},
-  version = {1.2.2},
-  url     = {https://github.com/ASM-21/chess-lab},
+  version = {1.3.0},
+  url     = {https://github.com/ASM-21/deadlost},
   license = {Apache-2.0}
 }
 ```
@@ -206,7 +209,7 @@ own terms, listed in [NOTICE](NOTICE). Stockfish is neither bundled nor linked.
 <summary><b>Repository map</b></summary>
 
 ```
-src/chesslab/
+src/deadlost/
   schema.py            shared game record, format inference, validation
   ingest_*.py          one ingester per source
   engine.py            Stockfish wrapper: fixed node budget, per-game hash reset
@@ -214,7 +217,7 @@ src/chesslab/
   stats.py             cluster bootstrap, Wilson intervals, weighted regression
   power.py             minimum detectable effects for every null
   multiverse.py        specification curves with joint inference
-  cli.py, export.py    the chesslab command and the reusable dataset
+  cli.py, export.py    the deadlost command and the reusable dataset
   tracks/t1..t12       one module per question
 scripts/               fetch, build, claims check, power report, manifest, report page
 tests/                 142 tests: behaviour, headline pins, retraction guards

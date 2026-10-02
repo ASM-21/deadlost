@@ -3,8 +3,8 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "chesslab"
-version = "1.2.2"
+name = "deadlost"
+version = "1.3.0"
 description = "Nine claims about chess tested on 190,967 public games with Stockfish, positioned against the literature, with a falsification track, specification curves with joint inference, and resolution bounds on every null."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -27,16 +27,16 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/ASM-21/chess-lab"
-Findings = "https://github.com/ASM-21/chess-lab/blob/main/FINDINGS.md"
-Literature = "https://github.com/ASM-21/chess-lab/blob/main/docs/LITERATURE.md"
-Issues = "https://github.com/ASM-21/chess-lab/issues"
+Homepage = "https://github.com/ASM-21/deadlost"
+Findings = "https://github.com/ASM-21/deadlost/blob/main/FINDINGS.md"
+Literature = "https://github.com/ASM-21/deadlost/blob/main/docs/LITERATURE.md"
+Issues = "https://github.com/ASM-21/deadlost/issues"
 
 [project.optional-dependencies]
 dev = ["pytest>=7.4"]
 
 [project.scripts]
-chesslab = "chesslab.cli:main"
+deadlost = "deadlost.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
