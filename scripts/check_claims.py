@@ -118,6 +118,8 @@ CLAIMS: list[tuple[str, str, str, float, str]] = [
     ("linked players vs OTB blitz", "154", "t12_titled_tuesday.json:linked_within_player.online_vs_blitz_otb.players", 0, "+"),
     ("linked gap vs OTB blitz", "10.7%", "t12_titled_tuesday.json:linked_within_player.online_vs_blitz_otb.mate_difference", 0.003, "+"),
     ("online time-forfeit share", "30%", "t12_titled_tuesday.json:termination_mix.loss_types.time", 0.006, "+"),
+    ("online sample overlap", "2.4%",
+     "t12_titled_tuesday.json:overlap_with_twic_online.share_of_titled_tuesday_sample", 0.002, "+"),
     ("clustering width ratio", "1.48", "t7_falsify.json:probes[3].mean_width_ratio", 0.03, "+"),
     ("TWIC online share from 2020", "55%", "t1_validation.json:twic_format_by_era.2020_on.online", 0.006, "+"),
     ("TWIC classical share before 2020", "95.5%", "t1_validation.json:twic_format_by_era.pre_2020.classical_otb", 0.002, "+"),

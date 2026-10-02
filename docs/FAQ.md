@@ -73,7 +73,7 @@ estimate toward zero rather than reordering it.
 
 ### Can I reuse the evaluations?
 
-Yes, that is the point of `chesslab export`. It writes 125,673 scored moves
+Yes, that is the point of `chesslab export`. It writes 147,799 scored moves from 2,056 games
 joined to game metadata plus a data dictionary. The evaluations are the only
 expensive artifact here; everything else is minutes of pandas.
 

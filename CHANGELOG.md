@@ -5,6 +5,30 @@ This project versions its *findings* as well as its code: a released number is
 pinned by a test and by an entry in `scripts/check_claims.py`, so any change to
 a published result is a deliberate, reviewable event rather than drift.
 
+## [1.2.2] - 2026-10-02
+
+### Changed
+- README rewritten as a single-page guide: the headline result and its figure
+  first, a three-command quick start, the nine claims with status labels, the
+  seven retractions presented as what they are, and a ready-to-use citation.
+- Three statements were corrected while rewriting it: a combined game total that
+  counted about 3,700 games twice because they appear in both TWIC and chess.com's
+  exports; the engine time shipped with the repository (about two hours, not one);
+  and wording that implied a cause for the post-2020 draw-rate change.
+- Track 12 now measures its overlap with track 11's online games: 2.4% of games
+  and 2 of 137 event dates. A draft of this release had described the two online
+  samples as overlapping and therefore not independent; measuring showed the
+  opposite, because they were sampled on different weeks. The overlap is pinned.
+- NOTICE now states exactly what ships: no upstream source files, but the move
+  sequences of the roughly 2,500 games the repository evaluated, which the
+  evaluations are meaningless without. It previously said no third-party data was
+  redistributed, which the committed evaluation samples already contradicted.
+- The exported dataset is 147,799 scored moves from 2,056 games; README and FAQ
+  still quoted 125k from before the player panel was enlarged.
+- Scripts are invoked as `bash scripts/...` in the README, Makefile and
+  publishing guide, so the quick start works however the archive is unpacked;
+  some extraction tools drop the executable bit.
+
 ## [1.2.1] - 2026-10-01
 
 An independent review of 1.2.0. The track 12 headline was re-implemented from

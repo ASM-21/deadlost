@@ -23,7 +23,7 @@
     <rect x="536" y="244" width="212" height="34" rx="17" fill="#ffffff" opacity="0.10"/>
     <text x="556" y="266">every null bounded</text>
     <rect x="764" y="244" width="188" height="34" rx="17" fill="#ffffff" opacity="0.10"/>
-    <text x="784" y="266">137 tests passing</text>
+    <text x="784" y="266">142 tests passing</text>
   </g>
   <g opacity="0.5">
     <text x="1064" y="180" font-family="Georgia,serif" font-size="150" fill="#ffffff" opacity="0.14">&#9819;</text>

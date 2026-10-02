@@ -230,7 +230,7 @@ Across all decisive games the pattern is the same: 4.3% end in mate in classical
 over-the-board play, 6.3% in fast over-the-board play, 18.6% in TWIC's online
 events and 33.5% on Lichess.
 
-**An independent replication, linked by FIDE ID (track 12).** All of the above
+**An independent replication, linked by FIDE ID (track 12).** The two online samples share only 2.4% of their games and 2 of 137 event dates, because they were sampled on different weeks, so this is a replication on different games rather than a re-reading of the same ones. All of the above
 uses TWIC for both sides of the online comparison. Track 12 replaces the online
 side with chess.com's own Titled Tuesday exports, 165,852 games from a source
 that shares nothing with TWIC except the players, and links players exactly by

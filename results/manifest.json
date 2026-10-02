@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-10-01T11:35:08.315500+00:00",
+  "created_utc": "2026-10-02T03:11:39.716768+00:00",
   "environment": {
     "python_chess": "1.11.2",
     "numpy": "2.4.4",
@@ -7,15 +7,15 @@
     "scipy": "1.17.1",
     "python": "3.12.3",
     "engine": "Stockfish 16",
-    "git_commit": "288121bdbb9e48e692563d35267e7bfcdb2059d5"
+    "git_commit": "52da22193c0348e44572e2d6b9f52e580034c67d"
   },
   "file_count": 141,
   "files": {
     "src/chesslab/__init__.py": {
       "group": "code",
-      "sha256": "4107262992f9976964f98587e637b7c6c24b6bce4e955ae296ed792854f20bf7",
+      "sha256": "d5959374d7eb8c3cc73cbe328e9114b9e76afed5a126d7acb3a2804f5b6e73ca",
       "bytes": 91,
-      "mtime": "2026-10-01T11:35:02.839922+00:00"
+      "mtime": "2026-10-02T03:04:52.140673+00:00"
     },
     "src/chesslab/cli.py": {
       "group": "code",
@@ -115,9 +115,9 @@
     },
     "src/chesslab/tracks/t12_titled_tuesday.py": {
       "group": "code",
-      "sha256": "fe869ccb79cbe8682777892c8b57eece98d581ccc9a82210767685bc967e5f62",
-      "bytes": 13376,
-      "mtime": "2026-10-01T11:33:33.824090+00:00"
+      "sha256": "30c4851260af936de45af291e0594779d291e8ef3419c619fb87e65486ec4159",
+      "bytes": 15122,
+      "mtime": "2026-10-02T03:11:11.513461+00:00"
     },
     "src/chesslab/tracks/t1_ingest.py": {
       "group": "code",
@@ -187,9 +187,9 @@
     },
     "scripts/check_claims.py": {
       "group": "code",
-      "sha256": "71031e1d77d73b087ab90798eb6ccc94fbd9d98fb9b4cc6860c56838b591f85e",
-      "bytes": 15585,
-      "mtime": "2026-10-01T02:37:22.382212+00:00"
+      "sha256": "4d324ef37e4e0d28794d169e63cca6db6d1e95776328748e3d14b6625aed6f4b",
+      "bytes": 15724,
+      "mtime": "2026-10-02T03:10:52.658864+00:00"
     },
     "scripts/init_repo.py": {
       "group": "code",
@@ -223,9 +223,9 @@
     },
     "tests/test_headlines.py": {
       "group": "code",
-      "sha256": "1f486e5e3355a738d48813aa0749f12e97e8fc63624e68efd87dea9e0877bfbb",
-      "bytes": 34034,
-      "mtime": "2026-10-01T02:37:52.582588+00:00"
+      "sha256": "551451a125b99dd699f623d69195fdafdffca0f4aef8084888b7b5d4a1fd0919",
+      "bytes": 34412,
+      "mtime": "2026-10-02T03:10:52.633556+00:00"
     },
     "results/node_calibration.json": {
       "group": "results",
@@ -253,9 +253,9 @@
     },
     "results/t12_titled_tuesday.json": {
       "group": "results",
-      "sha256": "d4d253008399886c04ec944d5437a3b440077e3b3a75b42fd637109a772c5289",
-      "bytes": 5075,
-      "mtime": "2026-10-01T11:34:17.059865+00:00"
+      "sha256": "688115afe6a78943db658ea745521280c6c1ce56de30890d2912800835584383",
+      "bytes": 5550,
+      "mtime": "2026-10-02T03:11:23.932189+00:00"
     },
     "results/t1_eval_scope_lichess.json": {
       "group": "results",
@@ -337,15 +337,15 @@
     },
     "README.md": {
       "group": "prose",
-      "sha256": "b5785290889ff13ee48d17d0f0d005ad76ad6afd629a29f2fe152d6bc2e2f770",
-      "bytes": 9124,
-      "mtime": "2026-10-01T11:33:10.069848+00:00"
+      "sha256": "d257f3ed9a2f259229dae39cf062a044afb468392323bf027229ed19caa7571e",
+      "bytes": 12385,
+      "mtime": "2026-10-02T03:11:11.517433+00:00"
     },
     "FINDINGS.md": {
       "group": "prose",
-      "sha256": "1379b40cddc99e64b759a55085df91cc54835e817466480f6fda840f74a2801c",
-      "bytes": 20098,
-      "mtime": "2026-10-01T02:37:05.188218+00:00"
+      "sha256": "7cc924dc1a1abb15baaba54e959b5db45a2eaafa68ceb68e26fc967b0e777c50",
+      "bytes": 20311,
+      "mtime": "2026-10-02T03:10:52.659345+00:00"
     },
     "ROADMAP.md": {
       "group": "prose",
@@ -361,15 +361,15 @@
     },
     "NOTICE": {
       "group": "prose",
-      "sha256": "cd1eac3ef497393da90d0eefd04e6dec23961c63d8b7780ed40555d71434078e",
-      "bytes": 2857,
-      "mtime": "2026-10-01T11:32:59.246036+00:00"
+      "sha256": "8533d7a33c4d89208b5995f3fcc209896f4823b8f3833a91de3b74de7ed72a52",
+      "bytes": 3213,
+      "mtime": "2026-10-02T03:06:05.649539+00:00"
     },
     "pyproject.toml": {
       "group": "config",
-      "sha256": "66ad2cb198a47b32ba20e4e424e2aa67d3f2d56e532c4969ecf1d61a3f3e1446",
+      "sha256": "3e30eca4a3343d352f3355ad20195ffb3e559dcd97e07d16992825afb1482a84",
       "bytes": 1941,
-      "mtime": "2026-10-01T11:34:39.088657+00:00"
+      "mtime": "2026-10-02T03:04:52.139860+00:00"
     },
     "scripts/build_all.sh": {
       "group": "config",

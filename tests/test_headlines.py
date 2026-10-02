@@ -795,3 +795,11 @@ def test_retraction_7_is_recorded():
     text = (Path(__file__).resolve().parents[1] / "FINDINGS.md").read_text()
     assert "| 7 | An external check of claim 9 citing Siu & Istead" in text
     assert "27-28%" not in text.replace("27-28% Lichess checkmate share", "")
+
+
+def test_t12_is_a_different_set_of_games_from_track_11():
+    """Both online samples come from Titled Tuesday, so 'independent' needs
+    evidence. They were sampled on different weeks and barely share a game."""
+    d = _load("t12_titled_tuesday.json")["overlap_with_twic_online"]
+    assert d["share_of_titled_tuesday_sample"] < 0.05
+    assert d["event_dates_shared"] <= 5

@@ -103,6 +103,15 @@
     },
     "reading": "A large share of online saves are wins on the clock, not on the board. That does not weaken the claim that saves depend on not conceding, since a player who resigns cannot win on time, but it changes what 'saving' means online: much of it is a successful bet on the opponent's clock."
   },
+  "overlap_with_twic_online": {
+    "titled_tuesday_games_with_ids": 153295,
+    "twic_online_games_with_ids": 43982,
+    "games_in_both": 3733,
+    "share_of_titled_tuesday_sample": 0.024351740108940277,
+    "event_dates_shared": 2,
+    "titled_tuesday_event_dates": 137,
+    "reading": "The two online samples are nearly disjoint at the level of games, so agreement between track 11 and this track is agreement between different games, not the same games read twice."
+  },
   "conclusion": "Independent of TWIC's own online coverage, the same players' losses end in checkmate far more often online than over the board, and the gap survives matching on time control (online blitz against over-the-board blitz). Online, roughly half of these players' losses are conceded with time remaining and close to a third are time forfeits, so playing on is in large part a bet on the clock. Over the board, at least nine in ten losses end without mate.",
   "limits": [
     "Over-the-board concession cannot be separated from over-the-board time forfeits, so concession contrasts are bounds; only the checkmate contrast is a clean estimate.",

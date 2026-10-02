@@ -34,7 +34,7 @@ CHANGELOG.md for why it should not be cited.
 ```bash
 git clone https://github.com/ASM-21/chess-lab && cd chess-lab
 pip install -e ".[dev]" && python -m pytest -q    # passes with no corpus and no engine
-./scripts/fetch_data.sh && make tracks            # reproduces every pinned number from committed engine output
+bash scripts/fetch_data.sh && make tracks            # reproduces every pinned number from committed engine output
 python scripts/check_claims.py
 ```
 

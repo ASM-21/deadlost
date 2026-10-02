@@ -14,10 +14,10 @@ install: ## Install the package and dev dependencies
 	$(PY) -m pip install -e ".[dev]"
 
 data: ## Fetch the corpora (~150 MB from GitHub mirrors)
-	./scripts/fetch_data.sh
+	bash scripts/fetch_data.sh
 
 build: ## Full rebuild: ingest, engine, all tracks, checks (~1h, resumable)
-	./scripts/build_all.sh
+	bash scripts/build_all.sh
 
 tracks: ## Re-run every analysis track from cached engine evaluations (fast)
 	@for t in t1_ingest t2_openings t3_blunders t4_inflation t5_color \

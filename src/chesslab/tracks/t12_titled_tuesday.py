@@ -196,6 +196,42 @@ def lichess_save_mechanism() -> dict:
     }
 
 
+def overlap_with_twic_online(tt: pd.DataFrame) -> dict:
+    """How many games do the two online samples actually share?
+
+    Both draw on the same event series, chess.com's Titled Tuesday, so it would
+    be easy to assume this track merely re-reads track 11's online games. It does
+    not: TWIC was sampled one issue in 26 and this archive one event in five, so
+    the samples land on different weeks. Games are matched on date, both FIDE IDs
+    and result, which identifies a game uniquely within an event.
+    """
+    games = load_games()
+    tw = games[(games.source == "twic") & (games.format == "online")].dropna(
+        subset=["white_fide", "black_fide"]
+    ).copy()
+    tw["d"] = pd.to_datetime(tw.date, errors="coerce").dt.date
+    t = tt.dropna(subset=["white_fide", "black_fide"]).copy()
+    t["d"] = pd.to_datetime(t.date.str.replace(".", "-"), errors="coerce").dt.date
+
+    def keys(df):
+        return set(zip(df.d, df.white_fide.astype("int64"), df.black_fide.astype("int64"), df.result, strict=True))
+
+    k_tw, k_tt = keys(tw), keys(t)
+    shared = k_tw & k_tt
+    return {
+        "titled_tuesday_games_with_ids": len(k_tt),
+        "twic_online_games_with_ids": len(k_tw),
+        "games_in_both": len(shared),
+        "share_of_titled_tuesday_sample": len(shared) / len(k_tt) if k_tt else None,
+        "event_dates_shared": len(set(tw.d) & set(t.d)),
+        "titled_tuesday_event_dates": len(set(t.d)),
+        "reading": (
+            "The two online samples are nearly disjoint at the level of games, so agreement between "
+            "track 11 and this track is agreement between different games, not the same games read twice."
+        ),
+    }
+
+
 def run() -> dict:
     tt = load_titled_tuesday()
     mix = termination_mix(tt)
@@ -216,6 +252,7 @@ def run() -> dict:
         "source_agreement": agree,
         "linked_within_player": linked,
         "lichess_save_mechanism": lichess,
+        "overlap_with_twic_online": overlap_with_twic_online(tt),
         "conclusion": (
             "Independent of TWIC's own online coverage, the same players' losses end in checkmate far more "
             "often online than over the board, and the gap survives matching on time control (online blitz "

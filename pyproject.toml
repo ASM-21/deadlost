@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "chesslab"
-version = "1.2.1"
+version = "1.2.2"
 description = "Nine claims about chess tested on 190,967 public games with Stockfish, positioned against the literature, with a falsification track, specification curves with joint inference, and resolution bounds on every null."
 readme = "README.md"
 requires-python = ">=3.10"
